@@ -695,5 +695,13 @@ function setLang(l){
   document.documentElement.lang=l;
 }
 
-const obs=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{if(e.isIntersecti
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) e.target.classList.add('vis');
+  });
+}, { threshold: 0.06 });
+
+document.querySelectorAll('.rv,.rv2,.rv3').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
