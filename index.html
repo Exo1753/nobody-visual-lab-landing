@@ -273,7 +273,10 @@ footer{border-top:1px solid var(--border);display:grid;grid-template-columns:1fr
   .cta-title{font-size:clamp(3rem,12vw,6rem)}
   .tut-sec{padding:4rem 1.5rem}
 }
-.pv:hover .play-btn{background:rgba(0,229,255,.3)!important;transform:scale(1.1)}
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:rgba(0,229,255,.2)}
+.pv:hover .play-btn{background:rgba(0,229,255,.35)!important;transform:scale(1.12)}
 </style>
 </head>
 <body>
@@ -552,13 +555,12 @@ footer{border-top:1px solid var(--border);display:grid;grid-template-columns:1fr
     <a href="#contacto" class="btn-s" data-i18n="pcta">SOLICITAR TRABAJO →</a>
   </div>
   <div class="port-grid">
-    <!-- VIDEO — ocupa el slot grande -->
-    <div class="pi pv" onclick="openLightbox('d_t147gcq1g')" style="cursor:pointer">
+    <div class="pi pv" onclick="openLightbox('d_t147gcq1g')" style="cursor:pointer;position:relative">
       <img src="https://img.youtube.com/vi/d_t147gcq1g/maxresdefault.jpg" alt="Video UGC" style="width:100%;height:100%;object-fit:cover;display:block"/>
-      <div class="pi-overlay" style="opacity:1;background:linear-gradient(to top,rgba(6,7,13,.85) 0%,rgba(6,7,13,.2) 60%,transparent 100%)">
-        <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)">
-          <div style="width:64px;height:64px;border-radius:50%;background:rgba(0,229,255,.15);border:2px solid var(--cyan);display:flex;align-items:center;justify-content:center;transition:all .3s" class="play-btn">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="#00e5ff"><path d="M8 5v14l11-7z"/></svg>
+      <div class="pi-overlay" style="opacity:1;background:linear-gradient(to top,rgba(6,7,13,.8) 0%,rgba(6,7,13,.15) 60%,transparent 100%)">
+        <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-60%)">
+          <div class="play-btn" style="width:64px;height:64px;border-radius:50%;background:rgba(0,229,255,.15);border:2px solid #00e5ff;display:flex;align-items:center;justify-content:center;transition:all .3s">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="#00e5ff"><path d="M8 5v14l11-7z"/></svg>
           </div>
         </div>
         <div class="pi-cat">VIDEO UGC</div>
@@ -625,7 +627,7 @@ footer{border-top:1px solid var(--border);display:grid;grid-template-columns:1fr
         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
         WHATSAPP
       </a>
-      <a href="/cdn-cgi/l/email-protection#1f71707d707b6669766c6a7e73737e7d5f78727e7673317c7072" class="btn-em">✉ EMAIL</a>
+      <a href="mailto:nobodyvisuallab@gmail.com" class="btn-em">✉ EMAIL</a>
     </div>
   </div>
 </section>
@@ -640,7 +642,7 @@ footer{border-top:1px solid var(--border);display:grid;grid-template-columns:1fr
   <div class="f-right"><a href="https://app.nobodyvisuallab.com" class="btn-app" data-i18n="ncta">ENTRAR A LA APP</a></div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 const T={
 es:{
   n1:'SERVICIOS',n2:'PLANES',n3:'PORTAFOLIO',n4:'CONTACTO',ncta:'ENTRAR A LA APP',
@@ -740,7 +742,7 @@ function setLang(l){
   document.documentElement.lang=l;
 }
 function openLightbox(id){
-  const lb=document.getElementById('video-lightbox');
+  var lb=document.getElementById('video-lightbox');
   document.getElementById('yt-frame').src='https://www.youtube.com/embed/'+id+'?autoplay=1&rel=0&modestbranding=1&showinfo=0';
   lb.style.display='flex';
   document.body.style.overflow='hidden';
@@ -753,7 +755,7 @@ function closeLightbox(){
 document.getElementById('video-lightbox').addEventListener('click',function(e){
   if(e.target===this)closeLightbox();
 });
-
+const obs=new IntersectionObserver(entries=>{
   entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis')});
 },{threshold:.06});
 document.querySelectorAll('.rv,.rv2,.rv3').forEach(el=>obs.observe(el));
