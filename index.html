@@ -754,4 +754,9 @@ document.getElementById('video-lightbox').addEventListener('click',function(e){
   if(e.target===this)closeLightbox();
 });
 
-  entries.forEach(e=>{if(e.isIntersect
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis')});
+},{threshold:.06});
+document.querySelectorAll('.rv,.rv2,.rv3').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
