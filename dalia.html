@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Dalia May — Modelo IA · Nobody Visual Lab</title>
+<meta name="description" content="Dalia May — Modelo digital hiperrealista creada por Nobody Visual Lab. Alt Gen Z meets dreamy minimalism. Disponible para campañas de moda, arte y contenido de marca."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#06070d;
+  --white:#f0f2ff;
+  --cyan:#00e5ff;
+  --muted:#3a3d55;
+  --muted2:#5a607a;
+  --border:rgba(240,242,255,0.07);
+  --fd:'Bebas Neue',sans-serif;
+  --fb:'DM Sans',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--white);font-family:var(--fb);overflow-x:hidden}
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:9999}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 2.5rem;border-bottom:1px solid var(--border);background:rgba(6,7,13,.88);backdrop-filter:blur(20px)}
+.nav-logo{display:flex;align-items:center;gap:.6rem;text-decoration:none}
+.nav-logo img{width:30px;height:30px;border-radius:7px;object-fit:cover}
+.nav-logo span{font-family:var(--fd);font-size:1.4rem;letter-spacing:.04em;color:var(--white);line-height:1}
+.nav-logo em{color:var(--cyan);font-style:normal}
+.nav-back{font-family:var(--fd);font-size:.9rem;letter-spacing:.12em;color:var(--muted2);text-decoration:none;display:flex;align-items:center;gap:.5rem;transition:color .2s}
+.nav-back:hover{color:var(--cyan)}
+.btn-app{font-family:var(--fd);font-size:1rem;letter-spacing:.08em;background:var(--cyan);color:#000;padding:.45rem 1.2rem;border-radius:100px;border:none;cursor:pointer;text-decoration:none;transition:all .2s}
+.btn-app:hover{background:var(--white)}
+
+/* HERO */
+.hero{min-height:100vh;position:relative;overflow:hidden;display:flex;align-items:flex-end;border-bottom:1px solid var(--border)}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(6,7,13,1) 0%,rgba(6,7,13,.6) 40%,rgba(6,7,13,.1) 100%)}
+.hero-content{position:relative;z-index:2;padding:4rem 2.5rem;width:100%;display:grid;grid-template-columns:1fr 1fr;align-items:flex-end;gap:2rem}
+.hero-left{}
+.hero-tag{font-family:var(--fd);font-size:.8rem;letter-spacing:.2em;color:var(--cyan);margin-bottom:1rem;display:flex;align-items:center;gap:.6rem}
+.hero-tag::before{content:'';width:20px;height:1px;background:var(--cyan)}
+.hero-name{font-family:var(--fd);font-size:clamp(3.5rem,8vw,10rem);line-height:.88;letter-spacing:.01em;color:var(--white)}
+.hero-name em{color:var(--cyan);font-style:normal}
+.hero-right{text-align:right}
+.hero-desc{font-size:.9rem;color:rgba(240,242,255,.6);line-height:1.85;font-weight:300;max-width:380px;margin-left:auto;margin-bottom:2rem}
+.hero-stats{display:flex;gap:2rem;justify-content:flex-end;margin-bottom:2.5rem}
+.hs-n{font-family:var(--fd);font-size:2.2rem;color:var(--cyan);line-height:1}
+.hs-l{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted2);margin-top:.2rem}
+.hero-ctas{display:flex;gap:.75rem;justify-content:flex-end;flex-wrap:wrap}
+.btn-p{font-family:var(--fd);font-size:1rem;letter-spacing:.08em;background:var(--cyan);color:#000;padding:.6rem 1.75rem;border-radius:100px;border:none;cursor:pointer;text-decoration:none;transition:all .25s;display:inline-block}
+.btn-p:hover{background:var(--white);transform:translateY(-2px)}
+.btn-s{font-family:var(--fd);font-size:1rem;letter-spacing:.08em;background:transparent;color:var(--white);padding:.6rem 1.75rem;border-radius:100px;border:1px solid rgba(240,242,255,.2);cursor:pointer;text-decoration:none;transition:all .25s;display:inline-block}
+.btn-s:hover{border-color:var(--cyan);color:var(--cyan)}
+/* scroll hint */
+.scroll-hint{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:.5rem;opacity:.4}
+.scroll-hint span{font-family:var(--fd);font-size:.7rem;letter-spacing:.2em;color:var(--white)}
+.scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,var(--cyan),transparent);animation:scrollAnim 2s ease infinite}
+@keyframes scrollAnim{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* BIO */
+.bio-sec{border-bottom:1px solid var(--border);padding:6rem 2.5rem}
+.bio-inner{max-width:1300px;margin:0 auto;display:grid;grid-template-columns:1fr 1.4fr;gap:5rem;align-items:start}
+.bio-title{font-family:var(--fd);font-size:clamp(3rem,6vw,7rem);line-height:.88;letter-spacing:.01em;margin-top:1.5rem}
+.bio-title .cyan{color:var(--cyan)}
+.bio-right{padding-top:.5rem}
+.bio-p{font-size:.9rem;color:var(--muted2);line-height:1.95;font-weight:300;margin-bottom:1.5rem}
+.bio-p:last-of-type{margin-bottom:2rem}
+.bio-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.5rem}
+.btag{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;border:1px solid var(--border);border-radius:100px;padding:.3rem .9rem;color:var(--muted2);transition:all .2s}
+.btag:hover{border-color:var(--cyan);color:var(--cyan)}
+
+/* VIDEO */
+.video-sec{border-bottom:1px solid var(--border);padding:5rem 2.5rem}
+.video-inner{max-width:1200px;margin:0 auto}
+.sec-tag{font-family:var(--fd);font-size:.85rem;letter-spacing:.2em;color:var(--cyan);margin-bottom:1.5rem;display:flex;align-items:center;gap:.75rem}
+.sec-tag::before{content:'';width:24px;height:1px;background:var(--cyan)}
+.video-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);margin-top:2.5rem}
+.video-left{background:var(--bg);padding:3rem}
+.video-title{font-family:var(--fd);font-size:clamp(2rem,4vw,4rem);letter-spacing:.02em;line-height:.9;margin-bottom:1.5rem}
+.video-title .cyan{color:var(--cyan)}
+.video-desc{font-size:.88rem;color:var(--muted2);line-height:1.9;font-weight:300;margin-bottom:2.5rem}
+.video-tags{display:flex;flex-wrap:wrap;gap:.5rem}
+.vtag{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;border:1px solid var(--border);border-radius:100px;padding:.3rem .8rem;color:var(--muted2)}
+.video-right{background:#080a14;position:relative;min-height:400px;cursor:pointer}
+.video-thumb{width:100%;height:100%;object-fit:cover;display:block}
+.video-play-overlay{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.5rem;background:rgba(6,7,13,.3);transition:background .3s}
+.video-right:hover .video-play-overlay{background:rgba(6,7,13,.1)}
+.play-circle{width:80px;height:80px;border-radius:50%;border:2px solid var(--cyan);background:rgba(0,229,255,.1);display:flex;align-items:center;justify-content:center;transition:all .3s}
+.video-right:hover .play-circle{background:rgba(0,229,255,.25);transform:scale(1.08)}
+.play-label{font-family:var(--fd);font-size:.85rem;letter-spacing:.2em;color:var(--white)}
+
+/* FOTOS */
+.fotos-sec{border-bottom:1px solid var(--border)}
+.fotos-header{padding:4rem 2.5rem 2rem;display:flex;justify-content:space-between;align-items:flex-end}
+.fotos-title{font-family:var(--fd);font-size:clamp(2.5rem,5vw,6rem);letter-spacing:.02em;line-height:.9}
+.fotos-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--border)}
+.foto-card{aspect-ratio:2/3;overflow:hidden;position:relative;background:#080a14;transition:filter .3s}
+.foto-card:hover{filter:brightness(1.15)}
+.foto-card img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;transition:transform .5s}
+.foto-card:hover img{transform:scale(1.04)}
+
+/* TRABAJOS */
+.works-sec{border-bottom:1px solid var(--border)}
+.works-header{padding:4rem 2.5rem 2rem;display:flex;justify-content:space-between;align-items:flex-end}
+.works-title{font-family:var(--fd);font-size:clamp(2.5rem,5vw,6rem);letter-spacing:.02em;line-height:.9}
+.works-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border)}
+.work-card{aspect-ratio:4/3;overflow:hidden;position:relative;background:#080a14;cursor:pointer;transition:filter .3s}
+.work-card:hover{filter:brightness(1.15)}
+.work-card img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s}
+.work-card:hover img{transform:scale(1.04)}
+.work-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(6,7,13,.95) 0%,transparent 55%);opacity:0;transition:opacity .3s;display:flex;flex-direction:column;justify-content:flex-end;padding:1.5rem}
+.work-card:hover .work-overlay{opacity:1}
+.work-cat{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan);margin-bottom:.3rem;font-weight:600}
+.work-name{font-family:var(--fd);font-size:1.1rem;letter-spacing:.04em}
+
+/* SPECS */
+.specs-sec{border-bottom:1px solid var(--border);padding:5rem 2.5rem}
+.specs-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border)}
+.specs-col{background:var(--bg);padding:3rem}
+.specs-title{font-family:var(--fd);font-size:1.8rem;letter-spacing:.04em;margin-bottom:2rem;color:var(--cyan)}
+.spec-item{display:flex;justify-content:space-between;align-items:center;padding:1rem 0;border-bottom:1px solid var(--border)}
+.spec-item:last-child{border-bottom:none}
+.spec-label{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted2)}
+.spec-value{font-family:var(--fd);font-size:1rem;letter-spacing:.06em}
+
+/* CTA */
+.cta-sec{padding:7rem 2.5rem;text-align:center;position:relative;overflow:hidden}
+.cta-glow{position:absolute;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(0,229,255,.06) 0%,transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none}
+.cta-inner{position:relative;z-index:1;max-width:800px;margin:0 auto}
+.cta-tag{font-family:var(--fd);font-size:.85rem;letter-spacing:.2em;color:var(--cyan);margin-bottom:1.5rem;display:flex;align-items:center;justify-content:center;gap:.75rem}
+.cta-tag::before,.cta-tag::after{content:'';width:24px;height:1px;background:var(--cyan)}
+.cta-title{font-family:var(--fd);font-size:clamp(3rem,8vw,9rem);line-height:.85;letter-spacing:.01em;margin-bottom:2rem}
+.cta-title .outline{-webkit-text-stroke:1px rgba(240,242,255,.15);color:transparent}
+.cta-title .cyan{color:var(--cyan)}
+.cta-sub{font-size:.88rem;color:var(--muted2);max-width:450px;margin:0 auto 2.5rem;font-weight:300;line-height:1.8}
+.cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.btn-wa{font-family:var(--fd);font-size:1rem;letter-spacing:.06em;background:#25D366;color:#000;padding:.65rem 2rem;border-radius:100px;border:none;cursor:pointer;text-decoration:none;transition:all .25s;display:inline-flex;align-items:center;gap:.5rem}
+.btn-wa:hover{background:#20bd5a;transform:translateY(-2px)}
+.btn-em{font-family:var(--fd);font-size:1rem;letter-spacing:.06em;background:transparent;color:var(--white);padding:.65rem 2rem;border-radius:100px;border:1px solid var(--border);cursor:pointer;text-decoration:none;transition:all .25s}
+.btn-em:hover{border-color:var(--cyan);color:var(--cyan)}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border);display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:2rem 2.5rem;gap:1rem}
+.f-logo{display:flex;align-items:center;gap:.6rem;text-decoration:none}
+.f-logo img{width:26px;height:26px;border-radius:6px;object-fit:cover}
+.f-logo span{font-family:var(--fd);font-size:1.2rem;letter-spacing:.04em;color:var(--muted)}
+.f-logo em{color:var(--cyan);font-style:normal}
+.f-copy{font-size:.7rem;letter-spacing:.08em;color:var(--muted);text-align:center}
+.f-right{display:flex;justify-content:flex-end}
+
+/* LIGHTBOX */
+#video-lightbox{display:none;position:fixed;inset:0;z-index:9000;background:rgba(0,0,0,.92);align-items:center;justify-content:center;backdrop-filter:blur(8px)}
+.lb-close{position:absolute;top:1.5rem;right:2rem;background:none;border:none;color:#f0f2ff;font-size:2rem;cursor:pointer;font-family:'Bebas Neue',sans-serif;letter-spacing:.05em;opacity:.6;transition:opacity .2s}
+.lb-close:hover{opacity:1}
+#yt-wrap{width:90vw;max-width:420px;aspect-ratio:9/16;position:relative;transition:all .3s}
+#yt-frame{width:100%;height:100%;border:none;border-radius:4px}
+
+/* REVEAL */
+.rv{opacity:0;transform:translateY(35px);transition:opacity .9s ease,transform .9s ease}
+.rv.vis{opacity:1;transform:none}
+.rv2{opacity:0;transform:translateY(35px);transition:opacity .9s ease .15s,transform .9s ease .15s}
+.rv2.vis{opacity:1;transform:none}
+
+/* MOBILE */
+@media(max-width:900px){
+  nav{padding:1rem 1.5rem}
+  .hero-content{grid-template-columns:1fr;padding:3rem 1.5rem}
+  .hero-right{text-align:left}
+  .hero-stats{justify-content:flex-start}
+  .hero-ctas{justify-content:flex-start}
+  .bio-inner{grid-template-columns:1fr;gap:2rem}
+  .video-grid{grid-template-columns:1fr}
+  .fotos-grid{grid-template-columns:repeat(3,1fr)}
+  .works-grid{grid-template-columns:1fr 1fr}
+  .specs-inner{grid-template-columns:1fr}
+  footer{grid-template-columns:1fr;text-align:center}
+  .f-right{justify-content:center}
+}
+@media(max-width:600px){
+  .fotos-grid{grid-template-columns:repeat(2,1fr)}
+  .works-grid{grid-template-columns:1fr}
+  .cta-title{font-size:clamp(2.5rem,10vw,5rem)}
+}
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:rgba(0,229,255,.2)}
+</style>
+</head>
+<body>
+
+<!-- LIGHTBOX -->
+<div id="video-lightbox">
+  <button class="lb-close" onclick="closeLightbox()">✕ CERRAR</button>
+  <div id="yt-wrap">
+    <iframe id="yt-frame" src="" allow="autoplay;encrypted-media" allowfullscreen></iframe>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="images/logo.png" alt="logo"/>
+    <span>NOBODY<em>VISUAL</em>LAB</span>
+  </a>
+  <a href="index.html" class="nav-back">← VOLVER</a>
+  <a href="https://app.nobodyvisuallab.com" class="btn-app">ENTRAR A LA APP</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg">
+    <!-- Video YouTube en loop mudo como fondo -->
+    <iframe
+      src="https://www.youtube.com/embed/6-kUeYuwoio?autoplay=1&mute=1&loop=1&playlist=6-kUeYuwoio&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1"
+      allow="autoplay; encrypted-media"
+      allowfullscreen
+      style="position:absolute;top:50%;left:50%;width:100vw;height:56.25vw;min-height:100vh;min-width:177.78vh;transform:translate(-50%,-50%);border:none;pointer-events:none"
+    ></iframe>
+    <!-- Fallback imagen si el video no carga -->
+    <img src="images/dalia-01.png" alt="Dalia May" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;z-index:-1"/>
+  </div>
+  <div class="hero-content">
+    <div class="hero-left">
+      <div class="hero-tag">MODELO IA · NOBODY VISUAL LAB</div>
+      <div class="hero-name">DALIA<br/><em>MAY</em></div>
+    </div>
+    <div class="hero-right">
+      <p class="hero-desc">Modelo digital hiperrealista. Alt Gen Z meets dreamy minimalism. Disponible para campañas de moda, arte y contenido de marca.</p>
+      <div class="hero-stats">
+        <div><div class="hs-n">+20</div><div class="hs-l">Campañas</div></div>
+        <div><div class="hs-n">5</div><div class="hs-l">Marcas</div></div>
+        <div><div class="hs-n">100%</div><div class="hs-l">Digital</div></div>
+      </div>
+      <div class="hero-ctas">
+        <a href="#contacto" class="btn-p">CONTRATAR A DALIA</a>
+        <a href="#trabajos" class="btn-s">VER TRABAJOS →</a>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <span>SCROLL</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- BIO -->
+<section class="bio-sec rv">
+  <div class="bio-inner">
+    <div class="bio-left">
+      <div class="sec-tag">DALIA MAY</div>
+      <div class="bio-title">PASTEL<br/>REBEL.<br/><span class="cyan">DIGITAL</span><br/>MUSE.</div>
+    </div>
+    <div class="bio-right">
+      <p class="bio-p">Dalia is a digital muse shaped by contrast—where pastel softness meets a quietly rebellious spirit. With her signature pink hair fading into dark roots, warm fair skin, and olive-green eyes that seem to hold unspoken stories, she radiates a presence that feels both ethereal and grounded. Her look lives somewhere between alt Gen Z and dreamy minimalism, where every outfit feels like a moodboard brought to life—playful, intentional, and a little nostalgic.</p>
+      <p class="bio-p">Rooted in a rich blend of cultures—Mayan heritage from her mother and Slovak influence from her father—Dalia carries a unique perspective that subtly weaves into everything she creates. Her content isn't loud, but it lingers. It's in the soft glances, the ambient lighting, the captions that feel like fragments of a diary you weren't meant to read, yet deeply understand.</p>
+      <p class="bio-p">She moves through digital spaces like an observer and a creator at once—exploring fashion, art, and technology not just as trends, but as languages of emotion and identity. She's not here to follow algorithms—she's here to feel, translate, and connect.</p>
+      <p class="bio-p" style="font-family:var(--fd);font-size:1.1rem;letter-spacing:.04em;color:var(--cyan);font-style:normal">"Aunque no existo, lo que comunico sí."</p>
+      <div class="bio-tags">
+        <span class="btag">Alt Gen Z</span>
+        <span class="btag">Dreamy Minimalism</span>
+        <span class="btag">Fashion</span>
+        <span class="btag">Digital Art</span>
+        <span class="btag">Mayan Heritage</span>
+        <span class="btag">Slovak Influence</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO -->
+<section class="video-sec rv">
+  <div class="video-inner">
+    <div class="sec-tag">EN MOVIMIENTO</div>
+    <div class="video-grid">
+      <div class="video-left">
+        <div class="video-title">VALENTINA<br/>EN <span class="cyan">ACCIÓN.</span></div>
+        <p class="video-desc">Dalia no es solo una imagen estática. Su presencia etérea y su estética alt-minimalista capturan la atención y conectan con audiencias que buscan autenticidad y profundidad.</p>
+        <div class="video-tags">
+          <span class="vtag">Moda</span>
+          <span class="vtag">Lifestyle</span>
+          <span class="vtag">Ecommerce</span>
+          <span class="vtag">Reels</span>
+          <span class="vtag">UGC</span>
+        </div>
+      </div>
+      <div class="video-right" onclick="openLightbox('PROXIMAMENTE')">
+        <img class="video-thumb" src="images/dalia-01.png" alt="Dalia May"/>
+        <div class="video-play-overlay">
+          <div class="play-circle">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="#00e5ff"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+          <div class="play-label">VER VIDEO</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOTOS -->
+<section class="fotos-sec">
+  <div class="fotos-header rv">
+    <div class="fotos-title">GALERÍA</div>
+    <p style="font-size:.82rem;color:var(--muted2);font-weight:300">Fotos disponibles para uso en campañas</p>
+  </div>
+  <div class="fotos-grid">
+    <div class="foto-card"><img src="images/dalia-01.png" alt="Dalia 01"/></div>
+    <div class="foto-card"><img src="images/dalia-02.png" alt="Dalia 02"/></div>
+    <div class="foto-card"><img src="images/dalia-03.png" alt="Dalia 03"/></div>
+    <div class="foto-card"><img src="images/dalia-04.png" alt="Dalia 04"/></div>
+    <div class="foto-card"><img src="images/dalia-05.png" alt="Dalia 05"/></div>
+  </div>
+</section>
+
+<!-- TRABAJOS -->
+<section id="trabajos" class="works-sec">
+  <div class="works-header rv">
+    <div class="works-title">TRABAJOS</div>
+    <a href="#contacto" class="btn-s">SOLICITAR TRABAJO →</a>
+  </div>
+  <div class="works-grid">
+    <div class="work-card"><img src="images/dalia-t01.png" alt=""/><div class="work-overlay"><div class="work-cat">CAMPAÑA</div><div class="work-name">Editorial Moda</div></div></div>
+    <div class="work-card"><img src="images/dalia-t02.png" alt=""/><div class="work-overlay"><div class="work-cat">LIFESTYLE</div><div class="work-name">Skincare Campaign</div></div></div>
+    <div class="work-card"><img src="images/dalia-t03.png" alt=""/><div class="work-overlay"><div class="work-cat">REDES</div><div class="work-name">Reel para Marca</div></div></div>
+    <div class="work-card"><img src="images/dalia-t04.png" alt=""/><div class="work-overlay"><div class="work-cat">ECOMMERCE</div><div class="work-name">Fashion Online</div></div></div>
+    <div class="work-card"><img src="images/dalia-t05.png" alt=""/><div class="work-overlay"><div class="work-cat">PRODUCTO</div><div class="work-name">Campaña de Producto</div></div></div>
+    <div class="work-card"><img src="images/dalia-t06.png" alt=""/><div class="work-overlay"><div class="work-cat">EDITORIAL</div><div class="work-name">Dirección de Arte</div></div></div>
+  </div>
+</section>
+
+<!-- SPECS -->
+<section class="specs-sec rv">
+  <div class="specs-inner">
+    <div class="specs-col">
+      <div class="specs-title">PERFIL</div>
+      <div class="spec-item"><span class="spec-label">Tipo</span><span class="spec-value">Modelo Digital IA</span></div>
+      <div class="spec-item"><span class="spec-label">Estilo</span><span class="spec-value">Alt Gen Z · Editorial · Dreamy</span></div>
+      <div class="spec-item"><span class="spec-label">Formatos</span><span class="spec-value">Foto · Video · Reel</span></div>
+      <div class="spec-item"><span class="spec-label">Entrega</span><span class="spec-value">48 – 72 horas</span></div>
+      <div class="spec-item"><span class="spec-label">Exclusividad</span><span class="spec-value">Disponible por campaña</span></div>
+    </div>
+    <div class="specs-col">
+      <div class="specs-title">DISPONIBLE PARA</div>
+      <div class="spec-item"><span class="spec-label">Ecommerce</span><span class="spec-value">✔</span></div>
+      <div class="spec-item"><span class="spec-label">Redes Sociales</span><span class="spec-value">✔</span></div>
+      <div class="spec-item"><span class="spec-label">Campañas de Marca</span><span class="spec-value">✔</span></div>
+      <div class="spec-item"><span class="spec-label">Lookbook</span><span class="spec-value">✔</span></div>
+      <div class="spec-item"><span class="spec-label">Video UGC</span><span class="spec-value">✔</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="contacto" class="cta-sec">
+  <div class="cta-glow"></div>
+  <div class="cta-inner rv">
+    <div class="cta-tag">CONTRATAR A DALIA</div>
+    <div class="cta-title">
+      <div>TU MARCA</div>
+      <div class="outline">CON ALMA</div>
+      <div class="cyan">PROPIA.</div>
+    </div>
+    <p class="cta-sub">Dalia está disponible para tu próxima campaña. Contáctanos y construimos juntos una historia visual que trasciende.</p>
+    <div class="cta-btns">
+      <a href="https://wa.me/526676991211?text=Hola,%20quiero%20contratar%20a%20Dalia%20May%20para%20una%20campaña" class="btn-wa" target="_blank">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WHATSAPP
+      </a>
+      <a href="mailto:nobodyvisuallab@gmail.com?subject=Quiero contratar a Dalia May" class="btn-em">✉ EMAIL</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="index.html" class="f-logo">
+    <img src="images/logo.png" alt="logo"/>
+    <span>NOBODY<em>VISUAL</em>LAB</span>
+  </a>
+  <div class="f-copy">© 2025 NOBODY VISUAL LAB · SINALOA, MÉXICO · AI VISUAL STUDIO</div>
+  <div class="f-right"><a href="https://app.nobodyvisuallab.com" class="btn-app">ENTRAR A LA APP</a></div>
+</footer>
+
+<script>
+function openLightbox(id){
+  var lb=document.getElementById('video-lightbox');
+  document.getElementById('yt-frame').src='https://www.youtube.com/embed/'+id+'?autoplay=1&rel=0&modestbranding=1&showinfo=0';
+  lb.style.display='flex';
+  document.body.style.overflow='hidden';
+}
+function closeLightbox(){
+  document.getElementById('video-lightbox').style.display='none';
+  document.getElementById('yt-frame').src='';
+  document.body.style.overflow='';
+}
+document.getElementById('video-lightbox').addEventListener('click',function(e){
+  if(e.target===this)closeLightbox();
+});
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis')});
+},{threshold:.06});
+document.querySelectorAll('.rv,.rv2').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
