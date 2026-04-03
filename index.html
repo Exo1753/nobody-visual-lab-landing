@@ -169,16 +169,16 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .port-sec{border-bottom:1px solid var(--border)}
 .port-header{padding:4rem 2.5rem 2rem;display:flex;justify-content:space-between;align-items:flex-end}
 .port-title{font-family:var(--fd);font-size:clamp(3rem,6vw,7rem);letter-spacing:.02em;line-height:.9}
-.port-grid-v2{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:200px;gap:1px;background:var(--border)}
-.pi{position:relative;overflow:hidden;cursor:default;background:#070910;transition:filter .3s}
+.port-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border)}
+.pi{position:relative;overflow:hidden;cursor:default;background:#070910;aspect-ratio:1/1;transition:filter .3s}
 .pi:hover{filter:brightness(1.18)}
-.pi img{width:100%;height:100%;object-fit:cover;display:block}
+.pi img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
 .pi-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(6,7,13,.95) 0%,transparent 55%);opacity:0;transition:opacity .3s;display:flex;flex-direction:column;justify-content:flex-end;padding:1.25rem;z-index:2}
 .pi:hover .pi-overlay{opacity:1}
 .pi-overlay-show{opacity:1;background:linear-gradient(to top,rgba(6,7,13,.82) 0%,rgba(6,7,13,.1) 55%,transparent 100%)}
 .pi-cat{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan);margin-bottom:.3rem;font-weight:600}
 .pi-name{font-family:var(--fd);font-size:1.1rem;letter-spacing:.04em}
-.pi-play-wrap{position:absolute;top:50%;left:50%;transform:translate(-50%,-55%)}
+.pi-play-wrap{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)}
 .pi-play-btn{width:52px;height:52px;border-radius:50%;background:rgba(0,229,255,.15);border:2px solid #00e5ff;display:flex;align-items:center;justify-content:center;transition:all .3s}
 .pv:hover .pi-play-btn{background:rgba(0,229,255,.35);transform:scale(1.1)}
 
@@ -257,8 +257,7 @@ footer{border-top:1px solid var(--border);display:grid;grid-template-columns:1fr
   .paths-grid,.plans-grid{grid-template-columns:1fr}
   .gallery-grid{grid-template-columns:repeat(2,1fr)}
   .gallery-card:first-child{grid-column:span 2;aspect-ratio:16/7}
-  .port-grid-v2{grid-template-columns:1fr 1fr;grid-auto-rows:160px}
-  .port-grid-v2 .pi{grid-column:span 1!important;grid-row:span 1!important}
+  .port-grid{grid-template-columns:1fr 1fr}
   .proc-grid{grid-template-columns:1fr 1fr}
   footer{grid-template-columns:1fr;text-align:center}
   .f-right{justify-content:center}
