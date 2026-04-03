@@ -120,7 +120,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .gallery-card:hover .gallery-overlay{opacity:1}
 .go-label{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan);margin-bottom:.3rem;font-weight:600}
 .go-name{font-family:var(--fd);font-size:1.2rem;letter-spacing:.05em}
-.gallery-more{padding:1.75rem 2.5rem;text-align:center;border-top:1px solid var(--border)}
+.gallery-soon{background:linear-gradient(135deg,#080a14,#0a0d1a);cursor:default;position:relative;overflow:hidden}
+.gallery-soon::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 4px,rgba(0,229,255,.015) 4px,rgba(0,229,255,.015) 5px)}
+.soon-inner{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.75rem}
+.soon-icon{font-size:1.8rem;color:rgba(0,229,255,.15)}
+.soon-name{font-family:var(--fd);font-size:1rem;letter-spacing:.15em;color:rgba(240,242,255,.12)}
+.soon-label{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(0,229,255,.3);border:1px solid rgba(0,229,255,.15);padding:.2rem .7rem;border-radius:100px}
+
 .gallery-more a{font-family:var(--fd);font-size:.9rem;letter-spacing:.15em;color:var(--muted2);text-decoration:none;transition:color .2s}
 .gallery-more a:hover{color:var(--cyan)}
 
@@ -326,10 +332,10 @@ footer{border-top:1px solid var(--border);display:grid;grid-template-columns:1fr
     </div>
   </div>
   <div class="hero-right">
-    <div class="hero-img-slot"><img src="images/modelo-01.png" alt="modelo IA"/></div>
-    <div class="hero-img-slot"><img src="images/modelo-02.png" alt="modelo IA"/></div>
-    <div class="hero-img-slot"><img src="images/modelo-03.png" alt="modelo IA"/></div>
-    <div class="hero-img-slot"><img src="images/modelo-04.png" alt="modelo IA"/></div>
+    <div class="hero-img-slot"><img src="images/hero-01.png" alt="campaña IA"/></div>
+    <div class="hero-img-slot"><img src="images/hero-02.png" alt="campaña IA"/></div>
+    <div class="hero-img-slot"><img src="images/hero-03.png" alt="campaña IA"/></div>
+    <div class="hero-img-slot"><img src="images/hero-04.png" alt="campaña IA"/></div>
   </div>
 </section>
 
@@ -414,29 +420,26 @@ footer{border-top:1px solid var(--border);display:grid;grid-template-columns:1fr
     <a href="https://app.nobodyvisuallab.com" class="btn-s" data-i18n="galcta">VER TODOS EN LA APP →</a>
   </div>
   <div class="gallery-grid">
+    <!-- VALENTINA — activa -->
     <a href="valentina.html" class="gallery-card" style="text-decoration:none">
-      <img src="images/modelo-01.png" alt="Valentina R"/>
+      <img src="images/modelo-01.png" alt="Valentina R. Carrillo"/>
       <div class="gallery-overlay"><div class="go-label">MODELO IA · VER PERFIL →</div><div class="go-name">VALENTINA R.</div></div>
     </a>
-    <div class="gallery-card">
-      <img src="images/modelo-02.png" alt="Modelo IA 02"/>
-      <div class="gallery-overlay"><div class="go-label">MODELO IA</div><div class="go-name">MODELO 02</div></div>
+    <!-- PRÓXIMAMENTE x5 -->
+    <div class="gallery-card gallery-soon">
+      <div class="soon-inner"><div class="soon-icon">◈</div><div class="soon-name">MODELO 02</div><div class="soon-label">PRÓXIMAMENTE</div></div>
     </div>
-    <div class="gallery-card">
-      <img src="images/modelo-03.png" alt="Modelo IA 03"/>
-      <div class="gallery-overlay"><div class="go-label">MODELO IA</div><div class="go-name">MODELO 03</div></div>
+    <div class="gallery-card gallery-soon">
+      <div class="soon-inner"><div class="soon-icon">◈</div><div class="soon-name">MODELO 03</div><div class="soon-label">PRÓXIMAMENTE</div></div>
     </div>
-    <div class="gallery-card">
-      <img src="images/modelo-04.png" alt="Modelo IA 04"/>
-      <div class="gallery-overlay"><div class="go-label">MODELO IA</div><div class="go-name">MODELO 04</div></div>
+    <div class="gallery-card gallery-soon">
+      <div class="soon-inner"><div class="soon-icon">◈</div><div class="soon-name">MODELO 04</div><div class="soon-label">PRÓXIMAMENTE</div></div>
     </div>
-    <div class="gallery-card">
-      <img src="images/modelo-05.png" alt="Modelo IA 05"/>
-      <div class="gallery-overlay"><div class="go-label">MODELO IA</div><div class="go-name">MODELO 05</div></div>
+    <div class="gallery-card gallery-soon">
+      <div class="soon-inner"><div class="soon-icon">◈</div><div class="soon-name">MODELO 05</div><div class="soon-label">PRÓXIMAMENTE</div></div>
     </div>
-    <div class="gallery-card">
-      <img src="images/modelo-05.png" alt="Modelo IA 06"/>
-      <div class="gallery-overlay"><div class="go-label">MODELO IA</div><div class="go-name">MODELO 06</div></div>
+    <div class="gallery-card gallery-soon">
+      <div class="soon-inner"><div class="soon-icon">◈</div><div class="soon-name">MODELO 06</div><div class="soon-label">PRÓXIMAMENTE</div></div>
     </div>
   </div>
   <div class="gallery-more">
@@ -568,7 +571,7 @@ footer{border-top:1px solid var(--border);display:grid;grid-template-columns:1fr
         <div class="pi-name" data-i18n="plb1">CAMPAÑA EDITORIAL — MODA</div>
       </div>
     </div>
-    <div class="pi"><img src="images/modelo-07.png" alt=""/><div class="pi-overlay"><div class="pi-cat">MODELOS IA</div><div class="pi-name" data-i18n="plb2">LIFESTYLE SKINCARE</div></div></div>
+    <div class="pi"><img src="images/trabajo-01.png" alt=""/><div class="pi-overlay"><div class="pi-cat">MODELOS IA</div><div class="pi-name" data-i18n="plb2">LIFESTYLE SKINCARE</div></div></div>
     <div class="pi pv" onclick="openLightbox('Do2DrcfMJi8','short')" style="cursor:pointer;position:relative">
       <img src="https://img.youtube.com/vi/Do2DrcfMJi8/maxresdefault.jpg" alt="Short UGC" style="width:100%;height:100%;object-fit:cover;display:block"/>
       <div class="pi-overlay" style="opacity:1;background:linear-gradient(to top,rgba(6,7,13,.8) 0%,rgba(6,7,13,.15) 60%,transparent 100%)">
@@ -581,9 +584,9 @@ footer{border-top:1px solid var(--border);display:grid;grid-template-columns:1fr
         <div class="pi-name" data-i18n="plb3">REEL PARA REDES</div>
       </div>
     </div>
-    <div class="pi"><img src="images/modelo-09.png" alt=""/><div class="pi-overlay"><div class="pi-cat">MODELOS IA</div><div class="pi-name" data-i18n="plb4">ECOMMERCE FASHION</div></div></div>
-    <div class="pi"><img src="images/modelo-10.png" alt=""/><div class="pi-overlay"><div class="pi-cat">MODELOS IA</div><div class="pi-name" data-i18n="plb5">CAMPAÑA DE PRODUCTO</div></div></div>
-    <div class="pi"><img src="images/modelo-11.png" alt=""/><div class="pi-overlay"><div class="pi-cat">MODELOS IA</div><div class="pi-name" data-i18n="plb6">DIRECCIÓN EDITORIAL</div></div></div>
+    <div class="pi"><img src="images/trabajo-02.png" alt=""/><div class="pi-overlay"><div class="pi-cat">MODELOS IA</div><div class="pi-name" data-i18n="plb4">ECOMMERCE FASHION</div></div></div>
+    <div class="pi"><img src="images/trabajo-03.png" alt=""/><div class="pi-overlay"><div class="pi-cat">MODELOS IA</div><div class="pi-name" data-i18n="plb5">CAMPAÑA DE PRODUCTO</div></div></div>
+    <div class="pi"><img src="images/trabajo-04.png" alt=""/><div class="pi-overlay"><div class="pi-cat">MODELOS IA</div><div class="pi-name" data-i18n="plb6">DIRECCIÓN EDITORIAL</div></div></div>
   </div>
 </section>
 
