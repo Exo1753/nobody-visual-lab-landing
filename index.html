@@ -6,398 +6,284 @@
 <title>Nobody Visual Lab — AI Visual Studio</title>
 <meta name="description" content="Estudio visual con IA para marcas modernas. Modelos digitales, fotografía de producto y video UGC. Agencia o app, tú eliges cómo crear."/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 <style>
 :root{
   --bg:#090909;
   --surface:#0d0d0d;
   --elevated:#141414;
   --border:rgba(255,255,255,0.06);
-  --border-em:rgba(255,255,255,0.10);
+  --border-em:rgba(255,255,255,0.14);
   --accent:#4DBFA3;
   --accent-sub:rgba(77,191,163,0.10);
-  --accent-bdr:rgba(77,191,163,0.22);
-  --white:rgba(255,255,255,0.88);
-  --muted:rgba(255,255,255,0.22);
-  --muted2:rgba(255,255,255,0.40);
+  --accent-bdr:rgba(77,191,163,0.28);
+  --white:rgba(255,255,255,0.90);
+  --muted:rgba(255,255,255,0.28);
+  --muted2:rgba(255,255,255,0.48);
   --fd:'Archivo',sans-serif;
   --fb:'Inter',sans-serif;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--white);font-family:var(--fb);overflow-x:hidden;font-size:13px}
-body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.02'/%3E%3C/svg%3E");pointer-events:none;z-index:9999}
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");pointer-events:none;z-index:9999}
 a{color:inherit}
 
-/* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:14px 24px;border-bottom:0.5px solid var(--border);background:rgba(9,9,9,0.88);backdrop-filter:blur(18px)}
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:14px 28px;border-bottom:0.5px solid var(--border-em);background:rgba(9,9,9,0.92);backdrop-filter:blur(20px)}
 .nav-logo{display:flex;align-items:center;gap:8px;text-decoration:none}
 .nav-logo img{width:28px;height:28px;border-radius:7px;object-fit:cover;border:0.5px solid var(--accent-bdr);background:var(--accent-sub)}
-.nav-logo span{font-family:var(--fd);font-size:13px;font-weight:700;color:var(--white);letter-spacing:0.04em}
+.nav-logo span{font-family:var(--fd);font-size:13px;font-weight:800;color:var(--white);letter-spacing:0.06em;text-transform:uppercase}
 .nav-logo em{color:var(--accent);font-style:normal}
-.nav-links{display:flex;gap:24px;list-style:none}
-.nav-links a{font-size:11px;letter-spacing:0.1em;color:var(--muted2);text-decoration:none;transition:color 0.2s;text-transform:uppercase}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{font-size:10px;letter-spacing:0.14em;color:var(--muted2);text-decoration:none;transition:color 0.2s;text-transform:uppercase;font-weight:600}
 .nav-links a:hover{color:var(--white)}
 .nav-r{display:flex;align-items:center;gap:8px}
-.lang-sw{display:flex;gap:2px;background:var(--elevated);border:0.5px solid var(--border);border-radius:100px;padding:3px}
-.lb{padding:3px 10px;border-radius:100px;border:none;background:transparent;color:var(--muted2);font-size:10px;letter-spacing:0.08em;cursor:pointer;transition:all 0.2s;font-family:var(--fb)}
-.lb.active{background:var(--accent);color:#0a1a15}
-.btn-app,.btn-p,.btn-s,.btn-wa,.btn-em,.plan-cta{font-family:var(--fb)}
-.btn-app{font-size:11px;letter-spacing:0.08em;background:var(--accent);color:#0a1a15;padding:7px 16px;border-radius:100px;border:none;cursor:pointer;text-decoration:none;font-weight:600;transition:all 0.2s;white-space:nowrap}
-.btn-app:hover{background:#5ecfb3}
+.lang-sw{display:flex;gap:2px;background:var(--elevated);border:0.5px solid var(--border-em);border-radius:100px;padding:3px}
+.lb{padding:3px 10px;border-radius:100px;border:none;background:transparent;color:var(--muted2);font-size:10px;letter-spacing:0.08em;cursor:pointer;transition:all 0.2s;font-family:var(--fb);font-weight:600}
+.lb.active{background:var(--accent);color:#071a13;font-weight:700}
+.btn-app{font-size:10px;letter-spacing:0.10em;background:var(--accent);color:#071a13;padding:7px 18px;border-radius:100px;border:none;cursor:pointer;text-decoration:none;font-weight:700;transition:all 0.2s;white-space:nowrap;text-transform:uppercase}
+.btn-app:hover{background:#5ecfb3;transform:translateY(-1px)}
 
-/* HERO */
-@media(max-width:900px){
-  nav{padding:12px 16px}
-  .nav-links{display:none}
-
-  .hero{
-    align-items:flex-end;
-  }
-
-  .hero-content,
-  .paths-grid,
-  .plans-grid,
-  .proc-grid{
-    grid-template-columns:1fr;
-  }
-
-  .hero-content{
-    gap:24px;
-    padding:36px 20px 32px;
-    align-items:flex-end;
-  }
-
-  .hero-title{
-    font-size:clamp(42px,12vw,64px);
-    max-width:100%;
-    margin-bottom:14px;
-  }
-
-  .hero-desc{
-    max-width:100%;
-    margin-bottom:18px;
-  }
-
-  .hero-paths{
-    max-width:100%;
-  }
-
-  .hero-right-stats{
-    flex-direction:row;
-    flex-wrap:wrap;
-    justify-content:flex-start;
-    align-items:stretch;
-    gap:10px;
-    padding-top:0;
-  }
-
-  .hero-stat{
-    text-align:left;
-    min-width:120px;
-    flex:1 1 120px;
-  }
-
-  .hero-stat-n{
-    font-size:24px;
-  }
-
-  .statement,
-  .plans-sec,
-  .tut-sec,
-  .cta-sec{
-    padding:44px 16px;
-  }
-
-  .paths-header,
-  .gallery-header,
-  .srv-header,
-  .port-header,
-  .proc-header{
-    padding:24px 16px 18px;
-  }
-
-  .port-grid{
-    grid-template-columns:1fr 1fr;
-  }
-
-  footer{
-    grid-template-columns:1fr;
-    text-align:center;
-  }
-
-  .f-right{
-    justify-content:center;
-  }
+/* ── HERO ── */
+.hero{min-height:100vh;position:relative;display:flex;align-items:flex-end;border-bottom:0.5px solid var(--border-em);overflow:hidden}
+.hero-video-bg{position:absolute;inset:0;z-index:0;pointer-events:none}
+.hero-video-bg iframe{position:absolute;top:50%;left:50%;width:100vw;height:56.25vw;min-height:100vh;min-width:177.78vh;transform:translate(-50%,-50%);border:none}
+.hero-video-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(9,9,9,0.97) 0%,rgba(9,9,9,0.55) 45%,rgba(9,9,9,0.22) 100%)}
+.hero-content{position:relative;z-index:2;width:100%;padding:7rem 28px 4rem;display:grid;grid-template-columns:1fr 1fr;align-items:flex-end;gap:3rem;max-width:1200px;margin:0 auto}
+.hero-eyebrow{font-size:10px;letter-spacing:0.20em;color:var(--accent);margin-bottom:20px;display:flex;align-items:center;gap:10px;text-transform:uppercase;font-weight:600}
+.hero-eyebrow::before{content:'';width:20px;height:1px;background:var(--accent)}
+.hero-title{font-family:var(--fd);font-size:clamp(52px,9vw,96px);line-height:0.88;letter-spacing:-0.02em;color:var(--white);margin-bottom:22px;font-weight:900;text-transform:uppercase}
+/* ── OUTLINE MÁS VISIBLE ── */
+.hero-title .cyan,
+.stmt-text .cyan,
+.path-card-title .cyan,
+.tut-title .cyan,
+.cta-title .cyan{color:var(--accent)}
+.stmt-text .outline,
+.cta-title .outline{
+  -webkit-text-stroke:1.5px rgba(255,255,255,0.55);
+  color:transparent;
 }
+.hero-desc{font-size:13px;color:var(--muted2);max-width:420px;line-height:1.8;font-weight:400;margin-bottom:32px}
+.hero-paths{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border-em)}
+.hero-path{background:rgba(9,9,9,0.7);backdrop-filter:blur(12px);padding:20px;text-decoration:none;transition:background 0.2s;display:flex;flex-direction:column;gap:6px;border:0.5px solid transparent}
+.hero-path:hover{background:var(--accent-sub);border-color:var(--accent-bdr)}
+.hero-path-label{font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.hero-path-title{font-family:var(--fd);font-size:14px;font-weight:800;letter-spacing:0.04em;color:var(--white);transition:color 0.2s;text-transform:uppercase}
+.hero-path:hover .hero-path-title{color:var(--accent)}
+.hero-path-desc{font-size:11px;color:var(--muted2);line-height:1.6}
+.hero-path-arrow{font-size:14px;color:var(--muted);margin-top:6px;align-self:flex-end;transition:color 0.2s}
+.hero-path:hover .hero-path-arrow{color:var(--accent)}
+.hero-right-stats{display:flex;flex-direction:column;align-items:flex-end;gap:28px}
+.hero-stat{text-align:right}
+.hero-stat-n{font-family:var(--fd);font-size:clamp(32px,4vw,52px);color:var(--accent);line-height:1;font-weight:900}
+.hero-stat-l{font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted2);margin-top:4px;font-weight:600}
 
-/* TICKER */
-.ticker{border-bottom:0.5px solid var(--border);overflow:hidden;padding:10px 0}
-.ticker-track{display:flex;animation:tick 26s linear infinite;width:max-content;white-space:nowrap}
-.ticker-item{font-size:11px;letter-spacing:0.12em;color:var(--muted);padding:0 20px;text-transform:uppercase}
+/* ── TICKER ── */
+.ticker{border-bottom:0.5px solid var(--border-em);overflow:hidden;padding:11px 0}
+.ticker-track{display:flex;animation:tick 28s linear infinite;width:max-content;white-space:nowrap}
+.ticker-item{font-size:10px;letter-spacing:0.14em;color:var(--muted);padding:0 22px;text-transform:uppercase;font-weight:600}
 .ticker-dot{color:var(--accent);font-size:8px;align-self:center}
 @keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-/* GENERIC SECTIONS */
-.statement,.plans-sec,.tut-sec,.cta-sec{padding:56px 24px;border-bottom:0.5px solid var(--border)}
-.statement-inner,.plans-inner,.tut-inner,.cta-inner,.paths-header,.gallery-header,.srv-header,.port-header,.proc-header{max-width:1100px;margin:0 auto}
-.stmt-text,.srv-title,.port-title,.proc-title,.plans-title,.gallery-title,.paths-title,.tut-title,.cta-title{font-family:var(--fd);font-weight:800;letter-spacing:-0.02em}
-.stmt-text{font-size:clamp(28px,5vw,60px);line-height:0.9;text-transform:uppercase}
-.stmt-text .outline,.cta-title .outline{-webkit-text-stroke:1px rgba(255,255,255,0.14);color:transparent}
-.stmt-sub,.plans-sub,.paths-sub,.tut-desc,.cta-sub{font-size:12px;color:var(--muted2);line-height:1.8}
-.stmt-sub{max-width:480px;margin-top:24px;margin-left:auto}
-.paths-sec,.gallery-sec,.srv-sec,.port-sec,.proc-sec{border-bottom:0.5px solid var(--border)}
-.paths-header,.gallery-header,.srv-header,.port-header,.proc-header{padding:32px 24px 20px}
-.paths-title{font-size:clamp(20px,3vw,32px)}
+/* ── STATEMENT ── */
+.statement{padding:64px 28px;border-bottom:0.5px solid var(--border-em)}
+.statement-inner{max-width:1100px;margin:0 auto}
+.stmt-tag,.sec-tag,.tut-eyebrow,.cta-tag{font-size:10px;letter-spacing:0.20em;color:var(--accent);margin-bottom:20px;display:flex;align-items:center;gap:10px;text-transform:uppercase;font-weight:600}
+.stmt-tag::before,.sec-tag::before{content:'';width:20px;height:1px;background:var(--accent)}
+.stmt-text{font-family:var(--fd);font-size:clamp(36px,6vw,72px);line-height:0.88;letter-spacing:-0.01em;font-weight:900;text-transform:uppercase}
+.stmt-sub{max-width:480px;margin-top:28px;margin-left:auto;font-size:12px;color:var(--muted2);line-height:1.85}
 
-/* PATHS */
-.paths-grid,.plans-grid,.gallery-grid,.port-grid,.proc-grid{display:grid;gap:1px;background:var(--border)}
-.paths-grid{grid-template-columns:1fr 1fr}
-.path-card{background:var(--bg);padding:36px 28px;position:relative;overflow:hidden;transition:background 0.25s}
-.path-card:hover{background:rgba(77,191,163,0.025)}
+/* ── DOS CAMINOS ── */
+.paths-sec,.gallery-sec,.srv-sec,.port-sec,.proc-sec{border-bottom:0.5px solid var(--border-em)}
+.paths-header,.gallery-header,.srv-header,.port-header,.proc-header{padding:40px 28px 24px;max-width:1200px;margin:0 auto}
+.paths-title{font-family:var(--fd);font-size:clamp(22px,3vw,36px);font-weight:900;letter-spacing:-0.01em;text-transform:uppercase;margin-bottom:6px}
+.paths-sub{font-size:12px;color:var(--muted2);line-height:1.7}
+.paths-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border-em)}
+.path-card{background:var(--bg);padding:40px 32px;position:relative;overflow:hidden;transition:background 0.25s}
+.path-card:hover{background:rgba(77,191,163,0.03)}
 .path-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px}
 .path-card-agency::before{background:linear-gradient(90deg,var(--accent),transparent)}
 .path-card-app::before{background:linear-gradient(90deg,transparent,var(--accent))}
-.path-card-num{font-family:var(--fd);font-size:64px;color:rgba(77,191,163,0.06);line-height:1;position:absolute;top:16px;right:20px;font-weight:800}
-.path-card-icon{font-size:20px;margin-bottom:14px}
-.path-card-title{font-family:var(--fd);font-size:clamp(20px,2.5vw,28px);font-weight:800;letter-spacing:0.02em;margin-bottom:10px;line-height:0.95;text-transform:uppercase}
-.path-card-desc{font-size:12px;color:var(--muted2);line-height:1.8;margin-bottom:20px;max-width:360px}
-.path-card-list{list-style:none;margin-bottom:24px}
-.path-card-list li{font-size:11px;color:var(--muted2);line-height:2.1;display:flex;align-items:center;gap:6px}
-.path-card-list li::before,.plan-items li::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--accent);opacity:0.6;flex-shrink:0}
-.btn-p{font-size:12px;letter-spacing:0.08em;background:var(--accent);color:#0a1a15;padding:9px 20px;border-radius:100px;border:none;cursor:pointer;text-decoration:none;font-weight:600;transition:all 0.2s;display:inline-block;text-transform:uppercase}
-.btn-p:hover{background:#5ecfb3}
-.btn-s{font-size:12px;letter-spacing:0.08em;background:transparent;color:var(--white);padding:9px 20px;border-radius:100px;border:0.5px solid var(--border-em);cursor:pointer;text-decoration:none;transition:all 0.2s;display:inline-block;text-transform:uppercase}
+.path-card-num{font-family:var(--fd);font-size:72px;color:rgba(77,191,163,0.07);line-height:1;position:absolute;top:20px;right:24px;font-weight:900}
+.path-card-icon{font-size:22px;margin-bottom:16px}
+.path-card-title{font-family:var(--fd);font-size:clamp(22px,2.5vw,32px);font-weight:900;letter-spacing:0.01em;margin-bottom:12px;line-height:0.92;text-transform:uppercase}
+.path-card-desc{font-size:12px;color:var(--muted2);line-height:1.8;margin-bottom:22px;max-width:360px}
+.path-card-list{list-style:none;margin-bottom:28px}
+.path-card-list li{font-size:11px;color:var(--muted2);line-height:2.2;display:flex;align-items:center;gap:8px}
+.path-card-list li::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--accent);opacity:0.7;flex-shrink:0}
+.btn-p{font-size:11px;letter-spacing:0.10em;background:var(--accent);color:#071a13;padding:10px 22px;border-radius:100px;border:none;cursor:pointer;text-decoration:none;font-weight:700;transition:all 0.2s;display:inline-block;text-transform:uppercase}
+.btn-p:hover{background:#5ecfb3;transform:translateY(-1px)}
+.btn-s{font-size:11px;letter-spacing:0.10em;background:transparent;color:var(--white);padding:10px 22px;border-radius:100px;border:0.5px solid var(--border-em);cursor:pointer;text-decoration:none;transition:all 0.2s;display:inline-block;text-transform:uppercase;font-weight:600}
 .btn-s:hover{border-color:var(--accent);color:var(--accent)}
 
-/* GALLERY */
+/* ── GALLERY ── */
 .gallery-header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
-.gallery-title{font-size:clamp(28px,5vw,56px)}
-.gallery-grid{grid-template-columns:repeat(6,1fr)}
+.gallery-title{font-family:var(--fd);font-size:clamp(28px,5vw,56px);font-weight:900;letter-spacing:-0.02em;text-transform:uppercase}
+.gallery-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:var(--border-em)}
 .gallery-card{aspect-ratio:2/3;overflow:hidden;position:relative;cursor:pointer;background:#111;transition:filter .3s}
-.gallery-card:hover{filter:brightness(1.1)}
+.gallery-card:hover{filter:brightness(1.12)}
 .gallery-card img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .45s ease}
-.gallery-card:hover img{transform:scale(1.03)}
-.gallery-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(9,9,9,.92) 0%,transparent 55%);opacity:0;transition:opacity .25s;display:flex;flex-direction:column;justify-content:flex-end;padding:16px}
+.gallery-card:hover img{transform:scale(1.04)}
+.gallery-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(9,9,9,.94) 0%,transparent 55%);opacity:0;transition:opacity .25s;display:flex;flex-direction:column;justify-content:flex-end;padding:16px}
 .gallery-card:hover .gallery-overlay{opacity:1}
-.go-label{font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);margin-bottom:4px}
-.go-name{font-family:var(--fd);font-size:16px;font-weight:700}
-.gallery-soon{background:linear-gradient(135deg,#0e0e0e,#151515);cursor:default}
-.gallery-soon::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 4px,rgba(77,191,163,.02) 4px,rgba(77,191,163,.02) 5px)}
-.soon-inner{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.75rem}
-.soon-icon{font-size:1.6rem;color:rgba(77,191,163,.18)}
-.soon-name{font-family:var(--fd);font-size:14px;letter-spacing:.12em;color:rgba(255,255,255,.15)}
-.soon-label{font-size:.55rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(77,191,163,.45);border:1px solid rgba(77,191,163,.18);padding:.25rem .7rem;border-radius:100px}
-.gallery-more{text-align:center;padding:16px 24px 24px}
-.gallery-more a{font-size:11px;letter-spacing:.12em;color:var(--muted2);text-decoration:none;text-transform:uppercase}
+.go-label{font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:5px;font-weight:600}
+.go-name{font-family:var(--fd);font-size:17px;font-weight:800;text-transform:uppercase}
+.gallery-soon{background:linear-gradient(135deg,#0e0e0e,#141414);cursor:default}
+.gallery-soon::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 4px,rgba(77,191,163,.018) 4px,rgba(77,191,163,.018) 5px)}
+.soon-inner{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px}
+.soon-icon{font-size:1.6rem;color:rgba(77,191,163,.20)}
+.soon-name{font-family:var(--fd);font-size:13px;letter-spacing:.14em;color:rgba(255,255,255,.18);text-transform:uppercase;font-weight:700}
+.soon-label{font-size:.52rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(77,191,163,.50);border:0.5px solid rgba(77,191,163,.22);padding:.25rem .8rem;border-radius:100px}
+.gallery-more{text-align:center;padding:18px 28px 26px;border-top:0.5px solid var(--border)}
+.gallery-more a{font-size:10px;letter-spacing:.14em;color:var(--muted2);text-decoration:none;text-transform:uppercase;font-weight:600;transition:color .2s}
 .gallery-more a:hover{color:var(--accent)}
 
-/* SERVICES */
+/* ── SERVICES ── */
 .srv-header{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:12px;padding-bottom:0}
-.srv-title,.plans-title,.port-title,.proc-title{font-size:clamp(28px,5vw,56px);line-height:.9;text-transform:uppercase}
-.srv-list{border-top:0.5px solid var(--border);margin-top:24px;max-width:1100px;margin-left:auto;margin-right:auto}
-.srv-item{display:grid;grid-template-columns:0.4fr 2fr 1.5fr auto;align-items:center;gap:20px;padding:18px 24px;border-bottom:0.5px solid var(--border);transition:background 0.2s}
+.srv-title,.plans-title,.port-title,.proc-title{font-family:var(--fd);font-size:clamp(30px,5vw,60px);line-height:.88;text-transform:uppercase;font-weight:900;letter-spacing:-0.02em}
+.srv-list{border-top:0.5px solid var(--border-em);margin-top:24px}
+.srv-item{display:grid;grid-template-columns:0.4fr 2fr 1.5fr auto;align-items:center;gap:20px;padding:18px 28px;border-bottom:0.5px solid var(--border);transition:background 0.2s;max-width:1200px;margin:0 auto}
 .srv-item:hover{background:rgba(77,191,163,0.025)}
-.srv-num{font-size:11px;letter-spacing:0.1em;color:var(--muted)}
-.srv-name{font-size:clamp(14px,2vw,22px);font-weight:700;transition:color 0.2s;font-family:var(--fd);letter-spacing:0.02em;text-transform:uppercase}
+.srv-num{font-size:10px;letter-spacing:0.12em;color:var(--muted);font-weight:600}
+.srv-name{font-size:clamp(15px,2vw,24px);font-weight:800;transition:color 0.2s;font-family:var(--fd);letter-spacing:0.01em;text-transform:uppercase}
 .srv-item:hover .srv-name{color:var(--accent)}
 .srv-tags{display:flex;gap:6px;flex-wrap:wrap}
-.srv-tag{font-size:10px;letter-spacing:0.06em;border:0.5px solid var(--border);border-radius:100px;padding:3px 10px;color:var(--muted);text-transform:uppercase}
+.srv-tag{font-size:9px;letter-spacing:0.08em;border:0.5px solid var(--border-em);border-radius:100px;padding:3px 10px;color:var(--muted);text-transform:uppercase;font-weight:600}
 .srv-arrow{font-size:16px;color:var(--muted);transition:all 0.25s}
 .srv-item:hover .srv-arrow{color:var(--accent);transform:translateX(4px)}
 
-/* PLANS */
-.plans-grid{grid-template-columns:repeat(3,1fr)}
-.plan-card{background:var(--bg);padding:28px 24px;position:relative;transition:background 0.25s}
+/* ── PLANS ── */
+.plans-sec{border-bottom:0.5px solid var(--border-em);padding:60px 28px}
+.plans-inner{max-width:1100px;margin:0 auto}
+.plans-sub{font-size:12px;color:var(--muted2);margin-bottom:36px;line-height:1.8}
+.plans-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border-em)}
+.plan-card{background:var(--bg);padding:30px 26px;position:relative;transition:background 0.25s}
 .plan-card.featured{background:var(--surface);border:0.5px solid var(--accent-bdr)}
 .plan-card:hover{background:var(--accent-sub)}
-.plan-badge{font-size:10px;letter-spacing:0.12em;background:var(--accent);color:#0a1a15;padding:3px 12px;border-radius:100px;display:inline-block;margin-bottom:14px;font-weight:600;text-transform:uppercase}
-.plan-name{font-family:var(--fd);font-size:20px;font-weight:800;margin-bottom:4px;text-transform:uppercase}
+.plan-badge{font-size:9px;letter-spacing:0.14em;background:var(--accent);color:#071a13;padding:3px 12px;border-radius:100px;display:inline-block;margin-bottom:14px;font-weight:700;text-transform:uppercase}
+.plan-name{font-family:var(--fd);font-size:22px;font-weight:900;margin-bottom:4px;text-transform:uppercase;letter-spacing:0.02em}
 .plan-for{font-size:11px;color:var(--muted);margin-bottom:14px}
-.plan-price{font-family:var(--fd);font-size:clamp(22px,3vw,32px);font-weight:800;color:var(--accent);line-height:1}
+.plan-price{font-family:var(--fd);font-size:clamp(24px,3vw,34px);font-weight:900;color:var(--accent);line-height:1;letter-spacing:-0.01em}
 .plan-price span{font-family:var(--fb);font-size:13px;color:var(--muted2);font-weight:400}
-.plan-period{font-size:10px;color:var(--muted);letter-spacing:0.08em;margin-bottom:18px;margin-top:4px;text-transform:uppercase}
-.plan-divider{border:none;border-top:0.5px solid var(--border);margin-bottom:16px}
+.plan-period{font-size:9px;color:var(--muted);letter-spacing:0.10em;margin-bottom:18px;margin-top:4px;text-transform:uppercase;font-weight:600}
+.plan-divider{border:none;border-top:0.5px solid var(--border-em);margin-bottom:16px}
 .plan-items{list-style:none}
-.plan-items li{font-size:11px;color:var(--muted2);line-height:2.1;display:flex;align-items:center;gap:6px}
-.plan-cta{display:block;font-size:12px;font-weight:600;letter-spacing:0.08em;text-align:center;padding:9px;border-radius:100px;text-decoration:none;margin-top:20px;transition:all 0.2s;text-transform:uppercase}
-.plan-cta-p{background:var(--accent);color:#0a1a15}
+.plan-items li{font-size:11px;color:var(--muted2);line-height:2.1;display:flex;align-items:center;gap:8px}
+.plan-items li::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--accent);opacity:0.7;flex-shrink:0}
+.plan-cta{display:block;font-family:var(--fb);font-size:11px;font-weight:700;letter-spacing:0.10em;text-align:center;padding:10px;border-radius:100px;text-decoration:none;margin-top:22px;transition:all 0.2s;text-transform:uppercase}
+.plan-cta-p{background:var(--accent);color:#071a13}
 .plan-cta-p:hover{background:#5ecfb3}
 .plan-cta-s{border:0.5px solid var(--border-em);color:var(--white)}
 .plan-cta-s:hover{border-color:var(--accent);color:var(--accent)}
 
-/* PORTFOLIO */
+/* ── PORTFOLIO ── */
 .port-header{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap}
-.port-grid{grid-template-columns:repeat(4,1fr)}
+.port-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border-em)}
 .pi{position:relative;overflow:hidden;cursor:default;background:#0f0f0f;aspect-ratio:1/1;transition:filter .3s}
-.pi:hover{filter:brightness(1.08)}
+.pi:hover{filter:brightness(1.10)}
 .pi img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
-.pi-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(9,9,9,.92) 0%,transparent 60%);opacity:0;transition:opacity .3s;display:flex;flex-direction:column;justify-content:flex-end;padding:16px;z-index:2}
-.pi:hover .pi-overlay{opacity:1}
-.pi-cat{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:.3rem;font-weight:600}
-.pi-name{font-family:var(--fd);font-size:14px;font-weight:700;text-transform:uppercase}
+.pi-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(9,9,9,.94) 0%,transparent 60%);opacity:0;transition:opacity .3s;display:flex;flex-direction:column;justify-content:flex-end;padding:16px;z-index:2}
+.pi:hover .pi-overlay,.pv .pi-overlay{opacity:1}
+.pv .pi-overlay{background:linear-gradient(to top,rgba(9,9,9,.85) 0%,rgba(9,9,9,.12) 60%,transparent 100%)}
+.pi-cat{font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:4px;font-weight:600}
+.pi-name{font-family:var(--fd);font-size:14px;font-weight:800;text-transform:uppercase;letter-spacing:0.02em}
 .pv{cursor:pointer}
-.pv .pi-overlay{opacity:1;background:linear-gradient(to top,rgba(9,9,9,.82) 0%,rgba(9,9,9,.12) 60%,transparent 100%)}
-.play-btn,.pi-play-btn{width:64px;height:64px;border-radius:50%;background:rgba(77,191,163,.16);border:2px solid var(--accent);display:flex;align-items:center;justify-content:center;transition:all .3s}
+.play-btn,.pi-play-btn{width:60px;height:60px;border-radius:50%;background:rgba(77,191,163,.18);border:1.5px solid var(--accent);display:flex;align-items:center;justify-content:center;transition:all .3s}
 .pv:hover .play-btn,.pv:hover .pi-play-btn{background:rgba(77,191,163,.32);transform:scale(1.08)}
 
-/* TUTORIALS */
-.tut-sec{text-align:center;position:relative;overflow:hidden}
-.tut-glow,.cta-glow{position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(77,191,163,0.04) 0%,transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none}
-.tut-title{font-size:clamp(30px,5vw,58px);line-height:.9;text-transform:uppercase;margin-bottom:16px}
-.tut-desc{max-width:700px;margin:0 auto 28px}
+/* ── TUTORIALS ── */
+.tut-sec{border-bottom:0.5px solid var(--border-em);padding:64px 28px;text-align:center;position:relative;overflow:hidden}
+.tut-glow,.cta-glow{position:absolute;width:700px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(77,191,163,0.05) 0%,transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none}
+.tut-inner{position:relative;z-index:1;max-width:720px;margin:0 auto}
+.tut-eyebrow{justify-content:center}
+.tut-eyebrow::before,.tut-eyebrow::after{content:'';width:20px;height:1px;background:var(--accent)}
+.tut-title{font-family:var(--fd);font-size:clamp(32px,5vw,60px);letter-spacing:-0.01em;line-height:.88;margin-bottom:18px;font-weight:900;text-transform:uppercase}
+.tut-desc{font-size:12px;color:var(--muted2);max-width:580px;margin:0 auto 28px;line-height:1.85}
 .tut-topics{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:28px}
-.tut-topic{font-size:10px;letter-spacing:.08em;color:var(--muted2);border:0.5px solid var(--border);padding:8px 14px;border-radius:100px;text-transform:uppercase}
-.tut-wip{display:inline-flex;align-items:center;gap:10px;font-size:12px;letter-spacing:.12em;color:var(--muted2);border:0.5px solid var(--border);padding:14px 28px;border-radius:100px;text-transform:uppercase}
-.tut-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);animation:pulse 2s infinite;flex-shrink:0}
+.tut-topic{font-size:10px;letter-spacing:.10em;color:var(--muted2);border:0.5px solid var(--border-em);padding:8px 16px;border-radius:100px;text-transform:uppercase;font-weight:600}
+.tut-wip{display:inline-flex;align-items:center;gap:10px;font-size:11px;letter-spacing:.14em;color:var(--muted2);border:0.5px solid var(--border-em);padding:14px 28px;border-radius:100px;text-transform:uppercase;font-weight:600}
+.tut-dot{width:7px;height:7px;border-radius:50%;background:var(--accent);animation:pulse 2s infinite;flex-shrink:0}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(.8)}}
 
-/* PROCESS */
-.proc-grid{grid-template-columns:repeat(4,1fr);margin-top:24px;max-width:1100px;margin-left:auto;margin-right:auto}
-.proc-item{padding:28px 20px;background:var(--bg);border-top:2px solid transparent;transition:all 0.25s}
+/* ── PROCESS ── */
+.proc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border-em);margin-top:24px}
+.proc-item{padding:32px 24px;background:var(--bg);border-top:2px solid transparent;transition:all 0.25s}
 .proc-item:hover{border-color:var(--accent);background:var(--accent-sub)}
-.proc-n{font-family:var(--fd);font-size:48px;color:rgba(77,191,163,0.10);line-height:1;margin-bottom:14px;font-weight:800;transition:color 0.25s}
-.proc-item:hover .proc-n{color:rgba(77,191,163,0.28)}
-.proc-t{font-size:13px;font-weight:700;margin-bottom:6px;letter-spacing:0.02em;text-transform:uppercase}
-.proc-d{font-size:11px;color:var(--muted2);line-height:1.7}
+.proc-n{font-family:var(--fd);font-size:52px;color:rgba(77,191,163,0.12);line-height:1;margin-bottom:16px;font-weight:900;transition:color 0.25s}
+.proc-item:hover .proc-n{color:rgba(77,191,163,0.30)}
+.proc-t{font-size:12px;font-weight:800;margin-bottom:8px;letter-spacing:0.04em;text-transform:uppercase;font-family:var(--fd)}
+.proc-d{font-size:11px;color:var(--muted2);line-height:1.75}
 
-/* CTA */
-.cta-sec{text-align:center;position:relative;overflow:hidden;border-bottom:none}
-.cta-title{font-size:clamp(40px,8vw,80px);line-height:0.86;text-transform:uppercase;margin-bottom:20px}
-.cta-sub{max-width:440px;margin:0 auto 28px}
+/* ── CTA ── */
+.cta-sec{padding:80px 28px;text-align:center;position:relative;overflow:hidden;border-bottom:none}
+.cta-inner{max-width:900px;margin:0 auto;position:relative;z-index:1}
+.cta-tag{justify-content:center}
+.cta-tag::before,.cta-tag::after{content:'';width:20px;height:1px;background:var(--accent)}
+.cta-title{font-family:var(--fd);font-size:clamp(48px,10vw,100px);line-height:.84;letter-spacing:-0.02em;margin-bottom:22px;font-weight:900;text-transform:uppercase}
+.cta-sub{font-size:12px;color:var(--muted2);max-width:420px;margin:0 auto 28px;line-height:1.8}
 .cta-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
-.btn-wa{font-size:12px;letter-spacing:0.06em;background:#25D366;color:#0a2a14;padding:9px 20px;border-radius:100px;border:none;cursor:pointer;text-decoration:none;font-weight:600;transition:all 0.2s;display:inline-flex;align-items:center;gap:6px;text-transform:uppercase}
-.btn-wa:hover{background:#20bd5a}
-.btn-em{font-size:12px;background:transparent;color:var(--white);padding:9px 20px;border-radius:100px;border:0.5px solid var(--border-em);cursor:pointer;text-decoration:none;transition:all 0.2s;text-transform:uppercase}
+.btn-wa{font-size:11px;letter-spacing:0.08em;background:#25D366;color:#061a0c;padding:10px 22px;border-radius:100px;border:none;cursor:pointer;text-decoration:none;font-weight:700;transition:all 0.2s;display:inline-flex;align-items:center;gap:6px;text-transform:uppercase}
+.btn-wa:hover{background:#20bd5a;transform:translateY(-1px)}
+.btn-em{font-size:11px;background:transparent;color:var(--white);padding:10px 22px;border-radius:100px;border:0.5px solid var(--border-em);cursor:pointer;text-decoration:none;transition:all 0.2s;text-transform:uppercase;font-weight:600}
 .btn-em:hover{border-color:var(--accent);color:var(--accent)}
 
-/* LIGHTBOX */
-#video-lightbox{display:none;position:fixed;inset:0;z-index:9000;background:rgba(0,0,0,.92);align-items:center;justify-content:center;backdrop-filter:blur(8px)}
+/* ── LIGHTBOX ── */
+#video-lightbox{display:none;position:fixed;inset:0;z-index:9000;background:rgba(0,0,0,.92);align-items:center;justify-content:center;backdrop-filter:blur(10px)}
 #yt-wrap{width:90vw;max-width:1000px;aspect-ratio:16/9;position:relative;transition:all .3s}
 #yt-frame{width:100%;height:100%;border:none;border-radius:10px}
 
-/* FOOTER */
-footer{border-top:0.5px solid var(--border);display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:18px 24px;gap:12px}
+/* ── FOOTER ── */
+footer{border-top:0.5px solid var(--border-em);display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:18px 28px;gap:12px}
 .f-logo{display:flex;align-items:center;gap:8px;text-decoration:none}
-.f-logo img{width:28px;height:28px;border-radius:7px;object-fit:cover;border:0.5px solid var(--accent-bdr);background:var(--accent-sub)}
-.f-logo span{font-family:var(--fd);font-size:12px;font-weight:700;color:var(--white);letter-spacing:0.04em}
+.f-logo img{width:26px;height:26px;border-radius:7px;object-fit:cover;border:0.5px solid var(--accent-bdr);background:var(--accent-sub)}
+.f-logo span{font-family:var(--fd);font-size:12px;font-weight:800;color:var(--white);letter-spacing:0.05em;text-transform:uppercase}
 .f-logo em{color:var(--accent);font-style:normal}
-.f-copy{font-size:10px;letter-spacing:0.08em;color:var(--muted);text-align:center;text-transform:uppercase}
+.f-copy{font-size:10px;letter-spacing:0.08em;color:var(--muted);text-align:center;text-transform:uppercase;font-weight:600}
 .f-right{display:flex;justify-content:flex-end}
 
-/* REVEAL */
-.rv,.rv2,.rv3{opacity:0;transform:translateY(28px)}
+/* ── REVEAL ── */
+.rv,.rv2,.rv3{opacity:0;transform:translateY(24px)}
 .rv{transition:opacity .8s ease,transform .8s ease}
 .rv2{transition:opacity .8s ease .12s,transform .8s ease .12s}
 .rv3{transition:opacity .8s ease .24s,transform .8s ease .24s}
 .rv.vis,.rv2.vis,.rv3.vis{opacity:1;transform:none}
 
-/* MOBILE */
-/* MOBILE */
+/* ── MOBILE ── */
 @media(max-width:1024px){
-  .srv-item{grid-template-columns:auto 1fr auto;gap:1rem}
+  .srv-item{grid-template-columns:auto 1fr auto;gap:12px}
   .srv-tags{display:none}
   .gallery-grid{grid-template-columns:repeat(3,1fr)}
 }
-
 @media(max-width:900px){
   nav{padding:12px 16px}
   .nav-links{display:none}
-
-  .hero{
-    align-items:flex-end;
-  }
-
-  .hero-content,
-  .paths-grid,
-  .plans-grid,
-  .proc-grid{
-    grid-template-columns:1fr;
-  }
-
-  .hero-content{
-    gap:24px;
-    padding:36px 20px 32px;
-    align-items:flex-end;
-  }
-
-  .hero-title{
-    font-size:clamp(42px,12vw,64px);
-    max-width:100%;
-    margin-bottom:14px;
-  }
-
-  .hero-desc{
-    max-width:100%;
-    margin-bottom:18px;
-  }
-
-  .hero-paths{
-    max-width:100%;
-  }
-
-  .hero-right-stats{
-    flex-direction:row;
-    flex-wrap:wrap;
-    justify-content:flex-start;
-    align-items:stretch;
-    gap:10px;
-    padding-top:0;
-  }
-
-  .hero-stat{
-    text-align:left;
-    min-width:120px;
-    flex:1 1 120px;
-  }
-
-  .hero-stat-n{
-    font-size:24px;
-  }
-
-  .statement,
-  .plans-sec,
-  .tut-sec,
-  .cta-sec{
-    padding:44px 16px;
-  }
-
-  .paths-header,
-  .gallery-header,
-  .srv-header,
-  .port-header,
-  .proc-header{
-    padding:24px 16px 18px;
-  }
-
-  .port-grid{
-    grid-template-columns:1fr 1fr;
-  }
-
-  footer{
-    grid-template-columns:1fr;
-    text-align:center;
-  }
-
-  .f-right{
-    justify-content:center;
-  }
+  .hero-content{grid-template-columns:1fr;gap:24px;padding:5rem 20px 3rem}
+  .hero-right-stats{flex-direction:row;flex-wrap:wrap;justify-content:flex-start;gap:16px}
+  .hero-stat{text-align:left}
+  .hero-stat-n{font-size:28px}
+  .paths-grid,.plans-grid,.proc-grid{grid-template-columns:1fr}
+  .statement,.plans-sec,.tut-sec,.cta-sec{padding:44px 16px}
+  .paths-header,.gallery-header,.srv-header,.port-header,.proc-header{padding:24px 16px 18px}
+  .port-grid{grid-template-columns:1fr 1fr}
+  footer{grid-template-columns:1fr;text-align:center}
+  .f-right{justify-content:center}
+  .stmt-text{font-size:clamp(28px,8vw,44px)}
+  .cta-title{font-size:clamp(40px,12vw,70px)}
 }
-
 @media(max-width:600px){
   .hero-paths{grid-template-columns:1fr}
-  .gallery-grid,
-  .port-grid{grid-template-columns:1fr 1fr}
-  .cta-title{font-size:clamp(34px,12vw,58px)}
+  .gallery-grid,.port-grid{grid-template-columns:1fr 1fr}
 }
-
-::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar{width:3px}
 ::-webkit-scrollbar-track{background:var(--bg)}
 ::-webkit-scrollbar-thumb{background:rgba(77,191,163,.35)}
 </style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav>
   <a href="#" class="nav-logo">
     <img src="images/logo.png" alt="logo"/>
@@ -418,11 +304,12 @@ footer{border-top:0.5px solid var(--border);display:grid;grid-template-columns:1
   </div>
 </nav>
 
+<!-- HERO -->
 <section class="hero">
   <div class="hero-video-bg">
     <iframe id="hero-video" src="https://www.youtube.com/embed/lbC32-Lodck?autoplay=1&mute=1&loop=1&playlist=lbC32-Lodck&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1" allow="autoplay;encrypted-media" allowfullscreen></iframe>
   </div>
-  <button id="sound-btn" onclick="toggleSound()" style="position:absolute;bottom:2rem;right:2rem;z-index:10;background:rgba(13,13,13,.76);backdrop-filter:blur(10px);border:0.5px solid var(--border-em);border-radius:100px;color:var(--white);font-family:var(--fb);font-size:10px;letter-spacing:.15em;padding:.6rem 1rem;cursor:pointer;display:flex;align-items:center;gap:.5rem;transition:all .25s;text-transform:uppercase">
+  <button id="sound-btn" onclick="toggleSound()" style="position:absolute;bottom:2rem;right:2rem;z-index:10;background:rgba(13,13,13,.80);backdrop-filter:blur(12px);border:0.5px solid rgba(255,255,255,.14);border-radius:100px;color:var(--white);font-family:var(--fb);font-size:10px;letter-spacing:.14em;padding:.6rem 1.1rem;cursor:pointer;display:flex;align-items:center;gap:.5rem;transition:all .25s;text-transform:uppercase;font-weight:600">
     <span id="sound-icon">🔇</span><span id="sound-label">SONIDO</span>
   </button>
   <div class="hero-content">
@@ -451,13 +338,14 @@ footer{border-top:0.5px solid var(--border);display:grid;grid-template-columns:1
       </div>
     </div>
     <div class="hero-right-stats">
-      <div class="hero-stat"><div class="hero-stat-n">+50<span style="color:var(--muted2);font-size:.6em">K</span></div><div class="hero-stat-l" data-i18n="st1">IMÁGENES GENERADAS</div></div>
+      <div class="hero-stat"><div class="hero-stat-n">+50<span style="color:var(--muted2);font-size:.55em;font-family:var(--fb);font-weight:400">K</span></div><div class="hero-stat-l" data-i18n="st1">IMÁGENES GENERADAS</div></div>
       <div class="hero-stat"><div class="hero-stat-n">+200</div><div class="hero-stat-l" data-i18n="st2">VIDEOS UGC</div></div>
       <div class="hero-stat"><div class="hero-stat-n">+30</div><div class="hero-stat-l" data-i18n="st3">MARCAS</div></div>
     </div>
   </div>
 </section>
 
+<!-- TICKER -->
 <div class="ticker">
   <div class="ticker-track">
     <span class="ticker-item">AI VISUAL STUDIO</span><span class="ticker-dot">✦</span>
@@ -479,6 +367,7 @@ footer{border-top:0.5px solid var(--border);display:grid;grid-template-columns:1
   </div>
 </div>
 
+<!-- STATEMENT -->
 <div class="statement rv">
   <div class="statement-inner">
     <div class="stmt-tag" data-i18n="abtag">NUESTRA FILOSOFÍA</div>
@@ -492,6 +381,7 @@ footer{border-top:0.5px solid var(--border);display:grid;grid-template-columns:1
   </div>
 </div>
 
+<!-- DOS CAMINOS -->
 <section id="caminos" class="paths-sec">
   <div class="paths-header rv">
     <div class="paths-title" data-i18n="pathtit">¿CÓMO QUIERES TRABAJAR?</div>
@@ -529,6 +419,7 @@ footer{border-top:0.5px solid var(--border);display:grid;grid-template-columns:1
   </div>
 </section>
 
+<!-- GALERÍA -->
 <section class="gallery-sec">
   <div class="gallery-header rv">
     <div class="gallery-title" data-i18n="galtit">MODELOS QUE HEMOS CREADO</div>
@@ -551,10 +442,11 @@ footer{border-top:0.5px solid var(--border);display:grid;grid-template-columns:1
   <div class="gallery-more"><a href="https://app.nobodyvisuallab.com" data-i18n="galmore">+ VER TODOS LOS MODELOS EN LA APP</a></div>
 </section>
 
+<!-- SERVICIOS -->
 <section id="servicios" class="srv-sec">
   <div class="srv-header rv">
     <div class="srv-title" data-i18n="svtit">SERVICIOS</div>
-    <p style="max-width:320px;font-size:12px;color:var(--muted2);font-weight:300;line-height:1.75" data-i18n="svsub">Todo lo que una marca necesita para competir visualmente.</p>
+    <p style="max-width:300px;font-size:12px;color:var(--muted2);line-height:1.75" data-i18n="svsub">Todo lo que una marca necesita para competir visualmente.</p>
   </div>
   <div class="srv-list rv2">
     <div class="srv-item"><div class="srv-num">01</div><div class="srv-name" data-i18n="s1n">MODELOS DIGITALES IA</div><div class="srv-tags"><span class="srv-tag">Exclusivo</span><span class="srv-tag">Hiperrealista</span></div><div class="srv-arrow">→</div></div>
@@ -566,6 +458,7 @@ footer{border-top:0.5px solid var(--border);display:grid;grid-template-columns:1
   </div>
 </section>
 
+<!-- PLANES -->
 <section id="planes" class="plans-sec">
   <div class="plans-inner">
     <div class="sec-tag rv" data-i18n="pltag">SERVICIOS DE AGENCIA</div>
@@ -616,11 +509,13 @@ footer{border-top:0.5px solid var(--border);display:grid;grid-template-columns:1
   </div>
 </section>
 
+<!-- LIGHTBOX -->
 <div id="video-lightbox">
-  <button onclick="closeLightbox()" style="position:absolute;top:1.2rem;right:1.5rem;background:none;border:none;color:#fff;font-size:2rem;cursor:pointer;opacity:.7">✕</button>
+  <button onclick="closeLightbox()" style="position:absolute;top:1.2rem;right:1.5rem;background:none;border:none;color:#fff;font-size:2rem;cursor:pointer;opacity:.7;font-weight:300">✕</button>
   <div id="yt-wrap"><iframe id="yt-frame" src="" allow="autoplay;encrypted-media" allowfullscreen></iframe></div>
 </div>
 
+<!-- PORTAFOLIO -->
 <section id="portafolio" class="port-sec">
   <div class="port-header rv">
     <div class="port-title" data-i18n="ptit">TRABAJOS</div>
@@ -630,7 +525,7 @@ footer{border-top:0.5px solid var(--border);display:grid;grid-template-columns:1
     <div class="pi pv" onclick="openLightbox('d_t147gcq1g')">
       <img src="https://img.youtube.com/vi/d_t147gcq1g/maxresdefault.jpg" alt="Video UGC"/>
       <div class="pi-overlay">
-        <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-60%)"><div class="play-btn"><svg width="24" height="24" viewBox="0 0 24 24" fill="#4DBFA3"><path d="M8 5v14l11-7z"/></svg></div></div>
+        <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-60%)"><div class="play-btn"><svg width="22" height="22" viewBox="0 0 24 24" fill="#4DBFA3"><path d="M8 5v14l11-7z"/></svg></div></div>
         <div class="pi-cat">VIDEO UGC</div>
         <div class="pi-name" data-i18n="plb1">CAMPAÑA EDITORIAL — MODA</div>
       </div>
@@ -639,7 +534,7 @@ footer{border-top:0.5px solid var(--border);display:grid;grid-template-columns:1
     <div class="pi pv" onclick="openLightbox('Do2DrcfMJi8','short')">
       <img src="https://img.youtube.com/vi/Do2DrcfMJi8/maxresdefault.jpg" alt="Short UGC"/>
       <div class="pi-overlay">
-        <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-60%)"><div class="play-btn"><svg width="24" height="24" viewBox="0 0 24 24" fill="#4DBFA3"><path d="M8 5v14l11-7z"/></svg></div></div>
+        <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-60%)"><div class="play-btn"><svg width="22" height="22" viewBox="0 0 24 24" fill="#4DBFA3"><path d="M8 5v14l11-7z"/></svg></div></div>
         <div class="pi-cat">REEL — SHORT</div>
         <div class="pi-name" data-i18n="plb3">REEL PARA REDES</div>
       </div>
@@ -650,6 +545,7 @@ footer{border-top:0.5px solid var(--border);display:grid;grid-template-columns:1
   </div>
 </section>
 
+<!-- TUTORIALES -->
 <section class="tut-sec rv">
   <div class="tut-glow"></div>
   <div class="tut-inner">
@@ -666,6 +562,7 @@ footer{border-top:0.5px solid var(--border);display:grid;grid-template-columns:1
   </div>
 </section>
 
+<!-- PROCESO -->
 <section class="proc-sec">
   <div class="proc-header rv"><div class="proc-title" data-i18n="htit">PROCESO</div></div>
   <div class="proc-grid rv2">
@@ -676,6 +573,7 @@ footer{border-top:0.5px solid var(--border);display:grid;grid-template-columns:1
   </div>
 </section>
 
+<!-- CTA FINAL -->
 <section id="contacto" class="cta-sec">
   <div class="cta-glow"></div>
   <div class="cta-inner rv">
@@ -691,7 +589,7 @@ footer{border-top:0.5px solid var(--border);display:grid;grid-template-columns:1
     <div class="cta-btns">
       <a href="https://app.nobodyvisuallab.com" class="btn-p" data-i18n="ctabtn1">CREAR MI PRIMER CONTENIDO</a>
       <a href="https://wa.me/526676991211" class="btn-wa" target="_blank">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
         WHATSAPP
       </a>
       <a href="mailto:nobodyvisuallab@gmail.com" class="btn-em">✉ EMAIL</a>
@@ -699,6 +597,7 @@ footer{border-top:0.5px solid var(--border);display:grid;grid-template-columns:1
   </div>
 </section>
 
+<!-- FOOTER -->
 <footer>
   <a href="#" class="f-logo"><img src="images/logo.png" alt="logo"/><span>NOBODY<em>VISUAL</em>LAB</span></a>
   <div class="f-center"><div class="f-copy" data-i18n="fcopy">© 2025 NOBODY VISUAL LAB · SINALOA, MÉXICO · AI VISUAL STUDIO</div></div>
@@ -707,136 +606,17 @@ footer{border-top:0.5px solid var(--border);display:grid;grid-template-columns:1
 
 <script>
 const T={
-es:{
-  n1:'SERVICIOS',n2:'PLANES',n3:'PORTAFOLIO',n4:'CONTACTO',ncta:'ENTRAR A LA APP',
-  hbadge:'AI VISUAL STUDIO — FASHION & BRANDS',
-  ht1:'CREAMOS',ht2:'LO QUE',ht3:'ANTES ERA',ht4:'IMPOSIBLE.',
-  hdesc:'Modelos digitales hiperrealistas, fotografía de producto y video UGC con IA. Sin modelos reales, sin sets, sin límites.',
-  hp1label:'OPCIÓN 1',hp1title:'CONTRATAR EL ESTUDIO',hp1desc:'Nosotros lo creamos todo por ti. Planes desde $200 USD/mes.',
-  hp2label:'OPCIÓN 2',hp2title:'USAR LA APP',hp2desc:'Tú lo creas con nuestras herramientas de IA. Acceso inmediato.',
-  abtag:'NUESTRA FILOSOFÍA',
-  stmt1:'NO SOMOS UN',stmt2:'ESTUDIO TRADICIONAL.',stmt3:'SOMOS UN',stmt4:'LABORATORIO VISUAL.',
-  stmtsub:'MR. Nobody nace de una idea simple: no necesitas un equipo completo de producción para crear contenido de alto nivel. Creamos una nueva forma de producir — sin límites físicos, con estética cinematográfica y dirección de arte real.',
-  pathtit:'¿CÓMO QUIERES TRABAJAR?',pathsub:'Dos formas de acceder al poder de la IA visual. Tú eliges.',
-  path1tit:'CONTRATAR\nEL ESTUDIO',path1desc:'Nosotros lo creamos todo por ti. Dirección de arte, modelos, fotografía y video. Tú solo envías tu producto y defines el estilo.',
-  path1i1:'Modelos digitales exclusivos para tu marca',path1i2:'Fotografía editorial de producto con IA',path1i3:'Videos UGC y Reels listos para publicar',path1i4:'Contenido listo en 48 a 72 horas',path1i5:'Planes desde $200 USD por mes',
-  path1cta:'VER PLANES →',
-  path2tit:'USAR\nLA APP',path2desc:'Crea tú mismo con nuestras herramientas de IA. Genera imágenes, integra productos en modelos y edita contenido en minutos. Sin experiencia previa.',
-  path2i1:'Genera modelos e imágenes de producto',path2i2:'Editor de video con IA integrado',path2i3:'Virtual try-on para ecommerce',path2i4:'Resultados en minutos, no en días',path2i5:'Acceso inmediato, sin contratos',
-  path2cta:'PROBAR LA APP →',
-  galtit:'MODELOS QUE HEMOS CREADO',galcta:'VER TODOS EN LA APP →',galmore:'+ VER TODOS LOS MODELOS EN LA APP',
-  svtit:'SERVICIOS',svsub:'Todo lo que una marca necesita para competir visualmente.',
-  s1n:'MODELOS DIGITALES IA',s2n:'FOTOGRAFÍA EDITORIAL',s3n:'VIDEO UGC & REELS',s4n:'VIRTUAL TRY-ON',s5n:'DIRECCIÓN DE ARTE IA',s6n:'EDITOR DE IMAGEN IA',
-  pltag:'SERVICIOS DE AGENCIA',pltit:'PLANES',plsub:'Sin contratos largos. Sin sorpresas. Elige según el tamaño de tu marca.',
-  pl1name:'STARTER',pl1for:'Para marcas que están comenzando',plperiod:'USD / MES',
-  pl1i1:'10 imágenes con modelo IA',pl1i2:'8 imágenes de producto',pl1i3:'2 videos cortos',
-  plpop:'MÁS POPULAR',pl2name:'GROWTH',pl2for:'Para marcas en crecimiento',
-  pl2i1:'20 imágenes con modelo IA',pl2i2:'15 imágenes de producto',pl2i3:'5 videos cortos',
-  pl3name:'PRO CAMPAIGN',pl3for:'Para marcas que quieren escalar',
-  pl3i1:'30 imágenes con modelo IA',pl3i2:'30 imágenes de producto',pl3i3:'3 videos de campaña',
-  plcta:'COTIZAR AHORA',
-  ptit:'TRABAJOS',pcta:'SOLICITAR TRABAJO →',
-  plb1:'CAMPAÑA EDITORIAL — MODA',plb2:'LIFESTYLE SKINCARE',plb3:'REEL PARA REDES',plb4:'ECOMMERCE FASHION',plb5:'CAMPAÑA DE PRODUCTO',plb6:'DIRECCIÓN EDITORIAL',
-  tuteye:'PRÓXIMAMENTE',tuttit1:'APRENDE A USAR',tuttit2:'IA PARA VENDER MÁS',
-  tutdesc:'Te enseñamos paso a paso cómo crear contenido que realmente convierte. Desde lo básico hasta estrategias avanzadas para ecommerce y redes sociales.',
-  tut1:'Imágenes de producto',tut2:'Modelos digitales',tut3:'Reels que venden',tut4:'Escalar con IA',
-  tutwip:'SECCIÓN EN CONSTRUCCIÓN',
-  htit:'PROCESO',sp1t:'ENVÍAS TU MATERIAL',sp1d:'Tu producto, idea o referencia visual. Nos adaptamos a lo que tienes.',
-  sp2t:'DEFINIMOS EL ESTILO',sp2d:'Concepto visual, paleta, narrativa. Dirección de arte real antes de generar.',
-  sp3t:'GENERAMOS CON IA',sp3d:'Modelos, fotografía o video. Resultados de calidad editorial en minutos.',
-  sp4t:'LISTO PARA PUBLICAR',sp4d:'Alta resolución para redes, ecommerce o impresión. En 24 horas.',
-  ctabadge:'LISTO PARA EMPEZAR',ctah1:'NO',ctah2:'NECESITAS',ctah3:'UN ESTUDIO.',ctah4:'NECESITAS',ctah5:'VISIÓN.',
-  ctap:'Contrata el estudio, usa la app, o cotiza tu campaña. Sin compromisos.',
-  ctabtn1:'CREAR MI PRIMER CONTENIDO',
-  fcopy:'© 2025 NOBODY VISUAL LAB · SINALOA, MÉXICO · AI VISUAL STUDIO',
-},
-en:{
-  n1:'SERVICES',n2:'PLANS',n3:'PORTFOLIO',n4:'CONTACT',ncta:'OPEN THE APP',
-  hbadge:'AI VISUAL STUDIO — FASHION & BRANDS',
-  ht1:'WE CREATE',ht2:'WHAT WAS',ht3:'ONCE',ht4:'IMPOSSIBLE.',
-  hdesc:'Hyper-realistic digital models, product photography and UGC video with AI. No real models, no sets, no limits.',
-  hp1label:'OPTION 1',hp1title:'HIRE THE STUDIO',hp1desc:'We create everything for you. Plans from $200 USD/month.',
-  hp2label:'OPTION 2',hp2title:'USE THE APP',hp2desc:'Create yourself with our AI tools. Immediate access.',
-  abtag:'OUR PHILOSOPHY',
-  stmt1:'WE ARE NOT A',stmt2:'TRADITIONAL STUDIO.',stmt3:'WE ARE A',stmt4:'VISUAL LABORATORY.',
-  stmtsub:"MR. Nobody was born from a simple idea: you don't need a full production team to create high-level content. We created a new way to produce — without physical limits, with cinematic aesthetics and real art direction.",
-  pathtit:'HOW DO YOU WANT TO WORK?',pathsub:'Two ways to access the power of visual AI. You choose.',
-  path1tit:'HIRE\nTHE STUDIO',path1desc:'We create everything for you. Art direction, models, photography and video. You just send your product and define the style.',
-  path1i1:'Exclusive digital models for your brand',path1i2:'Editorial product photography with AI',path1i3:'UGC Videos and Reels ready to publish',path1i4:'Content ready in 48 to 72 hours',path1i5:'Plans from $200 USD per month',
-  path1cta:'VIEW PLANS →',
-  path2tit:'USE\nTHE APP',path2desc:'Create yourself with our AI tools. Generate images, integrate products in models and edit content in minutes. No prior experience needed.',
-  path2i1:'Generate models and product images',path2i2:'Integrated AI video editor',path2i3:'Virtual try-on for ecommerce',path2i4:'Results in minutes, not days',path2i5:'Immediate access, no contracts',
-  path2cta:'TRY THE APP →',
-  galtit:'MODELS WE HAVE CREATED',galcta:'VIEW ALL IN THE APP →',galmore:'+ VIEW ALL MODELS IN THE APP',
-  svtit:'SERVICES',svsub:'Everything a brand needs to compete visually.',
-  s1n:'AI DIGITAL MODELS',s2n:'EDITORIAL PHOTOGRAPHY',s3n:'UGC VIDEO & REELS',s4n:'VIRTUAL TRY-ON',s5n:'AI ART DIRECTION',s6n:'AI IMAGE EDITOR',
-  pltag:'AGENCY SERVICES',pltit:'PLANS',plsub:'No long contracts. No surprises. Choose based on the size of your brand.',
-  pl1name:'STARTER',pl1for:'For brands just starting out',plperiod:'USD / MONTH',
-  pl1i1:'10 images with AI model',pl1i2:'8 product images',pl1i3:'2 short videos',
-  plpop:'MOST POPULAR',pl2name:'GROWTH',pl2for:'For growing brands',
-  pl2i1:'20 images with AI model',pl2i2:'15 product images',pl2i3:'5 short videos',
-  pl3name:'PRO CAMPAIGN',pl3for:'For brands ready to scale',
-  pl3i1:'30 images with AI model',pl3i2:'30 product images',pl3i3:'3 campaign videos',
-  plcta:'GET A QUOTE',
-  ptit:'WORKS',pcta:'REQUEST WORK →',
-  plb1:'EDITORIAL CAMPAIGN — FASHION',plb2:'LIFESTYLE SKINCARE',plb3:'SOCIAL MEDIA REEL',plb4:'ECOMMERCE FASHION',plb5:'PRODUCT CAMPAIGN',plb6:'EDITORIAL DIRECTION',
-  tuteye:'COMING SOON',tuttit1:'LEARN TO USE',tuttit2:'AI TO SELL MORE',
-  tutdesc:'We teach you step by step how to create content that actually converts. From basics to advanced ecommerce and social media strategies.',
-  tut1:'Product images',tut2:'Digital models',tut3:'Reels that sell',tut4:'Scale with AI',
-  tutwip:'SECTION UNDER CONSTRUCTION',
-  htit:'PROCESS',sp1t:'SEND YOUR MATERIAL',sp1d:'Your product, idea or visual reference. We adapt to what you have.',
-  sp2t:'DEFINE THE STYLE',sp2d:'Visual concept, palette, narrative. Real art direction before generating.',
-  sp3t:'GENERATE WITH AI',sp3d:'Models, photography or video. Editorial quality results in minutes.',
-  sp4t:'READY TO PUBLISH',sp4d:'High resolution for social, ecommerce or print. In 24 hours.',
-  ctabadge:'READY TO START',ctah1:"YOU DON'T",ctah2:'NEED A',ctah3:'STUDIO.',ctah4:'YOU NEED',ctah5:'VISION.',
-  ctap:'Hire the studio, use the app, or quote your campaign. No commitments.',
-  ctabtn1:'CREATE MY FIRST CONTENT',
-  fcopy:'© 2025 NOBODY VISUAL LAB · SINALOA, MEXICO · AI VISUAL STUDIO',
-}};
-
+es:{n1:'SERVICIOS',n2:'PLANES',n3:'PORTAFOLIO',n4:'CONTACTO',ncta:'ENTRAR A LA APP',hbadge:'AI VISUAL STUDIO — FASHION & BRANDS',ht1:'CREAMOS',ht2:'LO QUE',ht3:'ANTES ERA',ht4:'IMPOSIBLE.',hdesc:'Modelos digitales hiperrealistas, fotografía de producto y video UGC con IA. Sin modelos reales, sin sets, sin límites.',hp1label:'OPCIÓN 1',hp1title:'CONTRATAR EL ESTUDIO',hp1desc:'Nosotros lo creamos todo por ti. Planes desde $200 USD/mes.',hp2label:'OPCIÓN 2',hp2title:'USAR LA APP',hp2desc:'Tú lo creas con nuestras herramientas de IA. Acceso inmediato.',st1:'IMÁGENES GENERADAS',st2:'VIDEOS UGC',st3:'MARCAS',abtag:'NUESTRA FILOSOFÍA',stmt1:'NO SOMOS UN',stmt2:'ESTUDIO TRADICIONAL.',stmt3:'SOMOS UN',stmt4:'LABORATORIO VISUAL.',stmtsub:'MR. Nobody nace de una idea simple: no necesitas un equipo completo de producción para crear contenido de alto nivel. Creamos una nueva forma de producir — sin límites físicos, con estética cinematográfica y dirección de arte real.',pathtit:'¿CÓMO QUIERES TRABAJAR?',pathsub:'Dos formas de acceder al poder de la IA visual. Tú eliges.',path1tit:'CONTRATAR\nEL ESTUDIO',path1desc:'Nosotros lo creamos todo por ti. Dirección de arte, modelos, fotografía y video. Tú solo envías tu producto y defines el estilo.',path1i1:'Modelos digitales exclusivos para tu marca',path1i2:'Fotografía editorial de producto con IA',path1i3:'Videos UGC y Reels listos para publicar',path1i4:'Contenido listo en 48 a 72 horas',path1i5:'Planes desde $200 USD por mes',path1cta:'VER PLANES →',path2tit:'USAR\nLA APP',path2desc:'Crea tú mismo con nuestras herramientas de IA. Genera imágenes, integra productos en modelos y edita contenido en minutos. Sin experiencia previa.',path2i1:'Genera modelos e imágenes de producto',path2i2:'Editor de video con IA integrado',path2i3:'Virtual try-on para ecommerce',path2i4:'Resultados en minutos, no en días',path2i5:'Acceso inmediato, sin contratos',path2cta:'PROBAR LA APP →',galtit:'MODELOS QUE HEMOS CREADO',galcta:'VER TODOS EN LA APP →',galmore:'+ VER TODOS LOS MODELOS EN LA APP',svtit:'SERVICIOS',svsub:'Todo lo que una marca necesita para competir visualmente.',s1n:'MODELOS DIGITALES IA',s2n:'FOTOGRAFÍA EDITORIAL',s3n:'VIDEO UGC & REELS',s4n:'VIRTUAL TRY-ON',s5n:'DIRECCIÓN DE ARTE IA',s6n:'EDITOR DE IMAGEN IA',pltag:'SERVICIOS DE AGENCIA',pltit:'PLANES',plsub:'Sin contratos largos. Sin sorpresas. Elige según el tamaño de tu marca.',pl1name:'STARTER',pl1for:'Para marcas que están comenzando',plperiod:'USD / MES',pl1i1:'10 imágenes con modelo IA',pl1i2:'8 imágenes de producto',pl1i3:'2 videos cortos',plpop:'MÁS POPULAR',pl2name:'GROWTH',pl2for:'Para marcas en crecimiento',pl2i1:'20 imágenes con modelo IA',pl2i2:'15 imágenes de producto',pl2i3:'5 videos cortos',pl3name:'PRO CAMPAIGN',pl3for:'Para marcas que quieren escalar',pl3i1:'30 imágenes con modelo IA',pl3i2:'30 imágenes de producto',pl3i3:'3 videos de campaña',plcta:'COTIZAR AHORA',ptit:'TRABAJOS',pcta:'SOLICITAR TRABAJO →',plb1:'CAMPAÑA EDITORIAL — MODA',plb2:'LIFESTYLE SKINCARE',plb3:'REEL PARA REDES',plb4:'ECOMMERCE FASHION',plb5:'CAMPAÑA DE PRODUCTO',plb6:'DIRECCIÓN EDITORIAL',tuteye:'PRÓXIMAMENTE',tuttit1:'APRENDE A USAR',tuttit2:'IA PARA VENDER MÁS',tutdesc:'Te enseñamos paso a paso cómo crear contenido que realmente convierte. Desde lo básico hasta estrategias avanzadas para ecommerce y redes sociales.',tut1:'Imágenes de producto',tut2:'Modelos digitales',tut3:'Reels que venden',tut4:'Escalar con IA',tutwip:'SECCIÓN EN CONSTRUCCIÓN',htit:'PROCESO',sp1t:'ENVÍAS TU MATERIAL',sp1d:'Tu producto, idea o referencia visual. Nos adaptamos a lo que tienes.',sp2t:'DEFINIMOS EL ESTILO',sp2d:'Concepto visual, paleta, narrativa. Dirección de arte real antes de generar.',sp3t:'GENERAMOS CON IA',sp3d:'Modelos, fotografía o video. Resultados de calidad editorial en minutos.',sp4t:'LISTO PARA PUBLICAR',sp4d:'Alta resolución para redes, ecommerce o impresión. En 24 horas.',ctabadge:'LISTO PARA EMPEZAR',ctah1:'NO',ctah2:'NECESITAS',ctah3:'UN ESTUDIO.',ctah4:'NECESITAS',ctah5:'VISIÓN.',ctap:'Contrata el estudio, usa la app, o cotiza tu campaña. Sin compromisos.',ctabtn1:'CREAR MI PRIMER CONTENIDO',fcopy:'© 2025 NOBODY VISUAL LAB · SINALOA, MÉXICO · AI VISUAL STUDIO'},
+en:{n1:'SERVICES',n2:'PLANS',n3:'PORTFOLIO',n4:'CONTACT',ncta:'OPEN THE APP',hbadge:'AI VISUAL STUDIO — FASHION & BRANDS',ht1:'WE CREATE',ht2:'WHAT WAS',ht3:'ONCE',ht4:'IMPOSSIBLE.',hdesc:'Hyper-realistic digital models, product photography and UGC video with AI. No real models, no sets, no limits.',hp1label:'OPTION 1',hp1title:'HIRE THE STUDIO',hp1desc:'We create everything for you. Plans from $200 USD/month.',hp2label:'OPTION 2',hp2title:'USE THE APP',hp2desc:'Create yourself with our AI tools. Immediate access.',st1:'IMAGES GENERATED',st2:'UGC VIDEOS',st3:'BRANDS',abtag:'OUR PHILOSOPHY',stmt1:'WE ARE NOT A',stmt2:'TRADITIONAL STUDIO.',stmt3:'WE ARE A',stmt4:'VISUAL LABORATORY.',stmtsub:"MR. Nobody was born from a simple idea: you don't need a full production team to create high-level content. We created a new way to produce — without physical limits, with cinematic aesthetics and real art direction.",pathtit:'HOW DO YOU WANT TO WORK?',pathsub:'Two ways to access the power of visual AI. You choose.',path1tit:'HIRE\nTHE STUDIO',path1desc:'We create everything for you. Art direction, models, photography and video. You just send your product and define the style.',path1i1:'Exclusive digital models for your brand',path1i2:'Editorial product photography with AI',path1i3:'UGC Videos and Reels ready to publish',path1i4:'Content ready in 48 to 72 hours',path1i5:'Plans from $200 USD per month',path1cta:'VIEW PLANS →',path2tit:'USE\nTHE APP',path2desc:'Create yourself with our AI tools. Generate images, integrate products in models and edit content in minutes. No prior experience needed.',path2i1:'Generate models and product images',path2i2:'Integrated AI video editor',path2i3:'Virtual try-on for ecommerce',path2i4:'Results in minutes, not days',path2i5:'Immediate access, no contracts',path2cta:'TRY THE APP →',galtit:'MODELS WE HAVE CREATED',galcta:'VIEW ALL IN THE APP →',galmore:'+ VIEW ALL MODELS IN THE APP',svtit:'SERVICES',svsub:'Everything a brand needs to compete visually.',s1n:'AI DIGITAL MODELS',s2n:'EDITORIAL PHOTOGRAPHY',s3n:'UGC VIDEO & REELS',s4n:'VIRTUAL TRY-ON',s5n:'AI ART DIRECTION',s6n:'AI IMAGE EDITOR',pltag:'AGENCY SERVICES',pltit:'PLANS',plsub:'No long contracts. No surprises. Choose based on the size of your brand.',pl1name:'STARTER',pl1for:'For brands just starting out',plperiod:'USD / MONTH',pl1i1:'10 images with AI model',pl1i2:'8 product images',pl1i3:'2 short videos',plpop:'MOST POPULAR',pl2name:'GROWTH',pl2for:'For growing brands',pl2i1:'20 images with AI model',pl2i2:'15 product images',pl2i3:'5 short videos',pl3name:'PRO CAMPAIGN',pl3for:'For brands ready to scale',pl3i1:'30 images with AI model',pl3i2:'30 product images',pl3i3:'3 campaign videos',plcta:'GET A QUOTE',ptit:'WORKS',pcta:'REQUEST WORK →',plb1:'EDITORIAL CAMPAIGN — FASHION',plb2:'LIFESTYLE SKINCARE',plb3:'SOCIAL MEDIA REEL',plb4:'ECOMMERCE FASHION',plb5:'PRODUCT CAMPAIGN',plb6:'EDITORIAL DIRECTION',tuteye:'COMING SOON',tuttit1:'LEARN TO USE',tuttit2:'AI TO SELL MORE',tutdesc:'We teach you step by step how to create content that actually converts. From basics to advanced ecommerce and social media strategies.',tut1:'Product images',tut2:'Digital models',tut3:'Reels that sell',tut4:'Scale with AI',tutwip:'SECTION UNDER CONSTRUCTION',htit:'PROCESS',sp1t:'SEND YOUR MATERIAL',sp1d:'Your product, idea or visual reference. We adapt to what you have.',sp2t:'DEFINE THE STYLE',sp2d:'Visual concept, palette, narrative. Real art direction before generating.',sp3t:'GENERATE WITH AI',sp3d:'Models, photography or video. Editorial quality results in minutes.',sp4t:'READY TO PUBLISH',sp4d:'High resolution for social, ecommerce or print. In 24 hours.',ctabadge:'READY TO START',ctah1:"YOU DON'T",ctah2:'NEED A',ctah3:'STUDIO.',ctah4:'YOU NEED',ctah5:'VISION.',ctap:'Hire the studio, use the app, or quote your campaign. No commitments.',ctabtn1:'CREATE MY FIRST CONTENT',fcopy:'© 2025 NOBODY VISUAL LAB · SINALOA, MEXICO · AI VISUAL STUDIO'}
+};
 let lang='es';
-function setLang(l){
-  lang=l;
-  document.querySelectorAll('[data-i18n]').forEach(el=>{
-    const k=el.getAttribute('data-i18n');
-    if(T[l][k])el.textContent=T[l][k];
-  });
-  document.querySelectorAll('.lb').forEach(b=>b.classList.toggle('active',b.textContent===l.toUpperCase()));
-  document.documentElement.lang=l;
-}
+function setLang(l){lang=l;document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.getAttribute('data-i18n');if(T[l][k])el.textContent=T[l][k];});document.querySelectorAll('.lb').forEach(b=>b.classList.toggle('active',b.textContent===l.toUpperCase()));document.documentElement.lang=l;}
 var heroMuted=true;
-function toggleSound(){
-  heroMuted=!heroMuted;
-  var src='https://www.youtube.com/embed/lbC32-Lodck?autoplay=1&mute='+(heroMuted?'1':'0')+'&loop=1&playlist=lbC32-Lodck&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1';
-  document.getElementById('hero-video').src=src;
-  document.getElementById('sound-icon').textContent=heroMuted?'🔇':'🔊';
-  document.getElementById('sound-btn').style.borderColor=heroMuted?'rgba(255,255,255,.10)':'rgba(77,191,163,.55)';
-}
-function openLightbox(id, type){
-  var lb=document.getElementById('video-lightbox');
-  var wrap=document.getElementById('yt-wrap');
-  if(type==='short'){
-    wrap.style.aspectRatio='9/16';
-    wrap.style.maxWidth='420px';
-  } else {
-    wrap.style.aspectRatio='16/9';
-    wrap.style.maxWidth='1000px';
-  }
-  document.getElementById('yt-frame').src='https://www.youtube.com/embed/'+id+'?autoplay=1&rel=0&modestbranding=1&showinfo=0';
-  lb.style.display='flex';
-  document.body.style.overflow='hidden';
-}
-function closeLightbox(){
-  document.getElementById('video-lightbox').style.display='none';
-  document.getElementById('yt-frame').src='';
-  document.body.style.overflow='';
-}
-document.getElementById('video-lightbox').addEventListener('click',function(e){
-  if(e.target===this)closeLightbox();
-});
-const obs=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis')});
-},{threshold:.06});
+function toggleSound(){heroMuted=!heroMuted;var src='https://www.youtube.com/embed/lbC32-Lodck?autoplay=1&mute='+(heroMuted?'1':'0')+'&loop=1&playlist=lbC32-Lodck&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1';document.getElementById('hero-video').src=src;document.getElementById('sound-icon').textContent=heroMuted?'🔇':'🔊';document.getElementById('sound-btn').style.borderColor=heroMuted?'rgba(255,255,255,.14)':'rgba(77,191,163,.55)';}
+function openLightbox(id,type){var lb=document.getElementById('video-lightbox');var wrap=document.getElementById('yt-wrap');if(type==='short'){wrap.style.aspectRatio='9/16';wrap.style.maxWidth='420px';}else{wrap.style.aspectRatio='16/9';wrap.style.maxWidth='1000px';}document.getElementById('yt-frame').src='https://www.youtube.com/embed/'+id+'?autoplay=1&rel=0&modestbranding=1&showinfo=0';lb.style.display='flex';document.body.style.overflow='hidden';}
+function closeLightbox(){document.getElementById('video-lightbox').style.display='none';document.getElementById('yt-frame').src='';document.body.style.overflow='';}
+document.getElementById('video-lightbox').addEventListener('click',function(e){if(e.target===this)closeLightbox();});
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis')});},{threshold:.06});
 document.querySelectorAll('.rv,.rv2,.rv3').forEach(el=>obs.observe(el));
 </script>
 </body>
