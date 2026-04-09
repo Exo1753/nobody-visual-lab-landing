@@ -10,19 +10,19 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#06060A;
-  --surface:#0C0C10;
-  --elevated:#121218;
-  --border:rgba(255,255,255,0.05);
-  --border-em:rgba(255,255,255,0.09);
-  --gold:#C9A96E;
-  --gold-soft:rgba(201,169,110,0.10);
-  --gold-bdr:rgba(201,169,110,0.22);
-  --t1:rgba(255,255,255,0.88);
-  --t2:rgba(255,255,255,0.42);
-  --t3:rgba(255,255,255,0.20);
-  --fd:'Cormorant Garamond',serif;
-  --fb:'DM Sans',sans-serif;
+  --bg:#090909;
+  --surface:#0d0d0d;
+  --elevated:#141414;
+  --border:rgba(255,255,255,0.06);
+  --border-em:rgba(255,255,255,0.14);
+  --accent:#4DBFA3;
+  --accent-sub:rgba(77,191,163,0.10);
+  --accent-bdr:rgba(77,191,163,0.28);
+  --white:rgba(255,255,255,0.90);
+  --muted:rgba(255,255,255,0.28);
+  --muted2:rgba(255,255,255,0.48);
+  --fd:'Bebas Neue',sans-serif;
+--fb:'DM Sans',sans-serif;
 }
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--t1);font-family:var(--fb);overflow-x:hidden;font-size:13px}
