@@ -23,6 +23,11 @@
   --muted2:rgba(255,255,255,0.48);
   --fd:'Bebas Neue',sans-serif;
 --fb:'DM Sans',sans-serif;
+--t1:rgba(255,255,255,0.88);
+  --t2:rgba(255,255,255,0.42);
+  --t3:rgba(255,255,255,0.20);
+  --gold:var(--accent);
+  --gold-bdr:var(--accent-bdr);
 }
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--t1);font-family:var(--fb);overflow-x:hidden;font-size:13px}
