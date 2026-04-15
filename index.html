@@ -694,17 +694,24 @@ footer{border-top:0.5px solid var(--border-em);display:grid;grid-template-column
     <div class="sec-tag" style="justify-content:center;margin-bottom:28px">YA CONFÍAN EN NOSOTROS</div>
     <div style="display:flex;align-items:center;justify-content:center;gap:60px;flex-wrap:wrap">
       <div style="display:flex;flex-direction:column;align-items:center;gap:12px">
-        <div style="height:56px;display:flex;align-items:center;justify-content:center;filter:brightness(0) invert(1);opacity:0.65;transition:opacity 0.2s" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.65'">
-          <img src="images/logo-cliente1.png" alt="Source by Frida" style="max-height:56px;max-width:160px;object-fit:contain"/>
+        <div style="height:56px;display:flex;align-items:center;justify-content:center;opacity:0.75;transition:opacity 0.2s" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.75'">
+          <img id="logo-c1" alt="Source by Frida" style="max-height:56px;max-width:180px;object-fit:contain;filter:brightness(10)"/>
         </div>
         <span style="font-size:10px;letter-spacing:0.12em;color:var(--muted);text-transform:uppercase;font-weight:600">Source by Frida</span>
       </div>
       <div style="width:1px;height:40px;background:var(--border-em)"></div>
       <div style="display:flex;flex-direction:column;align-items:center;gap:12px">
-        <div style="height:56px;display:flex;align-items:center;justify-content:center;filter:brightness(0) invert(1);opacity:0.65;transition:opacity 0.2s" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.65'">
-          <img src="images/logo-cliente2.jpg" alt="Hadares Joyería" style="max-height:56px;max-width:160px;object-fit:contain"/>
+        <div style="height:56px;display:flex;align-items:center;justify-content:center;opacity:0.75;transition:opacity 0.2s" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.75'">
+          <img id="logo-c2" alt="Hadares Joyería" style="max-height:56px;max-width:180px;object-fit:contain;filter:brightness(0) invert(1)"/>
         </div>
         <span style="font-size:10px;letter-spacing:0.12em;color:var(--muted);text-transform:uppercase;font-weight:600">Hadares Joyería</span>
+      </div>
+      <div style="width:1px;height:40px;background:var(--border-em)"></div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:12px">
+        <div style="height:56px;display:flex;align-items:center;justify-content:center;opacity:0.75;transition:opacity 0.2s" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.75'">
+          <img id="logo-c3" alt="Case Factor" style="max-height:56px;max-width:180px;object-fit:contain;filter:brightness(0) invert(1)"/>
+        </div>
+        <span style="font-size:10px;letter-spacing:0.12em;color:var(--muted);text-transform:uppercase;font-weight:600">Case Factor</span>
       </div>
     </div>
   </div>
@@ -853,6 +860,25 @@ function toggleFaq(el){var isOpen=el.classList.contains('open');document.querySe
 const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis')});},{threshold:.06});
 document.querySelectorAll('.rv,.rv2,.rv3').forEach(el=>obs.observe(el));
 function setLang(l){document.querySelectorAll('.lb').forEach(b=>b.classList.toggle('active',b.textContent===l.toUpperCase()));document.documentElement.lang=l;}
+
+// Auto-detectar formato de logos
+function loadLogo(imgId, baseName, filter) {
+  const formats = ['png', 'jpg', 'jpeg'];
+  const img = document.getElementById(imgId);
+  if (!img) return;
+  if (filter) img.style.filter = filter;
+  let i = 0;
+  function tryNext() {
+    if (i >= formats.length) return;
+    img.src = 'images/' + baseName + '.' + formats[i];
+    img.onerror = function() { i++; tryNext(); };
+    i++;
+  }
+  tryNext();
+}
+loadLogo('logo-c1', 'logo-cliente1', 'brightness(10)');
+loadLogo('logo-c2', 'logo-cliente2', 'brightness(0) invert(1)');
+loadLogo('logo-c3', 'logo-cliente3', 'brightness(0) invert(1)');
 </script>
 </body>
 </html>
