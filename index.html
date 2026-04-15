@@ -695,21 +695,21 @@ footer{border-top:0.5px solid var(--border-em);display:grid;grid-template-column
     <div style="display:flex;align-items:center;justify-content:center;gap:60px;flex-wrap:wrap">
       <div style="display:flex;flex-direction:column;align-items:center;gap:12px">
         <div style="height:56px;display:flex;align-items:center;justify-content:center;opacity:0.75;transition:opacity 0.2s" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.75'">
-          <img id="logo-c1" alt="Source by Frida" style="max-height:56px;max-width:180px;object-fit:contain;filter:brightness(10)"/>
+          <img id="logo-c1" alt="Source by Frida" style="max-height:56px;max-width:180px;object-fit:contain"/>
         </div>
         <span style="font-size:10px;letter-spacing:0.12em;color:var(--muted);text-transform:uppercase;font-weight:600">Source by Frida</span>
       </div>
       <div style="width:1px;height:40px;background:var(--border-em)"></div>
       <div style="display:flex;flex-direction:column;align-items:center;gap:12px">
         <div style="height:56px;display:flex;align-items:center;justify-content:center;opacity:0.75;transition:opacity 0.2s" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.75'">
-          <img id="logo-c2" alt="Hadares Joyería" style="max-height:56px;max-width:180px;object-fit:contain;filter:brightness(0) invert(1)"/>
+          <img id="logo-c2" alt="Hadares Joyería" style="max-height:56px;max-width:180px;object-fit:contain"/>
         </div>
         <span style="font-size:10px;letter-spacing:0.12em;color:var(--muted);text-transform:uppercase;font-weight:600">Hadares Joyería</span>
       </div>
       <div style="width:1px;height:40px;background:var(--border-em)"></div>
       <div style="display:flex;flex-direction:column;align-items:center;gap:12px">
         <div style="height:56px;display:flex;align-items:center;justify-content:center;opacity:0.75;transition:opacity 0.2s" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.75'">
-          <img id="logo-c3" alt="Case Factor" style="max-height:56px;max-width:180px;object-fit:contain;filter:brightness(0) invert(1)"/>
+          <img id="logo-c3" alt="Case Factor" style="max-height:56px;max-width:180px;object-fit:contain"/>
         </div>
         <span style="font-size:10px;letter-spacing:0.12em;color:var(--muted);text-transform:uppercase;font-weight:600">Case Factor</span>
       </div>
@@ -876,9 +876,9 @@ function loadLogo(imgId, baseName, filter) {
   }
   tryNext();
 }
-loadLogo('logo-c1', 'logo-cliente1', 'brightness(10)');
-loadLogo('logo-c2', 'logo-cliente2', 'brightness(0) invert(1)');
-loadLogo('logo-c3', 'logo-cliente3', 'brightness(0) invert(1)');
+loadLogo('logo-c1', 'logo-cliente1', null);
+loadLogo('logo-c2', 'logo-cliente2', null);
+loadLogo('logo-c3', 'logo-cliente3', null);
 </script>
 </body>
 </html>
