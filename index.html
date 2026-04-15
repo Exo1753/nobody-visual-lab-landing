@@ -21,7 +21,7 @@
   --muted:rgba(255,255,255,0.28);
   --muted2:rgba(255,255,255,0.48);
   --fd:'Bebas Neue',sans-serif;
---fb:'DM Sans',sans-serif;
+  --fb:'DM Sans',sans-serif;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -211,10 +211,59 @@ footer{border-top:0.5px solid var(--border-em);display:grid;grid-template-column
 .rv3{transition:opacity .8s ease .24s,transform .8s ease .24s}
 .rv.vis,.rv2.vis,.rv3.vis{opacity:1;transform:none}
 .cyan{color:var(--accent)}
+
+/* APP PRICING SECTION */
+.app-pricing-sec{border-bottom:0.5px solid var(--border-em);padding:60px 28px}
+.app-pricing-inner{max-width:1100px;margin:0 auto}
+.app-pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border-em);margin-top:36px}
+.app-plan{background:var(--bg);padding:28px 24px;position:relative;transition:background 0.25s}
+.app-plan.featured{background:var(--surface);border:0.5px solid var(--accent-bdr)}
+.app-plan:hover{background:var(--accent-sub)}
+.app-plan-badge{font-size:9px;letter-spacing:0.14em;background:var(--accent);color:#071a13;padding:3px 12px;border-radius:100px;display:inline-block;margin-bottom:14px;font-weight:700;text-transform:uppercase}
+.app-plan-name{font-family:var(--fd);font-size:22px;font-weight:900;margin-bottom:4px;text-transform:uppercase}
+.app-plan-desc{font-size:11px;color:var(--muted);margin-bottom:16px}
+.app-plan-price{font-family:var(--fd);font-size:clamp(28px,3vw,38px);font-weight:900;color:var(--accent);line-height:1}
+.app-plan-period{font-size:9px;color:var(--muted);letter-spacing:0.10em;margin-bottom:18px;margin-top:4px;text-transform:uppercase;font-weight:600}
+.app-plan-divider{border:none;border-top:0.5px solid var(--border-em);margin-bottom:16px}
+.app-plan-yields{list-style:none;margin-bottom:20px}
+.app-plan-yields li{font-size:11px;color:var(--muted2);line-height:2.1;display:flex;align-items:center;gap:8px}
+.app-plan-yields li::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--accent);opacity:0.7;flex-shrink:0}
+.app-plan-note{font-size:10px;color:var(--muted);line-height:1.6;margin-bottom:16px;padding:10px 12px;border:0.5px solid var(--border);border-radius:8px;background:rgba(255,255,255,0.02)}
+
+/* AGENCIA PLAN */
+.agencia-sec{border-bottom:0.5px solid var(--border-em);padding:60px 28px}
+.agencia-inner{max-width:1100px;margin:0 auto}
+.agencia-card{margin-top:36px;border:1px solid var(--accent-bdr);border-radius:16px;background:linear-gradient(135deg,rgba(77,191,163,0.06) 0%,rgba(77,191,163,0.02) 100%);padding:40px;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.agencia-left{}
+.agencia-tag{font-size:9px;letter-spacing:0.18em;color:var(--accent);font-weight:700;text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.agencia-tag::before{content:'';width:14px;height:1px;background:var(--accent)}
+.agencia-title{font-family:var(--fd);font-size:clamp(28px,3vw,42px);font-weight:900;line-height:0.9;text-transform:uppercase;margin-bottom:16px}
+.agencia-desc{font-size:12px;color:var(--muted2);line-height:1.85;margin-bottom:24px}
+.agencia-right{}
+.agencia-list{list-style:none;margin-bottom:28px}
+.agencia-list li{font-size:12px;color:var(--muted2);line-height:2.2;display:flex;align-items:flex-start;gap:10px}
+.agencia-list li::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--accent);opacity:0.8;flex-shrink:0;margin-top:8px}
+.agencia-price{font-family:var(--fd);font-size:clamp(32px,3vw,48px);font-weight:900;color:var(--accent);line-height:1;margin-bottom:4px}
+.agencia-price-note{font-size:11px;color:var(--muted);margin-bottom:20px}
+.agencia-guarantee{font-size:11px;color:rgba(77,191,163,0.7);border:0.5px solid rgba(77,191,163,0.2);border-radius:8px;padding:10px 14px;margin-bottom:20px;line-height:1.6}
+
+/* FAQ */
+.faq-sec{border-bottom:0.5px solid var(--border-em);padding:60px 28px}
+.faq-inner{max-width:800px;margin:0 auto}
+.faq-title{font-family:var(--fd);font-size:clamp(28px,4vw,48px);font-weight:900;text-transform:uppercase;margin-bottom:36px}
+.faq-item{border-bottom:0.5px solid var(--border);padding:20px 0;cursor:pointer}
+.faq-question{font-size:13px;font-weight:600;color:var(--white);display:flex;justify-content:space-between;align-items:center;gap:16px;transition:color 0.2s}
+.faq-item:hover .faq-question{color:var(--accent)}
+.faq-icon{font-size:18px;color:var(--accent);flex-shrink:0;transition:transform 0.2s;font-weight:300}
+.faq-answer{font-size:12px;color:var(--muted2);line-height:1.85;max-height:0;overflow:hidden;transition:max-height 0.35s ease,padding 0.2s;padding-top:0}
+.faq-item.open .faq-answer{max-height:200px;padding-top:12px}
+.faq-item.open .faq-icon{transform:rotate(45deg)}
+
 @media(max-width:1024px){
   .srv-item{grid-template-columns:auto 1fr auto;gap:12px}
   .srv-tags{display:none}
   .gallery-grid{grid-template-columns:repeat(3,1fr)}
+  .agencia-card{grid-template-columns:1fr}
 }
 @media(max-width:900px){
   nav{padding:12px 16px}
@@ -223,19 +272,19 @@ footer{border-top:0.5px solid var(--border-em);display:grid;grid-template-column
   .hero-right-stats{flex-direction:row;flex-wrap:wrap;justify-content:flex-start;gap:16px}
   .hero-stat{text-align:left}
   .hero-stat-n{font-size:28px}
-  .paths-grid,.plans-grid,.proc-grid,.esp-grid{grid-template-columns:1fr}
-  .statement,.plans-sec,.tut-sec,.cta-sec{padding:44px 16px}
+  .paths-grid,.plans-grid,.proc-grid,.app-pricing-grid{grid-template-columns:1fr}
+  .statement,.plans-sec,.tut-sec,.cta-sec,.app-pricing-sec,.agencia-sec,.faq-sec{padding:44px 16px}
   .paths-header,.gallery-header,.srv-header,.port-header,.proc-header,.esp-header{padding:24px 16px 18px}
   .port-grid{grid-template-columns:1fr 1fr}
   footer{grid-template-columns:1fr;text-align:center}
   .f-right{justify-content:center}
   .stmt-text{font-size:clamp(28px,8vw,44px)}
   .cta-title{font-size:clamp(40px,12vw,70px)}
+  .agencia-card{padding:24px}
 }
 @media(max-width:600px){
   .hero-paths{grid-template-columns:1fr}
   .gallery-grid,.port-grid{grid-template-columns:1fr 1fr}
-  .esp-grid{grid-template-columns:1fr}
 }
 ::-webkit-scrollbar{width:3px}
 ::-webkit-scrollbar-track{background:var(--bg)}
@@ -251,17 +300,18 @@ footer{border-top:0.5px solid var(--border-em);display:grid;grid-template-column
     <span>NOBODY<em>VISUAL</em>LAB</span>
   </a>
   <ul class="nav-links">
-    <li><a href="#caminos" data-i18n="n1">SERVICIOS</a></li>
-    <li><a href="#planes" data-i18n="n2">PLANES</a></li>
-    <li><a href="#portafolio" data-i18n="n3">PORTAFOLIO</a></li>
-    <li><a href="#contacto" data-i18n="n4">CONTACTO</a></li>
+    <li><a href="#caminos">SERVICIOS</a></li>
+    <li><a href="#app-pricing">APP</a></li>
+    <li><a href="#planes">AGENCIA</a></li>
+    <li><a href="#portafolio">PORTAFOLIO</a></li>
+    <li><a href="#contacto">CONTACTO</a></li>
   </ul>
   <div class="nav-r">
     <div class="lang-sw">
       <button class="lb active" onclick="setLang('es')">ES</button>
       <button class="lb" onclick="setLang('en')">EN</button>
     </div>
-    <a href="https://app.nobodyvisuallab.com" class="btn-app" data-i18n="ncta">ENTRAR A LA APP</a>
+    <a href="https://app.nobodyvisuallab.com" class="btn-app">ENTRAR A LA APP</a>
   </div>
 </nav>
 
@@ -275,33 +325,30 @@ footer{border-top:0.5px solid var(--border-em);display:grid;grid-template-column
   </button>
   <div class="hero-content">
     <div>
-      <div class="hero-eyebrow" data-i18n="hbadge">AI VISUAL STUDIO — FASHION & BRANDS</div>
+      <div class="hero-eyebrow">AI VISUAL STUDIO — FASHION & BRANDS</div>
       <h1 class="hero-title">
-        <span data-i18n="ht1">CREAMOS</span><br/>
-        <span data-i18n="ht2">LO QUE</span><br/>
-        <span data-i18n="ht3">ANTES ERA</span><br/>
-        <span class="cyan" data-i18n="ht4">IMPOSIBLE.</span>
+        CREAMOS<br/>LO QUE<br/>ANTES ERA<br/><span class="cyan">IMPOSIBLE.</span>
       </h1>
-      <p class="hero-desc" data-i18n="hdesc">Modelos digitales hiperrealistas, fotografía de producto y video UGC con IA. Sin modelos reales, sin sets, sin límites.</p>
+      <p class="hero-desc">Modelos digitales hiperrealistas, fotografía de producto y video UGC con IA. Sin modelos reales, sin sets, sin límites.</p>
       <div class="hero-paths">
         <a href="#caminos" class="hero-path">
-          <div class="hero-path-label" data-i18n="hp1label">OPCIÓN 1</div>
-          <div class="hero-path-title" data-i18n="hp1title">CONTRATAR EL ESTUDIO</div>
-          <div class="hero-path-desc" data-i18n="hp1desc">Nosotros lo creamos todo por ti. Planes desde $200 USD/mes.</div>
+          <div class="hero-path-label">OPCIÓN 1</div>
+          <div class="hero-path-title">CONTRATAR EL ESTUDIO</div>
+          <div class="hero-path-desc">Nosotros lo creamos todo por ti. Planes desde $200 USD/mes.</div>
           <div class="hero-path-arrow">→</div>
         </a>
         <a href="https://app.nobodyvisuallab.com" class="hero-path">
-          <div class="hero-path-label" data-i18n="hp2label">OPCIÓN 2</div>
-          <div class="hero-path-title" data-i18n="hp2title">USAR LA APP</div>
-          <div class="hero-path-desc" data-i18n="hp2desc">Tú lo creas con nuestras herramientas de IA. Acceso inmediato.</div>
+          <div class="hero-path-label">OPCIÓN 2</div>
+          <div class="hero-path-title">USAR LA APP</div>
+          <div class="hero-path-desc">Tú lo creas con nuestras herramientas de IA. Desde $6.99 USD.</div>
           <div class="hero-path-arrow">→</div>
         </a>
       </div>
     </div>
     <div class="hero-right-stats">
-      <div class="hero-stat"><div class="hero-stat-n">+50<span style="color:var(--muted2);font-size:.55em;font-family:var(--fb);font-weight:400">K</span></div><div class="hero-stat-l" data-i18n="st1">IMÁGENES GENERADAS</div></div>
-      <div class="hero-stat"><div class="hero-stat-n">+200</div><div class="hero-stat-l" data-i18n="st2">VIDEOS UGC</div></div>
-      <div class="hero-stat"><div class="hero-stat-n">+30</div><div class="hero-stat-l" data-i18n="st3">MARCAS</div></div>
+      <div class="hero-stat"><div class="hero-stat-n">7</div><div class="hero-stat-l">HERRAMIENTAS DE IA</div></div>
+      <div class="hero-stat"><div class="hero-stat-n">48H</div><div class="hero-stat-l">ENTREGA GARANTIZADA</div></div>
+      <div class="hero-stat"><div class="hero-stat-n">$6.99</div><div class="hero-stat-l">PRECIO DE ENTRADA USD</div></div>
     </div>
   </div>
 </section>
@@ -331,14 +378,14 @@ footer{border-top:0.5px solid var(--border-em);display:grid;grid-template-column
 <!-- STATEMENT -->
 <div class="statement rv">
   <div class="statement-inner">
-    <div class="stmt-tag" data-i18n="abtag">NUESTRA FILOSOFÍA</div>
+    <div class="stmt-tag">NUESTRA FILOSOFÍA</div>
     <div class="stmt-text">
-      <div data-i18n="stmt1">NO SOMOS UN</div>
-      <div class="outline" data-i18n="stmt2">ESTUDIO TRADICIONAL.</div>
-      <div data-i18n="stmt3">SOMOS UN</div>
-      <div class="cyan" data-i18n="stmt4">LABORATORIO VISUAL.</div>
+      <div>NO SOMOS UN</div>
+      <div class="outline">ESTUDIO TRADICIONAL.</div>
+      <div>SOMOS UN</div>
+      <div class="cyan">LABORATORIO VISUAL.</div>
     </div>
-    <p class="stmt-sub" data-i18n="stmtsub">MR. Nobody nace de una idea simple: no necesitas un equipo completo de producción para crear contenido de alto nivel. Creamos una nueva forma de producir — sin límites físicos, con estética cinematográfica y dirección de arte real.</p>
+    <p class="stmt-sub">MR. Nobody nace de una idea simple: no necesitas un equipo completo de producción para crear contenido de alto nivel. Creamos una nueva forma de producir — sin límites físicos, con estética cinematográfica y dirección de arte real.</p>
   </div>
 </div>
 
@@ -409,46 +456,195 @@ footer{border-top:0.5px solid var(--border-em);display:grid;grid-template-column
 <!-- DOS CAMINOS -->
 <section id="caminos" class="paths-sec">
   <div class="paths-header rv">
-    <div class="paths-title" data-i18n="pathtit">¿CÓMO QUIERES TRABAJAR?</div>
-    <p class="paths-sub" data-i18n="pathsub">Dos formas de acceder al poder de la IA visual. Tú eliges.</p>
+    <div class="paths-title">¿CÓMO QUIERES TRABAJAR?</div>
+    <p class="paths-sub">Dos formas de acceder al poder de la IA visual. Tú eliges.</p>
   </div>
   <div class="paths-grid">
     <div class="path-card path-card-agency rv">
       <div class="path-card-num">01</div>
       <div class="path-card-icon">🎬</div>
-      <div class="path-card-title" data-i18n="path1tit">CONTRATAR<br/>EL <span class="cyan">ESTUDIO</span></div>
-      <p class="path-card-desc" data-i18n="path1desc">Nosotros lo creamos todo por ti. Dirección de arte, modelos, fotografía y video. Tú solo envías tu producto y defines el estilo.</p>
+      <div class="path-card-title">CONTRATAR<br/>EL <span class="cyan">ESTUDIO</span></div>
+      <p class="path-card-desc">Nosotros lo creamos todo por ti. Dirección de arte, modelos, fotografía y video. Tú solo envías tu producto y defines el estilo.</p>
       <ul class="path-card-list">
-        <li data-i18n="path1i1">Modelos digitales exclusivos para tu marca</li>
-        <li data-i18n="path1i2">Fotografía editorial de producto con IA</li>
-        <li data-i18n="path1i3">Videos UGC y Reels listos para publicar</li>
-        <li data-i18n="path1i4">Contenido listo en 48 a 72 horas</li>
-        <li data-i18n="path1i5">Planes desde $200 USD por mes</li>
+        <li>Modelos digitales exclusivos para tu marca</li>
+        <li>Fotografía editorial de producto con IA</li>
+        <li>Videos UGC y Reels listos para publicar</li>
+        <li>Contenido listo en 48 a 72 horas</li>
+        <li>Planes desde $200 USD por mes</li>
       </ul>
-      <a href="#planes" class="btn-p" data-i18n="path1cta">VER PLANES →</a>
+      <a href="#planes" class="btn-p">VER PLANES →</a>
     </div>
     <div class="path-card path-card-app rv2">
       <div class="path-card-num">02</div>
       <div class="path-card-icon">⚡</div>
-      <div class="path-card-title" data-i18n="path2tit">USAR<br/>LA <span class="cyan">APP</span></div>
-      <p class="path-card-desc" data-i18n="path2desc">Crea tú mismo con nuestras herramientas de IA. Genera imágenes, integra productos en modelos y edita contenido en minutos. Sin experiencia previa.</p>
+      <div class="path-card-title">USAR<br/>LA <span class="cyan">APP</span></div>
+      <p class="path-card-desc">Crea tú mismo con nuestras herramientas de IA. Genera imágenes, integra productos en modelos y edita contenido en minutos. Sin experiencia previa.</p>
       <ul class="path-card-list">
-        <li data-i18n="path2i1">Genera modelos e imágenes de producto</li>
-        <li data-i18n="path2i2">Editor de video con IA integrado</li>
-        <li data-i18n="path2i3">Virtual try-on para ecommerce</li>
-        <li data-i18n="path2i4">Resultados en minutos, no en días</li>
-        <li data-i18n="path2i5">Acceso inmediato, sin contratos</li>
+        <li>Genera modelos e imágenes de producto</li>
+        <li>Editor de video con IA integrado</li>
+        <li>Virtual try-on para ecommerce</li>
+        <li>Resultados en minutos, no en días</li>
+        <li>Desde $6.99 USD — sin suscripción obligatoria</li>
       </ul>
-      <a href="https://app.nobodyvisuallab.com" class="btn-s" data-i18n="path2cta">PROBAR LA APP →</a>
+      <a href="https://app.nobodyvisuallab.com" class="btn-s">PROBAR LA APP →</a>
     </div>
+  </div>
+</section>
+
+<!-- PLANES UNIFICADOS -->
+<section id="app-pricing" class="plans-sec">
+  <div class="plans-inner">
+    <div class="sec-tag rv">ELIGE TU FORMA DE TRABAJAR</div>
+    <div class="plans-title rv">PLANES</div>
+    <p class="plans-sub rv">Dos modelos de trabajo, un mismo objetivo: contenido visual que vende.</p>
+
+    <!-- Subtítulo autoservicio -->
+    <div style="margin-bottom:16px;margin-top:36px" class="rv">
+      <div style="display:inline-flex;align-items:center;gap:10px;font-size:10px;letter-spacing:0.16em;color:var(--accent);font-weight:700;text-transform:uppercase">
+        <span style="width:20px;height:1px;background:var(--accent);display:inline-block"></span>
+        AUTOSERVICIO — USA LA APP TÚ MISMO
+      </div>
+      <p style="font-size:11px;color:var(--muted2);margin-top:6px">Sin suscripción. Pago único. Los créditos no caducan.</p>
+    </div>
+    <div class="app-pricing-grid rv2">
+      <div class="app-plan">
+        <div class="app-plan-name">Starter</div>
+        <div class="app-plan-desc">Para explorar la plataforma</div>
+        <div class="app-plan-price">$6.99 <span style="font-family:var(--fb);font-size:13px;color:var(--muted2);font-weight:400">USD</span></div>
+        <div class="app-plan-period">50 créditos · pago único</div>
+        <hr class="app-plan-divider"/>
+        <ul class="app-plan-yields">
+          <li>50 cambios de ropa virtuales</li>
+          <li>16 fotos de producto</li>
+          <li>7 videos cortos</li>
+        </ul>
+        <a href="https://app.nobodyvisuallab.com" class="plan-cta plan-cta-s">EMPEZAR →</a>
+      </div>
+      <div class="app-plan featured">
+        <div class="app-plan-badge">Más popular</div>
+        <div class="app-plan-name">Creator</div>
+        <div class="app-plan-desc">El balance perfecto</div>
+        <div class="app-plan-price">$14.99 <span style="font-family:var(--fb);font-size:13px;color:var(--muted2);font-weight:400">USD</span></div>
+        <div class="app-plan-period">150 créditos · pago único</div>
+        <hr class="app-plan-divider"/>
+        <ul class="app-plan-yields">
+          <li>150 cambios de ropa virtuales</li>
+          <li>50 fotos de producto</li>
+          <li>21 videos cortos</li>
+        </ul>
+        <a href="https://app.nobodyvisuallab.com" class="plan-cta plan-cta-p">EMPEZAR →</a>
+      </div>
+      <div class="app-plan">
+        <div class="app-plan-name">Studio</div>
+        <div class="app-plan-desc">Para producción intensiva</div>
+        <div class="app-plan-price">$34.99 <span style="font-family:var(--fb);font-size:13px;color:var(--muted2);font-weight:400">USD</span></div>
+        <div class="app-plan-period">400 créditos · pago único</div>
+        <hr class="app-plan-divider"/>
+        <ul class="app-plan-yields">
+          <li>400 cambios de ropa virtuales</li>
+          <li>133 fotos de producto</li>
+          <li>57 videos cortos</li>
+        </ul>
+        <a href="https://app.nobodyvisuallab.com" class="plan-cta plan-cta-s">EMPEZAR →</a>
+      </div>
+    </div>
+
+    <!-- Divisor -->
+    <div style="border-top:0.5px solid var(--border-em);margin:48px 0 36px"></div>
+
+    <!-- Subtítulo agencia -->
+    <div style="margin-bottom:16px" class="rv">
+      <div style="display:inline-flex;align-items:center;gap:10px;font-size:10px;letter-spacing:0.16em;color:var(--accent);font-weight:700;text-transform:uppercase">
+        <span style="width:20px;height:1px;background:var(--accent);display:inline-block"></span>
+        SERVICIO COMPLETO — NOSOTROS LO CREAMOS POR TI
+      </div>
+      <p style="font-size:11px;color:var(--muted2);margin-top:6px">Sin contratos largos. Sin sorpresas. Elige según el tamaño de tu marca.</p>
+    </div>
+    <div class="plans-grid rv2">
+      <div class="plan-card">
+        <div class="plan-name">STARTER</div>
+        <p class="plan-for">Para marcas que están comenzando</p>
+        <div class="plan-price">$200 <span>– $250</span></div>
+        <div class="plan-period">USD / MES</div>
+        <hr class="plan-divider"/>
+        <ul class="plan-items">
+          <li>10 imágenes con modelo IA</li>
+          <li>8 imágenes de producto</li>
+          <li>2 videos cortos</li>
+        </ul>
+        <a href="https://wa.me/526676991211" class="plan-cta plan-cta-s" target="_blank">COTIZAR AHORA</a>
+      </div>
+      <div class="plan-card featured">
+        <div class="plan-badge">MÁS POPULAR</div>
+        <div class="plan-name">GROWTH</div>
+        <p class="plan-for">Para marcas en crecimiento</p>
+        <div class="plan-price">$350 <span>– $400</span></div>
+        <div class="plan-period">USD / MES</div>
+        <hr class="plan-divider"/>
+        <ul class="plan-items">
+          <li>20 imágenes con modelo IA</li>
+          <li>15 imágenes de producto</li>
+          <li>5 videos cortos</li>
+        </ul>
+        <a href="https://wa.me/526676991211" class="plan-cta plan-cta-p" target="_blank">COTIZAR AHORA</a>
+      </div>
+      <div class="plan-card">
+        <div class="plan-name">PRO CAMPAIGN</div>
+        <p class="plan-for">Para marcas que quieren escalar</p>
+        <div class="plan-price">$600 <span>– $700</span></div>
+        <div class="plan-period">USD / MES</div>
+        <hr class="plan-divider"/>
+        <ul class="plan-items">
+          <li>30 imágenes con modelo IA</li>
+          <li>30 imágenes de producto</li>
+          <li>3 videos de campaña</li>
+        </ul>
+        <a href="https://wa.me/526676991211" class="plan-cta plan-cta-s" target="_blank">COTIZAR AHORA</a>
+      </div>
+    </div>
+
+    <!-- Divisor -->
+    <div style="border-top:0.5px solid var(--border-em);margin:48px 0 36px"></div>
+
+    <!-- Plan Agencia -->
+    <div style="margin-bottom:16px" class="rv">
+      <div style="display:inline-flex;align-items:center;gap:10px;font-size:10px;letter-spacing:0.16em;color:var(--accent);font-weight:700;text-transform:uppercase">
+        <span style="width:20px;height:1px;background:var(--accent);display:inline-block"></span>
+        PLAN AGENCIA — APP + EQUIPO HUMANO
+      </div>
+      <p style="font-size:11px;color:var(--muted2);margin-top:6px">Para negocios que quieren resultados garantizados, sin importar si la IA falla.</p>
+    </div>
+    <div class="agencia-card rv2">
+      <div class="agencia-left">
+        <div class="agencia-tag">La diferencia que nadie más ofrece</div>
+        <div class="agencia-title">ACCESO A LA APP<br/>+ <span class="cyan">EQUIPO HUMANO</span><br/>INCLUIDO</div>
+        <p class="agencia-desc">Con el Plan Agencia no solo usas la plataforma — contratas al equipo de Nobody Visual Lab como tu departamento visual externo. Cuando la IA no da el resultado que necesitas, nosotros lo resolvemos. Tú nos dices qué quieres, nosotros lo entregamos.</p>
+        <div class="agencia-guarantee">Garantía de resultado: si algo no sale bien, lo rehacemos sin costo adicional. Siempre.</div>
+        <a href="https://wa.me/526676991211" class="btn-p" target="_blank">COTIZAR PLAN AGENCIA →</a>
+      </div>
+      <div class="agencia-right">
+        <div class="agencia-price">$199 <span style="font-family:var(--fb);font-size:16px;color:var(--muted2);font-weight:400">USD</span></div>
+        <div class="agencia-price-note">por mes · sin contratos largos</div>
+        <ul class="agencia-list">
+          <li>Acceso completo a la app con 200 créditos mensuales</li>
+          <li>Hasta 10 solicitudes manuales al equipo por mes</li>
+          <li>Entrega en máximo 48 horas por solicitud</li>
+          <li>Canal directo por WhatsApp para coordinar</li>
+          <li>Hasta 2 revisiones por solicitud sin costo extra</li>
+          <li>Resultados garantizados — si no queda bien, lo rehacemos</li>
+          <li>Ideal para joyerías, tiendas de ropa y marcas de producto</li>
+        </ul>
+      </div>
+    </div>
+
   </div>
 </section>
 
 <!-- GALERÍA -->
 <section class="gallery-sec">
   <div class="gallery-header rv">
-    <div class="gallery-title" data-i18n="galtit">MODELOS QUE HEMOS CREADO</div>
-    <a href="https://app.nobodyvisuallab.com" class="btn-s" data-i18n="galcta">VER TODOS EN LA APP →</a>
+    <div class="gallery-title">MODELOS QUE HEMOS CREADO</div>
+    <a href="https://app.nobodyvisuallab.com" class="btn-s">VER TODOS EN LA APP →</a>
   </div>
   <div class="gallery-grid">
     <a href="valentina.html" class="gallery-card" style="text-decoration:none">
@@ -467,73 +663,22 @@ footer{border-top:0.5px solid var(--border-em);display:grid;grid-template-column
     <div class="gallery-card gallery-soon"><div class="soon-inner"><div class="soon-icon">◈</div><div class="soon-name">MODELO 05</div><div class="soon-label">PRÓXIMAMENTE</div></div></div>
     <div class="gallery-card gallery-soon"><div class="soon-inner"><div class="soon-icon">◈</div><div class="soon-name">MODELO 06</div><div class="soon-label">PRÓXIMAMENTE</div></div></div>
   </div>
-  <div class="gallery-more"><a href="https://app.nobodyvisuallab.com" data-i18n="galmore">+ VER TODOS LOS MODELOS EN LA APP</a></div>
+  <div class="gallery-more"><a href="https://app.nobodyvisuallab.com">+ VER TODOS LOS MODELOS EN LA APP</a></div>
 </section>
 
 <!-- SERVICIOS -->
 <section id="servicios" class="srv-sec">
   <div class="srv-header rv">
-    <div class="srv-title" data-i18n="svtit">SERVICIOS</div>
-    <p style="max-width:300px;font-size:12px;color:var(--muted2);line-height:1.75" data-i18n="svsub">Todo lo que una marca necesita para competir visualmente.</p>
+    <div class="srv-title">SERVICIOS</div>
+    <p style="max-width:300px;font-size:12px;color:var(--muted2);line-height:1.75">Todo lo que una marca necesita para competir visualmente.</p>
   </div>
   <div class="srv-list rv2">
-    <div class="srv-item"><div class="srv-num">01</div><div class="srv-name" data-i18n="s1n">MODELOS DIGITALES IA</div><div class="srv-tags"><span class="srv-tag">Exclusivo</span><span class="srv-tag">Hiperrealista</span></div><div class="srv-arrow">→</div></div>
-    <div class="srv-item"><div class="srv-num">02</div><div class="srv-name" data-i18n="s2n">FOTOGRAFÍA EDITORIAL</div><div class="srv-tags"><span class="srv-tag">Producto</span><span class="srv-tag">Lifestyle</span></div><div class="srv-arrow">→</div></div>
-    <div class="srv-item"><div class="srv-num">03</div><div class="srv-name" data-i18n="s3n">VIDEO UGC & REELS</div><div class="srv-tags"><span class="srv-tag">Movimiento IA</span><span class="srv-tag">Redes</span></div><div class="srv-arrow">→</div></div>
-    <div class="srv-item"><div class="srv-num">04</div><div class="srv-name" data-i18n="s4n">VIRTUAL TRY-ON</div><div class="srv-tags"><span class="srv-tag">E-commerce</span><span class="srv-tag">Outfit</span></div><div class="srv-arrow">→</div></div>
-    <div class="srv-item"><div class="srv-num">05</div><div class="srv-name" data-i18n="s5n">DIRECCIÓN DE ARTE IA</div><div class="srv-tags"><span class="srv-tag">Campaña</span><span class="srv-tag">Narrativa</span></div><div class="srv-arrow">→</div></div>
-    <div class="srv-item"><div class="srv-num">06</div><div class="srv-name" data-i18n="s6n">EDITOR DE IMAGEN IA</div><div class="srv-tags"><span class="srv-tag">Fondo</span><span class="srv-tag">Estilo</span></div><div class="srv-arrow">→</div></div>
-  </div>
-</section>
-
-<!-- PLANES -->
-<section id="planes" class="plans-sec">
-  <div class="plans-inner">
-    <div class="sec-tag rv" data-i18n="pltag">SERVICIOS DE AGENCIA</div>
-    <div class="plans-title rv" data-i18n="pltit">PLANES</div>
-    <p class="plans-sub rv" data-i18n="plsub">Sin contratos largos. Sin sorpresas. Elige según el tamaño de tu marca.</p>
-    <div class="plans-grid rv2">
-      <div class="plan-card">
-        <div class="plan-name" data-i18n="pl1name">STARTER</div>
-        <p class="plan-for" data-i18n="pl1for">Para marcas que están comenzando</p>
-        <div class="plan-price">$200 <span>– $250</span></div>
-        <div class="plan-period" data-i18n="plperiod">USD / MES</div>
-        <hr class="plan-divider"/>
-        <ul class="plan-items">
-          <li data-i18n="pl1i1">10 imágenes con modelo IA</li>
-          <li data-i18n="pl1i2">8 imágenes de producto</li>
-          <li data-i18n="pl1i3">2 videos cortos</li>
-        </ul>
-        <a href="https://wa.me/526676991211" class="plan-cta plan-cta-s" target="_blank" data-i18n="plcta">COTIZAR AHORA</a>
-      </div>
-      <div class="plan-card featured">
-        <div class="plan-badge" data-i18n="plpop">MÁS POPULAR</div>
-        <div class="plan-name" data-i18n="pl2name">GROWTH</div>
-        <p class="plan-for" data-i18n="pl2for">Para marcas en crecimiento</p>
-        <div class="plan-price">$350 <span>– $400</span></div>
-        <div class="plan-period" data-i18n="plperiod">USD / MES</div>
-        <hr class="plan-divider"/>
-        <ul class="plan-items">
-          <li data-i18n="pl2i1">20 imágenes con modelo IA</li>
-          <li data-i18n="pl2i2">15 imágenes de producto</li>
-          <li data-i18n="pl2i3">5 videos cortos</li>
-        </ul>
-        <a href="https://wa.me/526676991211" class="plan-cta plan-cta-p" target="_blank" data-i18n="plcta">COTIZAR AHORA</a>
-      </div>
-      <div class="plan-card">
-        <div class="plan-name" data-i18n="pl3name">PRO CAMPAIGN</div>
-        <p class="plan-for" data-i18n="pl3for">Para marcas que quieren escalar</p>
-        <div class="plan-price">$600 <span>– $700</span></div>
-        <div class="plan-period" data-i18n="plperiod">USD / MES</div>
-        <hr class="plan-divider"/>
-        <ul class="plan-items">
-          <li data-i18n="pl3i1">30 imágenes con modelo IA</li>
-          <li data-i18n="pl3i2">30 imágenes de producto</li>
-          <li data-i18n="pl3i3">3 videos de campaña</li>
-        </ul>
-        <a href="https://wa.me/526676991211" class="plan-cta plan-cta-s" target="_blank" data-i18n="plcta">COTIZAR AHORA</a>
-      </div>
-    </div>
+    <div class="srv-item"><div class="srv-num">01</div><div class="srv-name">MODELOS DIGITALES IA</div><div class="srv-tags"><span class="srv-tag">Exclusivo</span><span class="srv-tag">Hiperrealista</span></div><div class="srv-arrow">→</div></div>
+    <div class="srv-item"><div class="srv-num">02</div><div class="srv-name">FOTOGRAFÍA EDITORIAL</div><div class="srv-tags"><span class="srv-tag">Producto</span><span class="srv-tag">Lifestyle</span></div><div class="srv-arrow">→</div></div>
+    <div class="srv-item"><div class="srv-num">03</div><div class="srv-name">VIDEO UGC & REELS</div><div class="srv-tags"><span class="srv-tag">Movimiento IA</span><span class="srv-tag">Redes</span></div><div class="srv-arrow">→</div></div>
+    <div class="srv-item"><div class="srv-num">04</div><div class="srv-name">VIRTUAL TRY-ON</div><div class="srv-tags"><span class="srv-tag">E-commerce</span><span class="srv-tag">Outfit</span></div><div class="srv-arrow">→</div></div>
+    <div class="srv-item"><div class="srv-num">05</div><div class="srv-name">DIRECCIÓN DE ARTE IA</div><div class="srv-tags"><span class="srv-tag">Campaña</span><span class="srv-tag">Narrativa</span></div><div class="srv-arrow">→</div></div>
+    <div class="srv-item"><div class="srv-num">06</div><div class="srv-name">EDITOR DE IMAGEN IA</div><div class="srv-tags"><span class="srv-tag">Fondo</span><span class="srv-tag">Estilo</span></div><div class="srv-arrow">→</div></div>
   </div>
 </section>
 
@@ -543,11 +688,33 @@ footer{border-top:0.5px solid var(--border-em);display:grid;grid-template-column
   <div id="yt-wrap"><iframe id="yt-frame" src="" allow="autoplay;encrypted-media" allowfullscreen></iframe></div>
 </div>
 
+<!-- CLIENTES -->
+<section style="border-bottom:0.5px solid var(--border-em);padding:48px 28px">
+  <div style="max-width:1100px;margin:0 auto" class="rv">
+    <div class="sec-tag" style="justify-content:center;margin-bottom:28px">YA CONFÍAN EN NOSOTROS</div>
+    <div style="display:flex;align-items:center;justify-content:center;gap:60px;flex-wrap:wrap">
+      <div style="display:flex;flex-direction:column;align-items:center;gap:12px">
+        <div style="height:56px;display:flex;align-items:center;justify-content:center;filter:brightness(0) invert(1);opacity:0.65;transition:opacity 0.2s" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.65'">
+          <img src="images/logo-cliente1.png" alt="Source by Frida" style="max-height:56px;max-width:160px;object-fit:contain"/>
+        </div>
+        <span style="font-size:10px;letter-spacing:0.12em;color:var(--muted);text-transform:uppercase;font-weight:600">Source by Frida</span>
+      </div>
+      <div style="width:1px;height:40px;background:var(--border-em)"></div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:12px">
+        <div style="height:56px;display:flex;align-items:center;justify-content:center;filter:brightness(0) invert(1);opacity:0.65;transition:opacity 0.2s" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.65'">
+          <img src="images/logo-cliente2.jpg" alt="Hadares Joyería" style="max-height:56px;max-width:160px;object-fit:contain"/>
+        </div>
+        <span style="font-size:10px;letter-spacing:0.12em;color:var(--muted);text-transform:uppercase;font-weight:600">Hadares Joyería</span>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- PORTAFOLIO -->
 <section id="portafolio" class="port-sec">
   <div class="port-header rv">
-    <div class="port-title" data-i18n="ptit">TRABAJOS</div>
-    <a href="#contacto" class="btn-s" data-i18n="pcta">SOLICITAR TRABAJO →</a>
+    <div class="port-title">RESULTADOS <span class="cyan">REALES</span></div>
+    <a href="#contacto" class="btn-s">SOLICITAR TRABAJO →</a>
   </div>
   <div class="port-grid">
     <div class="pi pv" onclick="openLightbox('d_t147gcq1g')">
@@ -555,21 +722,65 @@ footer{border-top:0.5px solid var(--border-em);display:grid;grid-template-column
       <div class="pi-overlay">
         <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-60%)"><div class="play-btn"><svg width="22" height="22" viewBox="0 0 24 24" fill="#4DBFA3"><path d="M8 5v14l11-7z"/></svg></div></div>
         <div class="pi-cat">VIDEO UGC</div>
-        <div class="pi-name" data-i18n="plb1">CAMPAÑA EDITORIAL — MODA</div>
+        <div class="pi-name">CAMPAÑA EDITORIAL — MODA</div>
       </div>
     </div>
-    <div class="pi"><img src="images/trabajo-01.png" alt=""/><div class="pi-overlay"><div class="pi-cat">MODELOS IA</div><div class="pi-name" data-i18n="plb2">LIFESTYLE SKINCARE</div></div></div>
+    <div class="pi"><img src="images/trabajo-01.png" alt=""/><div class="pi-overlay"><div class="pi-cat">MODELOS IA</div><div class="pi-name">LIFESTYLE SKINCARE</div></div></div>
     <div class="pi pv" onclick="openLightbox('Do2DrcfMJi8','short')">
       <img src="https://img.youtube.com/vi/Do2DrcfMJi8/maxresdefault.jpg" alt="Short UGC"/>
       <div class="pi-overlay">
         <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-60%)"><div class="play-btn"><svg width="22" height="22" viewBox="0 0 24 24" fill="#4DBFA3"><path d="M8 5v14l11-7z"/></svg></div></div>
         <div class="pi-cat">REEL — SHORT</div>
-        <div class="pi-name" data-i18n="plb3">REEL PARA REDES</div>
+        <div class="pi-name">REEL PARA REDES</div>
       </div>
     </div>
-    <div class="pi"><img src="images/trabajo-02.png" alt=""/><div class="pi-overlay"><div class="pi-cat">MODELOS IA</div><div class="pi-name" data-i18n="plb4">ECOMMERCE FASHION</div></div></div>
-    <div class="pi"><img src="images/trabajo-03.png" alt=""/><div class="pi-overlay"><div class="pi-cat">MODELOS IA</div><div class="pi-name" data-i18n="plb5">CAMPAÑA DE PRODUCTO</div></div></div>
-    <div class="pi"><img src="images/trabajo-04.png" alt=""/><div class="pi-overlay"><div class="pi-cat">MODELOS IA</div><div class="pi-name" data-i18n="plb6">DIRECCIÓN EDITORIAL</div></div></div>
+    <div class="pi"><img src="images/trabajo-02.png" alt=""/><div class="pi-overlay"><div class="pi-cat">MODELOS IA</div><div class="pi-name">ECOMMERCE FASHION</div></div></div>
+    <div class="pi"><img src="images/trabajo-03.png" alt=""/><div class="pi-overlay"><div class="pi-cat">MODELOS IA</div><div class="pi-name">CAMPAÑA DE PRODUCTO</div></div></div>
+    <div class="pi"><img src="images/trabajo-04.png" alt=""/><div class="pi-overlay"><div class="pi-cat">MODELOS IA</div><div class="pi-name">DIRECCIÓN EDITORIAL</div></div></div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-sec">
+  <div class="faq-inner rv">
+    <div class="sec-tag">PREGUNTAS FRECUENTES</div>
+    <div class="faq-title">LO QUE <span class="cyan">MÁS</span> NOS PREGUNTAN</div>
+
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-question">¿Necesito experiencia en diseño o IA para usar la app? <span class="faq-icon">+</span></div>
+      <div class="faq-answer">No. La app está diseñada para que cualquier dueño de negocio pueda usarla sin experiencia técnica. Solo subes tu foto de producto o ropa, describes lo que quieres, y la IA lo genera en minutos.</div>
+    </div>
+
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-question">¿Qué pasa si el resultado de la IA no es lo que esperaba? <span class="faq-icon">+</span></div>
+      <div class="faq-answer">Puedes volver a generar con ajustes al prompt. Si el resultado sigue sin convencerte, en el Plan Agencia el equipo lo resuelve manualmente. Para usuarios de créditos, puedes contactarnos por WhatsApp y buscamos una solución.</div>
+    </div>
+
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-question">¿Los créditos caducan? <span class="faq-icon">+</span></div>
+      <div class="faq-answer">No. Los créditos que compras no tienen fecha de vencimiento. Los puedes usar cuando quieras, a tu ritmo.</div>
+    </div>
+
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-question">¿Cuánto tiempo tarda en generarse una imagen o video? <span class="faq-icon">+</span></div>
+      <div class="faq-answer">Las imágenes se generan en 15 a 45 segundos dependiendo del tipo. Los videos toman entre 1 y 3 minutos. Mucho más rápido que coordinar una sesión fotográfica.</div>
+    </div>
+
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-question">¿Puedo usar los resultados para vender en Tiendanube, Shopify o redes sociales? <span class="faq-icon">+</span></div>
+      <div class="faq-answer">Sí. Todo el contenido generado con la plataforma es tuyo para usar comercialmente — en tu tienda online, catálogos, redes sociales, publicidad pagada, lo que necesites.</div>
+    </div>
+
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-question">¿Cómo funciona el Plan Agencia exactamente? <span class="faq-icon">+</span></div>
+      <div class="faq-answer">Pagas una mensualidad de $199 USD y obtienes acceso a la app con 200 créditos incluidos más hasta 10 solicitudes directas al equipo. Cuando algo no sale como esperabas, nos escribes por WhatsApp, nos dices qué necesitas, y te lo entregamos en 48 horas.</div>
+    </div>
+
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-question">¿Puedo cancelar en cualquier momento? <span class="faq-icon">+</span></div>
+      <div class="faq-answer">Sí. No hay contratos de permanencia ni penalizaciones. Los paquetes de créditos son de pago único. El Plan Agencia es mensual y puedes cancelarlo cuando quieras.</div>
+    </div>
+
   </div>
 </section>
 
@@ -577,27 +788,27 @@ footer{border-top:0.5px solid var(--border-em);display:grid;grid-template-column
 <section class="tut-sec rv">
   <div class="tut-glow"></div>
   <div class="tut-inner">
-    <div class="tut-eyebrow" data-i18n="tuteye">PRÓXIMAMENTE</div>
-    <div class="tut-title"><span data-i18n="tuttit1">APRENDE A USAR</span><br/><span class="cyan" data-i18n="tuttit2">IA PARA VENDER MÁS</span></div>
-    <p class="tut-desc" data-i18n="tutdesc">Te enseñamos paso a paso cómo crear contenido que realmente convierte. Desde lo básico hasta estrategias avanzadas para ecommerce y redes sociales.</p>
+    <div class="tut-eyebrow">PRÓXIMAMENTE</div>
+    <div class="tut-title"><span>APRENDE A USAR</span><br/><span class="cyan">IA PARA VENDER MÁS</span></div>
+    <p class="tut-desc">Te enseñamos paso a paso cómo crear contenido que realmente convierte. Desde lo básico hasta estrategias avanzadas para ecommerce y redes sociales.</p>
     <div class="tut-topics">
-      <div class="tut-topic" data-i18n="tut1">Imágenes de producto</div>
-      <div class="tut-topic" data-i18n="tut2">Modelos digitales</div>
-      <div class="tut-topic" data-i18n="tut3">Reels que venden</div>
-      <div class="tut-topic" data-i18n="tut4">Escalar con IA</div>
+      <div class="tut-topic">Imágenes de producto</div>
+      <div class="tut-topic">Modelos digitales</div>
+      <div class="tut-topic">Reels que venden</div>
+      <div class="tut-topic">Escalar con IA</div>
     </div>
-    <div class="tut-wip"><div class="tut-dot"></div><span data-i18n="tutwip">SECCIÓN EN CONSTRUCCIÓN</span></div>
+    <div class="tut-wip"><div class="tut-dot"></div><span>SECCIÓN EN CONSTRUCCIÓN</span></div>
   </div>
 </section>
 
 <!-- PROCESO -->
 <section class="proc-sec">
-  <div class="proc-header rv"><div class="proc-title" data-i18n="htit">PROCESO</div></div>
+  <div class="proc-header rv"><div class="proc-title">PROCESO</div></div>
   <div class="proc-grid rv2">
-    <div class="proc-item"><div class="proc-n">01</div><div class="proc-t" data-i18n="sp1t">ENVÍAS TU MATERIAL</div><p class="proc-d" data-i18n="sp1d">Tu producto, idea o referencia visual. Nos adaptamos a lo que tienes.</p></div>
-    <div class="proc-item"><div class="proc-n">02</div><div class="proc-t" data-i18n="sp2t">DEFINIMOS EL ESTILO</div><p class="proc-d" data-i18n="sp2d">Concepto visual, paleta, narrativa. Dirección de arte real antes de generar.</p></div>
-    <div class="proc-item"><div class="proc-n">03</div><div class="proc-t" data-i18n="sp3t">GENERAMOS CON IA</div><p class="proc-d" data-i18n="sp3d">Modelos, fotografía o video. Resultados de calidad editorial en minutos.</p></div>
-    <div class="proc-item"><div class="proc-n">04</div><div class="proc-t" data-i18n="sp4t">LISTO PARA PUBLICAR</div><p class="proc-d" data-i18n="sp4d">Alta resolución para redes, ecommerce o impresión. En 24 horas.</p></div>
+    <div class="proc-item"><div class="proc-n">01</div><div class="proc-t">ENVÍAS TU MATERIAL</div><p class="proc-d">Tu producto, idea o referencia visual. Nos adaptamos a lo que tienes.</p></div>
+    <div class="proc-item"><div class="proc-n">02</div><div class="proc-t">DEFINIMOS EL ESTILO</div><p class="proc-d">Concepto visual, paleta, narrativa. Dirección de arte real antes de generar.</p></div>
+    <div class="proc-item"><div class="proc-n">03</div><div class="proc-t">GENERAMOS CON IA</div><p class="proc-d">Modelos, fotografía o video. Resultados de calidad editorial en minutos.</p></div>
+    <div class="proc-item"><div class="proc-n">04</div><div class="proc-t">LISTO PARA PUBLICAR</div><p class="proc-d">Alta resolución para redes, ecommerce o impresión. En 24 horas.</p></div>
   </div>
 </section>
 
@@ -605,17 +816,17 @@ footer{border-top:0.5px solid var(--border-em);display:grid;grid-template-column
 <section id="contacto" class="cta-sec">
   <div class="cta-glow"></div>
   <div class="cta-inner rv">
-    <div class="cta-tag" data-i18n="ctabadge">LISTO PARA EMPEZAR</div>
+    <div class="cta-tag">LISTO PARA EMPEZAR</div>
     <div class="cta-title">
-      <div data-i18n="ctah1">NO</div>
-      <div data-i18n="ctah2">NECESITAS</div>
-      <div class="outline" data-i18n="ctah3">UN ESTUDIO.</div>
-      <div data-i18n="ctah4">NECESITAS</div>
-      <div class="cyan" data-i18n="ctah5">VISIÓN.</div>
+      <div>NO</div>
+      <div>NECESITAS</div>
+      <div class="outline">UN ESTUDIO.</div>
+      <div>NECESITAS</div>
+      <div class="cyan">VISIÓN.</div>
     </div>
-    <p class="cta-sub" data-i18n="ctap">Contrata el estudio, usa la app, o cotiza tu campaña. Sin compromisos.</p>
+    <p class="cta-sub">Contrata el estudio, usa la app, o cotiza tu campaña. Sin compromisos.</p>
     <div class="cta-btns">
-      <a href="https://app.nobodyvisuallab.com" class="btn-p" data-i18n="ctabtn1">CREAR MI PRIMER CONTENIDO</a>
+      <a href="https://app.nobodyvisuallab.com" class="btn-p">CREAR MI PRIMER CONTENIDO</a>
       <a href="https://wa.me/526676991211" class="btn-wa" target="_blank">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
         WHATSAPP
@@ -628,24 +839,20 @@ footer{border-top:0.5px solid var(--border-em);display:grid;grid-template-column
 <!-- FOOTER -->
 <footer>
   <a href="#" class="f-logo"><img src="images/logo.png" alt="logo"/><span>NOBODY<em>VISUAL</em>LAB</span></a>
-  <div class="f-center"><div class="f-copy" data-i18n="fcopy">© 2025 NOBODY VISUAL LAB · SINALOA, MÉXICO · AI VISUAL STUDIO</div></div>
-  <div class="f-right"><a href="https://app.nobodyvisuallab.com" class="btn-app" data-i18n="ncta">ENTRAR A LA APP</a></div>
+  <div class="f-center"><div class="f-copy">© 2025 NOBODY VISUAL LAB · SINALOA, MÉXICO · AI VISUAL STUDIO</div></div>
+  <div class="f-right"><a href="https://app.nobodyvisuallab.com" class="btn-app">ENTRAR A LA APP</a></div>
 </footer>
 
 <script>
-const T={
-es:{n1:'SERVICIOS',n2:'PLANES',n3:'PORTAFOLIO',n4:'CONTACTO',ncta:'ENTRAR A LA APP',hbadge:'AI VISUAL STUDIO — FASHION & BRANDS',ht1:'CREAMOS',ht2:'LO QUE',ht3:'ANTES ERA',ht4:'IMPOSIBLE.',hdesc:'Modelos digitales hiperrealistas, fotografía de producto y video UGC con IA. Sin modelos reales, sin sets, sin límites.',hp1label:'OPCIÓN 1',hp1title:'CONTRATAR EL ESTUDIO',hp1desc:'Nosotros lo creamos todo por ti. Planes desde $200 USD/mes.',hp2label:'OPCIÓN 2',hp2title:'USAR LA APP',hp2desc:'Tú lo creas con nuestras herramientas de IA. Acceso inmediato.',st1:'IMÁGENES GENERADAS',st2:'VIDEOS UGC',st3:'MARCAS',abtag:'NUESTRA FILOSOFÍA',stmt1:'NO SOMOS UN',stmt2:'ESTUDIO TRADICIONAL.',stmt3:'SOMOS UN',stmt4:'LABORATORIO VISUAL.',stmtsub:'MR. Nobody nace de una idea simple: no necesitas un equipo completo de producción para crear contenido de alto nivel. Creamos una nueva forma de producir — sin límites físicos, con estética cinematográfica y dirección de arte real.',pathtit:'¿CÓMO QUIERES TRABAJAR?',pathsub:'Dos formas de acceder al poder de la IA visual. Tú eliges.',path1tit:'CONTRATAR\nEL ESTUDIO',path1desc:'Nosotros lo creamos todo por ti. Dirección de arte, modelos, fotografía y video. Tú solo envías tu producto y defines el estilo.',path1i1:'Modelos digitales exclusivos para tu marca',path1i2:'Fotografía editorial de producto con IA',path1i3:'Videos UGC y Reels listos para publicar',path1i4:'Contenido listo en 48 a 72 horas',path1i5:'Planes desde $200 USD por mes',path1cta:'VER PLANES →',path2tit:'USAR\nLA APP',path2desc:'Crea tú mismo con nuestras herramientas de IA. Genera imágenes, integra productos en modelos y edita contenido en minutos. Sin experiencia previa.',path2i1:'Genera modelos e imágenes de producto',path2i2:'Editor de video con IA integrado',path2i3:'Virtual try-on para ecommerce',path2i4:'Resultados en minutos, no en días',path2i5:'Acceso inmediato, sin contratos',path2cta:'PROBAR LA APP →',galtit:'MODELOS QUE HEMOS CREADO',galcta:'VER TODOS EN LA APP →',galmore:'+ VER TODOS LOS MODELOS EN LA APP',svtit:'SERVICIOS',svsub:'Todo lo que una marca necesita para competir visualmente.',s1n:'MODELOS DIGITALES IA',s2n:'FOTOGRAFÍA EDITORIAL',s3n:'VIDEO UGC & REELS',s4n:'VIRTUAL TRY-ON',s5n:'DIRECCIÓN DE ARTE IA',s6n:'EDITOR DE IMAGEN IA',pltag:'SERVICIOS DE AGENCIA',pltit:'PLANES',plsub:'Sin contratos largos. Sin sorpresas. Elige según el tamaño de tu marca.',pl1name:'STARTER',pl1for:'Para marcas que están comenzando',plperiod:'USD / MES',pl1i1:'10 imágenes con modelo IA',pl1i2:'8 imágenes de producto',pl1i3:'2 videos cortos',plpop:'MÁS POPULAR',pl2name:'GROWTH',pl2for:'Para marcas en crecimiento',pl2i1:'20 imágenes con modelo IA',pl2i2:'15 imágenes de producto',pl2i3:'5 videos cortos',pl3name:'PRO CAMPAIGN',pl3for:'Para marcas que quieren escalar',pl3i1:'30 imágenes con modelo IA',pl3i2:'30 imágenes de producto',pl3i3:'3 videos de campaña',plcta:'COTIZAR AHORA',ptit:'TRABAJOS',pcta:'SOLICITAR TRABAJO →',plb1:'CAMPAÑA EDITORIAL — MODA',plb2:'LIFESTYLE SKINCARE',plb3:'REEL PARA REDES',plb4:'ECOMMERCE FASHION',plb5:'CAMPAÑA DE PRODUCTO',plb6:'DIRECCIÓN EDITORIAL',tuteye:'PRÓXIMAMENTE',tuttit1:'APRENDE A USAR',tuttit2:'IA PARA VENDER MÁS',tutdesc:'Te enseñamos paso a paso cómo crear contenido que realmente convierte. Desde lo básico hasta estrategias avanzadas para ecommerce y redes sociales.',tut1:'Imágenes de producto',tut2:'Modelos digitales',tut3:'Reels que venden',tut4:'Escalar con IA',tutwip:'SECCIÓN EN CONSTRUCCIÓN',htit:'PROCESO',sp1t:'ENVÍAS TU MATERIAL',sp1d:'Tu producto, idea o referencia visual. Nos adaptamos a lo que tienes.',sp2t:'DEFINIMOS EL ESTILO',sp2d:'Concepto visual, paleta, narrativa. Dirección de arte real antes de generar.',sp3t:'GENERAMOS CON IA',sp3d:'Modelos, fotografía o video. Resultados de calidad editorial en minutos.',sp4t:'LISTO PARA PUBLICAR',sp4d:'Alta resolución para redes, ecommerce o impresión. En 24 horas.',ctabadge:'LISTO PARA EMPEZAR',ctah1:'NO',ctah2:'NECESITAS',ctah3:'UN ESTUDIO.',ctah4:'NECESITAS',ctah5:'VISIÓN.',ctap:'Contrata el estudio, usa la app, o cotiza tu campaña. Sin compromisos.',ctabtn1:'CREAR MI PRIMER CONTENIDO',fcopy:'© 2025 NOBODY VISUAL LAB · SINALOA, MÉXICO · AI VISUAL STUDIO'},
-en:{n1:'SERVICES',n2:'PLANS',n3:'PORTFOLIO',n4:'CONTACT',ncta:'OPEN THE APP',hbadge:'AI VISUAL STUDIO — FASHION & BRANDS',ht1:'WE CREATE',ht2:'WHAT WAS',ht3:'ONCE',ht4:'IMPOSSIBLE.',hdesc:'Hyper-realistic digital models, product photography and UGC video with AI. No real models, no sets, no limits.',hp1label:'OPTION 1',hp1title:'HIRE THE STUDIO',hp1desc:'We create everything for you. Plans from $200 USD/month.',hp2label:'OPTION 2',hp2title:'USE THE APP',hp2desc:'Create yourself with our AI tools. Immediate access.',st1:'IMAGES GENERATED',st2:'UGC VIDEOS',st3:'BRANDS',abtag:'OUR PHILOSOPHY',stmt1:'WE ARE NOT A',stmt2:'TRADITIONAL STUDIO.',stmt3:'WE ARE A',stmt4:'VISUAL LABORATORY.',stmtsub:"MR. Nobody was born from a simple idea: you don't need a full production team to create high-level content. We created a new way to produce — without physical limits, with cinematic aesthetics and real art direction.",pathtit:'HOW DO YOU WANT TO WORK?',pathsub:'Two ways to access the power of visual AI. You choose.',path1tit:'HIRE\nTHE STUDIO',path1desc:'We create everything for you. Art direction, models, photography and video. You just send your product and define the style.',path1i1:'Exclusive digital models for your brand',path1i2:'Editorial product photography with AI',path1i3:'UGC Videos and Reels ready to publish',path1i4:'Content ready in 48 to 72 hours',path1i5:'Plans from $200 USD per month',path1cta:'VIEW PLANS →',path2tit:'USE\nTHE APP',path2desc:'Create yourself with our AI tools. Generate images, integrate products in models and edit content in minutes. No prior experience needed.',path2i1:'Generate models and product images',path2i2:'Integrated AI video editor',path2i3:'Virtual try-on for ecommerce',path2i4:'Results in minutes, not days',path2i5:'Immediate access, no contracts',path2cta:'TRY THE APP →',galtit:'MODELS WE HAVE CREATED',galcta:'VIEW ALL IN THE APP →',galmore:'+ VIEW ALL MODELS IN THE APP',svtit:'SERVICES',svsub:'Everything a brand needs to compete visually.',s1n:'AI DIGITAL MODELS',s2n:'EDITORIAL PHOTOGRAPHY',s3n:'UGC VIDEO & REELS',s4n:'VIRTUAL TRY-ON',s5n:'AI ART DIRECTION',s6n:'AI IMAGE EDITOR',pltag:'AGENCY SERVICES',pltit:'PLANS',plsub:'No long contracts. No surprises. Choose based on the size of your brand.',pl1name:'STARTER',pl1for:'For brands just starting out',plperiod:'USD / MONTH',pl1i1:'10 images with AI model',pl1i2:'8 product images',pl1i3:'2 short videos',plpop:'MOST POPULAR',pl2name:'GROWTH',pl2for:'For growing brands',pl2i1:'20 images with AI model',pl2i2:'15 product images',pl2i3:'5 short videos',pl3name:'PRO CAMPAIGN',pl3for:'For brands ready to scale',pl3i1:'30 images with AI model',pl3i2:'30 product images',pl3i3:'3 campaign videos',plcta:'GET A QUOTE',ptit:'WORKS',pcta:'REQUEST WORK →',plb1:'EDITORIAL CAMPAIGN — FASHION',plb2:'LIFESTYLE SKINCARE',plb3:'SOCIAL MEDIA REEL',plb4:'ECOMMERCE FASHION',plb5:'PRODUCT CAMPAIGN',plb6:'EDITORIAL DIRECTION',tuteye:'COMING SOON',tuttit1:'LEARN TO USE',tuttit2:'AI TO SELL MORE',tutdesc:'We teach you step by step how to create content that actually converts. From basics to advanced ecommerce and social media strategies.',tut1:'Product images',tut2:'Digital models',tut3:'Reels that sell',tut4:'Scale with AI',tutwip:'SECTION UNDER CONSTRUCTION',htit:'PROCESS',sp1t:'SEND YOUR MATERIAL',sp1d:'Your product, idea or visual reference. We adapt to what you have.',sp2t:'DEFINE THE STYLE',sp2d:'Visual concept, palette, narrative. Real art direction before generating.',sp3t:'GENERATE WITH AI',sp3d:'Models, photography or video. Editorial quality results in minutes.',sp4t:'READY TO PUBLISH',sp4d:'High resolution for social, ecommerce or print. In 24 hours.',ctabadge:'READY TO START',ctah1:"YOU DON'T",ctah2:'NEED A',ctah3:'STUDIO.',ctah4:'YOU NEED',ctah5:'VISION.',ctap:'Hire the studio, use the app, or quote your campaign. No commitments.',ctabtn1:'CREATE MY FIRST CONTENT',fcopy:'© 2025 NOBODY VISUAL LAB · SINALOA, MEXICO · AI VISUAL STUDIO'}
-};
-let lang='es';
-function setLang(l){lang=l;document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.getAttribute('data-i18n');if(T[l][k])el.textContent=T[l][k];});document.querySelectorAll('.lb').forEach(b=>b.classList.toggle('active',b.textContent===l.toUpperCase()));document.documentElement.lang=l;}
 var heroMuted=true;
 function toggleSound(){heroMuted=!heroMuted;var src='https://www.youtube.com/embed/lbC32-Lodck?autoplay=1&mute='+(heroMuted?'1':'0')+'&loop=1&playlist=lbC32-Lodck&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1';document.getElementById('hero-video').src=src;document.getElementById('sound-icon').textContent=heroMuted?'🔇':'🔊';document.getElementById('sound-btn').style.borderColor=heroMuted?'rgba(255,255,255,.14)':'rgba(77,191,163,.55)';}
 function openLightbox(id,type){var lb=document.getElementById('video-lightbox');var wrap=document.getElementById('yt-wrap');if(type==='short'){wrap.style.aspectRatio='9/16';wrap.style.maxWidth='420px';}else{wrap.style.aspectRatio='16/9';wrap.style.maxWidth='1000px';}document.getElementById('yt-frame').src='https://www.youtube.com/embed/'+id+'?autoplay=1&rel=0&modestbranding=1&showinfo=0';lb.style.display='flex';document.body.style.overflow='hidden';}
 function closeLightbox(){document.getElementById('video-lightbox').style.display='none';document.getElementById('yt-frame').src='';document.body.style.overflow='';}
 document.getElementById('video-lightbox').addEventListener('click',function(e){if(e.target===this)closeLightbox();});
+function toggleFaq(el){var isOpen=el.classList.contains('open');document.querySelectorAll('.faq-item').forEach(function(i){i.classList.remove('open');});if(!isOpen)el.classList.add('open');}
 const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis')});},{threshold:.06});
 document.querySelectorAll('.rv,.rv2,.rv3').forEach(el=>obs.observe(el));
+function setLang(l){document.querySelectorAll('.lb').forEach(b=>b.classList.toggle('active',b.textContent===l.toUpperCase()));document.documentElement.lang=l;}
 </script>
 </body>
 </html>
