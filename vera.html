@@ -126,9 +126,34 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .camps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border-em)}
 .camp-card{background:var(--bg);padding:32px 28px;border-top:2px solid transparent;transition:all 0.25s}
 .camp-card:hover{border-color:var(--accent);background:var(--accent-sub)}
-.camp-icon{font-size:24px;margin-bottom:16px}
+.camp-num{font-family:var(--fd);font-size:48px;color:rgba(77,191,163,0.10);line-height:1;margin-bottom:16px;font-weight:900;transition:color 0.25s}
+.camp-card:hover .camp-num{color:rgba(77,191,163,0.28)}
 .camp-title{font-family:var(--fd);font-size:20px;text-transform:uppercase;margin-bottom:10px;letter-spacing:0.02em}
 .camp-desc{font-size:11px;color:var(--muted2);line-height:1.8}
+
+/* VIDEO SECTION */
+.video-sec{padding:64px 28px;border-bottom:0.5px solid var(--border-em)}
+.video-inner{max-width:1100px;margin:0 auto}
+.video-title{font-family:var(--fd);font-size:clamp(28px,4vw,52px);line-height:0.9;margin-bottom:16px;text-transform:uppercase}
+.video-desc{font-size:13px;color:var(--muted2);line-height:1.9;margin-bottom:24px}
+.video-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border-em);margin-top:28px}
+.video-left{background:var(--surface);padding:32px}
+.video-right{position:relative;min-height:420px;background:var(--elevated);cursor:pointer;overflow:hidden}
+.video-thumb{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
+.video-play-overlay{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:rgba(9,9,9,0.30);transition:background 0.25s}
+.video-right:hover .video-play-overlay{background:rgba(9,9,9,0.12)}
+.play-circle{width:80px;height:80px;border-radius:50%;border:1px solid var(--accent);background:rgba(77,191,163,0.12);display:flex;align-items:center;justify-content:center;transition:all 0.25s}
+.video-right:hover .play-circle{transform:scale(1.06);background:rgba(77,191,163,0.24)}
+.play-label{font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--white);font-weight:600}
+.video-tags{display:flex;flex-wrap:wrap;gap:8px}
+.vtag{font-size:10px;letter-spacing:0.10em;text-transform:uppercase;border:0.5px solid var(--border-em);border-radius:100px;padding:5px 12px;color:var(--muted2);font-weight:600}
+
+/* LIGHTBOX */
+#video-lightbox{display:none;position:fixed;inset:0;z-index:9000;background:rgba(0,0,0,0.92);align-items:center;justify-content:center;backdrop-filter:blur(8px)}
+.lb-close{position:absolute;top:18px;right:22px;background:none;border:none;color:#fff;font-size:28px;cursor:pointer;opacity:0.65;transition:opacity 0.2s;font-weight:300}
+.lb-close:hover{opacity:1}
+#yt-wrap{width:90vw;max-width:420px;aspect-ratio:9/16;position:relative}
+#yt-frame{width:100%;height:100%;border:none;border-radius:6px}
 
 /* CTA */
 .cta-sec{padding:80px 28px;text-align:center;position:relative;overflow:hidden}
@@ -179,6 +204,13 @@ footer{border-top:0.5px solid var(--border-em);display:grid;grid-template-column
 </style>
 </head>
 <body>
+
+<div id="video-lightbox">
+  <button class="lb-close" onclick="closeLightbox()">✕</button>
+  <div id="yt-wrap">
+    <iframe id="yt-frame" src="" allow="autoplay;encrypted-media" allowfullscreen></iframe>
+  </div>
+</div>
 
 <!-- NAV -->
 <nav>
@@ -306,6 +338,35 @@ footer{border-top:0.5px solid var(--border-em);display:grid;grid-template-column
   </div>
 </section>
 
+<!-- VIDEO EN ACCIÓN -->
+<section class="video-sec rv">
+  <div class="video-inner">
+    <div class="camps-eyebrow" style="margin-bottom:24px">EN MOVIMIENTO</div>
+    <div class="video-grid">
+      <div class="video-left">
+        <div class="video-title">VERA<br/>EN <span style="color:var(--accent)">ACCIÓN.</span></div>
+        <p class="video-desc">Vera no es solo una imagen fija. Su intensidad contenida y estética chic-oscura capturan la atención y conectan con audiencias que buscan autenticidad sin ruido.</p>
+        <div class="video-tags">
+          <span class="vtag">Joyería</span>
+          <span class="vtag">Skincare</span>
+          <span class="vtag">Fashion</span>
+          <span class="vtag">Reels</span>
+          <span class="vtag">Editorial</span>
+        </div>
+      </div>
+      <div class="video-right" onclick="openLightbox('PROXIMAMENTE')">
+        <img class="video-thumb" src="images/vera-01.png" alt="Vera Sol"/>
+        <div class="video-play-overlay">
+          <div class="play-circle">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="var(--accent)"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+          <div class="play-label">VER VIDEO</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- CAMPAIGN TYPES -->
 <section class="camps-sec">
   <div class="camps-inner">
@@ -313,17 +374,17 @@ footer{border-top:0.5px solid var(--border-em);display:grid;grid-template-column
     <div class="camps-title rv">MADE FOR<br/><span style="color:var(--accent)">THESE</span> CAMPAIGNS</div>
     <div class="camps-grid">
       <div class="camp-card rv">
-        <div class="camp-icon">💎</div>
+        <div class="camp-num">01</div>
         <div class="camp-title">FINE JEWELRY</div>
         <p class="camp-desc">Her quiet intensity makes jewelry speak louder. No distractions — just the piece and a presence that holds attention.</p>
       </div>
       <div class="camp-card rv2">
-        <div class="camp-icon">✦</div>
+        <div class="camp-num">02</div>
         <div class="camp-title">SKINCARE EDITORIAL</div>
         <p class="camp-desc">Clean skin, strong gaze. Vera communicates quality without saying a word — ideal for premium skincare and beauty brands.</p>
       </div>
       <div class="camp-card rv3">
-        <div class="camp-icon">🖤</div>
+        <div class="camp-num">03</div>
         <div class="camp-title">CHIC & YOUNG FASHION</div>
         <p class="camp-desc">From streetwear-adjacent chic to elevated casual — she adapts without losing her edge. Versatile for brands that want honesty over polish.</p>
       </div>
@@ -360,6 +421,20 @@ footer{border-top:0.5px solid var(--border-em);display:grid;grid-template-column
 </footer>
 
 <script>
+function openLightbox(id){
+  var lb=document.getElementById('video-lightbox');
+  document.getElementById('yt-frame').src='https://www.youtube.com/embed/'+id+'?autoplay=1&rel=0&modestbranding=1&showinfo=0';
+  lb.style.display='flex';
+  document.body.style.overflow='hidden';
+}
+function closeLightbox(){
+  document.getElementById('video-lightbox').style.display='none';
+  document.getElementById('yt-frame').src='';
+  document.body.style.overflow='';
+}
+document.getElementById('video-lightbox').addEventListener('click',function(e){
+  if(e.target===this)closeLightbox();
+});
 const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis')});},{threshold:.06});
 document.querySelectorAll('.rv,.rv2,.rv3').forEach(el=>obs.observe(el));
 </script>
