@@ -48,13 +48,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .hero-info-col{position:relative;z-index:2;width:100%;max-width:1200px;margin:0 auto;padding:0 28px 64px;display:flex;flex-direction:column;align-items:flex-end}
 .hero-info-inner{max-width:480px;width:100%}
 
-/* Vera accent color — warm dark */
-.vera-tag{font-size:10px;letter-spacing:0.22em;color:#C4956A;font-weight:700;text-transform:uppercase;margin-bottom:20px;display:flex;align-items:center;gap:10px}
-.vera-tag::before{content:'';width:20px;height:1px;background:#C4956A}
+/* Vera — uses global accent vars */
+.vera-tag{font-size:10px;letter-spacing:0.22em;color:var(--accent);font-weight:700;text-transform:uppercase;margin-bottom:20px;display:flex;align-items:center;gap:10px}
+.vera-tag::before{content:'';width:20px;height:1px;background:var(--accent)}
 .model-num{font-family:var(--fd);font-size:11px;letter-spacing:0.20em;color:var(--muted);text-transform:uppercase;margin-bottom:10px}
 .model-name{font-family:var(--fd);font-size:clamp(56px,7vw,96px);line-height:0.85;letter-spacing:-0.02em;color:var(--white);text-transform:uppercase;margin-bottom:8px}
-.model-name-last{color:#C4956A}
-.model-short{font-size:12px;color:var(--muted2);line-height:1.8;margin-bottom:36px;max-width:380px;font-style:italic;border-left:2px solid #C4956A;padding-left:16px}
+.model-name-last{color:var(--accent)}
+.model-short{font-size:12px;color:var(--muted2);line-height:1.8;margin-bottom:36px;max-width:380px;font-style:italic;border-left:2px solid var(--accent);padding-left:16px}
 
 .model-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border-em);margin-bottom:36px}
 .stat-cell{background:var(--bg);padding:16px 14px}
@@ -63,28 +63,28 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 
 .spec-grid{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:36px}
 .spec-tag{font-size:9px;letter-spacing:0.10em;border:0.5px solid var(--border-em);border-radius:100px;padding:5px 12px;color:var(--muted2);text-transform:uppercase;font-weight:600;transition:all 0.2s}
-.spec-tag:hover{border-color:#C4956A;color:#C4956A}
+.spec-tag:hover{border-color:var(--accent);color:var(--accent)}
 
 .cta-row{display:flex;gap:10px;flex-wrap:wrap}
-.btn-vera{font-size:11px;letter-spacing:0.10em;background:#C4956A;color:#1a0e07;padding:10px 24px;border-radius:100px;border:none;cursor:pointer;text-decoration:none;font-weight:700;transition:all 0.2s;text-transform:uppercase;display:inline-block}
-.btn-vera:hover{background:#d4a57a;transform:translateY(-1px)}
+.btn-vera{font-size:11px;letter-spacing:0.10em;background:var(--accent);color:#071a13;padding:10px 24px;border-radius:100px;border:none;cursor:pointer;text-decoration:none;font-weight:700;transition:all 0.2s;text-transform:uppercase;display:inline-block}
+.btn-vera:hover{background:#5ecfb3;transform:translateY(-1px)}
 .btn-outline{font-size:11px;background:transparent;color:var(--white);padding:10px 22px;border-radius:100px;border:0.5px solid var(--border-em);cursor:pointer;text-decoration:none;transition:all 0.2s;text-transform:uppercase;font-weight:600}
-.btn-outline:hover{border-color:#C4956A;color:#C4956A}
+.btn-outline:hover{border-color:var(--accent);color:var(--accent)}
 
 /* TICKER */
 .ticker{border-bottom:0.5px solid var(--border-em);border-top:0.5px solid var(--border-em);overflow:hidden;padding:11px 0}
 .ticker-track{display:flex;animation:tick 24s linear infinite;width:max-content;white-space:nowrap}
 .ticker-item{font-size:10px;letter-spacing:0.14em;color:var(--muted);padding:0 22px;text-transform:uppercase;font-weight:600}
-.ticker-dot{color:#C4956A;font-size:8px;align-self:center}
+.ticker-dot{color:var(--accent);font-size:8px;align-self:center}
 @keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
 /* BIO SECTION */
 .bio-sec{padding:80px 28px;border-bottom:0.5px solid var(--border-em);max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.2fr 1fr;gap:80px;align-items:start}
-.bio-eyebrow{font-size:10px;letter-spacing:0.20em;color:#C4956A;font-weight:700;text-transform:uppercase;margin-bottom:20px;display:flex;align-items:center;gap:10px}
-.bio-eyebrow::before{content:'';width:20px;height:1px;background:#C4956A}
+.bio-eyebrow{font-size:10px;letter-spacing:0.20em;color:var(--accent);font-weight:700;text-transform:uppercase;margin-bottom:20px;display:flex;align-items:center;gap:10px}
+.bio-eyebrow::before{content:'';width:20px;height:1px;background:var(--accent)}
 .bio-title{font-family:var(--fd);font-size:clamp(32px,4vw,52px);line-height:0.88;text-transform:uppercase;margin-bottom:28px;letter-spacing:-0.01em}
 .bio-text{font-size:13px;color:var(--muted2);line-height:2;margin-bottom:20px}
-.bio-quote{font-family:var(--fd);font-size:clamp(22px,3vw,32px);color:#C4956A;line-height:1;text-transform:uppercase;margin-top:32px;letter-spacing:0.02em}
+.bio-quote{font-family:var(--fd);font-size:clamp(22px,3vw,32px);color:var(--accent);line-height:1;text-transform:uppercase;margin-top:32px;letter-spacing:0.02em}
 
 .bio-right{}
 .trait-list{list-style:none;margin-bottom:36px}
@@ -95,7 +95,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .mood-title{font-size:10px;letter-spacing:0.16em;color:var(--muted);text-transform:uppercase;font-weight:600;margin-bottom:14px}
 .mood-tags{display:flex;flex-wrap:wrap;gap:8px}
 .mood-tag{font-size:10px;letter-spacing:0.08em;padding:6px 14px;border-radius:100px;font-weight:600;text-transform:uppercase}
-.mood-dark{background:rgba(196,149,106,0.12);border:0.5px solid rgba(196,149,106,0.30);color:#C4956A}
+.mood-dark{background:var(--accent-sub);border:0.5px solid var(--accent-bdr);color:var(--accent)}
 .mood-neutral{background:rgba(255,255,255,0.04);border:0.5px solid var(--border-em);color:var(--muted2)}
 
 /* GALLERY */
@@ -108,34 +108,34 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .g-card:hover img{transform:scale(1.05);filter:brightness(1.1)}
 .g-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(9,9,9,0.88) 0%,transparent 55%);opacity:0;transition:opacity 0.25s;display:flex;flex-direction:column;justify-content:flex-end;padding:18px}
 .g-card:hover .g-overlay{opacity:1}
-.g-cat{font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:#C4956A;margin-bottom:4px;font-weight:600}
+.g-cat{font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent);margin-bottom:4px;font-weight:600}
 .g-name{font-family:var(--fd);font-size:15px;font-weight:800;text-transform:uppercase}
 
 .g-soon{background:linear-gradient(135deg,#0e0e0e,#141414);cursor:default}
-.g-soon::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 4px,rgba(196,149,106,0.015) 4px,rgba(196,149,106,0.015) 5px)}
+.g-soon::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 4px,rgba(77,191,163,0.015) 4px,rgba(77,191,163,0.015) 5px)}
 .soon-inner{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px}
-.soon-icon{font-size:1.4rem;color:rgba(196,149,106,0.18)}
-.soon-label{font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(196,149,106,0.45);border:0.5px solid rgba(196,149,106,0.20);padding:4px 12px;border-radius:100px}
+.soon-icon{font-size:1.4rem;color:rgba(77,191,163,0.18)}
+.soon-label{font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(77,191,163,0.45);border:0.5px solid rgba(77,191,163,0.20);padding:4px 12px;border-radius:100px}
 
 /* CAMPAIGN TYPES */
 .camps-sec{padding:64px 28px;border-bottom:0.5px solid var(--border-em)}
 .camps-inner{max-width:1100px;margin:0 auto}
-.camps-eyebrow{font-size:10px;letter-spacing:0.20em;color:#C4956A;font-weight:700;text-transform:uppercase;margin-bottom:20px;display:flex;align-items:center;gap:10px}
-.camps-eyebrow::before{content:'';width:20px;height:1px;background:#C4956A}
+.camps-eyebrow{font-size:10px;letter-spacing:0.20em;color:var(--accent);font-weight:700;text-transform:uppercase;margin-bottom:20px;display:flex;align-items:center;gap:10px}
+.camps-eyebrow::before{content:'';width:20px;height:1px;background:var(--accent)}
 .camps-title{font-family:var(--fd);font-size:clamp(28px,4vw,48px);line-height:0.88;text-transform:uppercase;margin-bottom:40px;letter-spacing:-0.01em}
 .camps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border-em)}
 .camp-card{background:var(--bg);padding:32px 28px;border-top:2px solid transparent;transition:all 0.25s}
-.camp-card:hover{border-color:#C4956A;background:rgba(196,149,106,0.04)}
+.camp-card:hover{border-color:var(--accent);background:var(--accent-sub)}
 .camp-icon{font-size:24px;margin-bottom:16px}
 .camp-title{font-family:var(--fd);font-size:20px;text-transform:uppercase;margin-bottom:10px;letter-spacing:0.02em}
 .camp-desc{font-size:11px;color:var(--muted2);line-height:1.8}
 
 /* CTA */
 .cta-sec{padding:80px 28px;text-align:center;position:relative;overflow:hidden}
-.cta-glow{position:absolute;width:600px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(196,149,106,0.06) 0%,transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none}
+.cta-glow{position:absolute;width:600px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(77,191,163,0.06) 0%,transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none}
 .cta-inner{position:relative;z-index:1;max-width:700px;margin:0 auto}
-.cta-eyebrow{font-size:10px;letter-spacing:0.20em;color:#C4956A;font-weight:700;text-transform:uppercase;margin-bottom:20px;display:flex;align-items:center;justify-content:center;gap:10px}
-.cta-eyebrow::before,.cta-eyebrow::after{content:'';width:20px;height:1px;background:#C4956A}
+.cta-eyebrow{font-size:10px;letter-spacing:0.20em;color:var(--accent);font-weight:700;text-transform:uppercase;margin-bottom:20px;display:flex;align-items:center;justify-content:center;gap:10px}
+.cta-eyebrow::before,.cta-eyebrow::after{content:'';width:20px;height:1px;background:var(--accent)}
 .cta-title{font-family:var(--fd);font-size:clamp(40px,8vw,80px);line-height:0.84;letter-spacing:-0.02em;margin-bottom:20px;text-transform:uppercase}
 .cta-sub{font-size:12px;color:var(--muted2);max-width:380px;margin:0 auto 28px;line-height:1.8}
 .cta-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
@@ -175,7 +175,7 @@ footer{border-top:0.5px solid var(--border-em);display:grid;grid-template-column
 }
 ::-webkit-scrollbar{width:3px}
 ::-webkit-scrollbar-track{background:var(--bg)}
-::-webkit-scrollbar-thumb{background:rgba(196,149,106,0.35)}
+::-webkit-scrollbar-thumb{background:rgba(77,191,163,0.35)}
 </style>
 </head>
 <body>
@@ -193,7 +193,7 @@ footer{border-top:0.5px solid var(--border-em);display:grid;grid-template-column
 <!-- HERO -->
 <section class="profile-hero">
   <div class="hero-img-col">
-    <img src="images/modelo-04.png" alt="Vera Sol"/>
+    <img src="images/vera-hero-01.jpg" alt="Vera Sol"/>
     <div class="hero-img-overlay"></div>
   </div>
   <div class="hero-info-col">
@@ -257,7 +257,7 @@ footer{border-top:0.5px solid var(--border-em);display:grid;grid-template-column
 <div class="bio-sec">
   <div class="bio-left rv">
     <div class="bio-eyebrow">ABOUT VERA</div>
-    <div class="bio-title">THE MODEL<br/>WHO <span style="color:#C4956A">SHIFTS</span><br/>THE ROOM</div>
+    <div class="bio-title">THE MODEL<br/>WHO <span style="color:var(--accent)">SHIFTS</span><br/>THE ROOM</div>
     <p class="bio-text">Vera Sol doesn't walk into a room — she shifts it. At 24, with roots tracing back to southern Europe and northern Latin America, her presence is the opposite of noise: calculated, magnetic, inevitable.</p>
     <p class="bio-text">Dark straight hair with a fringe, grey-green eyes that ask for nothing yet miss nothing, and an energy that moves between cold indifference and quiet intensity without warning.</p>
     <p class="bio-text">Her aesthetic lives in warm darks — burgundy, deep coffee, burnt earth. Chic clothes that don't explain themselves. She listens to reggaeton when no one's watching and alternative music when everyone is. Sundays don't exist before noon.</p>
@@ -292,12 +292,12 @@ footer{border-top:0.5px solid var(--border-em);display:grid;grid-template-column
 <!-- GALLERY -->
 <section class="gallery-sec">
   <div class="gallery-header rv">
-    <div class="gallery-title">VERA <span style="color:#C4956A">IN CAMPAIGN</span></div>
+    <div class="gallery-title">VERA <span style="color:var(--accent)">IN CAMPAIGN</span></div>
     <a href="https://app.nobodyvisuallab.com" class="btn-outline">USE VERA IN APP →</a>
   </div>
   <div class="gallery-grid">
     <div class="g-card">
-      <img src="images/modelo-04.png" alt="Vera Sol"/>
+      <img src="images/vera-01.jpg" alt="Vera Sol"/>
       <div class="g-overlay"><div class="g-cat">PORTRAIT</div><div class="g-name">VERA SOL · HERO</div></div>
     </div>
     <div class="g-card g-soon"><div class="soon-inner"><div class="soon-icon">◈</div><div class="soon-label">COMING SOON</div></div></div>
@@ -310,7 +310,7 @@ footer{border-top:0.5px solid var(--border-em);display:grid;grid-template-column
 <section class="camps-sec">
   <div class="camps-inner">
     <div class="camps-eyebrow rv">WHAT VERA DOES BEST</div>
-    <div class="camps-title rv">MADE FOR<br/><span style="color:#C4956A">THESE</span> CAMPAIGNS</div>
+    <div class="camps-title rv">MADE FOR<br/><span style="color:var(--accent)">THESE</span> CAMPAIGNS</div>
     <div class="camps-grid">
       <div class="camp-card rv">
         <div class="camp-icon">💎</div>
@@ -336,7 +336,7 @@ footer{border-top:0.5px solid var(--border-em);display:grid;grid-template-column
   <div class="cta-glow"></div>
   <div class="cta-inner rv">
     <div class="cta-eyebrow">READY TO WORK WITH VERA</div>
-    <div class="cta-title">BOOK<br/><span style="color:#C4956A">VERA</span><br/>SOL.</div>
+    <div class="cta-title">BOOK<br/><span style="color:var(--accent)">VERA</span><br/>SOL.</div>
     <p class="cta-sub">Use her in the app yourself or let our team handle the full campaign for you.</p>
     <div class="cta-btns">
       <a href="https://app.nobodyvisuallab.com" class="btn-vera">USE IN APP →</a>
