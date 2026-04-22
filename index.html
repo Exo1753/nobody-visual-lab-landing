@@ -247,6 +247,13 @@ footer{border-top:0.5px solid var(--border-em);display:grid;grid-template-column
 .agencia-price-note{font-size:11px;color:var(--muted);margin-bottom:20px}
 .agencia-guarantee{font-size:11px;color:rgba(77,191,163,0.7);border:0.5px solid rgba(77,191,163,0.2);border-radius:8px;padding:10px 14px;margin-bottom:20px;line-height:1.6}
 
+/* AGENCY TIERS - sin precios */
+.agency-tier-label{font-size:10px;letter-spacing:0.10em;color:var(--muted);text-transform:uppercase;font-weight:600;margin-bottom:12px}
+.agency-quote-note{margin-top:20px;text-align:center}
+.agency-quote-note p{font-size:11px;color:var(--muted);line-height:1.8}
+.agency-quote-note a{color:var(--accent);text-decoration:none;font-weight:600}
+.agency-quote-note a:hover{text-decoration:underline}
+
 /* FAQ */
 .faq-sec{border-bottom:0.5px solid var(--border-em);padding:60px 28px}
 .faq-inner{max-width:800px;margin:0 auto}
@@ -334,7 +341,7 @@ footer{border-top:0.5px solid var(--border-em);display:grid;grid-template-column
         <a href="#caminos" class="hero-path">
           <div class="hero-path-label">OPCIÓN 1</div>
           <div class="hero-path-title">CONTRATAR EL ESTUDIO</div>
-          <div class="hero-path-desc">Nosotros lo creamos todo por ti. Planes desde $200 USD/mes.</div>
+          <div class="hero-path-desc">Nosotros lo creamos todo por ti. Cotización personalizada en 24 horas.</div>
           <div class="hero-path-arrow">→</div>
         </a>
         <a href="https://app.nobodyvisuallab.com" class="hero-path">
@@ -470,9 +477,9 @@ footer{border-top:0.5px solid var(--border-em);display:grid;grid-template-column
         <li>Fotografía editorial de producto con IA</li>
         <li>Videos UGC y Reels listos para publicar</li>
         <li>Contenido listo en 48 a 72 horas</li>
-        <li>Planes desde $200 USD por mes</li>
+        <li>Cotización personalizada según tu proyecto</li>
       </ul>
-      <a href="#planes" class="btn-p">VER PLANES →</a>
+      <a href="#planes" class="btn-p">VER ESCALAS →</a>
     </div>
     <div class="path-card path-card-app rv2">
       <div class="path-card-num">02</div>
@@ -553,54 +560,76 @@ footer{border-top:0.5px solid var(--border-em);display:grid;grid-template-column
     <div style="border-top:0.5px solid var(--border-em);margin:48px 0 36px"></div>
 
     <!-- Subtítulo agencia -->
-    <div style="margin-bottom:16px" class="rv">
+    <div id="planes" style="margin-bottom:32px" class="rv">
       <div style="display:inline-flex;align-items:center;gap:10px;font-size:10px;letter-spacing:0.16em;color:var(--accent);font-weight:700;text-transform:uppercase">
         <span style="width:20px;height:1px;background:var(--accent);display:inline-block"></span>
         SERVICIO COMPLETO — NOSOTROS LO CREAMOS POR TI
       </div>
-      <p style="font-size:11px;color:var(--muted2);margin-top:6px">Sin contratos largos. Sin sorpresas. Elige según el tamaño de tu marca.</p>
+      <p style="font-size:11px;color:var(--muted2);margin-top:6px">Cada marca es diferente. Te cotizamos a medida en menos de 24 horas.</p>
     </div>
+
+    <!-- Agency tiers - sin precios -->
     <div class="plans-grid rv2">
+
+      <!-- ESENCIAL -->
       <div class="plan-card">
-        <div class="plan-name">STARTER</div>
+        <div class="plan-name">ESENCIAL</div>
         <p class="plan-for">Para marcas que están comenzando</p>
-        <div class="plan-price">$200 <span>– $250</span></div>
-        <div class="plan-period">USD / MES</div>
-        <hr class="plan-divider"/>
+        <hr class="plan-divider" style="margin-top:14px"/>
+        <p class="agency-tier-label">QUÉ INCLUYE</p>
         <ul class="plan-items">
-          <li>10 imágenes con modelo IA</li>
-          <li>8 imágenes de producto</li>
-          <li>2 videos cortos</li>
+          <li>Imágenes con modelo IA</li>
+          <li>Fotografía de producto con IA</li>
+          <li>Videos cortos para redes</li>
+          <li>Entrega en 48–72 horas</li>
+          <li>Hasta 2 revisiones por entrega</li>
         </ul>
-        <a href="https://wa.me/526676991211" class="plan-cta plan-cta-s" target="_blank">COTIZAR AHORA</a>
+        <a href="https://wa.me/526676991211?text=Hola%2C%20me%20interesa%20el%20plan%20Esencial%20de%20la%20agencia" class="plan-cta plan-cta-s" target="_blank">HABLEMOS →</a>
       </div>
+
+      <!-- CRECIMIENTO -->
       <div class="plan-card featured">
-        <div class="plan-badge">MÁS POPULAR</div>
-        <div class="plan-name">GROWTH</div>
-        <p class="plan-for">Para marcas en crecimiento</p>
-        <div class="plan-price">$350 <span>– $400</span></div>
-        <div class="plan-period">USD / MES</div>
+        <div class="plan-badge">MÁS SOLICITADO</div>
+        <div class="plan-name">CRECIMIENTO</div>
+        <p class="plan-for">Para marcas en expansión</p>
         <hr class="plan-divider"/>
+        <p class="agency-tier-label">QUÉ INCLUYE</p>
         <ul class="plan-items">
-          <li>20 imágenes con modelo IA</li>
-          <li>15 imágenes de producto</li>
-          <li>5 videos cortos</li>
+          <li>Mayor volumen de imágenes con modelo IA</li>
+          <li>Fotografía editorial de producto</li>
+          <li>Videos UGC y reels para campañas</li>
+          <li>Entrega en 48–72 horas</li>
+          <li>Hasta 2 revisiones por entrega</li>
+          <li>Canal directo por WhatsApp</li>
         </ul>
-        <a href="https://wa.me/526676991211" class="plan-cta plan-cta-p" target="_blank">COTIZAR AHORA</a>
+        <a href="https://wa.me/526676991211?text=Hola%2C%20me%20interesa%20el%20plan%20Crecimiento%20de%20la%20agencia" class="plan-cta plan-cta-p" target="_blank">HABLEMOS →</a>
       </div>
+
+      <!-- CAMPAÑA PRO -->
       <div class="plan-card">
-        <div class="plan-name">PRO CAMPAIGN</div>
+        <div class="plan-name">CAMPAÑA PRO</div>
         <p class="plan-for">Para marcas que quieren escalar</p>
-        <div class="plan-price">$600 <span>– $700</span></div>
-        <div class="plan-period">USD / MES</div>
-        <hr class="plan-divider"/>
+        <hr class="plan-divider" style="margin-top:14px"/>
+        <p class="agency-tier-label">QUÉ INCLUYE</p>
         <ul class="plan-items">
-          <li>30 imágenes con modelo IA</li>
-          <li>30 imágenes de producto</li>
-          <li>3 videos de campaña</li>
+          <li>Producción visual de alto volumen</li>
+          <li>Imágenes de producto nivel editorial</li>
+          <li>Videos de campaña con dirección de arte</li>
+          <li>Entrega en 48–72 horas</li>
+          <li>Hasta 2 revisiones por entrega</li>
+          <li>Canal directo por WhatsApp</li>
         </ul>
-        <a href="https://wa.me/526676991211" class="plan-cta plan-cta-s" target="_blank">COTIZAR AHORA</a>
+        <a href="https://wa.me/526676991211?text=Hola%2C%20me%20interesa%20el%20plan%20Campa%C3%B1a%20Pro%20de%20la%20agencia" class="plan-cta plan-cta-s" target="_blank">HABLEMOS →</a>
       </div>
+
+    </div>
+
+    <!-- Nota cotización -->
+    <div class="agency-quote-note rv">
+      <p>
+        Sin contratos largos. Sin sorpresas. El precio depende del volumen y tipo de contenido que necesitas.<br/>
+        <a href="https://wa.me/526676991211" target="_blank">Escríbenos y te cotizamos hoy mismo →</a>
+      </p>
     </div>
 
     <!-- Divisor -->
@@ -659,15 +688,7 @@ footer{border-top:0.5px solid var(--border-em);display:grid;grid-template-column
       <img src="images/modelo-03.png" alt="Fátima Noor"/>
       <div class="gallery-overlay"><div class="go-label">MODELO IA · VER PERFIL →</div><div class="go-name">FÁTIMA NOOR</div></div>
     </a>
-
-    <!-- VERA SOL - activar cuando esté lista
-    <a href="vera.html" class="gallery-card" style="text-decoration:none">
-      <img src="images/modelo-04.png" alt="Vera Sol"/>
-      <div class="gallery-overlay"><div class="go-label">MODELO IA · VER PERFIL →</div><div class="go-name">VERA SOL</div></div>
-    </a>
-    -->
     <div class="gallery-card gallery-soon"><div class="soon-inner"><div class="soon-icon">◈</div><div class="soon-name">VERA SOL</div><div class="soon-label">PRÓXIMAMENTE</div></div></div>
-
     <div class="gallery-card gallery-soon"><div class="soon-inner"><div class="soon-icon">◈</div><div class="soon-name">MODELO 05</div><div class="soon-label">PRÓXIMAMENTE</div></div></div>
     <div class="gallery-card gallery-soon"><div class="soon-inner"><div class="soon-icon">◈</div><div class="soon-name">MODELO 06</div><div class="soon-label">PRÓXIMAMENTE</div></div></div>
   </div>
@@ -874,7 +895,6 @@ const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersec
 document.querySelectorAll('.rv,.rv2,.rv3').forEach(el=>obs.observe(el));
 function setLang(l){document.querySelectorAll('.lb').forEach(b=>b.classList.toggle('active',b.textContent===l.toUpperCase()));document.documentElement.lang=l;}
 
-// Auto-detectar formato de logos
 function loadLogo(imgId, baseName, filter) {
   const formats = ['png', 'jpg', 'jpeg'];
   const img = document.getElementById(imgId);
