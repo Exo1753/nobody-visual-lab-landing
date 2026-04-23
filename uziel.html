@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Uziel — AI Model · Nobody Visual Lab</title>
+<meta name="description" content="Uziel is Nobody Visual Lab's AI male model specialized in fitness, men's jewelry, and masculine fashion editorial."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#090909;
+  --surface:#0d0d0d;
+  --elevated:#141414;
+  --border:rgba(255,255,255,0.06);
+  --border-em:rgba(255,255,255,0.14);
+  --accent:#4DBFA3;
+  --accent-sub:rgba(77,191,163,0.10);
+  --accent-bdr:rgba(77,191,163,0.28);
+  --white:rgba(255,255,255,0.90);
+  --muted:rgba(255,255,255,0.28);
+  --muted2:rgba(255,255,255,0.48);
+  --fd:'Bebas Neue',sans-serif;
+  --fb:'DM Sans',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--white);font-family:var(--fb);overflow-x:hidden;font-size:13px}
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");pointer-events:none;z-index:9999}
+a{color:inherit;text-decoration:none}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:14px 28px;border-bottom:0.5px solid var(--border-em);background:rgba(9,9,9,0.92);backdrop-filter:blur(20px)}
+.nav-logo{display:flex;align-items:center;gap:8px}
+.nav-logo img{width:28px;height:28px;border-radius:7px;object-fit:cover;border:0.5px solid var(--accent-bdr);background:var(--accent-sub)}
+.nav-logo span{font-family:var(--fd);font-size:13px;font-weight:800;color:var(--white);letter-spacing:0.06em;text-transform:uppercase}
+.nav-logo em{color:var(--accent);font-style:normal}
+.nav-back{font-size:10px;letter-spacing:0.14em;color:var(--muted2);text-transform:uppercase;font-weight:600;display:flex;align-items:center;gap:8px;transition:color 0.2s}
+.nav-back:hover{color:var(--accent)}
+.btn-app{font-size:10px;letter-spacing:0.10em;background:var(--accent);color:#071a13;padding:7px 18px;border-radius:100px;border:none;cursor:pointer;text-decoration:none;font-weight:700;transition:all 0.2s;white-space:nowrap;text-transform:uppercase}
+.btn-app:hover{background:#5ecfb3}
+
+/* HERO */
+.profile-hero{min-height:100vh;position:relative;padding-top:60px;display:flex;align-items:flex-end}
+.hero-img-col{position:absolute;inset:0;overflow:hidden;background:#0d0d0d}
+.hero-img-col img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;filter:contrast(1.04) saturate(0.88)}
+.hero-img-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(9,9,9,0.85) 0%,rgba(9,9,9,0.40) 55%,rgba(9,9,9,0.10) 100%),linear-gradient(to top,rgba(9,9,9,0.98) 0%,transparent 35%)}
+.hero-info-col{position:relative;z-index:2;width:100%;max-width:1200px;margin:0 auto;padding:0 28px 64px;display:flex;flex-direction:column;align-items:flex-start}
+.hero-info-inner{max-width:520px;width:100%}
+
+.uziel-tag{font-size:10px;letter-spacing:0.22em;color:var(--accent);font-weight:700;text-transform:uppercase;margin-bottom:20px;display:flex;align-items:center;gap:10px}
+.uziel-tag::before{content:'';width:20px;height:1px;background:var(--accent)}
+.model-num{font-family:var(--fd);font-size:11px;letter-spacing:0.20em;color:var(--muted);text-transform:uppercase;margin-bottom:10px}
+.model-name{font-family:var(--fd);font-size:clamp(72px,10vw,128px);line-height:0.82;letter-spacing:-0.02em;color:var(--white);text-transform:uppercase;margin-bottom:8px}
+.model-name-sub{font-family:var(--fd);font-size:clamp(18px,2.5vw,28px);letter-spacing:0.12em;color:var(--accent);text-transform:uppercase;margin-bottom:28px}
+.model-short{font-size:12px;color:var(--muted2);line-height:1.8;margin-bottom:36px;max-width:400px;font-style:italic;border-left:2px solid var(--accent);padding-left:16px}
+
+.model-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border-em);margin-bottom:36px}
+.stat-cell{background:var(--bg);padding:16px 14px}
+.stat-label{font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:6px}
+.stat-val{font-family:var(--fd);font-size:18px;color:var(--white);letter-spacing:0.04em}
+
+.spec-grid{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:36px}
+.spec-tag{font-size:9px;letter-spacing:0.10em;border:0.5px solid var(--border-em);border-radius:100px;padding:5px 12px;color:var(--muted2);text-transform:uppercase;font-weight:600;transition:all 0.2s}
+.spec-tag:hover{border-color:var(--accent);color:var(--accent)}
+
+.cta-row{display:flex;gap:10px;flex-wrap:wrap}
+.btn-uziel{font-size:11px;letter-spacing:0.10em;background:var(--accent);color:#071a13;padding:10px 24px;border-radius:100px;border:none;cursor:pointer;text-decoration:none;font-weight:700;transition:all 0.2s;text-transform:uppercase;display:inline-block}
+.btn-uziel:hover{background:#5ecfb3;transform:translateY(-1px)}
+.btn-outline{font-size:11px;background:transparent;color:var(--white);padding:10px 22px;border-radius:100px;border:0.5px solid var(--border-em);cursor:pointer;text-decoration:none;transition:all 0.2s;text-transform:uppercase;font-weight:600}
+.btn-outline:hover{border-color:var(--accent);color:var(--accent)}
+
+/* TICKER */
+.ticker{border-bottom:0.5px solid var(--border-em);border-top:0.5px solid var(--border-em);overflow:hidden;padding:11px 0}
+.ticker-track{display:flex;animation:tick 24s linear infinite;width:max-content;white-space:nowrap}
+.ticker-item{font-size:10px;letter-spacing:0.14em;color:var(--muted);padding:0 22px;text-transform:uppercase;font-weight:600}
+.ticker-dot{color:var(--accent);font-size:8px;align-self:center}
+@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* BIO */
+.bio-sec{padding:80px 28px;border-bottom:0.5px solid var(--border-em);max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.2fr 1fr;gap:80px;align-items:start}
+.bio-eyebrow{font-size:10px;letter-spacing:0.20em;color:var(--accent);font-weight:700;text-transform:uppercase;margin-bottom:20px;display:flex;align-items:center;gap:10px}
+.bio-eyebrow::before{content:'';width:20px;height:1px;background:var(--accent)}
+.bio-title{font-family:var(--fd);font-size:clamp(32px,4vw,52px);line-height:0.88;text-transform:uppercase;margin-bottom:28px;letter-spacing:-0.01em}
+.bio-text{font-size:13px;color:var(--muted2);line-height:2;margin-bottom:20px}
+.bio-quote{font-family:var(--fd);font-size:clamp(18px,2.5vw,26px);color:var(--accent);line-height:1.1;text-transform:uppercase;margin-top:32px;letter-spacing:0.02em;border-left:2px solid var(--accent);padding-left:16px}
+
+.trait-list{list-style:none;margin-bottom:36px}
+.trait-item{display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:0.5px solid var(--border);font-size:11px}
+.trait-label{color:var(--muted);letter-spacing:0.10em;text-transform:uppercase;font-weight:600}
+.trait-val{color:var(--white);font-weight:600;text-align:right;max-width:200px}
+
+.mood-title{font-size:10px;letter-spacing:0.16em;color:var(--muted);text-transform:uppercase;font-weight:600;margin-bottom:14px}
+.mood-tags{display:flex;flex-wrap:wrap;gap:8px}
+.mood-tag{font-size:10px;letter-spacing:0.08em;padding:6px 14px;border-radius:100px;font-weight:600;text-transform:uppercase}
+.mood-dark{background:var(--accent-sub);border:0.5px solid var(--accent-bdr);color:var(--accent)}
+.mood-neutral{background:rgba(255,255,255,0.04);border:0.5px solid var(--border-em);color:var(--muted2)}
+
+/* GALLERY */
+.gallery-sec{border-bottom:0.5px solid var(--border-em)}
+.gallery-header{padding:48px 28px 24px;max-width:1200px;margin:0 auto;display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.gallery-title{font-family:var(--fd);font-size:clamp(28px,5vw,52px);font-weight:900;letter-spacing:-0.02em;text-transform:uppercase}
+.gallery-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--border-em)}
+.g-card{aspect-ratio:2/3;overflow:hidden;position:relative;background:#111;cursor:pointer}
+.g-card img,.g-card video{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;transition:transform 0.45s ease,filter 0.3s}
+.g-card:hover img,.g-card:hover video{transform:scale(1.05);filter:brightness(1.1)}
+.g-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(9,9,9,0.88) 0%,transparent 55%);opacity:0;transition:opacity 0.25s;display:flex;flex-direction:column;justify-content:flex-end;padding:18px}
+.g-card:hover .g-overlay{opacity:1}
+.g-cat{font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent);margin-bottom:4px;font-weight:600}
+.g-name{font-family:var(--fd);font-size:15px;font-weight:800;text-transform:uppercase}
+.g-soon{background:linear-gradient(135deg,#0e0e0e,#141414);cursor:default}
+.g-soon::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 4px,rgba(77,191,163,0.015) 4px,rgba(77,191,163,0.015) 5px)}
+.soon-inner{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px}
+.soon-icon{font-size:1.4rem;color:rgba(77,191,163,0.18)}
+.soon-label{font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(77,191,163,0.45);border:0.5px solid rgba(77,191,163,0.20);padding:4px 12px;border-radius:100px}
+
+/* CAMPAIGN TYPES */
+.camps-sec{padding:64px 28px;border-bottom:0.5px solid var(--border-em)}
+.camps-inner{max-width:1100px;margin:0 auto}
+.camps-eyebrow{font-size:10px;letter-spacing:0.20em;color:var(--accent);font-weight:700;text-transform:uppercase;margin-bottom:20px;display:flex;align-items:center;gap:10px}
+.camps-eyebrow::before{content:'';width:20px;height:1px;background:var(--accent)}
+.camps-title{font-family:var(--fd);font-size:clamp(28px,4vw,48px);line-height:0.88;text-transform:uppercase;margin-bottom:40px;letter-spacing:-0.01em}
+.camps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border-em)}
+.camp-card{background:var(--bg);padding:32px 28px;border-top:2px solid transparent;transition:all 0.25s}
+.camp-card:hover{border-color:var(--accent);background:var(--accent-sub)}
+.camp-num{font-family:var(--fd);font-size:48px;color:rgba(77,191,163,0.10);line-height:1;margin-bottom:16px;font-weight:900;transition:color 0.25s}
+.camp-card:hover .camp-num{color:rgba(77,191,163,0.28)}
+.camp-title{font-family:var(--fd);font-size:20px;text-transform:uppercase;margin-bottom:10px;letter-spacing:0.02em}
+.camp-desc{font-size:11px;color:var(--muted2);line-height:1.8}
+
+/* VIDEO SECTION */
+.video-sec{padding:64px 28px;border-bottom:0.5px solid var(--border-em)}
+.video-inner{max-width:1100px;margin:0 auto}
+.video-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border-em);margin-top:28px}
+.video-left{background:var(--surface);padding:32px}
+.video-title{font-family:var(--fd);font-size:clamp(28px,4vw,52px);line-height:0.9;margin-bottom:16px;text-transform:uppercase}
+.video-desc{font-size:13px;color:var(--muted2);line-height:1.9;margin-bottom:24px}
+.video-right{position:relative;min-height:420px;background:var(--elevated);cursor:pointer;overflow:hidden}
+.video-thumb{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
+.video-play-overlay{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:rgba(9,9,9,0.30);transition:background 0.25s}
+.video-right:hover .video-play-overlay{background:rgba(9,9,9,0.12)}
+.play-circle{width:80px;height:80px;border-radius:50%;border:1px solid var(--accent);background:rgba(77,191,163,0.12);display:flex;align-items:center;justify-content:center;transition:all 0.25s}
+.video-right:hover .play-circle{transform:scale(1.06);background:rgba(77,191,163,0.24)}
+.play-label{font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--white);font-weight:600}
+.video-tags{display:flex;flex-wrap:wrap;gap:8px}
+.vtag{font-size:10px;letter-spacing:0.10em;text-transform:uppercase;border:0.5px solid var(--border-em);border-radius:100px;padding:5px 12px;color:var(--muted2);font-weight:600}
+
+/* LIGHTBOX */
+#video-lightbox{display:none;position:fixed;inset:0;z-index:9000;background:rgba(0,0,0,0.92);align-items:center;justify-content:center;backdrop-filter:blur(8px)}
+.lb-close{position:absolute;top:18px;right:22px;background:none;border:none;color:#fff;font-size:28px;cursor:pointer;opacity:0.65;transition:opacity 0.2s;font-weight:300}
+.lb-close:hover{opacity:1}
+#yt-wrap{width:90vw;max-width:420px;aspect-ratio:9/16;position:relative}
+#yt-frame{width:100%;height:100%;border:none;border-radius:6px}
+
+/* CTA */
+.cta-sec{padding:80px 28px;text-align:center;position:relative;overflow:hidden}
+.cta-glow{position:absolute;width:600px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(77,191,163,0.06) 0%,transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none}
+.cta-inner{position:relative;z-index:1;max-width:700px;margin:0 auto}
+.cta-eyebrow{font-size:10px;letter-spacing:0.20em;color:var(--accent);font-weight:700;text-transform:uppercase;margin-bottom:20px;display:flex;align-items:center;justify-content:center;gap:10px}
+.cta-eyebrow::before,.cta-eyebrow::after{content:'';width:20px;height:1px;background:var(--accent)}
+.cta-title{font-family:var(--fd);font-size:clamp(40px,8vw,80px);line-height:0.84;letter-spacing:-0.02em;margin-bottom:20px;text-transform:uppercase}
+.cta-sub{font-size:12px;color:var(--muted2);max-width:380px;margin:0 auto 28px;line-height:1.8}
+.cta-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.btn-wa{font-size:11px;letter-spacing:0.08em;background:#25D366;color:#061a0c;padding:10px 22px;border-radius:100px;border:none;cursor:pointer;text-decoration:none;font-weight:700;transition:all 0.2s;display:inline-flex;align-items:center;gap:6px;text-transform:uppercase}
+.btn-wa:hover{background:#20bd5a;transform:translateY(-1px)}
+
+/* FOOTER */
+footer{border-top:0.5px solid var(--border-em);display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:18px 28px;gap:12px}
+.f-logo{display:flex;align-items:center;gap:8px}
+.f-logo img{width:26px;height:26px;border-radius:7px;object-fit:cover;border:0.5px solid var(--accent-bdr);background:var(--accent-sub)}
+.f-logo span{font-family:var(--fd);font-size:12px;font-weight:800;color:var(--white);letter-spacing:0.05em;text-transform:uppercase}
+.f-logo em{color:var(--accent);font-style:normal}
+.f-copy{font-size:10px;letter-spacing:0.08em;color:var(--muted);text-align:center;text-transform:uppercase;font-weight:600}
+.f-right{display:flex;justify-content:flex-end}
+
+/* ANIMATIONS */
+.rv,.rv2,.rv3{opacity:0;transform:translateY(24px)}
+.rv{transition:opacity .8s ease,transform .8s ease}
+.rv2{transition:opacity .8s ease .12s,transform .8s ease .12s}
+.rv3{transition:opacity .8s ease .24s,transform .8s ease .24s}
+.rv.vis,.rv2.vis,.rv3.vis{opacity:1;transform:none}
+
+@media(max-width:900px){
+  .profile-hero{min-height:100vh}
+  .hero-img-overlay{background:linear-gradient(to right,rgba(9,9,9,0.85) 0%,rgba(9,9,9,0.70) 60%,rgba(9,9,9,0.50) 100%),linear-gradient(to top,rgba(9,9,9,0.98) 0%,transparent 40%)}
+  .hero-info-col{padding:0 20px 48px}
+  .bio-sec{grid-template-columns:1fr;gap:40px;padding:48px 20px}
+  .camps-grid{grid-template-columns:1fr}
+  .gallery-grid{grid-template-columns:repeat(2,1fr)}
+  .video-grid{grid-template-columns:1fr}
+  footer{grid-template-columns:1fr;text-align:center}
+  .f-right{justify-content:center}
+  nav{padding:12px 16px}
+}
+@media(max-width:600px){
+  .model-stats{grid-template-columns:1fr 1fr}
+}
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:rgba(77,191,163,0.35)}
+</style>
+</head>
+<body>
+
+<div id="video-lightbox">
+  <button class="lb-close" onclick="closeLightbox()">✕</button>
+  <div id="yt-wrap">
+    <iframe id="yt-frame" src="" allow="autoplay;encrypted-media" allowfullscreen></iframe>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="images/logo.png" alt="logo"/>
+    <span>NOBODY<em>VISUAL</em>LAB</span>
+  </a>
+  <a href="index.html#galeria" class="nav-back">← BACK TO MODELS</a>
+  <a href="https://app.nobodyvisuallab.com" class="btn-app">OPEN APP</a>
+</nav>
+
+<!-- HERO -->
+<section class="profile-hero">
+  <div class="hero-img-col">
+    <img src="images/uziel-hero-01.png" alt="Uziel"/>
+    <div class="hero-img-overlay"></div>
+  </div>
+  <div class="hero-info-col">
+    <div class="hero-info-inner">
+      <div class="model-num">MODEL N° 05 · NOBODY VISUAL LAB</div>
+      <div class="uziel-tag">AI DIGITAL MODEL</div>
+      <div class="model-name">UZIEL</div>
+      <div class="model-name-sub">MEN'S EDITORIAL</div>
+      <p class="model-short">The weight you lift today is the version of yourself you meet tomorrow.</p>
+
+      <div class="model-stats">
+        <div class="stat-cell">
+          <div class="stat-label">Age</div>
+          <div class="stat-val">24</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-label">Origin</div>
+          <div class="stat-val">MÉXICO</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-label">Style</div>
+          <div class="stat-val">ATHLETIC</div>
+        </div>
+      </div>
+
+      <div class="spec-grid">
+        <span class="spec-tag">Fitness</span>
+        <span class="spec-tag">Men's Jewelry</span>
+        <span class="spec-tag">Fashion</span>
+        <span class="spec-tag">Grooming</span>
+        <span class="spec-tag">Editorial</span>
+        <span class="spec-tag">Activewear</span>
+      </div>
+
+      <div class="cta-row">
+        <a href="https://wa.me/526676991211" class="btn-uziel" target="_blank">BOOK UZIEL →</a>
+        <a href="https://app.nobodyvisuallab.com" class="btn-outline">USE IN APP</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-track">
+    <span class="ticker-item">UZIEL</span><span class="ticker-dot">✦</span>
+    <span class="ticker-item">AI DIGITAL MODEL</span><span class="ticker-dot">✦</span>
+    <span class="ticker-item">FITNESS EDITORIAL</span><span class="ticker-dot">✦</span>
+    <span class="ticker-item">MEN'S JEWELRY</span><span class="ticker-dot">✦</span>
+    <span class="ticker-item">MASCULINE FASHION</span><span class="ticker-dot">✦</span>
+    <span class="ticker-item">NOBODY VISUAL LAB</span><span class="ticker-dot">✦</span>
+    <span class="ticker-item">UZIEL</span><span class="ticker-dot">✦</span>
+    <span class="ticker-item">AI DIGITAL MODEL</span><span class="ticker-dot">✦</span>
+    <span class="ticker-item">FITNESS EDITORIAL</span><span class="ticker-dot">✦</span>
+    <span class="ticker-item">MEN'S JEWELRY</span><span class="ticker-dot">✦</span>
+    <span class="ticker-item">MASCULINE FASHION</span><span class="ticker-dot">✦</span>
+    <span class="ticker-item">NOBODY VISUAL LAB</span><span class="ticker-dot">✦</span>
+  </div>
+</div>
+
+<!-- BIO -->
+<div class="bio-sec">
+  <div class="bio-left rv">
+    <div class="bio-eyebrow">ABOUT UZIEL</div>
+    <div class="bio-title">THE MAN<br/>WHO <span style="color:var(--accent)">SHOWS UP</span><br/>EVERY TIME</div>
+    <p class="bio-text">Uziel is a 24-year-old digital model from Mexico. Athletic build, brown eyes, and a natural presence in front of the camera that doesn't need to be explained — it just lands.</p>
+    <p class="bio-text">He grew up with regional mexicano playing in the background and the gym as his daily ritual. His energy combines the discipline of an athlete with the effortless elegance of someone who knows how to move in any environment — from a fitness shoot to a luxury men's editorial.</p>
+    <p class="bio-text">Cheerful, committed, versatile. The kind of model that elevates any brand without overshadowing it. He doesn't need the spotlight — he becomes it.</p>
+    <div class="bio-quote">"THE WEIGHT YOU LIFT TODAY<br/>IS THE VERSION OF YOURSELF<br/>YOU MEET TOMORROW."</div>
+  </div>
+
+  <div class="bio-right rv2">
+    <ul class="trait-list">
+      <li class="trait-item"><span class="trait-label">Build</span><span class="trait-val">Athletic — strong, natural presence</span></li>
+      <li class="trait-item"><span class="trait-label">Personality</span><span class="trait-val">Cheerful, committed, versatile</span></li>
+      <li class="trait-item"><span class="trait-label">Music</span><span class="trait-val">Regional Mexicano & Pop</span></li>
+      <li class="trait-item"><span class="trait-label">Daily ritual</span><span class="trait-val">Gym — no days off</span></li>
+      <li class="trait-item"><span class="trait-label">Style</span><span class="trait-val">Athletic meets elegant</span></li>
+      <li class="trait-item"><span class="trait-label">Origin</span><span class="trait-val">México</span></li>
+      <li class="trait-item"><span class="trait-label">Eyes</span><span class="trait-val">Brown — warm and focused</span></li>
+    </ul>
+
+    <div class="mood-title">MOOD PALETTE</div>
+    <div class="mood-tags">
+      <span class="mood-tag mood-dark">STRONG</span>
+      <span class="mood-tag mood-dark">COMMITTED</span>
+      <span class="mood-tag mood-dark">MEXICAN</span>
+      <span class="mood-tag mood-neutral">ELEGANT</span>
+      <span class="mood-tag mood-neutral">ATHLETIC</span>
+      <span class="mood-tag mood-neutral">VERSATILE</span>
+      <span class="mood-tag mood-neutral">EDITORIAL</span>
+    </div>
+  </div>
+</div>
+
+<!-- VIDEO EN ACCIÓN -->
+<section class="video-sec rv">
+  <div class="video-inner">
+    <div class="camps-eyebrow" style="margin-bottom:24px">IN MOTION</div>
+    <div class="video-grid">
+      <div class="video-left">
+        <div class="video-title">UZIEL<br/>IN <span style="color:var(--accent)">ACTION.</span></div>
+        <p class="video-desc">Uziel isn't just a still image. His natural energy and athletic-elegant presence capture attention and connect with audiences that value authenticity and strength.</p>
+        <div class="video-tags">
+          <span class="vtag">Fitness</span>
+          <span class="vtag">Jewelry</span>
+          <span class="vtag">Fashion</span>
+          <span class="vtag">Reels</span>
+          <span class="vtag">Editorial</span>
+        </div>
+      </div>
+      <div class="video-right" onclick="openLightbox('PROXIMAMENTE')">
+        <img class="video-thumb" src="images/uziel-campaign-01.png" alt="Uziel"/>
+        <div class="video-play-overlay">
+          <div class="play-circle">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="var(--accent)"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+          <div class="play-label">WATCH VIDEO</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery-sec">
+  <div class="gallery-header rv">
+    <div class="gallery-title">UZIEL <span style="color:var(--accent)">IN CAMPAIGN</span></div>
+    <a href="https://app.nobodyvisuallab.com" class="btn-outline">USE UZIEL IN APP →</a>
+  </div>
+  <div class="gallery-grid">
+    <div class="g-card">
+      <img src="images/uziel-campaign-01.png" alt="Uziel"/>
+      <div class="g-overlay"><div class="g-cat">PORTRAIT</div><div class="g-name">UZIEL · HERO</div></div>
+    </div>
+    <div class="g-card">
+      <img src="images/uziel-campaign-02.png" alt="Uziel"/>
+      <div class="g-overlay"><div class="g-cat">MEN'S JEWELRY</div><div class="g-name">UZIEL · JEWELRY</div></div>
+    </div>
+    <div class="g-card" style="position:relative;overflow:hidden">
+      <video src="images/uziel-campaign-03.mp4" autoplay loop muted playsinline style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block"></video>
+    </div>
+    <div class="g-card">
+      <img src="images/uziel-campaign-04.png" alt="Uziel"/>
+      <div class="g-overlay"><div class="g-cat">FITNESS</div><div class="g-name">UZIEL · FITNESS</div></div>
+    </div>
+    <div class="g-card">
+      <img src="images/uziel-campaign-05.png" alt="Uziel"/>
+      <div class="g-overlay"><div class="g-cat">FASHION</div><div class="g-name">UZIEL · FASHION</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CAMPAIGN TYPES -->
+<section class="camps-sec">
+  <div class="camps-inner">
+    <div class="camps-eyebrow rv">WHAT UZIEL DOES BEST</div>
+    <div class="camps-title rv">MADE FOR<br/><span style="color:var(--accent)">THESE</span> CAMPAIGNS</div>
+    <div class="camps-grid">
+      <div class="camp-card rv">
+        <div class="camp-num">01</div>
+        <div class="camp-title">FITNESS & ACTIVEWEAR</div>
+        <p class="camp-desc">His athletic build and committed energy make fitness brands feel real. No filters needed — just presence and discipline.</p>
+      </div>
+      <div class="camp-card rv2">
+        <div class="camp-num">02</div>
+        <div class="camp-title">MEN'S JEWELRY</div>
+        <p class="camp-desc">Strength and elegance in one frame. Uziel makes men's jewelry feel powerful, not decorative — exactly what premium brands need.</p>
+      </div>
+      <div class="camp-card rv3">
+        <div class="camp-num">03</div>
+        <div class="camp-title">MASCULINE FASHION</div>
+        <p class="camp-desc">From elevated casual to editorial menswear — he adapts to any aesthetic without losing his natural edge. Versatile for brands that want authenticity.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-sec">
+  <div class="cta-glow"></div>
+  <div class="cta-inner rv">
+    <div class="cta-eyebrow">READY TO WORK WITH UZIEL</div>
+    <div class="cta-title">BOOK<br/><span style="color:var(--accent)">UZIEL</span><br/>NOW.</div>
+    <p class="cta-sub">Use him in the app yourself or let our team handle the full campaign for you.</p>
+    <div class="cta-btns">
+      <a href="https://app.nobodyvisuallab.com" class="btn-uziel">USE IN APP →</a>
+      <a href="https://wa.me/526676991211" class="btn-wa" target="_blank">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WHATSAPP
+      </a>
+      <a href="index.html" class="btn-outline">← ALL MODELS</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="index.html" class="f-logo">
+    <img src="images/logo.png" alt="logo"/>
+    <span>NOBODY<em>VISUAL</em>LAB</span>
+  </a>
+  <div class="f-copy">© 2025 NOBODY VISUAL LAB · SINALOA, MÉXICO · AI VISUAL STUDIO</div>
+  <div class="f-right"><a href="https://app.nobodyvisuallab.com" class="btn-app">OPEN APP</a></div>
+</footer>
+
+<script>
+function openLightbox(id){
+  var lb=document.getElementById('video-lightbox');
+  document.getElementById('yt-frame').src='https://www.youtube.com/embed/'+id+'?autoplay=1&rel=0&modestbranding=1&showinfo=0';
+  lb.style.display='flex';
+  document.body.style.overflow='hidden';
+}
+function closeLightbox(){
+  document.getElementById('video-lightbox').style.display='none';
+  document.getElementById('yt-frame').src='';
+  document.body.style.overflow='';
+}
+document.getElementById('video-lightbox').addEventListener('click',function(e){
+  if(e.target===this)closeLightbox();
+});
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis')});},{threshold:.06});
+document.querySelectorAll('.rv,.rv2,.rv3').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
