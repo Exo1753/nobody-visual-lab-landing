@@ -886,7 +886,7 @@ footer{border-top:0.5px solid var(--border-em);display:grid;grid-template-column
 
 <script>
 var heroMuted=true;
-function toggleSound(){heroMuted=!heroMuted;var src='https://www.youtube.com/embed/W9zkh4O-A1Q?autoplay=1&mute='+(heroMuted?'1':'0')+'&loop=1&playlist=W9zkh4O-A1Q&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&vq=hd1080;document.getElementById('hero-video').src=src;document.getElementById('sound-icon').textContent=heroMuted?'🔇':'🔊';document.getElementById('sound-btn').style.borderColor=heroMuted?'rgba(255,255,255,.14)':'rgba(77,191,163,.55)';}
+function toggleSound(){heroMuted=!heroMuted;var src='https://www.youtube.com/embed/W9zkh4O-A1Q?autoplay=1&mute='+(heroMuted?'1':'0')+'&loop=1&playlist=W9zkh4O-A1Q&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&vq=hd1080';document.getElementById('hero-video').src=src;document.getElementById('sound-icon').textContent=heroMuted?'🔇':'🔊';document.getElementById('sound-btn').style.borderColor=heroMuted?'rgba(255,255,255,.14)':'rgba(77,191,163,.55)';}
 function openLightbox(id,type){var lb=document.getElementById('video-lightbox');var wrap=document.getElementById('yt-wrap');if(type==='short'){wrap.style.aspectRatio='9/16';wrap.style.maxWidth='420px';}else{wrap.style.aspectRatio='16/9';wrap.style.maxWidth='1000px';}document.getElementById('yt-frame').src='https://www.youtube.com/embed/'+id+'?autoplay=1&rel=0&modestbranding=1&showinfo=0';lb.style.display='flex';document.body.style.overflow='hidden';}
 function closeLightbox(){document.getElementById('video-lightbox').style.display='none';document.getElementById('yt-frame').src='';document.body.style.overflow='';}
 document.getElementById('video-lightbox').addEventListener('click',function(e){if(e.target===this)closeLightbox();});
