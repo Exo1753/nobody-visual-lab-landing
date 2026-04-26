@@ -274,8 +274,9 @@ footer{border-top:0.5px solid var(--border-em);display:grid;grid-template-column
 }
 @media(max-width:900px){
   nav{padding:12px 16px}
- .hero-video-bg iframe{width:100vw;min-width:100vw;height:56.25vw;min-height:0;top:60px;left:0;transform:none;}
+  .hero-video-bg iframe{width:100vw;min-width:100vw;height:56.25vw;min-height:0;top:60px;left:0;transform:none;}
   .nav-links{display:none}
+  .btn-app{font-size:9px;padding:6px 12px;letter-spacing:0.06em;}
   .hero-content{grid-template-columns:1fr;gap:24px;padding:5rem 20px 3rem}
   .hero-right-stats{flex-direction:row;flex-wrap:wrap;justify-content:flex-start;gap:16px}
   .hero-stat{text-align:left}
@@ -328,7 +329,7 @@ footer{border-top:0.5px solid var(--border-em);display:grid;grid-template-column
   <div class="hero-video-bg">
     <iframe id="hero-video" src="https://www.youtube.com/embed/W9zkh4O-A1Q?autoplay=1&mute=1&loop=1&playlist=W9zkh4O-A1Q&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&vq=hd1080" allow="autoplay;encrypted-media" allowfullscreen></iframe>
   </div>
-  <button id="sound-btn" onclick="toggleSound()" style="position:absolute;top:calc(56.25vw + 70px);right:1rem;z-index:10;background:rgba(13,13,13,.80);backdrop-filter:blur(12px);border:0.5px solid rgba(255,255,255,.14);border-radius:100px;color:var(--white);font-family:var(--fb);font-size:10px;letter-spacing:.14em;padding:.6rem 1.1rem;cursor:pointer;display:flex;align-items:center;gap:.5rem;transition:all .25s;text-transform:uppercase;font-weight:600">
+  style="position:absolute;top:calc(56.25vw + 70px);right:.75rem;z-index:10;background:rgba(13,13,13,.65);backdrop-filter:blur(16px);border:0.5px solid rgba(255,255,255,.10);border-radius:100px;color:var(--white);font-family:var(--fb);font-size:9px;letter-spacing:.16em;padding:.45rem .85rem;cursor:pointer;display:flex;align-items:center;gap:.4rem;transition:all .25s;text-transform:uppercase;font-weight:600"
     <span id="sound-icon">🔇</span><span id="sound-label">SONIDO</span>
   </button>
   <div class="hero-content">
