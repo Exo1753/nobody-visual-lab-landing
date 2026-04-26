@@ -244,6 +244,7 @@ footer{border-top:0.5px solid var(--border-em);display:grid;grid-template-column
 .agencia-tag::before{content:'';width:14px;height:1px;background:var(--accent)}
 .agencia-title{font-family:var(--fd);font-size:clamp(28px,3vw,42px);font-weight:900;line-height:0.9;text-transform:uppercase;margin-bottom:16px}
 .agencia-desc{font-size:12px;color:var(--muted2);line-height:1.85;margin-bottom:24px}
+.agencia-left{}
 .agencia-right{}
 .agencia-list{list-style:none;margin-bottom:28px}
 .agencia-list li{font-size:12px;color:var(--muted2);line-height:2.2;display:flex;align-items:flex-start;gap:10px}
@@ -279,13 +280,22 @@ footer{border-top:0.5px solid var(--border-em);display:grid;grid-template-column
 }
 @media(max-width:900px){
   nav{padding:12px 16px}
-  .hero-video-bg iframe{width:100vw;min-width:100vw;height:56.25vw;min-height:0;top:60px;left:0;transform:none;}
-  .nav-links{display:none}
-  .btn-app{font-size:9px;padding:6px 12px;letter-spacing:0.06em;}
-  .hero-content{grid-template-columns:1fr;gap:24px;padding:5rem 20px 3rem}
-  .hero-right-stats{flex-direction:row;flex-wrap:wrap;justify-content:flex-start;gap:16px}
+  .hero{min-height:0;display:block;align-items:initial}
+  .hero-video-bg{position:relative;height:56.25vw;margin-top:60px;inset:auto}
+  .hero-video-bg iframe{width:100vw;min-width:100vw;height:56.25vw;min-height:0;top:0;left:0;transform:none;position:absolute}
+  .hero-video-bg::after{display:none}
+  .hero-content{grid-template-columns:1fr;gap:20px;padding:0 0 3rem;max-width:100%;background:var(--bg);position:relative;z-index:2}
+  .hero-eyebrow{background:var(--accent);color:#071a13;padding:12px 20px;margin:0 0 28px;font-size:11px;letter-spacing:.16em;font-weight:800;display:block;width:100%}
+  .hero-eyebrow::before{display:none}
+  .hero-content > div:first-child{padding:0 20px}
+  .hero-content > div:first-child > .hero-eyebrow{margin-left:-20px;margin-right:-20px}
+  .hero-title{font-size:52px;line-height:.88;margin-bottom:18px}
+  .hero-desc{margin-bottom:24px}
+  .hero-right-stats{flex-direction:row;flex-wrap:wrap;justify-content:flex-start;gap:16px;padding:0 20px}
   .hero-stat{text-align:left}
   .hero-stat-n{font-size:28px}
+  .nav-links{display:none}
+  .btn-app{font-size:9px;padding:6px 12px;letter-spacing:0.06em;}
   .paths-grid,.plans-grid,.proc-grid,.app-pricing-grid{grid-template-columns:1fr}
   .statement,.plans-sec,.tut-sec,.cta-sec,.app-pricing-sec,.agencia-sec,.faq-sec{padding:44px 16px}
   .paths-header,.gallery-header,.srv-header,.port-header,.proc-header,.esp-header{padding:24px 16px 18px}
@@ -295,6 +305,7 @@ footer{border-top:0.5px solid var(--border-em);display:grid;grid-template-column
   .stmt-text{font-size:clamp(28px,8vw,44px)}
   .cta-title{font-size:clamp(40px,12vw,70px)}
   .agencia-card{padding:24px}
+  #sound-btn{top:calc(56.25vw + 70px)!important}
 }
 @media(max-width:600px){
   .hero-paths{grid-template-columns:1fr}
@@ -339,7 +350,7 @@ footer{border-top:0.5px solid var(--border-em);display:grid;grid-template-column
   </button>
   <div class="hero-content">
     <div>
-      <div class="hero-eyebrow">AI VISUAL STUDIO — FASHION & BRANDS</div>
+      <div class="hero-eyebrow">▸ AI VISUAL STUDIO — FASHION & BRANDS</div>
       <h1 class="hero-title">
       CREAMOS<br/>LO QUE<br/>ANTES ERA<br/><span class="highlight">IMPOSIBLE.</span>
       </h1>
