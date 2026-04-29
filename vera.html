@@ -352,7 +352,7 @@ footer{border-top:.5px solid var(--border);display:grid;grid-template-columns:1f
 </footer>
 
 <script>
-function openLightbox(id){var lb=document.getElementById('video-lightbox');document.getElementById('yt-frame').src='https://www.youtube.com/embed/'+id+'?autoplay=1&rel=0&modestbranding=1&showinfo=0';lb.style.display='flex';document.body.style.overflow='hidden';}
+function openLightbox(id){var lb=document.getElementById('video-lightbox');document.getElementById('yt-frame').src='https://www.youtube.com/embed/'+id+'?autoplay=1&rel=0&modestbranding=1&showinfo=0&vq=hd1080';lb.style.display='flex';document.body.style.overflow='hidden';}
 function closeLightbox(){document.getElementById('video-lightbox').style.display='none';document.getElementById('yt-frame').src='';document.body.style.overflow='';}
 document.getElementById('video-lightbox').addEventListener('click',function(e){if(e.target===this)closeLightbox();});
 const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis')});},{threshold:.06});
