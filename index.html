@@ -227,10 +227,19 @@ nav{
 .replace-table tbody tr{transition:background .2s}
 .replace-table tbody tr:hover{background:var(--accent-dim)}
 .replace-table .td-old{color:var(--muted2)}
+.replace-table .td-cost{color:rgba(255,120,80,.85);font-size:11.5px;font-weight:700;white-space:nowrap}
 .replace-table .td-new{color:var(--accent);font-weight:600}
-.replace-table .td-icon{font-size:14px;width:32px;text-align:center}
 .rt-cross{display:inline-block;font-size:11px;color:#ff6b6b;margin-right:6px}
 .rt-check{display:inline-block;font-size:11px;color:var(--accent);margin-right:6px}
+/* cost callout */
+.cost-callout{margin-top:16px;background:#000;border:1px solid var(--accent-bdr);padding:22px 28px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+.cc-label{font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.cc-vs{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.cc-old{font-family:var(--fd);font-size:clamp(18px,2.5vw,28px);color:rgba(255,120,80,.8);line-height:1}
+.cc-old span{font-family:var(--fb);font-size:11px;color:var(--muted);display:block;margin-top:2px;font-weight:400}
+.cc-arrow{font-family:var(--fd);font-size:20px;color:var(--muted);letter-spacing:.1em}
+.cc-new{font-family:var(--fd);font-size:clamp(22px,3vw,36px);color:var(--accent);line-height:1}
+.cc-new span{font-family:var(--fb);font-size:11px;color:var(--muted2);display:block;margin-top:2px;font-weight:400}
 
 /* ─── PATHS ─── */
 .paths-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border-em)}
@@ -602,14 +611,13 @@ footer{
   <div class="inner">
     <div class="sec-tag">POR QUÉ NOBODY</div>
     <div class="stmt-big">
-      <div>NO COMPETIMOS</div>
-      <div class="stmt-cross">CON FREEPIK.</div>
-      <div>REEMPLAZAMOS</div>
-      <div class="cyan">A TU EQUIPO<br/>DE PRODUCCIÓN.</div>
+      <div>SOMOS TU</div>
+      <div class="cyan">EQUIPO VISUAL</div>
+      <div>COMPLETO.</div>
     </div>
     <div class="stmt-right">
-      <p>Las apps genéricas te dan herramientas. Nobody te da un sistema visual completo: fotógrafo, camarógrafo, diseñador, editor, modelo y dirección de arte — sin contratar a nadie y sin aprender IA.</p>
-      <a href="#reemplaza" class="stmt-link">VER COMPARACIÓN →</a>
+      <p>Fotógrafo, camarógrafo, diseñador, editor, modelo y dirección de arte — en una sola solución, sin coordinar a nadie, sin esperar agenda y sin producción tradicional.</p>
+      <a href="#reemplaza" class="stmt-link">VER QUÉ REEMPLAZAMOS →</a>
     </div>
   </div>
 </section>
@@ -618,43 +626,53 @@ footer{
 <section id="reemplaza" class="replace-section">
   <div class="inner">
     <div class="sec-tag rv">COMPARACIÓN REAL</div>
-    <div class="sec-h rv">LO QUE ANTES<br/><span class="cyan">TENÍAS QUE CONTRATAR.</span></div>
-    <p class="sec-sub rv">La comparación correcta no es contra otras apps. Es contra el costo real de producir contenido de forma tradicional.</p>
+    <div class="sec-h rv">LO QUE ANTES<br/><span class="cyan">TENÍAS QUE PAGAR.</span></div>
+    <p class="sec-sub rv">Una sesión de fotos tradicional con fotógrafo, modelo, locación y edición puede costar entre $8,000 y $25,000 MXN — y eso es solo para un lote de imágenes. Nobody resuelve todo eso en una fracción del costo.</p>
 
     <table class="replace-table rv2">
       <thead>
         <tr>
           <th>Producción tradicional</th>
+          <th>Costo aprox. por sesión</th>
           <th>Nobody Visual Lab</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td class="td-old"><span class="rt-cross">✕</span>Contratar fotógrafo de producto</td>
-          <td class="td-new"><span class="rt-check">✓</span>Fotografía IA de producto con dirección visual</td>
+          <td class="td-old">Fotógrafo de producto</td>
+          <td class="td-cost">$1,500–4,000 MXN</td>
+          <td class="td-new"><span class="rt-check">✓</span>Fotografía IA con dirección visual</td>
         </tr>
         <tr>
-          <td class="td-old"><span class="rt-cross">✕</span>Contratar modelo y coordinar sesión</td>
-          <td class="td-new"><span class="rt-check">✓</span>Modelos digitales listos para moda, joyería y belleza</td>
+          <td class="td-old">Modelo + coordinación de sesión</td>
+          <td class="td-cost">$2,000–6,000 MXN</td>
+          <td class="td-new"><span class="rt-check">✓</span>Modelos digitales listos para moda y joyería</td>
         </tr>
         <tr>
-          <td class="td-old"><span class="rt-cross">✕</span>Contratar camarógrafo para video</td>
-          <td class="td-new"><span class="rt-check">✓</span>Videos UGC y animaciones generadas desde tu producto</td>
+          <td class="td-old">Camarógrafo para video corto</td>
+          <td class="td-cost">$2,500–5,000 MXN</td>
+          <td class="td-new"><span class="rt-check">✓</span>Videos UGC y animaciones desde tu producto</td>
         </tr>
         <tr>
-          <td class="td-old"><span class="rt-cross">✕</span>Diseñador para composición y piezas</td>
-          <td class="td-new"><span class="rt-check">✓</span>Piezas listas para redes, tienda y marketplace</td>
+          <td class="td-old">Diseñador para piezas y composición</td>
+          <td class="td-cost">$800–2,500 MXN</td>
+          <td class="td-new"><span class="rt-check">✓</span>Piezas listas para redes, tienda y catálogo</td>
         </tr>
         <tr>
-          <td class="td-old"><span class="rt-cross">✕</span>Esperar agenda, locación y edición</td>
-          <td class="td-new"><span class="rt-check">✓</span>Entrega en 48 horas con Plan Agencia</td>
-        </tr>
-        <tr>
-          <td class="td-old"><span class="rt-cross">✕</span>Social media creativo para definir estilo</td>
-          <td class="td-new"><span class="rt-check">✓</span>NOBY sugiere estilo, formato y tipo de contenido</td>
+          <td class="td-old">Locación, set y edición</td>
+          <td class="td-cost">$1,000–3,000 MXN</td>
+          <td class="td-new"><span class="rt-check">✓</span>Entrega en 48 horas desde donde estés</td>
         </tr>
       </tbody>
     </table>
+    <div class="cost-callout rv3">
+      <div class="cc-label">Todo lo anterior junto</div>
+      <div class="cc-vs">
+        <div class="cc-old">$7,800 – $20,500 <span>MXN / sesión tradicional</span></div>
+        <div class="cc-arrow">VS</div>
+        <div class="cc-new">desde $199 <span>USD / mes con Plan Agencia</span></div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -948,7 +966,7 @@ footer{
     <div id="app-pricing" class="rv">
       <div class="sec-tag">APP — HAZLO TÚ</div>
       <div class="sec-h">PAQUETES DE<br/><span class="cyan">PRODUCCIÓN VISUAL.</span></div>
-      <p class="sec-sub">Pago único. Créditos que no caducan. Usa la app guiada por NOBY o entra directo a las herramientas.</p>
+      <p class="sec-sub">Pago único por capacidad de producción. Ideal si quieres control total, ritmo propio y el menor costo posible.</p>
     </div>
 
     <div class="app-grid rv2">
@@ -1010,20 +1028,20 @@ footer{
 
     <div class="obj-grid rv2">
       <div class="obj-card">
-        <div class="obj-q">"Freepik me da más créditos por menos."</div>
-        <div class="obj-a">Sí, si buscas una herramienta genérica. <strong>Nobody no compite por créditos.</strong> Competimos por darte contenido visual enfocado en moda, joyería y ecommerce — con flujo guiado, modelos propios y equipo humano de respaldo.</div>
+        <div class="obj-q">"¿Puedo lograr el mismo resultado por mi cuenta?"</div>
+        <div class="obj-a">Si ya sabes de prompts, edición, estilos y composición, probablemente sí — pero vas a invertir horas que podrías usar en tu negocio. <strong>Nobody está diseñado para que no tengas que aprenderlo todo tú.</strong></div>
       </div>
       <div class="obj-card">
-        <div class="obj-q">"Canva ya lo tengo."</div>
-        <div class="obj-a">Canva es para editar. Nobody es para <strong>crear desde cero</strong> — modelos, fotografía de producto, videos y campañas sin que tengas que aprender prompts ni pagar producción tradicional.</div>
+        <div class="obj-q">"Ya tengo herramientas de diseño."</div>
+        <div class="obj-a">Las herramientas de diseño editan. Nobody <strong>crea desde cero:</strong> modelo sobre tu producto, fotografía editorial, video corto — sin sesión, sin coordinar equipo y sin esperar agenda.</div>
       </div>
       <div class="obj-card">
-        <div class="obj-q">"¿Y si no queda bien la generación?"</div>
-        <div class="obj-a">En la app puedes ajustar y regenerar. En <strong>Plan Agencia</strong> no te dejamos solo: si la IA no da el resultado esperado, el equipo lo corrige o lo rehace dentro del plan.</div>
+        <div class="obj-q">"¿Y si la IA no da el resultado que espero?"</div>
+        <div class="obj-a">En la app puedes ajustar y regenerar. En <strong>Plan Agencia</strong> tienes equipo humano de respaldo: si algo no queda bien dentro del alcance del plan, lo corregimos sin costo adicional.</div>
       </div>
       <div class="obj-card">
-        <div class="obj-q">"No quiero aprender otra app de IA."</div>
-        <div class="obj-a">Entonces <strong>Plan Agencia</strong> es para ti. Tú mandas el producto y el equipo te ayuda a obtener el resultado. NOBY en la app también está diseñado para guiarte sin que tengas que escribir un solo prompt.</div>
+        <div class="obj-q">"No quiero aprender una herramienta nueva."</div>
+        <div class="obj-a">Para eso existe <strong>Plan Agencia.</strong> Tú mandas el producto; el equipo lo produce. Si usas la app, NOBY te guía para que no tengas que escribir un solo prompt ni tomar una sola decisión técnica.</div>
       </div>
     </div>
   </div>
