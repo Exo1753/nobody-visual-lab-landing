@@ -3,326 +3,488 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>Nobody Visual Lab — AI Visual Studio</title>
-<meta name="description" content="Estudio visual con IA para marcas modernas. Modelos digitales, fotografía de producto y video UGC. Agencia o app, tú eliges cómo crear."/>
+<title>Nobody Visual Lab — Producción Visual con IA para Marcas</title>
+<meta name="description" content="Fotos, modelos digitales y videos para marcas de moda, joyería y ecommerce. Sin fotógrafo, sin modelo real, sin set. App + equipo humano."/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet"/>
 <style>
 :root{
-  --bg:#090909;
-  --surface:#0d0d0d;
-  --elevated:#141414;
-  --border:rgba(255,255,255,0.06);
-  --border-em:rgba(255,255,255,0.14);
+  --bg:#080808;
+  --bg2:#0b0b0b;
+  --surface:#101010;
+  --elevated:#161616;
+  --border:rgba(255,255,255,0.055);
+  --border-em:rgba(255,255,255,0.11);
   --accent:#4DBFA3;
-  --accent-sub:rgba(77,191,163,0.10);
-  --accent-bdr:rgba(77,191,163,0.28);
-  --white:rgba(255,255,255,0.90);
-  --muted:rgba(255,255,255,0.28);
-  --muted2:rgba(255,255,255,0.48);
+  --accent-dim:rgba(77,191,163,0.08);
+  --accent-bdr:rgba(77,191,163,0.25);
+  --accent-dark:#071a13;
+  --white:rgba(255,255,255,0.92);
+  --muted:rgba(255,255,255,0.26);
+  --muted2:rgba(255,255,255,0.50);
   --fd:'Bebas Neue',sans-serif;
   --fb:'DM Sans',sans-serif;
+  --r1:.8s ease;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--white);font-family:var(--fb);overflow-x:hidden;font-size:13px}
-body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");pointer-events:none;z-index:9999}
-a{color:inherit}
-nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:14px 28px;border-bottom:0.5px solid var(--border-em);background:rgba(9,9,9,0.92);backdrop-filter:blur(20px)}
-.nav-logo{display:flex;align-items:center;gap:8px;text-decoration:none}
-.nav-logo img{width:28px;height:28px;border-radius:7px;object-fit:cover;border:0.5px solid var(--accent-bdr);background:var(--accent-sub)}
-.nav-logo span{font-family:var(--fd);font-size:13px;font-weight:800;color:var(--white);letter-spacing:0.06em;text-transform:uppercase}
-.nav-logo em{color:var(--accent);font-style:normal}
-.nav-links{display:flex;gap:28px;list-style:none}
-.nav-links a{font-size:10px;letter-spacing:0.14em;color:var(--muted2);text-decoration:none;transition:color 0.2s;text-transform:uppercase;font-weight:600}
+body{
+  background:var(--bg);
+  color:var(--white);
+  font-family:var(--fb);
+  overflow-x:hidden;
+  font-size:13px;
+  -webkit-font-smoothing:antialiased;
+}
+/* grain */
+body::before{
+  content:'';
+  position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.028'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:9999;
+}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+
+/* ─── BTNS ─── */
+.btn-p,.btn-s,.btn-wa{
+  display:inline-flex;align-items:center;gap:6px;
+  font-family:var(--fb);font-weight:800;letter-spacing:.09em;
+  text-transform:uppercase;border:none;cursor:pointer;
+  transition:all .22s;white-space:nowrap;text-decoration:none;
+}
+.btn-p{background:var(--accent);color:var(--accent-dark);padding:11px 24px;border-radius:100px;font-size:11px}
+.btn-p:hover{background:#5ecfb3;transform:translateY(-1px)}
+.btn-s{background:transparent;color:var(--white);padding:11px 24px;border-radius:100px;font-size:11px;border:.5px solid var(--border-em)}
+.btn-s:hover{border-color:var(--accent);color:var(--accent)}
+.btn-wa{background:#25D366;color:#04150a;padding:11px 24px;border-radius:100px;font-size:11px}
+.btn-wa:hover{background:#20c45a;transform:translateY(-1px)}
+
+/* ─── NAV ─── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:13px 28px;
+  border-bottom:.5px solid var(--border-em);
+  background:rgba(8,8,8,.88);
+  backdrop-filter:blur(18px);
+}
+.nav-logo{display:flex;align-items:center;gap:9px;text-decoration:none}
+.nav-logo img{width:28px;height:28px;border-radius:8px;object-fit:cover;border:.5px solid var(--accent-bdr);background:var(--accent-dim)}
+.nav-logo-txt{font-family:var(--fd);font-size:13px;letter-spacing:.07em;text-transform:uppercase}
+.nav-logo-txt em{color:var(--accent);font-style:normal}
+.nav-links{display:flex;gap:26px;list-style:none}
+.nav-links a{font-size:10px;letter-spacing:.14em;color:var(--muted2);text-transform:uppercase;font-weight:700;transition:color .2s}
 .nav-links a:hover{color:var(--white)}
 .nav-r{display:flex;align-items:center;gap:8px}
-.lang-sw{display:flex;gap:2px;background:var(--elevated);border:0.5px solid var(--border-em);border-radius:100px;padding:3px}
-.lb{padding:3px 10px;border-radius:100px;border:none;background:transparent;color:var(--muted2);font-size:10px;letter-spacing:0.08em;cursor:pointer;transition:all 0.2s;font-family:var(--fb);font-weight:600}
-.lb.active{background:var(--accent);color:#071a13;font-weight:700}
-.btn-app{font-size:10px;letter-spacing:0.10em;background:var(--accent);color:#071a13;padding:7px 18px;border-radius:100px;border:none;cursor:pointer;text-decoration:none;font-weight:700;transition:all 0.2s;white-space:nowrap;text-transform:uppercase}
-.btn-app:hover{background:#5ecfb3;transform:translateY(-1px)}
-.hero{min-height:100vh;position:relative;display:flex;align-items:flex-end;border-bottom:0.5px solid var(--border-em);overflow:hidden}
+.lang-sw{display:flex;gap:2px;background:var(--elevated);border:.5px solid var(--border-em);border-radius:100px;padding:3px}
+.lb{padding:3px 10px;border-radius:100px;border:none;background:transparent;color:var(--muted2);font-size:9px;letter-spacing:.08em;cursor:pointer;transition:all .2s;font-family:var(--fb);font-weight:800;text-transform:uppercase}
+.lb.active{background:var(--accent);color:var(--accent-dark)}
+
+/* ─── HERO ─── */
+.hero{
+  min-height:100vh;
+  position:relative;
+  display:flex;align-items:flex-end;
+  border-bottom:.5px solid var(--border-em);
+  overflow:hidden;
+}
 .hero-video-bg{position:absolute;inset:0;z-index:0;pointer-events:none}
-.hero-video-bg iframe{position:absolute;top:50%;left:50%;width:100vw;height:56.25vw;min-height:100vh;min-width:177.78vh;transform:translate(-50%,-50%);border:none}
-.hero-video-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(9,9,9,0.97) 0%,rgba(9,9,9,0.55) 45%,rgba(9,9,9,0.22) 100%)}
-.hero-content{position:relative;z-index:2;width:100%;padding:7rem 60px 4rem;display:grid;grid-template-columns:2fr 1fr;align-items:flex-end;gap:4rem;max-width:100%;margin:0}
-.hero-eyebrow{font-size:10px;letter-spacing:0.20em;color:var(--accent);margin-bottom:20px;display:flex;align-items:center;gap:10px;text-transform:uppercase;font-weight:600}
+.hero-video-bg iframe{
+  position:absolute;top:50%;left:50%;
+  width:100vw;height:56.25vw;
+  min-height:100vh;min-width:177.78vh;
+  transform:translate(-50%,-50%);border:none;
+}
+.hero-video-bg::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(8,8,8,.97) 0%,rgba(8,8,8,.52) 42%,rgba(8,8,8,.18) 100%);
+}
+.hero-content{
+  position:relative;z-index:2;width:100%;
+  padding:7rem 60px 4rem;
+  display:grid;grid-template-columns:2fr 1fr;
+  align-items:flex-end;gap:4rem;
+}
+.hero-eyebrow{
+  font-size:10px;letter-spacing:.22em;color:var(--accent);
+  margin-bottom:20px;display:flex;align-items:center;gap:10px;
+  text-transform:uppercase;font-weight:700;
+}
 .hero-eyebrow::before{content:'';width:20px;height:1px;background:var(--accent)}
-.hero-title{font-family:var(--fd);font-size:clamp(60px,13vw,180px);line-height:0.82;letter-spacing:-0.03em;color:var(--white);margin-bottom:28px;font-weight:900;text-transform:uppercase}
-.hero-title .cyan,.stmt-text .cyan,.path-card-title .cyan,.tut-title .cyan,.cta-title .cyan{color:var(--accent)}
-.stmt-text .outline,.cta-title .outline{color:rgba(255,255,255,0.45);text-decoration:line-through;text-decoration-thickness:3px;text-decoration-color:var(--accent)}
-.hero-desc{font-size:13px;color:var(--muted2);max-width:420px;line-height:1.8;font-weight:400;margin-bottom:32px}
-.hero-paths{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border-em)}
-.hero-path{background:rgba(9,9,9,0.7);backdrop-filter:blur(12px);padding:24px 22px;text-decoration:none;transition:background 0.2s;display:flex;flex-direction:column;gap:8px;border:0.5px solid transparent;min-height:130px;justify-content:flex-start}
-.hero-path:hover{background:var(--accent-sub);border-color:var(--accent-bdr)}
-.hero-path-label{font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);font-weight:600}
-.hero-path-title{font-family:var(--fd);font-size:18px;font-weight:900;letter-spacing:0.02em;line-height:1.05;color:var(--white);transition:color 0.2s;text-transform:uppercase;margin-top:auto}
-.hero-path:hover .hero-path-title{color:var(--accent)}
-.hero-path-desc{font-size:11px;color:var(--muted2);line-height:1.6}
-.hero-path-arrow{font-size:18px;color:var(--muted);margin-top:14px;align-self:flex-end;transition:color 0.2s;font-weight:900}
-.hero-path:hover .hero-path-arrow{color:var(--accent)}
-  .hero-path-primary{background:var(--accent);border:0.5px solid var(--accent)}
-.hero-path-primary .hero-path-label{color:rgba(7,26,19,0.6)}
-.hero-path-primary .hero-path-title{color:#071a13}
-.hero-path-primary .hero-path-desc{color:rgba(7,26,19,0.85)}
-.hero-path-primary .hero-path-arrow{color:#071a13}
-.hero-path-primary:hover{background:#5ecfb3;border-color:#5ecfb3}
-.hero-path-primary:hover .hero-path-title{color:#071a13}
-.hero-path-primary:hover .hero-path-arrow{color:#071a13}
-.hero-right-stats{display:flex;flex-direction:column;align-items:flex-end;gap:28px}
+.hero-title{
+  font-family:var(--fd);
+  font-size:clamp(62px,14vw,196px);
+  line-height:.78;letter-spacing:-.04em;
+  color:var(--white);margin-bottom:28px;
+  font-weight:900;text-transform:uppercase;
+}
+.hero-title .accent{
+  background:var(--accent);color:var(--accent-dark);
+  padding:2px 14px 4px;display:inline-block;line-height:.84;
+}
+.hero-sub{font-size:13px;color:var(--muted2);max-width:500px;line-height:1.82;margin-bottom:32px}
+.hero-paths{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:1px;background:var(--border-em);
+  border:.5px solid var(--border-em);
+}
+.hero-path{
+  background:rgba(8,8,8,.72);backdrop-filter:blur(12px);
+  padding:22px 20px;text-decoration:none;
+  transition:background .2s;display:flex;flex-direction:column;gap:6px;
+  border:.5px solid transparent;min-height:148px;justify-content:flex-start;
+}
+.hero-path:hover{background:var(--accent-dim);border-color:var(--accent-bdr)}
+.hero-path-primary{background:var(--accent)!important;border:.5px solid var(--accent)!important}
+.hp-label{font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.hero-path-primary .hp-label{color:rgba(7,26,19,.55)}
+.hp-title{font-family:var(--fd);font-size:19px;font-weight:900;letter-spacing:.02em;line-height:1.05;color:var(--white);text-transform:uppercase;margin-top:auto}
+.hero-path-primary .hp-title{color:var(--accent-dark)}
+.hero-path:hover .hp-title{color:var(--accent)}
+.hero-path-primary:hover .hp-title{color:var(--accent-dark)!important}
+.hp-desc{font-size:10.5px;color:var(--muted2);line-height:1.6}
+.hero-path-primary .hp-desc{color:rgba(7,26,19,.78)}
+.hp-arrow{font-size:16px;color:var(--muted);margin-top:14px;align-self:flex-end}
+.hero-path-primary .hp-arrow{color:var(--accent-dark)}
+
+.hero-right{display:flex;flex-direction:column;align-items:flex-end;gap:26px}
 .hero-stat{text-align:right}
-.hero-stat-n{font-family:var(--fd);font-size:clamp(32px,4vw,52px);color:var(--accent);line-height:1;font-weight:900}
-.hero-stat-l{font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted2);margin-top:4px;font-weight:600}
-.ticker{border-bottom:0.5px solid var(--border-em);overflow:hidden;padding:11px 0}
-.ticker-track{display:flex;animation:tick 28s linear infinite;width:max-content;white-space:nowrap}
-.ticker-item{font-size:10px;letter-spacing:0.14em;color:var(--muted);padding:0 22px;text-transform:uppercase;font-weight:600}
+.hero-stat-n{font-family:var(--fd);font-size:clamp(30px,4vw,52px);color:var(--accent);line-height:1}
+.hero-stat-l{font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted2);margin-top:4px;font-weight:700}
+.hero-stat-sep{width:1px;height:36px;background:var(--border-em);align-self:flex-end}
+
+/* sound btn */
+#sound-btn{
+  position:absolute;bottom:1.2rem;right:1.5rem;z-index:10;
+  width:34px;height:34px;background:rgba(0,0,0,.7);
+  border:1px solid var(--accent-bdr);color:var(--accent);
+  cursor:pointer;display:flex;align-items:center;justify-content:center;
+  transition:all .22s;padding:0;backdrop-filter:blur(8px);
+  border-radius:4px;
+}
+#sound-btn:hover{border-color:var(--accent);background:rgba(0,0,0,.9)}
+
+/* ─── DIVIDER / TICKER ─── */
+.brutal-divider{
+  background:#000;
+  border-top:2px solid var(--accent);
+  border-bottom:2px solid var(--accent);
+  padding:10px 28px;
+  display:flex;justify-content:center;align-items:center;
+  gap:20px;color:var(--accent);
+  font-family:var(--fd);font-size:12px;
+  letter-spacing:.22em;text-transform:uppercase;
+}
+.brutal-divider .dot{opacity:.45;font-size:9px}
+.ticker{border-bottom:.5px solid var(--border-em);overflow:hidden;padding:10px 0}
+.ticker-track{display:flex;animation:tick 30s linear infinite;width:max-content;white-space:nowrap}
+.ticker-item{font-size:10px;letter-spacing:.14em;color:var(--muted);padding:0 20px;text-transform:uppercase;font-weight:700}
 .ticker-dot{color:var(--accent);font-size:8px;align-self:center}
 @keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-.statement{padding:64px 28px;border-bottom:0.5px solid var(--border-em)}
-.statement-inner{max-width:1100px;margin:0 auto}
-.stmt-tag,.sec-tag,.tut-eyebrow,.cta-tag{font-size:10px;letter-spacing:0.20em;color:var(--accent);margin-bottom:20px;display:flex;align-items:center;gap:10px;text-transform:uppercase;font-weight:600}
-.stmt-tag::before,.sec-tag::before{content:'';width:20px;height:1px;background:var(--accent)}
-.stmt-text{font-family:var(--fd);font-size:clamp(36px,6vw,72px);line-height:0.88;letter-spacing:-0.01em;font-weight:900;text-transform:uppercase}
-.stmt-sub{max-width:480px;margin-top:28px;margin-left:auto;font-size:12px;color:var(--muted2);line-height:1.85}
-.paths-sec,.gallery-sec,.srv-sec,.port-sec,.proc-sec,.esp-sec{border-bottom:0.5px solid var(--border-em)}
-.paths-header,.gallery-header,.srv-header,.port-header,.proc-header,.esp-header{padding:40px 28px 24px;max-width:1200px;margin:0 auto}
-.paths-title{font-family:var(--fd);font-size:clamp(22px,3vw,36px);font-weight:900;letter-spacing:-0.01em;text-transform:uppercase;margin-bottom:6px}
-.paths-sub{font-size:12px;color:var(--muted2);line-height:1.7}
-.paths-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border-em)}
-.path-card{background:var(--bg);padding:40px 32px;position:relative;overflow:hidden;transition:background 0.25s}
-.path-card:hover{background:rgba(77,191,163,0.03)}
-.path-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px}
-.path-card-agency::before{background:linear-gradient(90deg,var(--accent),transparent)}
-.path-card-app::before{background:linear-gradient(90deg,transparent,var(--accent))}
-.path-card-num{font-family:var(--fd);font-size:72px;color:rgba(77,191,163,0.07);line-height:1;position:absolute;top:20px;right:24px;font-weight:900}
-.path-card-icon{font-size:22px;margin-bottom:16px}
-.path-card-title{font-family:var(--fd);font-size:clamp(22px,2.5vw,32px);font-weight:900;letter-spacing:0.01em;margin-bottom:12px;line-height:0.92;text-transform:uppercase}
-.path-card-desc{font-size:12px;color:var(--muted2);line-height:1.8;margin-bottom:22px;max-width:360px}
-.path-card-list{list-style:none;margin-bottom:28px}
-.path-card-list li{font-size:11px;color:var(--muted2);line-height:2.2;display:flex;align-items:center;gap:8px}
-.path-card-list li::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--accent);opacity:0.7;flex-shrink:0}
-.btn-p{font-size:11px;letter-spacing:0.10em;background:var(--accent);color:#071a13;padding:10px 22px;border-radius:100px;border:none;cursor:pointer;text-decoration:none;font-weight:700;transition:all 0.2s;display:inline-block;text-transform:uppercase}
-.btn-p:hover{background:#5ecfb3;transform:translateY(-1px)}
-.btn-s{font-size:11px;letter-spacing:0.10em;background:transparent;color:var(--white);padding:10px 22px;border-radius:100px;border:0.5px solid var(--border-em);cursor:pointer;text-decoration:none;transition:all 0.2s;display:inline-block;text-transform:uppercase;font-weight:600}
-.btn-s:hover{border-color:var(--accent);color:var(--accent)}
-.gallery-header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
-.gallery-title{font-family:var(--fd);font-size:clamp(28px,5vw,56px);font-weight:900;letter-spacing:-0.02em;text-transform:uppercase}
-.gallery-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:var(--border-em)}
-.gallery-card{aspect-ratio:2/3;overflow:hidden;position:relative;cursor:pointer;background:#111;transition:filter .3s}
-.gallery-card:hover{filter:brightness(1.12)}
-.gallery-card img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .45s ease}
-.gallery-card:hover img{transform:scale(1.04)}
-.gallery-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(9,9,9,.94) 0%,transparent 55%);opacity:0;transition:opacity .25s;display:flex;flex-direction:column;justify-content:flex-end;padding:16px}
-.gallery-card:hover .gallery-overlay{opacity:1}
-.go-label{font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:5px;font-weight:600}
-.go-name{font-family:var(--fd);font-size:17px;font-weight:800;text-transform:uppercase}
-.gallery-soon{background:linear-gradient(135deg,#0e0e0e,#141414);cursor:default}
-.gallery-soon::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 4px,rgba(77,191,163,.018) 4px,rgba(77,191,163,.018) 5px)}
-.soon-inner{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px}
-.soon-icon{font-size:1.6rem;color:rgba(77,191,163,.20)}
-.soon-name{font-family:var(--fd);font-size:13px;letter-spacing:.14em;color:rgba(255,255,255,.18);text-transform:uppercase;font-weight:700}
-.soon-label{font-size:.52rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(77,191,163,.50);border:0.5px solid rgba(77,191,163,.22);padding:.25rem .8rem;border-radius:100px}
-.gallery-more{text-align:center;padding:18px 28px 26px;border-top:0.5px solid var(--border)}
-.gallery-more a{font-size:10px;letter-spacing:.14em;color:var(--muted2);text-decoration:none;text-transform:uppercase;font-weight:600;transition:color .2s}
-.gallery-more a:hover{color:var(--accent)}
-.srv-header{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:12px;padding-bottom:0}
-.srv-title,.plans-title,.port-title,.proc-title{font-family:var(--fd);font-size:clamp(30px,5vw,60px);line-height:.88;text-transform:uppercase;font-weight:900;letter-spacing:-0.02em}
-.srv-list{border-top:0.5px solid var(--border-em);margin-top:24px}
-.srv-item{display:grid;grid-template-columns:0.4fr 2fr 1.5fr auto;align-items:center;gap:20px;padding:18px 28px;border-bottom:0.5px solid var(--border);transition:background 0.2s;max-width:1200px;margin:0 auto}
-.srv-item:hover{background:rgba(77,191,163,0.025)}
-.srv-num{font-size:10px;letter-spacing:0.12em;color:var(--muted);font-weight:600}
-.srv-name{font-size:clamp(15px,2vw,24px);font-weight:800;transition:color 0.2s;font-family:var(--fd);letter-spacing:0.01em;text-transform:uppercase}
-.srv-item:hover .srv-name{color:var(--accent)}
-.srv-tags{display:flex;gap:6px;flex-wrap:wrap}
-.srv-tag{font-size:9px;letter-spacing:0.08em;border:0.5px solid var(--border-em);border-radius:100px;padding:3px 10px;color:var(--muted);text-transform:uppercase;font-weight:600}
-.srv-arrow{font-size:16px;color:var(--muted);transition:all 0.25s}
-.srv-item:hover .srv-arrow{color:var(--accent);transform:translateX(4px)}
-.plans-sec{border-bottom:0.5px solid var(--border-em);padding:60px 28px}
-.plans-inner{max-width:1100px;margin:0 auto}
-.plans-sub{font-size:12px;color:var(--muted2);margin-bottom:36px;line-height:1.8}
-.plans-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border-em)}
-.plan-card{background:var(--bg);padding:30px 26px;position:relative;transition:background 0.25s}
-.plan-card.featured{background:var(--surface);border:0.5px solid var(--accent-bdr)}
-.plan-card:hover{background:var(--accent-sub)}
-.plan-badge{font-size:9px;letter-spacing:0.14em;background:var(--accent);color:#071a13;padding:3px 12px;border-radius:100px;display:inline-block;margin-bottom:14px;font-weight:700;text-transform:uppercase}
-.plan-name{font-family:var(--fd);font-size:22px;font-weight:900;margin-bottom:4px;text-transform:uppercase;letter-spacing:0.02em}
-.plan-for{font-size:11px;color:var(--muted);margin-bottom:14px}
-.plan-price{font-family:var(--fd);font-size:clamp(24px,3vw,34px);font-weight:900;color:var(--accent);line-height:1;letter-spacing:-0.01em}
-.plan-price span{font-family:var(--fb);font-size:13px;color:var(--muted2);font-weight:400}
-.plan-period{font-size:9px;color:var(--muted);letter-spacing:0.10em;margin-bottom:18px;margin-top:4px;text-transform:uppercase;font-weight:600}
-.plan-divider{border:none;border-top:0.5px solid var(--border-em);margin-bottom:16px}
-.plan-items{list-style:none}
-.plan-items li{font-size:11px;color:var(--muted2);line-height:2.1;display:flex;align-items:center;gap:8px}
-.plan-items li::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--accent);opacity:0.7;flex-shrink:0}
-.plan-cta{display:block;font-family:var(--fb);font-size:11px;font-weight:700;letter-spacing:0.10em;text-align:center;padding:10px;border-radius:100px;text-decoration:none;margin-top:22px;transition:all 0.2s;text-transform:uppercase}
-.plan-cta-p{background:var(--accent);color:#071a13}
-.plan-cta-p:hover{background:#5ecfb3}
-.plan-cta-s{border:0.5px solid var(--border-em);color:var(--white)}
-.plan-cta-s:hover{border-color:var(--accent);color:var(--accent)}
-.port-header{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap}
-.port-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border-em)}
-.pi{position:relative;overflow:hidden;cursor:default;background:#0f0f0f;aspect-ratio:1/1;transition:filter .3s}
-.pi:hover{filter:brightness(1.10)}
-.pi img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
-.pi-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(9,9,9,.94) 0%,transparent 60%);opacity:0;transition:opacity .3s;display:flex;flex-direction:column;justify-content:flex-end;padding:16px;z-index:2}
-.pi:hover .pi-overlay,.pv .pi-overlay{opacity:1}
-.pv .pi-overlay{background:linear-gradient(to top,rgba(9,9,9,.85) 0%,rgba(9,9,9,.12) 60%,transparent 100%)}
-.pi-cat{font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:4px;font-weight:600}
-.pi-name{font-family:var(--fd);font-size:14px;font-weight:800;text-transform:uppercase;letter-spacing:0.02em}
-.pv{cursor:pointer}
-.play-btn,.pi-play-btn{width:60px;height:60px;border-radius:50%;background:rgba(77,191,163,.18);border:1.5px solid var(--accent);display:flex;align-items:center;justify-content:center;transition:all .3s}
-.pv:hover .play-btn,.pv:hover .pi-play-btn{background:rgba(77,191,163,.32);transform:scale(1.08)}
-.tut-sec{border-bottom:0.5px solid var(--border-em);padding:64px 28px;text-align:center;position:relative;overflow:hidden}
-.tut-glow,.cta-glow{position:absolute;width:700px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(77,191,163,0.05) 0%,transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none}
-.tut-inner{position:relative;z-index:1;max-width:720px;margin:0 auto}
-.tut-eyebrow{justify-content:center}
-.tut-eyebrow::before,.tut-eyebrow::after{content:'';width:20px;height:1px;background:var(--accent)}
-.tut-title{font-family:var(--fd);font-size:clamp(32px,5vw,60px);letter-spacing:-0.01em;line-height:.88;margin-bottom:18px;font-weight:900;text-transform:uppercase}
-.tut-desc{font-size:12px;color:var(--muted2);max-width:580px;margin:0 auto 28px;line-height:1.85}
-.tut-topics{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:28px}
-.tut-topic{font-size:10px;letter-spacing:.10em;color:var(--muted2);border:0.5px solid var(--border-em);padding:8px 16px;border-radius:100px;text-transform:uppercase;font-weight:600}
-.tut-wip{display:inline-flex;align-items:center;gap:10px;font-size:11px;letter-spacing:.14em;color:var(--muted2);border:0.5px solid var(--border-em);padding:14px 28px;border-radius:100px;text-transform:uppercase;font-weight:600}
-.tut-dot{width:7px;height:7px;border-radius:50%;background:var(--accent);animation:pulse 2s infinite;flex-shrink:0}
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(.8)}}
-.proc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border-em);margin-top:24px}
-.proc-item{padding:32px 24px;background:var(--bg);border-top:2px solid transparent;transition:all 0.25s}
-.proc-item:hover{border-color:var(--accent);background:var(--accent-sub)}
-.proc-n{font-family:var(--fd);font-size:52px;color:rgba(77,191,163,0.12);line-height:1;margin-bottom:16px;font-weight:900;transition:color 0.25s}
-.proc-item:hover .proc-n{color:rgba(77,191,163,0.30)}
-.proc-t{font-size:16px;font-weight:800;margin-bottom:8px;letter-spacing:0.04em;text-transform:uppercase;font-family:var(--fd)}
-.proc-d{font-size:11px;color:var(--muted2);line-height:1.75}
-.cta-sec{padding:80px 28px;text-align:center;position:relative;overflow:hidden;border-bottom:none}
-.cta-inner{max-width:900px;margin:0 auto;position:relative;z-index:1}
-.cta-tag{justify-content:center}
-.cta-tag::before,.cta-tag::after{content:'';width:20px;height:1px;background:var(--accent)}
-.cta-title{font-family:var(--fd);font-size:clamp(48px,10vw,100px);line-height:.84;letter-spacing:-0.02em;margin-bottom:22px;font-weight:900;text-transform:uppercase}
-.cta-sub{font-size:12px;color:var(--muted2);max-width:420px;margin:0 auto 28px;line-height:1.8}
-.cta-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
-.btn-wa{font-size:11px;letter-spacing:0.08em;background:#25D366;color:#061a0c;padding:10px 22px;border-radius:100px;border:none;cursor:pointer;text-decoration:none;font-weight:700;transition:all 0.2s;display:inline-flex;align-items:center;gap:6px;text-transform:uppercase}
-.btn-wa:hover{background:#20bd5a;transform:translateY(-1px)}
-.btn-em{font-size:11px;background:transparent;color:var(--white);padding:10px 22px;border-radius:100px;border:0.5px solid var(--border-em);cursor:pointer;text-decoration:none;transition:all 0.2s;text-transform:uppercase;font-weight:600}
-.btn-em:hover{border-color:var(--accent);color:var(--accent)}
-#video-lightbox{display:none;position:fixed;inset:0;z-index:9000;background:rgba(0,0,0,.92);align-items:center;justify-content:center;backdrop-filter:blur(10px)}
-#yt-wrap{width:90vw;max-width:1000px;aspect-ratio:16/9;position:relative;transition:all .3s}
-#yt-frame{width:100%;height:100%;border:none;border-radius:10px}
-footer{border-top:0.5px solid var(--border-em);display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:18px 28px;gap:12px}
-.f-logo{display:flex;align-items:center;gap:8px;text-decoration:none}
-.f-logo img{width:26px;height:26px;border-radius:7px;object-fit:cover;border:0.5px solid var(--accent-bdr);background:var(--accent-sub)}
-.f-logo span{font-family:var(--fd);font-size:12px;font-weight:800;color:var(--white);letter-spacing:0.05em;text-transform:uppercase}
-.f-logo em{color:var(--accent);font-style:normal}
-.f-copy{font-size:10px;letter-spacing:0.08em;color:var(--muted);text-align:center;text-transform:uppercase;font-weight:600}
-.f-right{display:flex;justify-content:flex-end}
-.rv,.rv2,.rv3{opacity:0;transform:translateY(24px)}
-.rv{transition:opacity .8s ease,transform .8s ease}
-.rv2{transition:opacity .8s ease .12s,transform .8s ease .12s}
-.rv3{transition:opacity .8s ease .24s,transform .8s ease .24s}
-.rv.vis,.rv2.vis,.rv3.vis{opacity:1;transform:none}
+
+/* ─── SECTIONS ─── */
+.sec{border-bottom:.5px solid var(--border-em);padding:72px 28px}
+.inner{max-width:1100px;margin:0 auto}
+.sec-tag{font-size:10px;letter-spacing:.22em;color:var(--accent);margin-bottom:18px;display:flex;align-items:center;gap:10px;text-transform:uppercase;font-weight:700}
+.sec-tag::before{content:'';width:20px;height:1px;background:var(--accent)}
+.sec-h{font-family:var(--fd);font-size:clamp(34px,5.8vw,70px);line-height:.86;text-transform:uppercase;letter-spacing:-.025em}
+.sec-sub{font-size:12.5px;color:var(--muted2);line-height:1.85;max-width:580px;margin-top:12px}
 .cyan{color:var(--accent)}
-.highlight{background:var(--accent);color:#071a13;padding:0 8px;display:inline-block;line-height:0.9}
 
-/* DIVISOR BRUTALISTA */
-.brutal-divider{background:#000;border-top:1px solid var(--accent);border-bottom:1px solid var(--accent);padding:9px 28px;display:flex;justify-content:center;align-items:center;gap:18px;color:var(--accent);font-family:var(--fd);font-size:11px;letter-spacing:.18em;font-weight:700;text-transform:uppercase}
-.brutal-divider .dot{opacity:0.5;font-size:9px}
+/* scroll reveal */
+.rv,.rv2,.rv3{opacity:0;transform:translateY(22px);transition:opacity .75s ease,transform .75s ease}
+.rv2{transition-delay:.12s}.rv3{transition-delay:.24s}
+.rv.vis,.rv2.vis,.rv3.vis{opacity:1;transform:none}
 
-/* APP PRICING SECTION */
-.app-pricing-sec{border-bottom:0.5px solid var(--border-em);padding:60px 28px}
-.app-pricing-inner{max-width:1100px;margin:0 auto}
-.app-pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border-em);margin-top:36px}
-.app-plan{background:var(--bg);padding:28px 24px;position:relative;transition:background 0.25s}
-.app-plan.featured{background:var(--surface);border:0.5px solid var(--accent-bdr)}
-.app-plan:hover{background:var(--accent-sub)}
-.app-plan-badge{font-size:9px;letter-spacing:0.14em;background:var(--accent);color:#071a13;padding:3px 12px;border-radius:100px;display:inline-block;margin-bottom:14px;font-weight:700;text-transform:uppercase}
-.app-plan-name{font-family:var(--fd);font-size:22px;font-weight:900;margin-bottom:4px;text-transform:uppercase}
-.app-plan-desc{font-size:11px;color:var(--muted);margin-bottom:16px}
-.app-plan-price{font-family:var(--fd);font-size:clamp(28px,3vw,38px);font-weight:900;color:var(--accent);line-height:1}
-.app-plan-period{font-size:9px;color:var(--muted);letter-spacing:0.10em;margin-bottom:18px;margin-top:4px;text-transform:uppercase;font-weight:600}
-.app-plan-divider{border:none;border-top:0.5px solid var(--border-em);margin-bottom:16px}
-.app-plan-yields{list-style:none;margin-bottom:20px}
-.app-plan-yields li{font-size:11px;color:var(--muted2);line-height:2.1;display:flex;align-items:center;gap:8px}
-.app-plan-yields li::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--accent);opacity:0.7;flex-shrink:0}
-.app-plan-note{font-size:10px;color:var(--muted);line-height:1.6;margin-bottom:16px;padding:10px 12px;border:0.5px solid var(--border);border-radius:8px;background:rgba(255,255,255,0.02)}
+/* ─── STATEMENT ─── */
+.statement{padding:72px 28px;border-bottom:.5px solid var(--border-em);overflow:hidden;position:relative}
+.statement::before{content:'NO.';position:absolute;right:-0.05em;top:50%;transform:translateY(-50%);font-family:var(--fd);font-size:clamp(180px,28vw,420px);line-height:1;color:rgba(255,255,255,.018);pointer-events:none;letter-spacing:-.04em}
+.stmt-big{font-family:var(--fd);font-size:clamp(40px,7.5vw,96px);line-height:.82;letter-spacing:-.02em;text-transform:uppercase;position:relative}
+.stmt-cross{color:rgba(255,255,255,.28);text-decoration:line-through;text-decoration-thickness:4px;text-decoration-color:var(--accent)}
+.stmt-right{max-width:420px;margin-top:32px;margin-left:auto;border-left:2px solid var(--accent);padding-left:20px}
+.stmt-right p{font-size:13px;color:var(--muted2);line-height:1.85}
+.stmt-link{display:inline-block;margin-top:16px;font-size:10px;letter-spacing:.14em;text-transform:uppercase;font-weight:800;color:var(--accent);text-decoration:none}
+.stmt-link:hover{text-decoration:underline}
 
-/* AGENCIA PLAN */
-.agencia-sec{border-bottom:0.5px solid var(--border-em);padding:60px 28px}
-.agencia-inner{max-width:1100px;margin:0 auto}
-.agencia-card{margin-top:36px;border:1px solid var(--accent-bdr);border-radius:16px;background:linear-gradient(135deg,rgba(77,191,163,0.06) 0%,rgba(77,191,163,0.02) 100%);padding:40px;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
-.agencia-left{}
-.agencia-tag{font-size:9px;letter-spacing:0.18em;color:var(--accent);font-weight:700;text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:8px}
-.agencia-tag::before{content:'';width:14px;height:1px;background:var(--accent)}
-.agencia-title{font-family:var(--fd);font-size:clamp(28px,3vw,42px);font-weight:900;line-height:0.9;text-transform:uppercase;margin-bottom:16px}
-.agencia-desc{font-size:12px;color:var(--muted2);line-height:1.85;margin-bottom:24px}
-.agencia-left{}
-.agencia-right{}
-.agencia-list{list-style:none;margin-bottom:28px}
-.agencia-list li{font-size:12px;color:var(--muted2);line-height:2.2;display:flex;align-items:flex-start;gap:10px}
-.agencia-list li::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--accent);opacity:0.8;flex-shrink:0;margin-top:8px}
-.agencia-price{font-family:var(--fd);font-size:clamp(32px,3vw,48px);font-weight:900;color:var(--accent);line-height:1;margin-bottom:4px}
-.agencia-price-note{font-size:11px;color:var(--muted);margin-bottom:20px}
-.agencia-guarantee{font-size:11px;color:rgba(77,191,163,0.7);border:0.5px solid rgba(77,191,163,0.2);border-radius:8px;padding:10px 14px;margin-bottom:20px;line-height:1.6}
+/* ─── REPLACE GRID ─── */
+.grid-3,.grid-3-tight,.grid-2,.grid-4{display:grid;gap:1px;background:var(--border-em)}
+.grid-3{grid-template-columns:repeat(3,1fr)}
+.grid-3-tight{grid-template-columns:repeat(3,1fr)}
+.grid-2{grid-template-columns:repeat(2,1fr)}
+.grid-4{grid-template-columns:repeat(4,1fr)}
+.card{background:var(--bg);padding:28px 24px;position:relative;transition:background .25s,border-left .25s;border-left:2px solid transparent}
+.card:hover{background:var(--accent-dim);border-left:2px solid var(--accent)}
+.card-n{font-size:9px;letter-spacing:.16em;color:var(--accent);font-weight:800;text-transform:uppercase;margin-bottom:10px}
+.card-h{font-family:var(--fd);font-size:22px;line-height:.95;text-transform:uppercase;margin-bottom:10px}
+.card-p{font-size:11.5px;color:var(--muted2);line-height:1.78}
 
-/* AGENCY TIERS - sin precios */
-.agency-tier-label{font-size:10px;letter-spacing:0.10em;color:var(--muted);text-transform:uppercase;font-weight:600;margin-bottom:12px}
-.agency-quote-note{margin-top:20px;text-align:center}
-.agency-quote-note p{font-size:11px;color:var(--muted);line-height:1.8}
-.agency-quote-note a{color:var(--accent);text-decoration:none;font-weight:600}
-.agency-quote-note a:hover{text-decoration:underline}
+/* ─── REPLACE TABLE ─── */
+.replace-section{padding:72px 28px;border-bottom:.5px solid var(--border-em)}
+.replace-table{width:100%;border-collapse:collapse;margin-top:32px}
+.replace-table td,.replace-table th{padding:13px 16px;border-bottom:.5px solid var(--border-em);font-size:12px}
+.replace-table thead th{font-size:9px;letter-spacing:.18em;text-transform:uppercase;font-weight:800;color:var(--accent);background:#000;text-align:left;border-bottom:2px solid var(--accent)}
+.replace-table tbody tr{transition:background .2s}
+.replace-table tbody tr:hover{background:var(--accent-dim)}
+.replace-table .td-old{color:var(--muted2)}
+.replace-table .td-new{color:var(--accent);font-weight:600}
+.replace-table .td-icon{font-size:14px;width:32px;text-align:center}
+.rt-cross{display:inline-block;font-size:11px;color:#ff6b6b;margin-right:6px}
+.rt-check{display:inline-block;font-size:11px;color:var(--accent);margin-right:6px}
 
-/* FAQ */
-.faq-sec{border-bottom:0.5px solid var(--border-em);padding:60px 28px}
-.faq-inner{max-width:800px;margin:0 auto}
-.faq-title{font-family:var(--fd);font-size:clamp(28px,4vw,48px);font-weight:900;text-transform:uppercase;margin-bottom:36px}
-.faq-item{border-bottom:0.5px solid var(--border);padding:20px 0;cursor:pointer}
-.faq-question{font-size:13px;font-weight:600;color:var(--white);display:flex;justify-content:space-between;align-items:center;gap:16px;transition:color 0.2s}
-.faq-item:hover .faq-question{color:var(--accent)}
-.faq-icon{font-size:18px;color:var(--accent);flex-shrink:0;transition:transform 0.2s;font-weight:300}
-.faq-answer{font-size:12px;color:var(--muted2);line-height:1.85;max-height:0;overflow:hidden;transition:max-height 0.35s ease,padding 0.2s;padding-top:0}
-.faq-item.open .faq-answer{max-height:200px;padding-top:12px}
-.faq-item.open .faq-icon{transform:rotate(45deg)}
+/* ─── PATHS ─── */
+.paths-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border-em)}
+.path-card{
+  background:var(--bg);padding:34px 28px;
+  position:relative;transition:background .25s;
+  display:flex;flex-direction:column;
+}
+.path-card:hover{background:var(--accent-dim)}
+.path-card.featured{background:linear-gradient(135deg,rgba(77,191,163,.12),rgba(77,191,163,.04))}
+.path-n{font-family:var(--fd);font-size:88px;color:rgba(77,191,163,.07);line-height:1;position:absolute;top:12px;right:16px;letter-spacing:-.04em}
+.path-icon{font-size:24px;margin-bottom:18px}
+.path-title{font-family:var(--fd);font-size:clamp(22px,2.4vw,32px);font-weight:900;letter-spacing:.01em;margin-bottom:10px;line-height:.92;text-transform:uppercase}
+.path-desc{font-size:12px;color:var(--muted2);line-height:1.82;margin-bottom:20px;max-width:340px}
+.path-list{list-style:none;margin-bottom:28px;flex:1}
+.path-list li{font-size:11.5px;color:var(--muted2);line-height:2.15;display:flex;align-items:flex-start;gap:8px}
+.path-list li::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--accent);opacity:.7;flex-shrink:0;margin-top:9px}
 
+/* ─── NOBY ─── */
+.noby-grid{display:grid;grid-template-columns:1fr .85fr;gap:50px;align-items:center}
+.noby-flow{display:flex;flex-wrap:wrap;gap:8px;margin:24px 0 20px}
+.noby-flow span{font-size:9.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--muted2);border:.5px solid var(--border-em);border-radius:100px;padding:6px 11px;font-weight:700}
+.noby-flow .arrow{border:none;color:var(--muted);padding:0 2px}
+.noby-note{font-size:11px;color:var(--muted);border-left:2px solid var(--accent-bdr);padding-left:14px;line-height:1.75;max-width:480px}
+/* phone mock */
+.phone-wrap{width:min(280px,78vw);margin-left:auto}
+.phone-mock{
+  border:1px solid var(--accent-bdr);border-radius:36px;padding:10px;
+  background:linear-gradient(140deg,rgba(255,255,255,.07),rgba(255,255,255,.02));
+  box-shadow:0 28px 80px rgba(0,0,0,.55);
+}
+.phone-screen{
+  aspect-ratio:9/16;border-radius:27px;overflow:hidden;
+  background:linear-gradient(180deg,#0e0e0e,#050505);
+  position:relative;border:.5px solid rgba(255,255,255,.07);
+}
+.phone-screen video{width:100%;height:100%;object-fit:cover;display:block;opacity:.85}
+.phone-pixels{
+  position:absolute;inset:0;
+  background-image:radial-gradient(rgba(77,191,163,.3) 1px,transparent 1px);
+  background-size:20px 20px;
+  animation:pxMove 7s linear infinite;opacity:.18;
+}
+@keyframes pxMove{from{transform:translateY(0)}to{transform:translateY(-40px)}}
+.phone-ui{
+  position:absolute;inset:0;padding:16px 12px;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  background:linear-gradient(to top,rgba(0,0,0,.82),transparent 55%);
+}
+.noby-chip{
+  border:.5px solid rgba(77,191,163,.28);
+  background:rgba(7,26,19,.75);backdrop-filter:blur(10px);
+  border-radius:14px;padding:11px;
+}
+.nc-label{font-size:8px;letter-spacing:.16em;color:var(--accent);text-transform:uppercase;font-weight:800;margin-bottom:7px}
+.nc-text{font-size:10.5px;color:rgba(255,255,255,.82);line-height:1.52}
+.nc-cursor{display:inline-block;width:2px;height:12px;background:var(--accent);animation:blink .8s step-end infinite;vertical-align:middle;margin-left:2px}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+
+/* ─── MODELOS ─── */
+.models-grid{
+  display:grid;
+  grid-template-columns:repeat(6,1fr);
+  gap:1px;background:var(--border-em);
+  margin-top:28px;
+}
+.model-card{
+  aspect-ratio:2/3;overflow:hidden;position:relative;
+  background:var(--surface);text-decoration:none;
+}
+.model-card img{width:100%;height:100%;object-fit:cover;object-position:center top;transition:transform .5s ease}
+.model-card:hover img{transform:scale(1.04)}
+.model-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(8,8,8,.95) 0%,transparent 55%);
+  opacity:0;transition:opacity .25s;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:14px;
+}
+.model-card:hover .model-overlay{opacity:1}
+.mo-label{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:4px;font-weight:700}
+.mo-name{font-family:var(--fd);font-size:17px;text-transform:uppercase}
+.model-soon{
+  aspect-ratio:2/3;background:var(--surface);
+  display:flex;align-items:center;justify-content:center;
+  border:.5px solid var(--border);
+}
+.model-soon-label{font-family:var(--fd);font-size:13px;letter-spacing:.08em;color:rgba(255,255,255,.15);text-transform:uppercase}
+
+/* ─── PORTFOLIO ─── */
+.port-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border-em);margin-top:28px}
+.pi{position:relative;overflow:hidden;background:var(--surface);aspect-ratio:3/4}
+.pi img{width:100%;height:100%;object-fit:cover;object-position:center top;transition:transform .5s}
+.pi:hover img{transform:scale(1.04)}
+.pi-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(8,8,8,.92) 0%,transparent 62%);
+  display:flex;flex-direction:column;justify-content:flex-end;padding:16px;
+}
+.pi-cat{font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:4px;font-weight:700}
+.pi-name{font-family:var(--fd);font-size:15px;text-transform:uppercase;letter-spacing:.02em}
+
+/* ─── PLAN AGENCIA ─── */
+.agencia-hero{
+  border:.5px solid var(--accent-bdr);border-radius:16px;
+  background:linear-gradient(135deg,rgba(77,191,163,.07) 0%,transparent 60%);
+  padding:44px;display:grid;grid-template-columns:1fr 1fr;gap:44px;
+  align-items:center;margin-top:32px;
+}
+.ag-tag{font-size:9px;letter-spacing:.18em;color:var(--accent);font-weight:800;text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.ag-tag::before{content:'';width:14px;height:1px;background:var(--accent)}
+.ag-h{font-family:var(--fd);font-size:clamp(28px,3.8vw,50px);line-height:.88;text-transform:uppercase;margin-bottom:14px}
+.ag-desc{font-size:12.5px;color:var(--muted2);line-height:1.85;margin-bottom:20px}
+.ag-guarantee{
+  font-size:11.5px;color:rgba(77,191,163,.8);
+  border:.5px solid rgba(77,191,163,.2);border-radius:8px;
+  padding:10px 14px;margin-bottom:22px;line-height:1.65;
+}
+.ag-price{font-family:var(--fd);font-size:clamp(36px,5vw,60px);color:var(--accent);line-height:1}
+.ag-price-note{font-size:11px;color:var(--muted);margin-bottom:18px;margin-top:4px}
+.ag-list{list-style:none}
+.ag-list li{font-size:12px;color:var(--muted2);line-height:2.25;display:flex;align-items:flex-start;gap:8px}
+.ag-list li::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--accent);opacity:.7;flex-shrink:0;margin-top:9px}
+
+/* agency tiers */
+.plans-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border-em);margin-top:28px}
+.plan-card{background:var(--bg);padding:28px 24px;transition:background .25s;display:flex;flex-direction:column}
+.plan-card:hover{background:var(--accent-dim)}
+.plan-card.feat{background:var(--surface);border:.5px solid var(--accent-bdr)}
+.plan-badge{font-size:9px;letter-spacing:.14em;background:var(--accent);color:var(--accent-dark);padding:3px 12px;border-radius:100px;display:inline-block;margin-bottom:14px;font-weight:800;text-transform:uppercase}
+.plan-name{font-family:var(--fd);font-size:23px;text-transform:uppercase;letter-spacing:.02em;margin-bottom:4px}
+.plan-for{font-size:11px;color:var(--muted);margin-bottom:14px}
+.plan-div{border:none;border-top:.5px solid var(--border-em);margin:14px 0}
+.plan-items{list-style:none;flex:1}
+.plan-items li{font-size:11.5px;color:var(--muted2);line-height:2.1;display:flex;align-items:flex-start;gap:8px}
+.plan-items li::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--accent);opacity:.65;flex-shrink:0;margin-top:9px}
+.plan-cta{display:block;font-size:11px;font-weight:800;letter-spacing:.09em;text-align:center;padding:10px;border-radius:100px;text-decoration:none;margin-top:20px;transition:all .2s;text-transform:uppercase}
+.plan-cta-p{background:var(--accent);color:var(--accent-dark)}
+.plan-cta-p:hover{background:#5ecfb3}
+.plan-cta-s{border:.5px solid var(--border-em);color:var(--white)}
+.plan-cta-s:hover{border-color:var(--accent);color:var(--accent)}
+
+/* app pricing */
+.app-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border-em);margin-top:28px}
+.app-plan{background:var(--bg);padding:28px 24px;transition:background .25s;display:flex;flex-direction:column}
+.app-plan:hover{background:var(--accent-dim)}
+.app-plan.feat{background:var(--surface);border:.5px solid var(--accent-bdr)}
+.app-badge{font-size:9px;letter-spacing:.14em;background:var(--accent);color:var(--accent-dark);padding:3px 12px;border-radius:100px;display:inline-block;margin-bottom:14px;font-weight:800;text-transform:uppercase}
+.app-name{font-family:var(--fd);font-size:23px;text-transform:uppercase;letter-spacing:.02em;margin-bottom:4px}
+.app-desc{font-size:11px;color:var(--muted);margin-bottom:14px}
+.app-price{font-family:var(--fd);font-size:clamp(28px,3vw,40px);color:var(--accent);line-height:1}
+.app-price-note{font-size:9px;letter-spacing:.10em;color:var(--muted);margin-bottom:16px;margin-top:3px;text-transform:uppercase;font-weight:700}
+.app-div{border:none;border-top:.5px solid var(--border-em);margin:14px 0}
+.app-items{list-style:none;flex:1}
+.app-items li{font-size:11.5px;color:var(--muted2);line-height:2.1;display:flex;align-items:flex-start;gap:8px}
+.app-items li::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--accent);opacity:.65;flex-shrink:0;margin-top:9px}
+
+/* ─── SECTION DIVIDER ─── */
+.sec-rule{border:none;border-top:.5px solid var(--border-em);margin:52px 0 44px}
+
+/* ─── FAQ ─── */
+.faq-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border-em);margin-top:28px}
+.faq-card{background:var(--bg);padding:26px 24px;transition:background .25s}
+.faq-card:hover{background:var(--accent-dim)}
+.faq-q{font-size:13px;color:var(--white);margin-bottom:9px;font-weight:600}
+.faq-a{font-size:12px;color:var(--muted2);line-height:1.82}
+
+/* ─── CTA ─── */
+.cta-sec{text-align:center;padding:80px 28px;border-bottom:none;position:relative;overflow:hidden}
+.cta-sec::before{
+  content:'';position:absolute;
+  top:50%;left:50%;transform:translate(-50%,-50%);
+  width:600px;height:600px;
+  background:radial-gradient(circle,rgba(77,191,163,.07),transparent 70%);
+  pointer-events:none;
+}
+.cta-inner{max-width:820px;margin:0 auto;position:relative}
+.cta-tag{justify-content:center}
+.cta-tag::after{content:'';width:20px;height:1px;background:var(--accent)}
+.cta-h{font-family:var(--fd);font-size:clamp(52px,11vw,120px);line-height:.82;text-transform:uppercase;letter-spacing:-.03em;margin-bottom:22px}
+.cta-sub{font-size:12.5px;color:var(--muted2);max-width:480px;margin:0 auto 30px;line-height:1.85}
+.cta-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+
+/* ─── FOOTER ─── */
+footer{
+  border-top:.5px solid var(--border-em);
+  display:grid;grid-template-columns:1fr auto 1fr;
+  align-items:center;padding:18px 28px;gap:12px;
+}
+.f-logo{display:flex;align-items:center;gap:8px}
+.f-logo img{width:26px;height:26px;border-radius:8px;object-fit:cover;border:.5px solid var(--accent-bdr);background:var(--accent-dim)}
+.f-logo-txt{font-family:var(--fd);font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase}
+.f-logo-txt em{color:var(--accent);font-style:normal}
+.f-copy{font-size:10px;letter-spacing:.08em;color:var(--muted);text-align:center;text-transform:uppercase;font-weight:700}
+.f-right{display:flex;justify-content:flex-end;gap:8px}
+
+/* ─── OBJECTIONS strip ─── */
+.obj-strip{
+  padding:48px 28px;border-bottom:.5px solid var(--border-em);
+  background:var(--bg2);
+}
+.obj-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border-em);margin-top:28px}
+.obj-card{background:var(--bg2);padding:24px 22px}
+.obj-q{font-size:12px;color:var(--muted2);font-style:italic;margin-bottom:10px}
+.obj-a{font-size:12px;color:var(--white);line-height:1.75}
+.obj-a strong{color:var(--accent)}
+
+/* ─── RESPONSIVE ─── */
 @media(max-width:1024px){
-  .srv-item{grid-template-columns:auto 1fr auto;gap:12px}
-  .srv-tags{display:none}
-  .gallery-grid{grid-template-columns:repeat(3,1fr)}
-  .agencia-card{grid-template-columns:1fr}
+  .models-grid{grid-template-columns:repeat(3,1fr)}
+  .agencia-hero{grid-template-columns:1fr}
+  .port-grid{grid-template-columns:repeat(2,1fr)}
 }
 @media(max-width:900px){
   nav{padding:12px 16px}
-  .hero{min-height:0;display:block;align-items:initial}
-  .hero-video-bg{position:relative;height:56.25vw;margin-top:60px;inset:auto}
+  .nav-links{display:none}
+  .hero{display:block;min-height:0}
+  .hero-video-bg{position:relative;height:56.25vw;inset:auto;margin-top:60px}
   .hero-video-bg iframe{width:100vw;min-width:100vw;height:56.25vw;min-height:0;top:0;left:0;transform:none;position:absolute}
   .hero-video-bg::after{display:none}
-  .hero-content{grid-template-columns:1fr;gap:20px;padding:0 0 3rem;max-width:100%;background:var(--bg);position:relative;z-index:2}
-  .hero-eyebrow{background:var(--accent);color:#071a13;padding:12px 20px;margin:0 0 28px;font-size:11px;letter-spacing:.16em;font-weight:800;display:block;width:100%}
+  .hero-content{grid-template-columns:1fr;padding:0 0 3rem;background:var(--bg);gap:0}
+  .hero-content>div:first-child{padding:0 18px}
+  .hero-eyebrow{background:var(--accent);color:var(--accent-dark);padding:12px 18px;margin:0 -18px 26px;font-size:10px;display:block}
   .hero-eyebrow::before{display:none}
-  .hero-content > div:first-child{padding:0 20px}
-  .hero-content > div:first-child > .hero-eyebrow{margin-left:-20px;margin-right:-20px}
-  .hero-title{font-size:52px;line-height:.88;margin-bottom:18px}
-  .hero-desc{margin-bottom:24px}
-  .hero-right-stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:rgba(255,255,255,.1);padding:0;margin:14px 20px 0;border-top:1px solid rgba(77,191,163,.3);border-bottom:1px solid rgba(77,191,163,.3)}
-  .hero-stat{text-align:center;background:rgba(13,13,13,.7);padding:14px 6px}
-  .hero-stat-n{font-size:22px}
-  .hero-stat-l{font-size:8px;letter-spacing:.12em;margin-top:4px}
-  .nav-links{display:none}
-  .btn-app{font-size:9px;padding:6px 12px;letter-spacing:0.06em;}
-  .paths-grid,.plans-grid,.proc-grid,.app-pricing-grid{grid-template-columns:1fr}
-  .statement,.plans-sec,.tut-sec,.cta-sec,.app-pricing-sec,.agencia-sec,.faq-sec{padding:44px 16px}
-  .paths-header,.gallery-header,.srv-header,.port-header,.proc-header,.esp-header{padding:24px 16px 18px}
-  .port-grid{grid-template-columns:1fr 1fr}
+  .hero-title{font-size:48px;margin-bottom:16px}
+  .hero-sub{margin-bottom:22px}
+  .hero-paths,.paths-grid,.plans-grid,.app-grid,.faq-grid,.obj-grid,.grid-3,.grid-3-tight{grid-template-columns:1fr}
+  .hero-right{
+    display:grid;grid-template-columns:repeat(3,1fr);
+    gap:0;background:rgba(255,255,255,.06);
+    border-top:1px solid var(--accent-bdr);
+    border-bottom:1px solid var(--accent-bdr);
+    margin:18px 0 0;align-items:stretch;
+  }
+  .hero-stat-sep{display:none}
+  .hero-stat{text-align:center;padding:14px 6px;background:rgba(11,11,11,.7)}
+  .hero-stat-n{font-size:20px}
+  #sound-btn{top:calc(56.25vw + 60px + .5rem);right:.75rem;bottom:auto}
+  .sec,.statement,.replace-section,.obj-strip,.cta-sec{padding:48px 16px}
+  .noby-grid{grid-template-columns:1fr}
+  .phone-wrap{margin:0 auto}
+  .agencia-hero{padding:24px;gap:24px}
+  .models-grid{grid-template-columns:repeat(2,1fr)}
   footer{grid-template-columns:1fr;text-align:center}
   .f-right{justify-content:center}
-  .stmt-text{font-size:clamp(28px,8vw,44px)}
-  .cta-title{font-size:clamp(40px,12vw,70px)}
-  .agencia-card{padding:24px}
-  #sound-btn{top:calc(56.25vw + 60px)!important}
 }
 @media(max-width:600px){
-  .hero-paths{grid-template-columns:1fr}
-  .gallery-grid,.port-grid{grid-template-columns:1fr 1fr}
+  .grid-2,.grid-4,.port-grid{grid-template-columns:1fr}
+  .port-grid{grid-template-columns:1fr 1fr}
+  .brutal-divider{font-size:9px;gap:10px;flex-wrap:wrap}
 }
 ::-webkit-scrollbar{width:3px}
 ::-webkit-scrollbar-track{background:var(--bg)}
-::-webkit-scrollbar-thumb{background:rgba(77,191,163,.35)}
+::-webkit-scrollbar-thumb{background:rgba(77,191,163,.3)}
 </style>
 </head>
 <body>
@@ -330,288 +492,410 @@ footer{border-top:0.5px solid var(--border-em);display:grid;grid-template-column
 <!-- NAV -->
 <nav>
   <a href="#" class="nav-logo">
-    <img src="images/logo.png" alt="logo"/>
-    <span>NOBODY<em>VISUAL</em>LAB</span>
+    <img src="images/logo.png" alt="Nobody Visual Lab"/>
+    <span class="nav-logo-txt">NOBODY<em>VISUAL</em>LAB</span>
   </a>
   <ul class="nav-links">
-    <li><a href="#caminos">SERVICIOS</a></li>
-    <li><a href="#app-pricing">APP</a></li>
-    <li><a href="#planes">AGENCIA</a></li>
+    <li><a href="#reemplaza">QUÉ HACEMOS</a></li>
+    <li><a href="#plan-agencia">PLAN AGENCIA</a></li>
+    <li><a href="#modelos">MODELOS</a></li>
     <li><a href="#portafolio">PORTAFOLIO</a></li>
-    <li><a href="#contacto">CONTACTO</a></li>
+    <li><a href="#app-pricing">APP</a></li>
   </ul>
   <div class="nav-r">
     <div class="lang-sw">
       <button class="lb active" onclick="setLang('es')">ES</button>
       <button class="lb" onclick="setLang('en')">EN</button>
     </div>
-    <a href="https://app.nobodyvisuallab.com" class="btn-app">ENTRAR A LA APP</a>
+    <a href="https://wa.me/526676991211?text=Hola%2C%20quiero%20cotizar%20contenido%20visual%20para%20mi%20marca" class="btn-p" target="_blank" rel="noopener">COTIZAR</a>
   </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
- <div class="hero-video-bg">
-    <iframe id="hero-video" src="https://www.youtube.com/embed/W9zkh4O-A1Q?autoplay=1&mute=1&loop=1&playlist=W9zkh4O-A1Q&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&vq=hd1080" allow="autoplay;encrypted-media" allowfullscreen></iframe>
+  <div class="hero-video-bg">
+    <iframe id="hero-video"
+      src="https://www.youtube.com/embed/W9zkh4O-A1Q?autoplay=1&mute=1&loop=1&playlist=W9zkh4O-A1Q&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&vq=hd1080"
+      allow="autoplay;encrypted-media" allowfullscreen></iframe>
   </div>
-  <button id="sound-btn" onclick="toggleSound()" style="position:absolute;top:calc(56.25vw + 60px);right:.75rem;z-index:10;width:36px;height:36px;background:#000;border:1px solid #4DBFA3;color:#4DBFA3;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .25s;padding:0;">
-    <svg id="sound-icon-svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
+
+  <button id="sound-btn" onclick="toggleSound()" aria-label="Activar sonido">
+    <svg id="sound-svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+      <line x1="23" y1="9" x2="17" y2="15"/>
+      <line x1="17" y1="9" x2="23" y2="15"/>
+    </svg>
   </button>
+
   <div class="hero-content">
     <div>
-      <div class="hero-eyebrow">▸ AI VISUAL STUDIO — FASHION & BRANDS</div>
+      <div class="hero-eyebrow">▸ SINALOA, MÉXICO — AI VISUAL STUDIO — AGENCIA + APP PARA MARCAS DE MODA, JOYERÍA Y ECOMMERCE</div>
       <h1 class="hero-title">
-      CREAMOS<br/>LO QUE<br/>ANTES ERA<br/><span class="highlight">IMPOSIBLE.</span>
+        CREAMOS<br/>LO QUE<br/>ANTES ERA<br/><span class="accent">IMPOSIBLE.</span>
       </h1>
-      <p class="hero-desc">CREAMOS CONTENIDO QUE VENDE.<br/>SIN PRODUCCIÓN TRADICIONAL.</p>
+      <p class="hero-sub">
+        Fotos, modelos digitales y videos para marcas de moda, joyería y ecommerce. Sin fotógrafo, sin modelo real, sin set. Tú mandas el producto; nosotros lo convertimos en contenido listo para vender.
+      </p>
+
       <div class="hero-paths">
-        <a href="#caminos" class="hero-path hero-path-primary">
-          <div class="hero-path-label">OPCIÓN 1</div>
-          <div class="hero-path-title">CONTRATAR EL ESTUDIO</div>
-          <div class="hero-path-desc">Nosotros lo creamos todo por ti. Cotización personalizada en 24 horas.</div>
-          <div class="hero-path-arrow">→</div>
+        <a href="#plan-agencia" class="hero-path hero-path-primary">
+          <div class="hp-label">RECOMENDADO</div>
+          <div class="hp-title">PLAN AGENCIA</div>
+          <div class="hp-desc">App + equipo humano + garantía. Contenido mensual sin aprender IA.</div>
+          <div class="hp-arrow">→</div>
         </a>
-        <a href="https://app.nobodyvisuallab.com" class="hero-path">
-          <div class="hero-path-label">OPCIÓN 2</div>
-          <div class="hero-path-title">USAR LA APP</div>
-          <div class="hero-path-desc">Tú lo creas con nuestras herramientas de IA. Desde $6.99 USD.</div>
-          <div class="hero-path-arrow">→</div>
+        <a href="#agencia" class="hero-path">
+          <div class="hp-label">SERVICIO COMPLETO</div>
+          <div class="hp-title">AGENCIA</div>
+          <div class="hp-desc">Dirección visual, modelos y video. Nosotros producimos todo por ti.</div>
+          <div class="hp-arrow">→</div>
+        </a>
+        <a href="#app-pricing" class="hero-path">
+          <div class="hp-label">AUTOSERVICIO</div>
+          <div class="hp-title">APP</div>
+          <div class="hp-desc">Crea por tu cuenta con créditos que no caducan. NOBY te guía.</div>
+          <div class="hp-arrow">→</div>
         </a>
       </div>
     </div>
-    <div class="hero-right-stats">
-      <div class="hero-stat"><div class="hero-stat-n">+10</div><div class="hero-stat-l">HERRAMIENTAS IA</div></div>
-      <div class="hero-stat"><div class="hero-stat-n">48H</div><div class="hero-stat-l">ENTREGA GARANTIZADA</div></div>
-      <div class="hero-stat"><div class="hero-stat-n">-80%</div><div class="hero-stat-l">VS AGENCIA TRADICIONAL</div></div>
+
+    <div class="hero-right">
+      <div class="hero-stat"><div class="hero-stat-n">48H</div><div class="hero-stat-l">ENTREGA PLAN AGENCIA</div></div>
+      <div class="hero-stat-sep"></div>
+      <div class="hero-stat"><div class="hero-stat-n">10</div><div class="hero-stat-l">SOLICITUDES AL MES</div></div>
+      <div class="hero-stat-sep"></div>
+      <div class="hero-stat"><div class="hero-stat-n">$199</div><div class="hero-stat-l">USD / MES</div></div>
     </div>
+  </div>
 </section>
 
-<!-- DIVISOR BRUTALISTA -->
 <div class="brutal-divider">
-  <span>SIN SETS</span>
-  <span class="dot">✦</span>
-  <span>SIN LÍMITES</span>
-  <span class="dot">✦</span>
-  <span>SIN ESPERAS</span>
+  <span>SIN FOTÓGRAFO</span><span class="dot">✦</span>
+  <span>SIN MODELO REAL</span><span class="dot">✦</span>
+  <span>SIN SET</span><span class="dot">✦</span>
+  <span>CON DIRECCIÓN VISUAL</span>
 </div>
-  
-<!-- TICKER -->
+
 <div class="ticker">
   <div class="ticker-track">
     <span class="ticker-item">AI VISUAL STUDIO</span><span class="ticker-dot">✦</span>
     <span class="ticker-item">MODELOS DIGITALES</span><span class="ticker-dot">✦</span>
+    <span class="ticker-item">FOTOGRAFÍA IA</span><span class="ticker-dot">✦</span>
     <span class="ticker-item">VIDEO UGC</span><span class="ticker-dot">✦</span>
-    <span class="ticker-item">FOTOGRAFÍA DE PRODUCTO</span><span class="ticker-dot">✦</span>
-    <span class="ticker-item">VIRTUAL TRY-ON</span><span class="ticker-dot">✦</span>
-    <span class="ticker-item">DIRECCIÓN DE ARTE IA</span><span class="ticker-dot">✦</span>
-    <span class="ticker-item">FASHION & BRANDS</span><span class="ticker-dot">✦</span>
+    <span class="ticker-item">JOYERÍA</span><span class="ticker-dot">✦</span>
+    <span class="ticker-item">MODA</span><span class="ticker-dot">✦</span>
+    <span class="ticker-item">ECOMMERCE</span><span class="ticker-dot">✦</span>
     <span class="ticker-item">SINALOA — MÉXICO</span><span class="ticker-dot">✦</span>
     <span class="ticker-item">AI VISUAL STUDIO</span><span class="ticker-dot">✦</span>
     <span class="ticker-item">MODELOS DIGITALES</span><span class="ticker-dot">✦</span>
+    <span class="ticker-item">FOTOGRAFÍA IA</span><span class="ticker-dot">✦</span>
     <span class="ticker-item">VIDEO UGC</span><span class="ticker-dot">✦</span>
-    <span class="ticker-item">FOTOGRAFÍA DE PRODUCTO</span><span class="ticker-dot">✦</span>
-    <span class="ticker-item">VIRTUAL TRY-ON</span><span class="ticker-dot">✦</span>
-    <span class="ticker-item">DIRECCIÓN DE ARTE IA</span><span class="ticker-dot">✦</span>
-    <span class="ticker-item">FASHION & BRANDS</span><span class="ticker-dot">✦</span>
+    <span class="ticker-item">JOYERÍA</span><span class="ticker-dot">✦</span>
+    <span class="ticker-item">MODA</span><span class="ticker-dot">✦</span>
+    <span class="ticker-item">ECOMMERCE</span><span class="ticker-dot">✦</span>
     <span class="ticker-item">SINALOA — MÉXICO</span><span class="ticker-dot">✦</span>
   </div>
 </div>
 
 <!-- STATEMENT -->
-<div class="statement rv">
-  <div class="statement-inner">
-    <div class="stmt-tag">NUESTRA FILOSOFÍA</div>
-    <div class="stmt-text">
-      <div>NO SOMOS UN</div>
-      <div class="outline">ESTUDIO TRADICIONAL.</div>
-      <div>SOMOS UN</div>
-      <div class="cyan">LABORATORIO VISUAL.</div>
+<section class="statement rv">
+  <div class="inner">
+    <div class="sec-tag">POR QUÉ NOBODY</div>
+    <div class="stmt-big">
+      <div>NO COMPETIMOS</div>
+      <div class="stmt-cross">CON FREEPIK.</div>
+      <div>REEMPLAZAMOS</div>
+      <div class="cyan">A TU EQUIPO<br/>DE PRODUCCIÓN.</div>
     </div>
-    <p class="stmt-sub">MR. Nobody nace de una idea simple: no necesitas un equipo completo de producción para crear contenido de alto nivel. Creamos una nueva forma de producir — sin límites físicos, con estética cinematográfica y dirección de arte real.</p>
-  </div>
-</div>
-
-<!-- ESPECIALIDADES -->
-<section class="esp-sec">
-  <div class="esp-header rv">
-    <div class="srv-title">LO QUE <span class="cyan">HACEMOS</span> MEJOR.</div>
-    <p style="font-size:12px;color:var(--muted2);line-height:1.8;margin-top:8px">Seis capacidades que ninguna agencia tradicional puede ofrecerte al mismo precio.</p>
-  </div>
-  <div class="proc-grid rv2" style="grid-template-columns:repeat(3,1fr)">
-    <div class="proc-item">
-      <div class="proc-n">01</div>
-      <div class="proc-t">MODELOS DIGITALES <span class="cyan">HIPERREALISTAS</span></div>
-      <ul class="path-card-list" style="margin-top:8px">
-        <li>Sustituyen modelos reales</li>
-        <li>Consistencia visual en campañas</li>
-        <li>Ideales para ecommerce y moda</li>
-      </ul>
-    </div>
-    <div class="proc-item">
-      <div class="proc-n">02</div>
-      <div class="proc-t">CLONACIÓN DIGITAL <span class="cyan">PERSONALIZADA</span></div>
-      <ul class="path-card-list" style="margin-top:8px">
-        <li>Branding único por marca</li>
-        <li>Uso en reels y campañas</li>
-        <li>Licencias exclusivas disponibles</li>
-      </ul>
-    </div>
-    <div class="proc-item">
-      <div class="proc-n">03</div>
-      <div class="proc-t">INTEGRACIÓN DE MODA <span class="cyan">EN MODELOS IA</span></div>
-      <ul class="path-card-list" style="margin-top:8px">
-        <li>Ropa aplicada sobre modelo digital</li>
-        <li>Caída de telas y sombras reales</li>
-        <li>Resultado nivel editorial premium</li>
-      </ul>
-    </div>
-    <div class="proc-item">
-      <div class="proc-n">04</div>
-      <div class="proc-t">FOTOGRAFÍA DE <span class="cyan">PRODUCTO CON IA</span></div>
-      <ul class="path-card-list" style="margin-top:8px">
-        <li>Sin sesión física ni locación</li>
-        <li>Mármol, studio, lujo, minimal</li>
-        <li>Ideal para ecommerce y catálogos</li>
-      </ul>
-    </div>
-    <div class="proc-item">
-      <div class="proc-n">05</div>
-      <div class="proc-t">VIDEO CON IA <span class="cyan">REELS & ADS</span></div>
-      <ul class="path-card-list" style="margin-top:8px">
-        <li>Avatares en movimiento</li>
-        <li>Videos tipo campaña o reels</li>
-        <li>Formato corto optimizado para redes</li>
-      </ul>
-    </div>
-    <div class="proc-item">
-      <div class="proc-n">06</div>
-      <div class="proc-t">DIRECCIÓN DE ARTE <span class="cyan">CINEMATOGRÁFICA</span></div>
-      <ul class="path-card-list" style="margin-top:8px">
-        <li>Iluminación profesional</li>
-        <li>Composición editorial</li>
-        <li>Narrativa visual de campaña</li>
-      </ul>
+    <div class="stmt-right">
+      <p>Las apps genéricas te dan herramientas. Nobody te da un sistema visual completo: fotógrafo, camarógrafo, diseñador, editor, modelo y dirección de arte — sin contratar a nadie y sin aprender IA.</p>
+      <a href="#reemplaza" class="stmt-link">VER COMPARACIÓN →</a>
     </div>
   </div>
 </section>
 
-<!-- DOS CAMINOS -->
-<section id="caminos" class="paths-sec">
-  <div class="paths-header rv">
-    <div class="paths-title">¿CÓMO QUIERES TRABAJAR?</div>
-    <p class="paths-sub">Dos formas de acceder al poder de la IA visual. Tú eliges.</p>
+<!-- LO QUE REEMPLAZAMOS -->
+<section id="reemplaza" class="replace-section">
+  <div class="inner">
+    <div class="sec-tag rv">COMPARACIÓN REAL</div>
+    <div class="sec-h rv">LO QUE ANTES<br/><span class="cyan">TENÍAS QUE CONTRATAR.</span></div>
+    <p class="sec-sub rv">La comparación correcta no es contra otras apps. Es contra el costo real de producir contenido de forma tradicional.</p>
+
+    <table class="replace-table rv2">
+      <thead>
+        <tr>
+          <th>Producción tradicional</th>
+          <th>Nobody Visual Lab</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="td-old"><span class="rt-cross">✕</span>Contratar fotógrafo de producto</td>
+          <td class="td-new"><span class="rt-check">✓</span>Fotografía IA de producto con dirección visual</td>
+        </tr>
+        <tr>
+          <td class="td-old"><span class="rt-cross">✕</span>Contratar modelo y coordinar sesión</td>
+          <td class="td-new"><span class="rt-check">✓</span>Modelos digitales listos para moda, joyería y belleza</td>
+        </tr>
+        <tr>
+          <td class="td-old"><span class="rt-cross">✕</span>Contratar camarógrafo para video</td>
+          <td class="td-new"><span class="rt-check">✓</span>Videos UGC y animaciones generadas desde tu producto</td>
+        </tr>
+        <tr>
+          <td class="td-old"><span class="rt-cross">✕</span>Diseñador para composición y piezas</td>
+          <td class="td-new"><span class="rt-check">✓</span>Piezas listas para redes, tienda y marketplace</td>
+        </tr>
+        <tr>
+          <td class="td-old"><span class="rt-cross">✕</span>Esperar agenda, locación y edición</td>
+          <td class="td-new"><span class="rt-check">✓</span>Entrega en 48 horas con Plan Agencia</td>
+        </tr>
+        <tr>
+          <td class="td-old"><span class="rt-cross">✕</span>Social media creativo para definir estilo</td>
+          <td class="td-new"><span class="rt-check">✓</span>NOBY sugiere estilo, formato y tipo de contenido</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
-  <div class="paths-grid">
-    <div class="path-card path-card-agency rv">
-      <div class="path-card-num">01</div>
-      <div class="path-card-icon">🎬</div>
-      <div class="path-card-title">CONTRATAR<br/>EL <span class="cyan">ESTUDIO</span></div>
-      <p class="path-card-desc">Nosotros lo creamos todo por ti. Dirección de arte, modelos, fotografía y video. Tú solo envías tu producto y defines el estilo.</p>
-      <ul class="path-card-list">
+</section>
+
+<!-- CAPACIDADES -->
+<section class="sec">
+  <div class="inner">
+    <div class="sec-tag rv">CAPACIDADES</div>
+    <div class="sec-h rv">SEIS HERRAMIENTAS.<br/><span class="cyan">UN SOLO OBJETIVO.</span></div>
+    <p class="sec-sub rv">Contenido visual usable para marcas que venden por Instagram, TikTok, WhatsApp o tienda online.</p>
+
+    <div class="grid-3 rv2" style="margin-top:28px">
+      <div class="card"><div class="card-n">01</div><div class="card-h">Foto de producto</div><p class="card-p">Editorial, limpia, lifestyle o premium. Desde fotos simples de celular hacia imágenes que venden.</p></div>
+      <div class="card"><div class="card-n">02</div><div class="card-h">Modelo digital</div><p class="card-p">Ropa, joyería y accesorios sobre modelos con estética de campaña. Sin sesión, sin agenda.</p></div>
+      <div class="card"><div class="card-n">03</div><div class="card-h">Try-on visual</div><p class="card-p">Prendas aplicadas sobre modelos digitales para ecommerce de moda. Catálogo sin producción.</p></div>
+      <div class="card"><div class="card-n">04</div><div class="card-h">Joyería</div><p class="card-p">Piezas sobre modelo, manos o cuello. Lifestyle, editorial o fondo limpio con estética de lujo.</p></div>
+      <div class="card"><div class="card-n">05</div><div class="card-h">Video corto</div><p class="card-p">Reels, UGC visual y animaciones para lanzar, anunciar o publicar en Stories y TikTok.</p></div>
+      <div class="card"><div class="card-n">06</div><div class="card-h">Dirección visual</div><p class="card-p">Concepto, paleta, estilo y narrativa para que no se vea generado al azar — se vea de marca.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- TRES CAMINOS -->
+<section id="caminos" class="sec">
+  <div class="inner rv">
+    <div class="sec-tag">CÓMO TRABAJAMOS</div>
+    <div class="sec-h">TRES CAMINOS.<br/><span class="cyan">MISMO RESULTADO.</span></div>
+    <p class="sec-sub">Elige según tu tiempo, presupuesto y cuánto quieres involucrarte en la producción.</p>
+  </div>
+
+  <div class="paths-grid rv2" style="margin-top:28px">
+    <div class="path-card">
+      <div class="path-n">01</div>
+      <div class="path-icon">⚡</div>
+      <div class="path-title">HAZLO TÚ<br/><span class="cyan">APP</span></div>
+      <p class="path-desc">Crea por tu cuenta. Ideal si tienes tiempo, quieres control total y buscas el menor costo posible.</p>
+      <ul class="path-list">
+        <li>Paquetes de créditos desde $6.99 USD</li>
+        <li>Créditos que no caducan</li>
+        <li>Modelo, producto, try-on, joyería y video</li>
+        <li>NOBY te guía cuando no quieres empezar desde cero</li>
+      </ul>
+      <a href="#app-pricing" class="btn-s">VER PAQUETES →</a>
+    </div>
+
+    <div class="path-card featured">
+      <div class="path-n">02</div>
+      <div class="path-icon">🤝</div>
+      <div class="path-title">CON RESPALDO<br/><span class="cyan">PLAN AGENCIA</span></div>
+      <p class="path-desc">App + equipo humano. Si la IA no lo deja bien, nuestro equipo lo corrige. Ideal si quieres resultado sin complicarte.</p>
+      <ul class="path-list">
+        <li>200 créditos mensuales incluidos</li>
+        <li>Hasta 10 solicitudes directas al equipo</li>
+        <li>WhatsApp directo para coordinar</li>
+        <li>Entrega máximo 48 horas</li>
+        <li>Garantía de resultado</li>
+      </ul>
+      <a href="#plan-agencia" class="btn-p">VER PLAN AGENCIA →</a>
+    </div>
+
+    <div class="path-card">
+      <div class="path-n">03</div>
+      <div class="path-icon">🎬</div>
+      <div class="path-title">LO HACEMOS<br/><span class="cyan">AGENCIA</span></div>
+      <p class="path-desc">Delegas toda la producción. Para campañas, lanzamientos o marcas con mayor volumen de contenido.</p>
+      <ul class="path-list">
+        <li>Dirección de arte y producción completa</li>
         <li>Modelos digitales exclusivos para tu marca</li>
-        <li>Fotografía editorial de producto con IA</li>
-        <li>Videos UGC y Reels listos para publicar</li>
-        <li>Contenido listo en 48 a 72 horas</li>
-        <li>Cotización personalizada según tu proyecto</li>
+        <li>Fotos y videos de campaña</li>
+        <li>Cotización personalizada por proyecto</li>
       </ul>
-      <a href="#planes" class="btn-p">VER ESCALAS →</a>
-    </div>
-    <div class="path-card path-card-app rv2">
-      <div class="path-card-num">02</div>
-      <div class="path-card-icon">⚡</div>
-      <div class="path-card-title">USAR<br/>LA <span class="cyan">APP</span></div>
-      <p class="path-card-desc">Crea tú mismo con nuestras herramientas de IA. Genera imágenes, integra productos en modelos y edita contenido en minutos. Sin experiencia previa.</p>
-      <ul class="path-card-list">
-        <li>Genera modelos e imágenes de producto</li>
-        <li>Editor de video con IA integrado</li>
-        <li>Virtual try-on para ecommerce</li>
-        <li>Resultados en minutos, no en días</li>
-        <li>Desde $6.99 USD — sin suscripción obligatoria</li>
-      </ul>
-      <a href="https://app.nobodyvisuallab.com" class="btn-s">PROBAR LA APP →</a>
+      <a href="#agencia" class="btn-s">COTIZAR PROYECTO →</a>
     </div>
   </div>
 </section>
 
-<!-- PLANES UNIFICADOS -->
-<section id="app-pricing" class="plans-sec">
-  <div class="plans-inner">
-    <div class="sec-tag rv">ELIGE TU FORMA DE TRABAJAR</div>
-    <div class="plans-title rv">PLANES</div>
-    <p class="plans-sub rv">Dos modelos de trabajo, un mismo objetivo: contenido visual que vende.</p>
-
-    <!-- Subtítulo autoservicio -->
-    <div style="margin-bottom:16px;margin-top:36px" class="rv">
-      <div style="display:inline-flex;align-items:center;gap:10px;font-size:10px;letter-spacing:0.16em;color:var(--accent);font-weight:700;text-transform:uppercase">
-        <span style="width:20px;height:1px;background:var(--accent);display:inline-block"></span>
-        AUTOSERVICIO — USA LA APP TÚ MISMO
+<!-- MODELOS DIGITALES — antes de precios -->
+<section id="modelos" class="sec">
+  <div class="inner">
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:14px" class="rv">
+      <div>
+        <div class="sec-tag">MODELOS DEL LAB</div>
+        <div class="sec-h">TALENTO VISUAL<br/><span class="cyan">PARA TU CAMPAÑA.</span></div>
+        <p class="sec-sub" style="margin-top:10px">Cinco modelos digitales con estética, personalidad y nicho definidos. Listos para moda, joyería, belleza y producto.</p>
       </div>
-      <p style="font-size:11px;color:var(--muted2);margin-top:6px">Sin suscripción. Pago único. Los créditos no caducan.</p>
-    </div>
-    <div class="app-pricing-grid rv2">
-      <div class="app-plan">
-        <div class="app-plan-name">Starter</div>
-        <div class="app-plan-desc">Para explorar la plataforma</div>
-        <div class="app-plan-price">$6.99 <span style="font-family:var(--fb);font-size:13px;color:var(--muted2);font-weight:400">USD</span></div>
-        <div class="app-plan-period">50 créditos · pago único</div>
-        <hr class="app-plan-divider"/>
-        <ul class="app-plan-yields">
-          <li>50 cambios de ropa virtuales</li>
-          <li>16 fotos de producto</li>
-          <li>7 videos cortos</li>
-        </ul>
-        <a href="https://app.nobodyvisuallab.com" class="plan-cta plan-cta-s">EMPEZAR →</a>
-      </div>
-      <div class="app-plan featured">
-        <div class="app-plan-badge">Más popular</div>
-        <div class="app-plan-name">Creator</div>
-        <div class="app-plan-desc">El balance perfecto</div>
-        <div class="app-plan-price">$14.99 <span style="font-family:var(--fb);font-size:13px;color:var(--muted2);font-weight:400">USD</span></div>
-        <div class="app-plan-period">150 créditos · pago único</div>
-        <hr class="app-plan-divider"/>
-        <ul class="app-plan-yields">
-          <li>150 cambios de ropa virtuales</li>
-          <li>50 fotos de producto</li>
-          <li>21 videos cortos</li>
-        </ul>
-        <a href="https://app.nobodyvisuallab.com" class="plan-cta plan-cta-p">EMPEZAR →</a>
-      </div>
-      <div class="app-plan">
-        <div class="app-plan-name">Studio</div>
-        <div class="app-plan-desc">Para producción intensiva</div>
-        <div class="app-plan-price">$34.99 <span style="font-family:var(--fb);font-size:13px;color:var(--muted2);font-weight:400">USD</span></div>
-        <div class="app-plan-period">400 créditos · pago único</div>
-        <hr class="app-plan-divider"/>
-        <ul class="app-plan-yields">
-          <li>400 cambios de ropa virtuales</li>
-          <li>133 fotos de producto</li>
-          <li>57 videos cortos</li>
-        </ul>
-        <a href="https://app.nobodyvisuallab.com" class="plan-cta plan-cta-s">EMPEZAR →</a>
-      </div>
+      <a href="https://wa.me/526676991211?text=Hola%2C%20quiero%20cotizar%20contenido%20con%20modelos%20digitales" class="btn-s" target="_blank" rel="noopener">COTIZAR CON MODELO →</a>
     </div>
 
-    <!-- Divisor -->
-    <div style="border-top:0.5px solid var(--border-em);margin:48px 0 36px"></div>
-
-    <!-- Subtítulo agencia -->
-    <div id="planes" style="margin-bottom:32px" class="rv">
-      <div style="display:inline-flex;align-items:center;gap:10px;font-size:10px;letter-spacing:0.16em;color:var(--accent);font-weight:700;text-transform:uppercase">
-        <span style="width:20px;height:1px;background:var(--accent);display:inline-block"></span>
-        SERVICIO COMPLETO — NOSOTROS LO CREAMOS POR TI
+    <div class="models-grid rv2">
+      <a href="valentina.html" class="model-card">
+        <img src="images/modelo-01.png" alt="Valentina R. Carrillo — modelo digital moda joyería"/>
+        <div class="model-overlay">
+          <div class="mo-label">Moda · joyería fina</div>
+          <div class="mo-name">VALENTINA R.</div>
+        </div>
+      </a>
+      <a href="dalia.html" class="model-card">
+        <img src="images/modelo-02.png" alt="Dalia May — modelo digital Gen Z lifestyle"/>
+        <div class="model-overlay">
+          <div class="mo-label">Alt Gen Z · lifestyle</div>
+          <div class="mo-name">DALIA MAY</div>
+        </div>
+      </a>
+      <a href="fatima.html" class="model-card">
+        <img src="images/modelo-03.png" alt="Fátima Noor — modelo digital belleza skincare"/>
+        <div class="model-overlay">
+          <div class="mo-label">Belleza · skincare</div>
+          <div class="mo-name">FÁTIMA NOOR</div>
+        </div>
+      </a>
+      <a href="vera.html" class="model-card">
+        <img src="images/modelo-04.png" alt="Vera Sol — modelo digital dark editorial"/>
+        <div class="model-overlay">
+          <div class="mo-label">Dark chic · editorial</div>
+          <div class="mo-name">VERA SOL</div>
+        </div>
+      </a>
+      <a href="uziel.html" class="model-card">
+        <img src="images/modelo-05.png" alt="Uziel — modelo digital masculino fitness joyería"/>
+        <div class="model-overlay">
+          <div class="mo-label">Fitness · joyería masc.</div>
+          <div class="mo-name">UZIEL</div>
+        </div>
+      </a>
+      <div class="model-soon">
+        <div class="model-soon-label">PRÓXIMAMENTE</div>
       </div>
-      <p style="font-size:11px;color:var(--muted2);margin-top:6px">Cada marca es diferente. Te cotizamos a medida en menos de 24 horas.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PORTAFOLIO -->
+<section id="portafolio" class="sec">
+  <div class="inner">
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:14px" class="rv">
+      <div>
+        <div class="sec-tag">PORTAFOLIO</div>
+        <div class="sec-h">RESULTADOS<br/><span class="cyan">LISTOS PARA PUBLICAR.</span></div>
+      </div>
+      <a href="https://wa.me/526676991211" class="btn-s" target="_blank" rel="noopener">COTIZAR MI MARCA →</a>
     </div>
 
-    <!-- Agency tiers - sin precios -->
+    <div class="port-grid rv2">
+      <div class="pi">
+        <img src="images/portfolio-01.jpg" alt="Foto de producto editorial con IA"/>
+        <div class="pi-overlay"><div class="pi-cat">Producto</div><div class="pi-name">Editorial limpio</div></div>
+      </div>
+      <div class="pi">
+        <img src="images/portfolio-02.jpg" alt="Joyería en modelo digital"/>
+        <div class="pi-overlay"><div class="pi-cat">Joyería</div><div class="pi-name">Modelo IA</div></div>
+      </div>
+      <div class="pi">
+        <img src="images/portfolio-03.jpg" alt="Moda con modelo digital try-on"/>
+        <div class="pi-overlay"><div class="pi-cat">Moda</div><div class="pi-name">Try-on visual</div></div>
+      </div>
+      <div class="pi">
+        <img src="images/portfolio-04.jpg" alt="Video corto animación IA"/>
+        <div class="pi-overlay"><div class="pi-cat">Video</div><div class="pi-name">Reel / campaña</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NOBY -->
+<section id="noby" class="sec" style="background:radial-gradient(circle at 80% 20%,rgba(77,191,163,.07),transparent 40%),var(--bg)">
+  <div class="inner">
+    <div class="noby-grid">
+      <div class="rv">
+        <div class="sec-tag">NOBY EN LA APP</div>
+        <div class="sec-h">LA APP NO<br/>EMPIEZA <span class="cyan">EN BLANCO.</span></div>
+        <p class="sec-sub">Si eliges el camino autoservicio, NOBY traduce lo que quieres crear en instrucciones visuales claras. No necesitas saber de prompts ni de IA — solo describes qué quieres y NOBY decide el cómo.</p>
+        <div class="noby-flow">
+          <span>Sube producto</span><span class="arrow">→</span>
+          <span>Elige objetivo</span><span class="arrow">→</span>
+          <span>NOBY guía</span><span class="arrow">→</span>
+          <span>Genera</span>
+        </div>
+        <p class="noby-note">NOBY está disponible solo dentro de la app. No es el centro del servicio — es el asistente que hace más fácil el camino autoservicio para quienes no quieren aprender IA desde cero.</p>
+      </div>
+
+      <div class="phone-wrap rv2">
+        <div class="phone-mock">
+          <div class="phone-screen">
+            <video src="videos/noby-pov.mp4" autoplay muted loop playsinline poster="images/noby-poster.jpg"></video>
+            <div class="phone-pixels"></div>
+            <div class="phone-ui">
+              <div class="noby-chip">
+                <div class="nc-label">NOBY — ASISTENTE VISUAL</div>
+                <div class="nc-text">"Crea una imagen editorial para esta joya, estilo premium, lista para Instagram."<span class="nc-cursor"></span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING: PLAN AGENCIA -->
+<section class="sec">
+  <div class="inner">
+    <div class="sec-tag rv">PRODUCTO PRINCIPAL</div>
+    <div class="sec-h rv">PRODUCCIÓN MENSUAL<br/><span class="cyan">CON RESPALDO HUMANO.</span></div>
+    <p class="sec-sub rv">La app es el motor. El equipo humano es la garantía. Si algo no queda bien, lo corregimos — sin costo extra, dentro del plan.</p>
+
+    <div id="plan-agencia" class="agencia-hero rv2">
+      <div>
+        <div class="ag-tag">PLAN AGENCIA — RECOMENDADO</div>
+        <div class="ag-h">TU CONTENIDO<br/>VISUAL MENSUAL<br/><span class="cyan">SIN COMPLICARTE.</span></div>
+        <p class="ag-desc">Acceso completo a la app más hasta 10 solicitudes directas al equipo por mes. Tú usas la app cuando quieras; cuando la IA no da el resultado, el equipo lo resuelve.</p>
+        <div class="ag-guarantee">⚡ Garantía de resultado: si no queda dentro del alcance del plan, lo rehacemos sin costo adicional.</div>
+        <a href="https://wa.me/526676991211?text=Hola%2C%20quiero%20contratar%20Plan%20Agencia%20de%20Nobody%20Visual%20Lab" class="btn-p" target="_blank" rel="noopener">QUIERO PLAN AGENCIA →</a>
+      </div>
+      <div>
+        <div class="ag-price">$199 <span style="font-family:var(--fb);font-size:16px;color:var(--muted2);font-weight:400">USD</span></div>
+        <div class="ag-price-note">por mes · sin contratos largos</div>
+        <ul class="ag-list">
+          <li>Acceso completo a la app con 200 créditos mensuales</li>
+          <li>Hasta 10 solicitudes directas al equipo por mes</li>
+          <li>Entrega máximo 48 horas por solicitud</li>
+          <li>Canal directo por WhatsApp para coordinar</li>
+          <li>Hasta 2 revisiones por solicitud sin costo extra</li>
+          <li>Garantía de resultado dentro del alcance mensual</li>
+          <li>Ideal para marcas que publican constantemente</li>
+        </ul>
+      </div>
+    </div>
+
+    <hr class="sec-rule">
+
+    <!-- AGENCIA COMPLETA -->
+    <div id="agencia" class="rv">
+      <div class="sec-tag">AGENCIA COMPLETA</div>
+      <div class="sec-h">LO HACEMOS<br/><span class="cyan">NOSOTROS.</span></div>
+      <p class="sec-sub">Para campañas, lanzamientos o marcas que quieren delegar toda la producción visual. Cotización personalizada según volumen, formatos y nivel de dirección visual.</p>
+    </div>
+
     <div class="plans-grid rv2">
-
-      <!-- ESENCIAL -->
       <div class="plan-card">
         <div class="plan-name">ESENCIAL</div>
         <p class="plan-for">Para marcas que están comenzando</p>
-        <hr class="plan-divider" style="margin-top:14px"/>
-        <p class="agency-tier-label">QUÉ INCLUYE</p>
+        <hr class="plan-div"/>
         <ul class="plan-items">
           <li>Imágenes con modelo IA</li>
           <li>Fotografía de producto con IA</li>
@@ -619,328 +903,219 @@ footer{border-top:0.5px solid var(--border-em);display:grid;grid-template-column
           <li>Entrega en 48–72 horas</li>
           <li>Hasta 2 revisiones por entrega</li>
         </ul>
-        <a href="https://wa.me/526676991211?text=Hola%2C%20me%20interesa%20el%20plan%20Esencial%20de%20la%20agencia" class="plan-cta plan-cta-s" target="_blank">HABLEMOS →</a>
+        <a href="https://wa.me/526676991211?text=Hola%2C%20me%20interesa%20cotizar%20Agencia%20Esencial" class="plan-cta plan-cta-s" target="_blank" rel="noopener">COTIZAR →</a>
       </div>
 
-      <!-- CRECIMIENTO -->
-      <div class="plan-card featured">
+      <div class="plan-card feat">
         <div class="plan-badge">MÁS SOLICITADO</div>
         <div class="plan-name">CRECIMIENTO</div>
         <p class="plan-for">Para marcas en expansión</p>
-        <hr class="plan-divider"/>
-        <p class="agency-tier-label">QUÉ INCLUYE</p>
+        <hr class="plan-div"/>
         <ul class="plan-items">
           <li>Mayor volumen de imágenes con modelo IA</li>
           <li>Fotografía editorial de producto</li>
           <li>Videos UGC y reels para campañas</li>
           <li>Entrega en 48–72 horas</li>
           <li>Hasta 2 revisiones por entrega</li>
-          <li>Canal directo por WhatsApp</li>
+          <li>WhatsApp directo para coordinar</li>
         </ul>
-        <a href="https://wa.me/526676991211?text=Hola%2C%20me%20interesa%20el%20plan%20Crecimiento%20de%20la%20agencia" class="plan-cta plan-cta-p" target="_blank">HABLEMOS →</a>
+        <a href="https://wa.me/526676991211?text=Hola%2C%20me%20interesa%20cotizar%20Agencia%20Crecimiento" class="plan-cta plan-cta-p" target="_blank" rel="noopener">COTIZAR →</a>
       </div>
 
-      <!-- CAMPAÑA PRO -->
       <div class="plan-card">
         <div class="plan-name">CAMPAÑA PRO</div>
-        <p class="plan-for">Para marcas que quieren escalar</p>
-        <hr class="plan-divider" style="margin-top:14px"/>
-        <p class="agency-tier-label">QUÉ INCLUYE</p>
+        <p class="plan-for">Para lanzamientos y alto volumen</p>
+        <hr class="plan-div"/>
         <ul class="plan-items">
           <li>Producción visual de alto volumen</li>
-          <li>Imágenes de producto nivel editorial</li>
+          <li>Fotografía de producto nivel editorial</li>
           <li>Videos de campaña con dirección de arte</li>
           <li>Entrega en 48–72 horas</li>
           <li>Hasta 2 revisiones por entrega</li>
-          <li>Canal directo por WhatsApp</li>
+          <li>Prioridad y WhatsApp directo</li>
         </ul>
-        <a href="https://wa.me/526676991211?text=Hola%2C%20me%20interesa%20el%20plan%20Campa%C3%B1a%20Pro%20de%20la%20agencia" class="plan-cta plan-cta-s" target="_blank">HABLEMOS →</a>
+        <a href="https://wa.me/526676991211?text=Hola%2C%20me%20interesa%20cotizar%20Agencia%20Campa%C3%B1a%20Pro" class="plan-cta plan-cta-s" target="_blank" rel="noopener">COTIZAR →</a>
       </div>
-
     </div>
 
-    <!-- Nota cotización -->
-    <div class="agency-quote-note rv">
-      <p>
-        Sin contratos largos. Sin sorpresas. El precio depende del volumen y tipo de contenido que necesitas.<br/>
-        <a href="https://wa.me/526676991211" target="_blank">Escríbenos y te cotizamos hoy mismo →</a>
-      </p>
+    <div style="text-align:center;margin-top:20px" class="rv">
+      <p style="font-size:11px;color:var(--muted)">¿No sabes cuál te conviene? <a href="https://wa.me/526676991211" target="_blank" style="color:var(--accent);font-weight:700">Escríbenos tu Instagram y te decimos →</a></p>
     </div>
 
-    <!-- Divisor -->
-    <div style="border-top:0.5px solid var(--border-em);margin:48px 0 36px"></div>
+    <hr class="sec-rule">
 
-    <!-- Plan Agencia -->
-    <div style="margin-bottom:16px" class="rv">
-      <div style="display:inline-flex;align-items:center;gap:10px;font-size:10px;letter-spacing:0.16em;color:var(--accent);font-weight:700;text-transform:uppercase">
-        <span style="width:20px;height:1px;background:var(--accent);display:inline-block"></span>
-        PLAN AGENCIA — APP + EQUIPO HUMANO
-      </div>
-      <p style="font-size:11px;color:var(--muted2);margin-top:6px">Para negocios que quieren resultados garantizados, sin importar si la IA falla.</p>
+    <!-- APP PAQUETES -->
+    <div id="app-pricing" class="rv">
+      <div class="sec-tag">APP — HAZLO TÚ</div>
+      <div class="sec-h">PAQUETES DE<br/><span class="cyan">PRODUCCIÓN VISUAL.</span></div>
+      <p class="sec-sub">Pago único. Créditos que no caducan. Usa la app guiada por NOBY o entra directo a las herramientas.</p>
     </div>
-    <div class="agencia-card rv2">
-      <div class="agencia-left">
-        <div class="agencia-tag">La diferencia que nadie más ofrece</div>
-        <div class="agencia-title">ACCESO A LA APP<br/>+ <span class="cyan">EQUIPO HUMANO</span><br/>INCLUIDO</div>
-        <p class="agencia-desc">Con el Plan Agencia no solo usas la plataforma — contratas al equipo de Nobody Visual Lab como tu departamento visual externo. Cuando la IA no da el resultado que necesitas, nosotros lo resolvemos. Tú nos dices qué quieres, nosotros lo entregamos.</p>
-        <div class="agencia-guarantee">Garantía de resultado: si algo no sale bien, lo rehacemos sin costo adicional. Siempre.</div>
-        <a href="https://wa.me/526676991211" class="btn-p" target="_blank">COTIZAR PLAN AGENCIA →</a>
-      </div>
-      <div class="agencia-right">
-        <div class="agencia-price">$199 <span style="font-family:var(--fb);font-size:16px;color:var(--muted2);font-weight:400">USD</span></div>
-        <div class="agencia-price-note">por mes · sin contratos largos</div>
-        <ul class="agencia-list">
-          <li>Acceso completo a la app con 200 créditos mensuales</li>
-          <li>Hasta 10 solicitudes manuales al equipo por mes</li>
-          <li>Entrega en máximo 48 horas por solicitud</li>
-          <li>Canal directo por WhatsApp para coordinar</li>
-          <li>Hasta 2 revisiones por solicitud sin costo extra</li>
-          <li>Resultados garantizados — si no queda bien, lo rehacemos</li>
-          <li>Ideal para joyerías, tiendas de ropa y marcas de producto</li>
+
+    <div class="app-grid rv2">
+      <div class="app-plan">
+        <div class="app-name">STARTER</div>
+        <div class="app-desc">Para comenzar y probar</div>
+        <div class="app-price">$6.99 <span style="font-family:var(--fb);font-size:13px;color:var(--muted2);font-weight:400">USD</span></div>
+        <div class="app-price-note">50 créditos · pago único</div>
+        <hr class="app-div"/>
+        <ul class="app-items">
+          <li>Primeras imágenes y pruebas visuales</li>
+          <li>Producto, modelos, try-on o video</li>
+          <li>Créditos que no caducan</li>
         </ul>
+        <a href="https://app.nobodyvisuallab.com" class="plan-cta plan-cta-s" target="_blank">USAR LA APP →</a>
+      </div>
+
+      <div class="app-plan feat">
+        <div class="app-badge">Más popular</div>
+        <div class="app-name">CREATOR</div>
+        <div class="app-desc">Para publicar más seguido</div>
+        <div class="app-price">$14.99 <span style="font-family:var(--fb);font-size:13px;color:var(--muted2);font-weight:400">USD</span></div>
+        <div class="app-price-note">150 créditos · pago único</div>
+        <hr class="app-div"/>
+        <ul class="app-items">
+          <li>Contenido semanal para redes y tienda</li>
+          <li>Margen para probar estilos y formatos</li>
+          <li>NOBY disponible en toda la sesión</li>
+        </ul>
+        <a href="https://app.nobodyvisuallab.com" class="plan-cta plan-cta-p" target="_blank">USAR LA APP →</a>
+      </div>
+
+      <div class="app-plan">
+        <div class="app-name">STUDIO</div>
+        <div class="app-desc">Para marcas activas y managers</div>
+        <div class="app-price">$34.99 <span style="font-family:var(--fb);font-size:13px;color:var(--muted2);font-weight:400">USD</span></div>
+        <div class="app-price-note">400 créditos · pago único</div>
+        <hr class="app-div"/>
+        <ul class="app-items">
+          <li>Mayor capacidad de producción visual</li>
+          <li>Fotos, modelos, producto y video</li>
+          <li>Ideal para social media managers</li>
+        </ul>
+        <a href="https://app.nobodyvisuallab.com" class="plan-cta plan-cta-s" target="_blank">USAR LA APP →</a>
       </div>
     </div>
 
-  </div>
-</section>
-
-<!-- GALERÍA -->
-<section class="gallery-sec">
-  <div class="gallery-header rv">
-    <div class="gallery-title">MODELOS QUE HEMOS CREADO</div>
-    <a href="https://app.nobodyvisuallab.com" class="btn-s">VER TODOS EN LA APP →</a>
-  </div>
-  <div class="gallery-grid">
-    <a href="valentina.html" class="gallery-card" style="text-decoration:none">
-      <img src="images/modelo-01.png" alt="Valentina R. Carrillo"/>
-      <div class="gallery-overlay"><div class="go-label">MODELO IA · VER PERFIL →</div><div class="go-name">VALENTINA R.</div></div>
-    </a>
-    <a href="dalia.html" class="gallery-card" style="text-decoration:none">
-      <img src="images/modelo-02.png" alt="Dalia May"/>
-      <div class="gallery-overlay"><div class="go-label">MODELO IA · VER PERFIL →</div><div class="go-name">DALIA MAY</div></div>
-    </a>
-    <a href="fatima.html" class="gallery-card" style="text-decoration:none">
-      <img src="images/modelo-03.png" alt="Fátima Noor"/>
-      <div class="gallery-overlay"><div class="go-label">MODELO IA · VER PERFIL →</div><div class="go-name">FÁTIMA NOOR</div></div>
-    </a>
-    <a href="vera.html" class="gallery-card" style="text-decoration:none">
-  <img src="images/modelo-04.png" alt="Vera Sol"/>
-  <div class="gallery-overlay"><div class="go-label">MODELO IA · VER PERFIL →</div><div class="go-name">VERA SOL</div></div>
-</a>
-    <a href="uziel.html" class="gallery-card" style="text-decoration:none;position:relative;overflow:hidden"><img src="images/modelo-05.png" alt="Uziel" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block"/><div class="gallery-overlay"><div class="go-label">MODELO IA · VER PERFIL →</div><div class="go-name">UZIEL</div></div></a>
-    <div class="gallery-card gallery-soon"><div class="soon-inner"><div class="soon-icon">◈</div><div class="soon-name">MODELO 06</div><div class="soon-label">PRÓXIMAMENTE</div></div></div>
-  </div>
-  <div class="gallery-more"><a href="https://app.nobodyvisuallab.com">+ VER TODOS LOS MODELOS EN LA APP</a></div>
-</section>
-
-<!-- SERVICIOS -->
-<section id="servicios" class="srv-sec">
-  <div class="srv-header rv">
-    <div class="srv-title">SERVICIOS</div>
-    <p style="max-width:300px;font-size:12px;color:var(--muted2);line-height:1.75">Todo lo que una marca necesita para competir visualmente.</p>
-  </div>
-  <div class="srv-list rv2">
-    <div class="srv-item"><div class="srv-num">01</div><div class="srv-name">MODELOS DIGITALES IA</div><div class="srv-tags"><span class="srv-tag">Exclusivo</span><span class="srv-tag">Hiperrealista</span></div><div class="srv-arrow">→</div></div>
-    <div class="srv-item"><div class="srv-num">02</div><div class="srv-name">FOTOGRAFÍA EDITORIAL</div><div class="srv-tags"><span class="srv-tag">Producto</span><span class="srv-tag">Lifestyle</span></div><div class="srv-arrow">→</div></div>
-    <div class="srv-item"><div class="srv-num">03</div><div class="srv-name">VIDEO UGC & REELS</div><div class="srv-tags"><span class="srv-tag">Movimiento IA</span><span class="srv-tag">Redes</span></div><div class="srv-arrow">→</div></div>
-    <div class="srv-item"><div class="srv-num">04</div><div class="srv-name">VIRTUAL TRY-ON</div><div class="srv-tags"><span class="srv-tag">E-commerce</span><span class="srv-tag">Outfit</span></div><div class="srv-arrow">→</div></div>
-    <div class="srv-item"><div class="srv-num">05</div><div class="srv-name">DIRECCIÓN DE ARTE IA</div><div class="srv-tags"><span class="srv-tag">Campaña</span><span class="srv-tag">Narrativa</span></div><div class="srv-arrow">→</div></div>
-    <div class="srv-item"><div class="srv-num">06</div><div class="srv-name">EDITOR DE IMAGEN IA</div><div class="srv-tags"><span class="srv-tag">Fondo</span><span class="srv-tag">Estilo</span></div><div class="srv-arrow">→</div></div>
-  </div>
-</section>
-
-<!-- LIGHTBOX -->
-<div id="video-lightbox">
-  <button onclick="closeLightbox()" style="position:absolute;top:1.2rem;right:1.5rem;background:none;border:none;color:#fff;font-size:2rem;cursor:pointer;opacity:.7;font-weight:300">✕</button>
-  <div id="yt-wrap"><iframe id="yt-frame" src="" allow="autoplay;encrypted-media" allowfullscreen></iframe></div>
-</div>
-
-<!-- CLIENTES -->
-<section style="border-bottom:0.5px solid var(--border-em);padding:48px 28px">
-  <div style="max-width:1100px;margin:0 auto" class="rv">
-    <div class="sec-tag" style="justify-content:center;margin-bottom:28px">YA CONFÍAN EN NOSOTROS</div>
-    <div style="display:flex;align-items:center;justify-content:center;gap:60px;flex-wrap:wrap">
-      <div style="display:flex;flex-direction:column;align-items:center;gap:12px">
-        <div style="height:64px;padding:10px 20px;display:flex;align-items:center;justify-content:center;background:#fff;border-radius:8px;opacity:0.75;transition:opacity 0.2s" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.75'">
-          <img id="logo-c1" alt="Hadares Joyería" style="max-height:44px;max-width:160px;object-fit:contain"/>
-        </div>
-        <span style="font-size:10px;letter-spacing:0.12em;color:var(--muted);text-transform:uppercase;font-weight:600">Hadares Joyería</span>
-      </div>
-      <div style="width:1px;height:40px;background:var(--border-em)"></div>
-      <div style="display:flex;flex-direction:column;align-items:center;gap:12px">
-        <div style="height:64px;padding:10px 20px;display:flex;align-items:center;justify-content:center;background:#fff;border-radius:8px;opacity:0.75;transition:opacity 0.2s" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.75'">
-          <img id="logo-c2" alt="Source by Frida" style="max-height:44px;max-width:160px;object-fit:contain"/>
-        </div>
-        <span style="font-size:10px;letter-spacing:0.12em;color:var(--muted);text-transform:uppercase;font-weight:600">Source by Frida</span>
-      </div>
-      <div style="width:1px;height:40px;background:var(--border-em)"></div>
-      <div style="display:flex;flex-direction:column;align-items:center;gap:12px">
-        <div style="height:64px;padding:10px 20px;display:flex;align-items:center;justify-content:center;background:#fff;border-radius:8px;opacity:0.75;transition:opacity 0.2s" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.75'">
-          <img id="logo-c3" alt="Case Factor" style="max-height:44px;max-width:160px;object-fit:contain"/>
-        </div>
-        <span style="font-size:10px;letter-spacing:0.12em;color:var(--muted);text-transform:uppercase;font-weight:600">Case Factor</span>
-      </div>
+    <div style="text-align:center;margin-top:16px" class="rv">
+      <p style="font-size:11px;color:var(--muted)">Los créditos se compran dentro de la app. <a href="https://app.nobodyvisuallab.com" style="color:var(--accent);font-weight:700">Crear cuenta gratis →</a></p>
     </div>
   </div>
 </section>
 
-<!-- PORTAFOLIO -->
-<section id="portafolio" class="port-sec">
-  <div class="port-header rv">
-    <div class="port-title">RESULTADOS <span class="cyan">REALES</span></div>
-    <a href="#contacto" class="btn-s">SOLICITAR TRABAJO →</a>
-  </div>
-  <div style="padding:80px 28px;text-align:center;border-top:0.5px solid var(--border-em)">
-    <div class="tut-dot" style="margin:0 auto 20px"></div>
-    <div style="font-family:var(--fd);font-size:clamp(32px,6vw,72px);font-weight:900;letter-spacing:-0.01em;color:var(--white);text-transform:uppercase;margin-bottom:14px">
-      PRÓXIMAMENTE
+<!-- OBJECIONES -->
+<section class="obj-strip">
+  <div class="inner">
+    <div class="sec-tag rv">OBJECIONES COMUNES</div>
+    <div class="sec-h rv">LO QUE LA GENTE<br/><span class="cyan">PREGUNTA ANTES DE ENTRAR.</span></div>
+
+    <div class="obj-grid rv2">
+      <div class="obj-card">
+        <div class="obj-q">"Freepik me da más créditos por menos."</div>
+        <div class="obj-a">Sí, si buscas una herramienta genérica. <strong>Nobody no compite por créditos.</strong> Competimos por darte contenido visual enfocado en moda, joyería y ecommerce — con flujo guiado, modelos propios y equipo humano de respaldo.</div>
+      </div>
+      <div class="obj-card">
+        <div class="obj-q">"Canva ya lo tengo."</div>
+        <div class="obj-a">Canva es para editar. Nobody es para <strong>crear desde cero</strong> — modelos, fotografía de producto, videos y campañas sin que tengas que aprender prompts ni pagar producción tradicional.</div>
+      </div>
+      <div class="obj-card">
+        <div class="obj-q">"¿Y si no queda bien la generación?"</div>
+        <div class="obj-a">En la app puedes ajustar y regenerar. En <strong>Plan Agencia</strong> no te dejamos solo: si la IA no da el resultado esperado, el equipo lo corrige o lo rehace dentro del plan.</div>
+      </div>
+      <div class="obj-card">
+        <div class="obj-q">"No quiero aprender otra app de IA."</div>
+        <div class="obj-a">Entonces <strong>Plan Agencia</strong> es para ti. Tú mandas el producto y el equipo te ayuda a obtener el resultado. NOBY en la app también está diseñado para guiarte sin que tengas que escribir un solo prompt.</div>
+      </div>
     </div>
-    <p style="font-size:12px;color:var(--muted2);line-height:1.85;max-width:400px;margin:0 auto">
-      Estamos preparando nuevos trabajos para mostrarlos aquí. Mientras tanto, escríbenos y te mostramos ejemplos directamente.
-    </p>
-    <a href="https://wa.me/526676991211" class="btn-wa" target="_blank" style="margin-top:28px;display:inline-flex;align-items:center;gap:6px">
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-      VER EJEMPLOS POR WHATSAPP
-    </a>
   </div>
 </section>
 
 <!-- FAQ -->
-<section class="faq-sec">
-  <div class="faq-inner rv">
-    <div class="sec-tag">PREGUNTAS FRECUENTES</div>
-    <div class="faq-title">LO QUE <span class="cyan">MÁS</span> NOS PREGUNTAN</div>
+<section class="sec">
+  <div class="inner">
+    <div class="sec-tag rv">FAQ</div>
+    <div class="sec-h rv">LO QUE IMPORTA<br/><span class="cyan">SABER ANTES.</span></div>
 
-    <div class="faq-item" onclick="toggleFaq(this)">
-      <div class="faq-question">¿Necesito experiencia en diseño o IA para usar la app? <span class="faq-icon">+</span></div>
-      <div class="faq-answer">No. La app está diseñada para que cualquier dueño de negocio pueda usarla sin experiencia técnica. Solo subes tu foto de producto o ropa, describes lo que quieres, y la IA lo genera en minutos. Además, próximamente tendremos una sección de tutoriales en video donde te enseñamos paso a paso cómo sacar el máximo provecho de cada herramienta.</div>
+    <div class="faq-grid rv2">
+      <div class="faq-card">
+        <div class="faq-q">¿Necesito saber de IA para usar el servicio?</div>
+        <div class="faq-a">No. En Plan Agencia y Agencia nosotros manejamos todo. En la app, NOBY te guía para no empezar desde cero — solo describes qué quieres y él traduce eso en instrucciones visuales.</div>
+      </div>
+      <div class="faq-card">
+        <div class="faq-q">¿Puedo usar el contenido comercialmente?</div>
+        <div class="faq-a">Sí. Todo el contenido que generes con la app o con el equipo puede usarse en tienda, redes, ecommerce, marketplace y publicidad pagada.</div>
+      </div>
+      <div class="faq-card">
+        <div class="faq-q">¿Cuánto tiempo tardan en entregar?</div>
+        <div class="faq-a">En Plan Agencia y Agencia, máximo 48–72 horas por solicitud. En la app la generación es inmediata — usas los créditos y obtienes el resultado al momento.</div>
+      </div>
+      <div class="faq-card">
+        <div class="faq-q">¿Los créditos de la app caducan?</div>
+        <div class="faq-a">Los paquetes individuales (Starter, Creator, Studio) no caducan — son de por vida. En Plan Agencia, los 200 créditos mensuales se renuevan cada mes.</div>
+      </div>
+      <div class="faq-card">
+        <div class="faq-q">¿Qué tipo de marcas trabajan con Nobody?</div>
+        <div class="faq-a">Marcas pequeñas y medianas de moda, joyería, belleza, skincare y ecommerce que venden por Instagram, TikTok, WhatsApp o tienda online. También social media managers y microagencias.</div>
+      </div>
+      <div class="faq-card">
+        <div class="faq-q">¿Cómo sé qué camino me conviene?</div>
+        <div class="faq-a">Mándanos tu Instagram o fotos de producto por WhatsApp. Revisamos tu marca y te decimos si tu caso encaja mejor con App, Plan Agencia o Agencia completa — sin compromiso.</div>
+      </div>
     </div>
-
-    <div class="faq-item" onclick="toggleFaq(this)">
-      <div class="faq-question">¿Qué pasa si el resultado de la IA no es lo que esperaba? <span class="faq-icon">+</span></div>
-      <div class="faq-answer">Puedes ajustar el prompt y volver a generar. Si necesitas resultados garantizados sin preocuparte por esto, el Plan Agencia incluye respaldo humano: cuando algo no sale bien, el equipo lo resuelve por ti en menos de 48 horas.</div>
-    </div>
-
-    <div class="faq-item" onclick="toggleFaq(this)">
-      <div class="faq-question">¿Los créditos caducan? <span class="faq-icon">+</span></div>
-      <div class="faq-answer">Los paquetes Starter, Creator y Studio son de pago único y sus créditos no caducan — los usas cuando quieras, a tu ritmo. El Plan Agencia incluye 200 créditos mensuales que se renuevan cada mes con tu suscripción.</div>
-    </div>
-
-    <div class="faq-item" onclick="toggleFaq(this)">
-      <div class="faq-question">¿Cuánto tiempo tarda en generarse una imagen o video? <span class="faq-icon">+</span></div>
-      <div class="faq-answer">Depende del tipo de generación. Crear un modelo desde cero toma entre 30 y 60 segundos. Las ediciones de imagen como virtual try-on, fotos de producto o joyería toman entre 20 y 60 segundos. Los videos son más lentos por su complejidad: entre 2 y 10 minutos dependiendo del modelo y la duración. En cualquier caso, mucho más rápido que organizar una sesión fotográfica real.</div>
-    </div>
-
-    <div class="faq-item" onclick="toggleFaq(this)">
-      <div class="faq-question">¿Puedo usar los resultados para vender en Tiendanube, Shopify o redes sociales? <span class="faq-icon">+</span></div>
-      <div class="faq-answer">Sí. Todo el contenido generado con la plataforma es tuyo para usar comercialmente — en tu tienda online, catálogos, redes sociales, publicidad pagada, lo que necesites.</div>
-    </div>
-
-    <div class="faq-item" onclick="toggleFaq(this)">
-      <div class="faq-question">¿Cómo funciona el Plan Agencia exactamente? <span class="faq-icon">+</span></div>
-      <div class="faq-answer">Pagas $199 USD al mes y obtienes acceso completo a la app con 200 créditos incluidos, más hasta 10 solicitudes directas al equipo de Nobody Visual Lab. Cuando algo no sale como esperabas, nos escribes por WhatsApp, nos dices qué necesitas, y te lo entregamos en máximo 48 horas con hasta 2 revisiones sin costo extra.</div>
-    </div>
-
-    <div class="faq-item" onclick="toggleFaq(this)">
-      <div class="faq-question">¿Puedo cancelar en cualquier momento? <span class="faq-icon">+</span></div>
-      <div class="faq-answer">Sí. Los paquetes de créditos son de pago único — no hay renovaciones automáticas. El Plan Agencia es una suscripción mensual que puedes cancelar cuando quieras sin penalizaciones. Los créditos incluidos en el plan que no hayas usado ese mes no se acumulan al siguiente.</div>
-    </div>
-
-    <div class="faq-item" onclick="toggleFaq(this)">
-      <div class="faq-question">¿Hay reembolsos? <span class="faq-icon">+</span></div>
-      <div class="faq-answer">Los paquetes de créditos (Starter, Creator, Studio) no tienen reembolso una vez completada la compra, ya que los créditos se acreditan de forma inmediata y no tienen fecha de vencimiento. El Plan Agencia puede cancelarse antes de la siguiente renovación mensual. Si tienes un problema con tu compra, contáctanos por WhatsApp y lo revisamos caso por caso.</div>
-    </div>
-
-  </div>
-</section>
-
-<!-- TUTORIALES -->
-<section class="tut-sec rv">
-  <div class="tut-glow"></div>
-  <div class="tut-inner">
-    <div class="tut-eyebrow">PRÓXIMAMENTE</div>
-    <div class="tut-title"><span>APRENDE A USAR</span><br/><span class="cyan">IA PARA VENDER MÁS</span></div>
-    <p class="tut-desc">Te enseñamos paso a paso cómo crear contenido que realmente convierte. Desde lo básico hasta estrategias avanzadas para ecommerce y redes sociales.</p>
-    <div class="tut-topics">
-      <div class="tut-topic">Imágenes de producto</div>
-      <div class="tut-topic">Modelos digitales</div>
-      <div class="tut-topic">Reels que venden</div>
-      <div class="tut-topic">Escalar con IA</div>
-    </div>
-    <div class="tut-wip"><div class="tut-dot"></div><span>SECCIÓN EN CONSTRUCCIÓN</span></div>
-  </div>
-</section>
-
-<!-- PROCESO -->
-<section class="proc-sec">
-  <div class="proc-header rv"><div class="proc-title">PROCESO</div></div>
-  <div class="proc-grid rv2">
-    <div class="proc-item"><div class="proc-n">01</div><div class="proc-t">ENVÍAS TU MATERIAL</div><p class="proc-d">Tu producto, idea o referencia visual. Nos adaptamos a lo que tienes.</p></div>
-    <div class="proc-item"><div class="proc-n">02</div><div class="proc-t">DEFINIMOS EL ESTILO</div><p class="proc-d">Concepto visual, paleta, narrativa. Dirección de arte real antes de generar.</p></div>
-    <div class="proc-item"><div class="proc-n">03</div><div class="proc-t">GENERAMOS CON IA</div><p class="proc-d">Modelos, fotografía o video. Resultados de calidad editorial en minutos.</p></div>
-    <div class="proc-item"><div class="proc-n">04</div><div class="proc-t">LISTO PARA PUBLICAR</div><p class="proc-d">Alta resolución para redes, ecommerce o impresión. En 24 horas.</p></div>
   </div>
 </section>
 
 <!-- CTA FINAL -->
 <section id="contacto" class="cta-sec">
-  <div class="cta-glow"></div>
-  <div class="cta-inner rv">
-    <div class="cta-tag">LISTO PARA EMPEZAR</div>
-    <div class="cta-title">
-      <div>NO</div>
-      <div>NECESITAS</div>
-      <div class="outline">UN ESTUDIO.</div>
-      <div>NECESITAS</div>
-      <div class="cyan">VISIÓN.</div>
-    </div>
-    <p class="cta-sub">Contrata el estudio, usa la app, o cotiza tu campaña. Sin compromisos.</p>
-    <div class="cta-btns">
-      <a href="https://app.nobodyvisuallab.com" class="btn-p">CREAR MI PRIMER CONTENIDO</a>
-      <a href="https://wa.me/526676991211" class="btn-wa" target="_blank">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        WHATSAPP
+  <div class="cta-inner">
+    <div class="sec-tag cta-tag rv">SIGUIENTE PASO</div>
+    <div class="cta-h rv">TU PRODUCTO<br/>PUEDE VERSE<br/><span class="cyan">MEJOR.</span></div>
+    <p class="cta-sub rv2">Mándanos tu Instagram, tienda o fotos de producto. Te decimos qué camino te conviene y qué tipo de contenido visual necesita tu marca para vender mejor.</p>
+    <div class="cta-btns rv3">
+      <a href="https://wa.me/526676991211?text=Hola%2C%20quiero%20mejorar%20el%20contenido%20visual%20de%20mi%20marca" class="btn-wa" target="_blank" rel="noopener">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        HABLAR POR WHATSAPP
       </a>
-      <a href="mailto:nobodyvisuallab@gmail.com" class="btn-em">✉ EMAIL</a>
+      <a href="https://app.nobodyvisuallab.com" class="btn-s" target="_blank">ENTRAR A LA APP →</a>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
-  <a href="#" class="f-logo"><img src="images/logo.png" alt="logo"/><span>NOBODY<em>VISUAL</em>LAB</span></a>
-  <div class="f-center"><div class="f-copy">© 2025 NOBODY VISUAL LAB · SINALOA, MÉXICO · AI VISUAL STUDIO</div></div>
-  <div class="f-right"><a href="https://app.nobodyvisuallab.com" class="btn-app">ENTRAR A LA APP</a></div>
+  <a href="#" class="f-logo">
+    <img src="images/logo.png" alt="Nobody Visual Lab"/>
+    <span class="f-logo-txt">NOBODY<em>VISUAL</em>LAB</span>
+  </a>
+  <div class="f-copy">Sinaloa, México · AI Visual Studio</div>
+  <div class="f-right">
+    <a href="mailto:nobodyvisuallab@gmail.com" class="btn-s">EMAIL</a>
+  </div>
 </footer>
 
 <script>
-var heroMuted=true;
-function toggleSound(){heroMuted=!heroMuted;var src='https://www.youtube.com/embed/W9zkh4O-A1Q?autoplay=1&mute='+(heroMuted?'1':'0')+'&loop=1&playlist=W9zkh4O-A1Q&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&vq=hd1080';document.getElementById('hero-video').src=src;document.getElementById('sound-icon-svg').innerHTML=heroMuted?'<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line>':'<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>';}
-function openLightbox(id,type){var lb=document.getElementById('video-lightbox');var wrap=document.getElementById('yt-wrap');if(type==='short'){wrap.style.aspectRatio='9/16';wrap.style.maxWidth='420px';}else{wrap.style.aspectRatio='16/9';wrap.style.maxWidth='1000px';}document.getElementById('yt-frame').src='https://www.youtube.com/embed/'+id+'?autoplay=1&rel=0&modestbranding=1&showinfo=0';lb.style.display='flex';document.body.style.overflow='hidden';}
-function closeLightbox(){document.getElementById('video-lightbox').style.display='none';document.getElementById('yt-frame').src='';document.body.style.overflow='';}
-document.getElementById('video-lightbox').addEventListener('click',function(e){if(e.target===this)closeLightbox();});
-function toggleFaq(el){var isOpen=el.classList.contains('open');document.querySelectorAll('.faq-item').forEach(function(i){i.classList.remove('open');});if(!isOpen)el.classList.add('open');}
-const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis')});},{threshold:.06});
-document.querySelectorAll('.rv,.rv2,.rv3').forEach(el=>obs.observe(el));
-function setLang(l){document.querySelectorAll('.lb').forEach(b=>b.classList.toggle('active',b.textContent===l.toUpperCase()));document.documentElement.lang=l;}
-
-function loadLogo(imgId, baseName, filter) {
-  const formats = ['png', 'jpg', 'jpeg'];
-  const img = document.getElementById(imgId);
-  if (!img) return;
-  if (filter) img.style.filter = filter;
-  let i = 0;
-  function tryNext() {
-    if (i >= formats.length) return;
-    img.src = 'images/' + baseName + '.' + formats[i];
-    img.onerror = function() { i++; tryNext(); };
-    i++;
-  }
-  tryNext();
+// Lang switch
+function setLang(lang){
+  document.querySelectorAll('.lb').forEach(b=>b.classList.remove('active'));
+  [...document.querySelectorAll('.lb')].find(b=>b.textContent.toLowerCase()===lang)?.classList.add('active');
 }
-loadLogo('logo-c1', 'logo-cliente1', null);
-loadLogo('logo-c2', 'logo-cliente2', null);
-loadLogo('logo-c3', 'logo-cliente3', null);
+
+// Sound toggle
+let muted = true;
+function toggleSound(){
+  const iframe = document.getElementById('hero-video');
+  const svg = document.getElementById('sound-svg');
+  if(!iframe) return;
+  muted = !muted;
+  iframe.src = iframe.src.replace(muted?'mute=0':'mute=1', muted?'mute=1':'mute=0');
+  svg.innerHTML = muted
+    ? '<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/>'
+    : '<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>';
+}
+
+// Scroll reveal
+const obs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');obs.unobserve(e.target)}});
+},{threshold:.1});
+document.querySelectorAll('.rv,.rv2,.rv3').forEach(el=>obs.observe(el));
 </script>
 </body>
 </html>
