@@ -1342,7 +1342,7 @@ footer{border-top:.5px solid var(--border-em);display:grid;grid-template-columns
     messagesEl.scrollTop = messagesEl.scrollHeight;
 
     /* 7 — pausa antes del siguiente round */
-    await wait(3200);
+   await wait(4500);
   }
 
   /* ── LOOP PRINCIPAL ── */
@@ -1357,11 +1357,15 @@ footer{border-top:.5px solid var(--border-em);display:grid;grid-template-columns
         await runRound(r);
       }
       /* reiniciar mensajes para el siguiente ciclo */
-      await wait(600);
-      messagesEl.innerHTML = '';
-      currentRound = 0;
-      await wait(400);
-      await showGreeting();
+     await wait(400);
+messagesEl.style.transition = 'opacity .5s ease';
+messagesEl.style.opacity = '0';
+await wait(550);
+messagesEl.innerHTML = '';
+messagesEl.style.opacity = '1';
+currentRound = 0;
+await wait(500);
+await showGreeting();
     }
   }
 
