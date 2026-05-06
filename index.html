@@ -309,7 +309,7 @@ footer{border-top:.5px solid var(--border-em);display:grid;grid-template-columns
   .hero-eyebrow::before{display:none}
   .hero-title{font-size:48px;margin-bottom:16px}
   .hero-sub{margin-bottom:22px}
-  .hero-paths,.paths-grid,.plans-grid,.app-grid,.faq-grid,.transform-grid{grid-template-columns:1fr}
+  .hero-paths,.plans-grid,.app-grid,.transform-grid{grid-template-columns:1fr}
   .hero-right{display:grid;grid-template-columns:repeat(3,1fr);gap:0;background:rgba(255,255,255,.06);border-top:1px solid var(--accent-bdr);border-bottom:1px solid var(--accent-bdr);margin:18px 0 0;align-items:stretch;}
   .hero-stat-sep{display:none}
   .hero-stat{text-align:center;padding:14px 6px}
@@ -321,7 +321,41 @@ footer{border-top:.5px solid var(--border-em);display:grid;grid-template-columns
   .models-grid-pm{grid-template-columns:repeat(2,1fr)}
   .port-preview-grid{grid-template-columns:repeat(2,1fr)}
   footer{grid-template-columns:1fr;text-align:center}
-  .f-right{justify-content:center}
+ .f-right{justify-content:center}     ← línea 324 (ya existe)
+
+  /* sound btn */
+  #sound-btn{top:calc(60px + 56.25vw - 46px);right:.75rem;bottom:auto}
+
+  /* ── ACORDEÓN TRES CAMINOS ── */
+  .paths-grid{background:transparent;gap:0;grid-template-columns:1fr}
+  .path-card{padding:0;border-top:.5px solid var(--border-em);border-left:2px solid transparent;border-radius:0;background:var(--bg);transition:border-left-color .2s,background .2s}
+  .path-card.featured{background:var(--bg)}
+  .path-card.acc-open{border-left-color:var(--accent);background:rgba(77,191,163,.04)}
+  .path-n{display:none}.path-rule{display:none}
+  .path-title{padding:16px 44px 16px 14px;margin-bottom:0;cursor:pointer;position:relative;user-select:none}
+  .path-title::after{content:'';position:absolute;right:16px;top:50%;transform:translateY(-50%);width:10px;height:1px;background:var(--muted);transition:background .2s}
+  .path-title::before{content:'';position:absolute;right:20px;top:50%;transform:translateY(-50%);width:1px;height:10px;background:var(--muted);transition:transform .25s,background .2s}
+  .path-card.acc-open .path-title::before{transform:translateY(-50%) scaleY(0);background:var(--accent)}
+  .path-card.acc-open .path-title::after{background:var(--accent)}
+  .acc-body{overflow:hidden;max-height:0;transition:max-height .32s ease}
+  .path-card.acc-open .acc-body{max-height:400px}
+  .acc-body-inner{padding:0 14px 18px 14px;border-left:2px solid rgba(77,191,163,.15)}
+  .acc-body-inner .path-desc{margin-bottom:14px}
+  .acc-body-inner .path-list{margin-bottom:16px}
+
+  /* ── ACORDEÓN FAQ ── */
+  .faq-grid{background:transparent;gap:0;grid-template-columns:1fr}
+  .faq-card{padding:0;border-top:.5px solid var(--border-em);border-left:2px solid transparent;transition:border-left-color .2s,background .2s}
+  .faq-card.acc-open{border-left-color:var(--accent);background:rgba(77,191,163,.04)}
+  .faq-q{padding:15px 44px 15px 14px;margin-bottom:0;cursor:pointer;position:relative;user-select:none}
+  .faq-q::after{content:'';position:absolute;right:16px;top:50%;transform:translateY(-50%);width:10px;height:1px;background:var(--muted);transition:background .2s}
+  .faq-q::before{content:'';position:absolute;right:20px;top:50%;transform:translateY(-50%);width:1px;height:10px;background:var(--muted);transition:transform .25s,background .2s}
+  .faq-card.acc-open .faq-q::before{transform:translateY(-50%) scaleY(0);background:var(--accent)}
+  .faq-card.acc-open .faq-q::after{background:var(--accent)}
+  .faq-a{overflow:hidden;max-height:0;transition:max-height .3s ease,padding .3s ease;padding:0 14px}
+  .faq-card.acc-open .faq-a{max-height:300px;padding:0 14px 16px 14px}
+
+}                                       ← línea 325 (ya existe, cierre del media query)
 }
 @media(max-width:600px){
   .port-preview-grid{grid-template-columns:repeat(2,1fr)}
@@ -1461,5 +1495,49 @@ const obs=new IntersectionObserver(entries=>{
 },{threshold:.1});
 document.querySelectorAll('.rv,.rv2,.rv3').forEach(el=>obs.observe(el));
 </script>
+ <script>
+function initMobileAccordion(){
+  if(window.innerWidth > 900) return;
+  document.querySelectorAll('.path-card').forEach(card => {
+    if(card.dataset.accInit) return;
+    card.dataset.accInit='1';
+    const title = card.querySelector('.path-title');
+    if(!title) return;
+    const body = document.createElement('div');
+    body.className = 'acc-body';
+    const inner = document.createElement('div');
+    inner.className = 'acc-body-inner';
+    body.appendChild(inner);
+    Array.from(card.children).forEach(child => {
+      if(!child.classList.contains('path-n') &&
+         !child.classList.contains('path-rule') &&
+         !child.classList.contains('path-title')){
+        inner.appendChild(child);
+      }
+    });
+    card.appendChild(body);
+    title.addEventListener('click', () => {
+      const isOpen = card.classList.contains('acc-open');
+      document.querySelectorAll('.path-card').forEach(c => c.classList.remove('acc-open'));
+      if(!isOpen) card.classList.add('acc-open');
+    });
+    if(card.classList.contains('featured')) card.classList.add('acc-open');
+  });
+  document.querySelectorAll('.faq-card').forEach(card => {
+    if(card.dataset.accInit) return;
+    card.dataset.accInit='1';
+    const q = card.querySelector('.faq-q');
+    if(!q) return;
+    q.addEventListener('click', () => {
+      const isOpen = card.classList.contains('acc-open');
+      document.querySelectorAll('.faq-card').forEach(c => c.classList.remove('acc-open'));
+      if(!isOpen) card.classList.add('acc-open');
+    });
+  });
+}
+document.addEventListener('DOMContentLoaded', initMobileAccordion);
+window.addEventListener('resize', initMobileAccordion);
+</script>
+</body> 
 </body>
 </html>
