@@ -477,9 +477,10 @@ function onCardImgLoad(img) {
   const card = img.closest('.port-card');
   card.dataset.visible = 'true';
   img.style.display = 'block';
+  const ph = img.previousElementSibling;
+  if(ph) ph.style.display = 'none';
   updateCounts();
 }
-
 function onCardImgError(img) {
   const card = img.closest('.port-card');
   card.dataset.visible = 'false';
