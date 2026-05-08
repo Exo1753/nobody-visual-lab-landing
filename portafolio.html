@@ -556,21 +556,34 @@ function openModal(card) {
     modelWrap.style.display = 'none';
   }
 
-const imgAntes    = document.getElementById('modal-img-antes');
-  const imgResult   = document.getElementById('modal-img-resultado');
-  const phAntes     = document.getElementById('modal-ph-antes');
-  const beforeCol   = document.getElementById('modal-before-col');
-  const modalImages = document.getElementById('modal-images');
+  const imgAntes       = document.getElementById('modal-img-antes');
+  const mediaContainer = document.getElementById('modal-media-resultado');
+  const phAntes        = document.getElementById('modal-ph-antes');
+  const beforeCol      = document.getElementById('modal-before-col');
+  const modalImages    = document.getElementById('modal-images');
 
-  imgResult.src = result;
+  // Limpiar media anterior
+  mediaContainer.innerHTML = '';
 
   if (isVideo) {
     modalImages.classList.add('video-only');
     beforeCol.style.display = 'none';
+    const videoSrc = result.replace('-resultado.jpg', '-resultado.mp4');
+    const vid = document.createElement('video');
+    vid.src        = videoSrc;
+    vid.controls   = true;
+    vid.playsInline = true;
+    vid.style.cssText = 'width:100%;height:100%;object-fit:cover;display:block;';
+    mediaContainer.appendChild(vid);
   } else {
     modalImages.classList.remove('video-only');
     beforeCol.style.display = 'flex';
-    imgAntes.src = antes;
+    const img = document.createElement('img');
+    img.src = result;
+    img.alt = 'Resultado';
+    img.style.cssText = 'width:100%;height:100%;object-fit:cover;display:block;';
+    mediaContainer.appendChild(img);
+    imgAntes.src           = antes;
     imgAntes.style.display = 'block';
     phAntes.style.display  = 'flex';
     imgAntes.onload  = () => { phAntes.style.display = 'none'; };
