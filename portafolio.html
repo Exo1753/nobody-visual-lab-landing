@@ -610,6 +610,8 @@ function buildModalDots(currentCat) {
 }
 
 function closeModal() {
+  const vid = document.querySelector('#modal-media-resultado video');
+  if (vid) { vid.pause(); vid.src = ''; }
   document.getElementById('modal').classList.remove('open');
   document.body.style.overflow = '';
   currentModal = null;
