@@ -335,6 +335,7 @@ footer{border-top:.5px solid var(--border-em);display:grid;grid-template-columns
 
   /* ── ACORDEÓN TRES CAMINOS ── */
   .paths-grid{background:transparent;gap:0;grid-template-columns:1fr}
+  .plans-grid,.app-grid{grid-template-columns:1fr!important}
   .path-card{padding:0;border-top:.5px solid var(--border-em);border-left:2px solid transparent;border-radius:0;background:var(--bg);transition:border-left-color .2s,background .2s}
   .path-card.featured{background:var(--bg)}
   .path-card.acc-open{border-left-color:var(--accent);background:rgba(77,191,163,.04)}
@@ -428,7 +429,7 @@ footer{border-top:.5px solid var(--border-em);display:grid;grid-template-columns
         <a href="#precios" class="hero-path">
           <div class="hp-label">TU AGENCIA EN TU TELEFONO</div>
           <div class="hp-title">APP</div>
-          <div class="hp-desc">Crea por tu cuenta. Planes desde $9.99/mes. NOBY te guía.</div>
+          <div class="hp-desc">Crea por tu cuenta. Planes desde $15.99/mes. NOBY te guía.</div>
           <div class="hp-arrow">→</div>
         </a>
       </div>
@@ -768,9 +769,9 @@ footer{border-top:.5px solid var(--border-em);display:grid;grid-template-columns
       <div class="path-title">HAZLO TU<br/><span class="cyan">APP</span></div>
       <p class="path-desc">Tu agencia visual portátil. Fotos, videos y contenido UGC desde tu cuenta. NOBY te guía paso a paso.</p>
       <ul class="path-list">
-        <li>Desde $9.99 USD / mes</li>
+        <li>Desde $15.99 USD / mes</li>
         <li>Fotos de producto, moda, joyería y video</li>
-        <li>NOBY disponible en toda la sesión</li>
+        <li>Valentina + NOBY te asesoran gratis</li>
       </ul>
       <a href="#precios" class="btn-s">VER PAQUETES →</a>
     </div>
@@ -896,58 +897,70 @@ footer{border-top:.5px solid var(--border-em);display:grid;grid-template-columns
     <div class="rv">
       <div class="sec-tag">APP — TU AGENCIA, EN TU TELEFONO</div>
       <div class="sec-h">PLANES DE<br/><span class="cyan">PRODUCCION VISUAL.</span></div>
-      <p class="sec-sub">Suscripción mensual. Fotos, videos y contenido listo para publicar. Sin sorpresas.</p>
+      <p class="sec-sub">Suscripción mensual. Fotos, videos y contenido listo para publicar. Valentina te asesora en cada paso. Sin sorpresas.</p>
     </div>
-    <div class="app-grid rv2">
+    <div class="app-grid rv2" style="grid-template-columns:repeat(4,1fr)">
       <div class="app-plan">
-        <div class="app-name">EMPRENDEDOR</div>
-        <div class="app-desc">Para marcas que están empezando</div>
-        <div class="app-price">$9.99 <span style="font-family:var(--fb);font-size:13px;color:var(--muted2)">USD / mes</span></div>
-        <div class="app-price-note">~175 MXN mensuales</div>
+        <div class="app-name">ESTRENO</div>
+        <div class="app-desc">Para probar tu marca en digital</div>
+        <div class="app-price">$15.99 <span style="font-family:var(--fb);font-size:13px;color:var(--muted2)">USD / mes</span></div>
+        <div class="app-price-note">~280 MXN mensuales</div>
         <hr class="app-div"/>
         <ul class="app-items">
-          <li>40 fotos de producto profesionales</li>
-          <li>5 renders de joyería</li>
-          <li>1 video para redes</li>
-          <li>3 mejoras de resolución</li>
+          <li>100 generaciones de contenido</li>
+          <li>Fotos de producto, moda y joyería</li>
+          <li>Videos rápidos para redes</li>
+          <li>Valentina: tu asesora visual con IA</li>
+          <li>NOBY te guía en cada paso</li>
         </ul>
         <a href="https://app.nobodyvisuallab.com" class="plan-cta plan-cta-s" target="_blank">COMENZAR →</a>
       </div>
       <div class="app-plan feat">
         <div class="app-badge">Recomendado</div>
-        <div class="app-name">ESTUDIO</div>
-        <div class="app-desc">Para marcas activas en redes y tienda</div>
-        <div class="app-price">$24.99 <span style="font-family:var(--fb);font-size:13px;color:var(--muted2)">USD / mes</span></div>
-        <div class="app-price-note">~435 MXN mensuales</div>
+        <div class="app-name">CONTENIDO</div>
+        <div class="app-desc">Para publicar en redes cada semana</div>
+        <div class="app-price">$36.99 <span style="font-family:var(--fb);font-size:13px;color:var(--muted2)">USD / mes</span></div>
+        <div class="app-price-note">~645 MXN mensuales</div>
         <hr class="app-div"/>
         <ul class="app-items">
-          <li>100 fotos de producto profesionales</li>
-          <li>15 renders de joyería</li>
-          <li>3 videos profesionales</li>
-          <li>1 paquete UGC listo para publicar</li>
-          <li>10 mejoras de resolución</li>
+          <li>250 generaciones de contenido</li>
+          <li>Todo lo de Estreno</li>
+          <li>Soporte por WhatsApp</li>
+          <li>Templates para catálogo y redes</li>
         </ul>
-        <a href="https://app.nobodyvisuallab.com" class="plan-cta plan-cta-p" target="_blank">ELEGIR ESTUDIO →</a>
+        <a href="https://app.nobodyvisuallab.com" class="plan-cta plan-cta-p" target="_blank">ELEGIR CONTENIDO →</a>
       </div>
       <div class="app-plan">
-        <div class="app-name">MARCA</div>
-        <div class="app-desc">Para producción constante de contenido</div>
-        <div class="app-price">$49.99 <span style="font-family:var(--fb);font-size:13px;color:var(--muted2)">USD / mes</span></div>
-        <div class="app-price-note">~870 MXN mensuales</div>
+        <div class="app-name">PRODUCCION</div>
+        <div class="app-desc">Para campañas y contenido mensual completo</div>
+        <div class="app-price">$74.99 <span style="font-family:var(--fb);font-size:13px;color:var(--muted2)">USD / mes</span></div>
+        <div class="app-price-note">~1,310 MXN mensuales</div>
         <hr class="app-div"/>
         <ul class="app-items">
-          <li>250 fotos de producto profesionales</li>
-          <li>30 renders de joyería</li>
-          <li>6 videos profesionales</li>
-          <li>3 paquetes UGC listos para publicar</li>
-          <li>20 mejoras de resolución</li>
+          <li>500 generaciones de contenido</li>
+          <li>Todo lo de Contenido</li>
+          <li>Prioridad de generación</li>
           <li>10% de descuento en Agencia NVL</li>
         </ul>
-        <a href="https://app.nobodyvisuallab.com" class="plan-cta plan-cta-s" target="_blank">ELEGIR MARCA →</a>
+        <a href="https://app.nobodyvisuallab.com" class="plan-cta plan-cta-s" target="_blank">ELEGIR PRODUCCION →</a>
+      </div>
+      <div class="app-plan" style="border-color:var(--accent);border-width:1px">
+        <div class="app-name" style="color:var(--accent)">AGENCIA</div>
+        <div class="app-desc">Nosotros lo hacemos por ti</div>
+        <div class="app-price" style="font-size:20px">Desde $299 <span style="font-family:var(--fb);font-size:13px;color:var(--muted2)">USD / mes</span></div>
+        <div class="app-price-note">Producción visual completa</div>
+        <hr class="app-div"/>
+        <ul class="app-items">
+          <li>Equipo humano + IA dedicado</li>
+          <li>Hasta 10 solicitudes al mes</li>
+          <li>WhatsApp directo · Entrega 48h</li>
+          <li>Garantía de resultado incluida</li>
+        </ul>
+        <a href="https://wa.me/526676991211?text=Hola%2C%20me%20interesa%20Plan%20Agencia" class="plan-cta plan-cta-s" target="_blank" style="border-color:var(--accent);color:var(--accent)">COTIZAR →</a>
       </div>
     </div>
     <div style="text-align:center;margin-top:16px" class="rv">
-      <p style="font-size:11px;color:var(--muted)">¿Necesitas más? Compra packs extra de fotos o videos dentro de la app. <a href="https://app.nobodyvisuallab.com" style="color:var(--accent);font-weight:700" target="_blank">Crear cuenta gratis →</a></p>
+      <p style="font-size:11px;color:var(--muted)">Todos los planes incluyen 15 generaciones gratis para probar. <a href="https://app.nobodyvisuallab.com" style="color:var(--accent);font-weight:700" target="_blank">Crear cuenta gratis →</a></p>
     </div>
   </div>
 </section>
@@ -1513,7 +1526,7 @@ await showGreeting();
       </div>
       <div class="faq-card">
         <div class="faq-q">¿Cómo funcionan los planes de la app?</div>
-        <div class="faq-a">Cada plan incluye una cantidad mensual de fotos, videos y contenido UGC. <strong>Usas lo que necesitas y se renueva cada mes.</strong> Si necesitas más, puedes comprar packs extra de fotos o videos sin cambiar de plan.</div>
+        <div class="faq-a">Cada plan te da generaciones mensuales que puedes usar en fotos, videos o joyería. <strong>Valentina te asesora en cada paso</strong> para que aproveches al máximo cada generación. Si necesitas más, compras packs extra sin cambiar de plan.</div>
       </div>
       <div class="faq-card">
         <div class="faq-q">¿Cómo sé qué camino me conviene?</div>
