@@ -1,4 +1,4 @@
-/* Mr. Nobody · burbuja de chat de Nobody Visual Lab
+/* Valentina · burbuja de chat de Nobody Visual Lab (archivo: mrnobody.js)
    Se agrega a la página con:  <script src="/mrnobody.js" defer></script>
    Llena CONFIG con tus datos (la "anon key" de Supabase es pública por diseño: está bien que vaya aquí;
    la "service_role" NUNCA va en la página). */
@@ -11,7 +11,10 @@
     dias: [1, 2, 3, 4, 5, 6],     // 1 = lunes … 7 = domingo
     desde: 9, hasta: 17,          // horario de oficina
     utcOffset: -7,                // Sinaloa / Sonora
-    saludo: '¡Hola! Soy Mr. Nobody, de Nobody Visual Lab. ¿Qué te gustaría crear para tu marca?',
+    nombre: 'Valentina',          // el nombre que ve el cliente
+    foto: '/images/valentina-chat.jpg',                   // opcional: su foto en el círculo, ej. '/images/valentina-chat.jpg' (si está vacío sale la inicial)
+    saludo: '¡Hola! Soy Valentina, de Nobody Visual Lab. ¿Qué te gustaría crear para tu marca?',
+    video: '',                    // opcional: video corto en loop arriba del chat, ej. '/images/valentina-loop.mp4' (sin audio, 3-6 s)
   };
   if (window.__mrnobody) return; window.__mrnobody = true;
 
@@ -29,6 +32,7 @@
   root.innerHTML = '<style>' +
     ':host{all:initial}*{box-sizing:border-box;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif}' +
     '.bur{position:fixed;right:20px;bottom:20px;z-index:2147483000;width:60px;height:60px;border-radius:50%;border:none;cursor:pointer;background:#0d0d0f;color:#fff;box-shadow:0 8px 28px rgba(0,0,0,.35);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px;letter-spacing:-.02em;outline:1.5px solid rgba(255,255,255,.18)}' +
+    '.bur img,.av img{width:100%;height:100%;object-fit:cover;object-position:center 20%;border-radius:50%;display:block}.av{overflow:hidden}.bur .ini{display:contents}' +
     '.bur:hover{transform:scale(1.05)}.bur .p{position:absolute;top:3px;right:3px;width:12px;height:12px;border-radius:50%;background:#3ddc97;border:2px solid #0d0d0f}.bur .p.off{background:#8a8a8f}' +
     '.ven{position:fixed;right:20px;bottom:92px;z-index:2147483000;width:min(370px,calc(100vw - 32px));height:min(560px,calc(100vh - 120px));background:#0d0d0f;color:#f2f2f3;border-radius:18px;border:1px solid rgba(255,255,255,.12);box-shadow:0 18px 60px rgba(0,0,0,.5);display:none;flex-direction:column;overflow:hidden}' +
     '.ven.on{display:flex}@media (max-width:480px){.ven{right:16px;left:16px;width:auto;bottom:86px}}' +
@@ -36,6 +40,7 @@
     '.av{width:34px;height:34px;border-radius:50%;background:#fff;color:#0d0d0f;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;flex:none}' +
     '.msgs{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:8px}' +
     '.m{max-width:85%;padding:9px 12px;border-radius:14px;font-size:14px;line-height:1.45;white-space:pre-wrap;word-wrap:break-word}.m.b{background:#1c1c20;align-self:flex-start;border-bottom-left-radius:4px}.m.u{background:#fff;color:#0d0d0f;align-self:flex-end;border-bottom-right-radius:4px}' +
+    '.vid{align-self:stretch;margin:-14px -14px 4px;height:170px;overflow:hidden;position:relative;flex:none}.vid video{width:100%;height:100%;object-fit:cover;object-position:center 22%;display:block}.vid:after{content:"";position:absolute;inset:auto 0 0 0;height:60px;background:linear-gradient(transparent,#0d0d0f)}' +
     '.esc{align-self:flex-start;color:#9b9ba1;font-size:12.5px;padding:4px 2px}' +
     '.pie{padding:10px;border-top:1px solid rgba(255,255,255,.08);display:flex;gap:8px}.pie input{flex:1;background:#1c1c20;border:1px solid rgba(255,255,255,.1);color:#fff;border-radius:12px;padding:10px 12px;font-size:14px;outline:none}' +
     '.pie button,.btn{background:#fff;color:#0d0d0f;border:none;border-radius:12px;padding:0 14px;font-weight:700;font-size:13.5px;cursor:pointer}.pie button:disabled{opacity:.5;cursor:default}' +
@@ -44,14 +49,18 @@
     '.form input,.form textarea{background:#0d0d0f;border:1px solid rgba(255,255,255,.12);color:#fff;border-radius:10px;padding:9px 10px;font-size:14px;outline:none;width:100%;resize:vertical}' +
     '.form .btn{padding:10px}.form small{color:#9b9ba1;font-size:11.5px}.ok{color:#3ddc97}.err{color:#ff8f8f}' +
     '</style>' +
-    '<button class="bur" aria-label="Abrir chat con Mr. Nobody" title="¿Dudas? Escríbeme">MN<span class="p"></span></button>' +
-    '<div class="ven" role="dialog" aria-label="Chat con Mr. Nobody">' +
-    '<div class="cab"><div class="av">MN</div><div><b>Mr. Nobody</b><small class="est"></small></div><button class="x" aria-label="Cerrar">×</button></div>' +
+    '<button class="bur" aria-label="Abrir chat" title="¿Dudas? Escríbeme"><span class="ini"></span><span class="p"></span></button>' +
+    '<div class="ven" role="dialog" aria-label="Chat">' +
+    '<div class="cab"><div class="av"><span class="ini"></span></div><div><b class="nom"></b><small class="est"></small></div><button class="x" aria-label="Cerrar">×</button></div>' +
     '<div class="msgs"></div><div class="acc"></div>' +
     '<form class="pie"><input class="txt" placeholder="Escribe tu pregunta…" maxlength="800" autocomplete="off"><button class="env" type="submit">Enviar</button></form></div>';
 
   var $ = function (s) { return root.querySelector(s); };
   var bur = $('.bur'), ven = $('.ven'), msgs = $('.msgs'), acc = $('.acc'), est = $('.est'), txt = $('.txt'), env = $('.env'), punto = $('.bur .p');
+  root.querySelector('.nom').textContent = CONFIG.nombre; bur.setAttribute('aria-label', 'Abrir chat con ' + CONFIG.nombre); ven.setAttribute('aria-label', 'Chat con ' + CONFIG.nombre);
+  root.querySelectorAll('.ini').forEach(function (el) {
+    if (CONFIG.foto) { var im = document.createElement('img'); im.src = CONFIG.foto; im.alt = CONFIG.nombre; el.appendChild(im); } else el.textContent = CONFIG.nombre.charAt(0);
+  });
   var hist = [], enLinea = null, formHecho = false, abiertoYa = false;
   var yo = ls.get('mrn_id') || (Math.random().toString(36).slice(2) + Date.now().toString(36)); ls.set('mrn_id', yo); // para el límite de mensajes por persona
 
@@ -61,6 +70,7 @@
     est.textContent = on ? 'En línea · te respondo al momento' : 'Fuera de línea · horario ' + horarioTxt();
     punto.className = 'p' + (on ? '' : ' off');
     txt.disabled = env.disabled = !on;
+    $('.pie').style.display = on ? '' : 'none'; acc.style.display = on ? '' : 'none';
     txt.placeholder = on ? 'Escribe tu pregunta…' : 'Déjanos tus datos y te escribimos';
   };
   var botones = function () {
@@ -80,7 +90,7 @@
 
   // ── Formulario de prospecto → Supabase (tabla prospectos, solo puede insertar) ──
   var formulario = function (motivo) {
-    if (formHecho) { add('b', '¡Ya tenemos tus datos! Esli te escribe pronto.'); return; }
+    if (formHecho) { add('b', '¡Ya tenemos tus datos! Te escribimos pronto.'); return; }
     if (root.querySelector('.form')) { root.querySelector('.form input').focus(); return; }
     if (motivo) add('b', motivo);
     var f = document.createElement('form'); f.className = 'form';
@@ -108,7 +118,7 @@
       }).then(function (r) {
         if (!r.ok) throw new Error(r.status);
         ls.set('mrn_envio', String(Date.now())); formHecho = true; f.remove();
-        add('b', '¡Listo, ' + f.nombre.value.trim().split(' ')[0] + '! Recibimos tus datos. Esli te escribe por WhatsApp ' + (abierto() ? 'muy pronto' : 'en cuanto abramos (' + horarioTxt() + ')') + '.');
+        add('b', '¡Listo, ' + f.nombre.value.trim().split(' ')[0] + '! Recibimos tus datos. Te escribimos por WhatsApp ' + (abierto() ? 'muy pronto' : 'en cuanto abramos (' + horarioTxt() + ')') + '.');
       }).catch(function () {
         btn.disabled = false; btn.textContent = 'Enviar mis datos'; nota.className = 'nota err';
         nota.textContent = 'No se pudo enviar. Intenta de nuevo' + (CONFIG.whatsapp ? ' o escríbenos por WhatsApp.' : '.');
@@ -121,19 +131,19 @@
     e && e.preventDefault();
     var t = txt.value.trim(); if (!t || env.disabled) return;
     txt.value = ''; add('u', t); hist.push({ role: 'user', content: t });
-    var esc = document.createElement('div'); esc.className = 'esc'; esc.textContent = 'Mr. Nobody está escribiendo…'; msgs.appendChild(esc); msgs.scrollTop = msgs.scrollHeight;
+    var esc = document.createElement('div'); esc.className = 'esc'; esc.textContent = CONFIG.nombre + ' está escribiendo…'; msgs.appendChild(esc); msgs.scrollTop = msgs.scrollHeight;
     env.disabled = true;
     var ctl = window.AbortController ? new AbortController() : null; var to = setTimeout(function () { ctl && ctl.abort(); }, 75000);
     fetch(CONFIG.servidor + '/chat', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-MRN-Id': yo }, body: JSON.stringify({ mensajes: hist.slice(-10) }), signal: ctl ? ctl.signal : undefined })
       .then(function (r) { return r.json().catch(function () { return {}; }); })
       .then(function (d) {
         esc.remove();
-        if (d.fuera) { enLinea = false; estado(); formulario('Ya cerramos por hoy (' + horarioTxt() + '). Déjame tus datos y Esli te escribe en cuanto abramos.'); return; }
+        if (d.fuera) { enLinea = false; estado(); formulario('Ya cerramos por hoy (' + horarioTxt() + '). Déjame tus datos y te escribimos en cuanto abramos.'); return; }
         if (!d.respuesta) { formulario(d.error || 'Se me fue la señal. Déjame tus datos y te escribimos.'); return; }
         add('b', d.respuesta); hist.push({ role: 'assistant', content: d.respuesta });
         if (d.pedir_datos) formulario('');
       })
-      .catch(function () { esc.remove(); enLinea = false; estado(); formulario('Ahorita no estoy en línea. Déjame tus datos y Esli te escribe.'); })
+      .catch(function () { esc.remove(); enLinea = false; estado(); formulario('Ahorita no estoy en línea. Déjame tus datos y te escribimos.'); })
       .then(function () { clearTimeout(to); if (enLinea !== false && abierto()) env.disabled = false; txt.focus(); });
   };
   $('.pie').addEventListener('submit', enviar);
@@ -143,10 +153,11 @@
     if (!ven.classList.contains('on')) return;
     if (!abiertoYa) {
       abiertoYa = true; botones();
+      if (CONFIG.video) { var v = document.createElement('div'); v.className = 'vid'; v.innerHTML = '<video autoplay muted loop playsinline preload="auto"></video>'; v.firstChild.src = CONFIG.video; msgs.appendChild(v); }
       revisar().then(function (on) {
         if (on) { add('b', CONFIG.saludo); txt.focus(); }
-        else if (!abierto()) formulario('¡Hola! Soy Mr. Nobody. Nuestro horario es de ' + horarioTxt() + '. Déjame tus datos y Esli te escribe en cuanto abramos.');
-        else formulario('¡Hola! Soy Mr. Nobody. Ahorita no estoy en línea. Déjame tus datos y Esli te escribe muy pronto.');
+        else if (!abierto()) formulario('¡Hola! Soy ' + CONFIG.nombre + '. Nuestro horario es de ' + horarioTxt() + '. Déjame tus datos y te escribimos en cuanto abramos.');
+        else formulario('¡Hola! Soy ' + CONFIG.nombre + '. Ahorita no estoy en línea. Déjame tus datos y te escribimos muy pronto.');
       });
     }
   };
