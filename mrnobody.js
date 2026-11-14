@@ -4,7 +4,7 @@
    la "service_role" NUNCA va en la página). */
 (function () {
   var CONFIG = {
-    servidor: 'https://desktop-0sbdm32.tailb7daf8.ts.net/mrnobody', // tu PC (Tailscale Funnel)
+    servidor: 'https://desktop-0sbdm32.tailb7daf8.ts.net:10000', // tu PC (Tailscale Funnel)
     supabaseUrl: 'https://TU-PROYECTO.supabase.co',
     supabaseAnon: 'TU-LLAVE-PUBLICA',  // Supabase → Settings → API Keys: la "publishable" (sb_publishable_…) o la "anon" vieja (eyJ…)
     whatsapp: '',                 // opcional, ej. '5216671234567' → muestra botón "Escríbenos por WhatsApp"
