@@ -5,14 +5,14 @@
 (function () {
   var CONFIG = {
     servidor: 'https://desktop-0sbdm32.tailb7daf8.ts.net:10000', // tu PC (Tailscale Funnel)
-    supabaseUrl: supabaseUrl: 'https://bnxvnftyblcgkgelbudb.supabase.co',
-    supabaseAnon: 'TU-LLAVE-PUBLICA', sb_publishable_ltaNA7nnVozoSCOcZIjg  // Supabase → Settings → API Keys: la "publishable" (sb_publishable_…) o la "anon" vieja (eyJ…)
+    supabaseUrl: 'https://bnxvnftyblcgkgelbudb.supabase.co',
+    supabaseAnon: 'sb_publishable_ltaNA7nnVozoSCOcZIjg', // Supabase → Settings → API Keys: la "publishable" (sb_publishable_…) o la "anon" vieja (eyJ…)
     whatsapp: '',                 // opcional, ej. '5216671234567' → muestra botón "Escríbenos por WhatsApp"
     dias: [1, 2, 3, 4, 5, 6],     // 1 = lunes … 7 = domingo
     desde: 9, hasta: 17,          // horario de oficina
     utcOffset: -7,                // Sinaloa / Sonora
     nombre: 'Valentina',          // el nombre que ve el cliente
-    foto: '',                     // opcional: su foto en el círculo, ej. '/images/valentina-chat.jpg' (si está vacío sale la inicial)
+    foto: '','/images/valentina-chat.jpg',// opcional: su foto en el círculo, ej. '/images/valentina-chat.jpg' (si está vacío sale la inicial)
     saludo: '¡Hola! Soy Valentina, de Nobody Visual Lab. ¿Qué te gustaría crear para tu marca?',
     video: '',                    // opcional: video corto en loop arriba del chat, ej. '/images/valentina-loop.mp4' (sin audio, 3-6 s)
   };
