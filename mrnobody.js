@@ -5,14 +5,14 @@
 (function () {
   var CONFIG = {
     servidor: 'https://desktop-0sbdm32.tailb7daf8.ts.net:10000', // tu PC (Tailscale Funnel)
-    supabaseUrl: 'https://TU-PROYECTO.supabase.co',
-    supabaseAnon: 'TU-LLAVE-PUBLICA',  // Supabase → Settings → API Keys: la "publishable" (sb_publishable_…) o la "anon" vieja (eyJ…)
+    supabaseUrl: supabaseUrl: 'https://bnxvnftyblcgkgelbudb.supabase.co',
+    supabaseAnon: 'TU-LLAVE-PUBLICA', sb_publishable_ltaNA7nnVozoSCOcZIjg  // Supabase → Settings → API Keys: la "publishable" (sb_publishable_…) o la "anon" vieja (eyJ…)
     whatsapp: '',                 // opcional, ej. '5216671234567' → muestra botón "Escríbenos por WhatsApp"
     dias: [1, 2, 3, 4, 5, 6],     // 1 = lunes … 7 = domingo
     desde: 9, hasta: 17,          // horario de oficina
     utcOffset: -7,                // Sinaloa / Sonora
     nombre: 'Valentina',          // el nombre que ve el cliente
-    foto: '/images/valentina-chat.jpg',                   // opcional: su foto en el círculo, ej. '/images/valentina-chat.jpg' (si está vacío sale la inicial)
+    foto: '',                     // opcional: su foto en el círculo, ej. '/images/valentina-chat.jpg' (si está vacío sale la inicial)
     saludo: '¡Hola! Soy Valentina, de Nobody Visual Lab. ¿Qué te gustaría crear para tu marca?',
     video: '',                    // opcional: video corto en loop arriba del chat, ej. '/images/valentina-loop.mp4' (sin audio, 3-6 s)
   };
@@ -62,6 +62,8 @@
     if (CONFIG.foto) { var im = document.createElement('img'); im.src = CONFIG.foto; im.alt = CONFIG.nombre; el.appendChild(im); } else el.textContent = CONFIG.nombre.charAt(0);
   });
   var hist = [], enLinea = null, formHecho = false, abiertoYa = false;
+  var AVISO_FUERA = function () { return 'Ahorita estamos fuera de horario (' + horarioTxt() + '). Si gustas, déjanos tus datos con el botón de abajo y te respondemos en cuanto abramos.'; };
+  var AVISO_APAGADO = function () { return 'Ahorita no puedo platicar. Si gustas, déjanos tus datos con el botón de abajo y te escribimos muy pronto.'; };
   var yo = ls.get('mrn_id') || (Math.random().toString(36).slice(2) + Date.now().toString(36)); ls.set('mrn_id', yo); // para el límite de mensajes por persona
 
   var add = function (quien, texto) { var d = document.createElement('div'); d.className = 'm ' + quien; d.textContent = texto; msgs.appendChild(d); msgs.scrollTop = msgs.scrollHeight; return d; };
@@ -70,7 +72,7 @@
     est.textContent = on ? 'En línea · te respondo al momento' : 'Fuera de línea · horario ' + horarioTxt();
     punto.className = 'p' + (on ? '' : ' off');
     txt.disabled = env.disabled = !on;
-    $('.pie').style.display = on ? '' : 'none'; acc.style.display = on ? '' : 'none';
+    $('.pie').style.display = on ? '' : 'none';
     txt.placeholder = on ? 'Escribe tu pregunta…' : 'Déjanos tus datos y te escribimos';
   };
   var botones = function () {
@@ -88,14 +90,27 @@
       .then(function () { clearTimeout(t); estado(); return enLinea; });
   };
 
-  // ── Formulario de prospecto → Supabase (tabla prospectos, solo puede insertar) ──
+  // ── Guardar prospecto en Supabase (tabla prospectos: la página solo puede insertar) ──
+  var charlaTxt = function () { return hist.map(function (m) { return (m.role === 'user' ? 'Cliente: ' : CONFIG.nombre + ': ') + m.content; }).join('\n').slice(-1600); };
+  var guardar = function (p) {
+    return fetch(CONFIG.supabaseUrl + '/rest/v1/prospectos', {
+      method: 'POST',
+      headers: Object.assign({ 'Content-Type': 'application/json', apikey: CONFIG.supabaseAnon, Prefer: 'return=minimal' },
+        /^eyJ/.test(CONFIG.supabaseAnon) ? { Authorization: 'Bearer ' + CONFIG.supabaseAnon } : {}),
+      body: JSON.stringify({ nombre: (p.nombre || 'Sin nombre').slice(0, 120), whatsapp: p.whatsapp || null, correo: p.correo || null, marca: p.marca || null,
+        mensaje: (p.mensaje || '').slice(0, 1000) || null, conversacion: charlaTxt() || null, origen: 'web', pagina: location.pathname.slice(0, 200) }),
+    }).then(function (r) { if (!r.ok) throw new Error(r.status); ls.set('mrn_envio', String(Date.now())); formHecho = true; });
+  };
+  var guardado = '';
+  // ── Formulario (opcional, con el botón "Dejar mis datos") ──
   var formulario = function (motivo) {
     if (formHecho) { add('b', '¡Ya tenemos tus datos! Te escribimos pronto.'); return; }
     if (root.querySelector('.form')) { root.querySelector('.form input').focus(); return; }
     if (motivo) add('b', motivo);
     var f = document.createElement('form'); f.className = 'form';
     f.innerHTML = '<input name="nombre" placeholder="Tu nombre" maxlength="120" required>' +
-      '<input name="whatsapp" placeholder="Tu WhatsApp (10 dígitos)" maxlength="25" inputmode="tel" required>' +
+      '<input name="whatsapp" placeholder="Tu WhatsApp (10 dígitos)" maxlength="25" inputmode="tel">' +
+      '<input name="correo" placeholder="o tu correo" maxlength="120" type="email">' +
       '<input name="marca" placeholder="Tu marca o Instagram (opcional)" maxlength="120">' +
       '<textarea name="mensaje" rows="2" placeholder="¿Qué te gustaría crear?" maxlength="1000"></textarea>' +
       '<button class="btn" type="submit">Enviar mis datos</button><small class="nota">Solo los usamos para contactarte.</small>';
@@ -103,22 +118,15 @@
     f.onsubmit = function (e) {
       e.preventDefault();
       var nota = f.querySelector('.nota'), btn = f.querySelector('button');
-      var tel = f.whatsapp.value.replace(/[^\d+]/g, '');
-      if (tel.replace(/\D/g, '').length < 10) { nota.className = 'nota err'; nota.textContent = 'Revisa tu WhatsApp: deben ser al menos 10 dígitos.'; return; }
+      var tel = f.whatsapp.value.replace(/[^\d+]/g, ''), mail = f.correo.value.trim();
+      if (tel && tel.replace(/\D/g, '').length < 10) { nota.className = 'nota err'; nota.textContent = 'Revisa tu WhatsApp: deben ser al menos 10 dígitos.'; return; }
+      if (!tel && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(mail)) { nota.className = 'nota err'; nota.textContent = 'Déjanos tu WhatsApp o tu correo para poder contestarte.'; return; }
       var ult = Number(ls.get('mrn_envio') || 0);
       if (Date.now() - ult < 5 * 60000) { nota.className = 'nota err'; nota.textContent = 'Ya enviaste tus datos hace un momento. ¡Te escribimos pronto!'; return; }
-      var charla = hist.filter(function (m) { return m.role === 'user'; }).map(function (m) { return m.content; }).join(' | ').slice(-1500);
       btn.disabled = true; btn.textContent = 'Enviando…';
-      fetch(CONFIG.supabaseUrl + '/rest/v1/prospectos', {
-        method: 'POST',
-        headers: Object.assign({ 'Content-Type': 'application/json', apikey: CONFIG.supabaseAnon, Prefer: 'return=minimal' },
-          /^eyJ/.test(CONFIG.supabaseAnon) ? { Authorization: 'Bearer ' + CONFIG.supabaseAnon } : {}), // la llave nueva (sb_publishable_) va solo en apikey
-        body: JSON.stringify({ nombre: f.nombre.value.trim().slice(0, 120), whatsapp: tel.slice(0, 25), marca: f.marca.value.trim().slice(0, 120) || null,
-          mensaje: f.mensaje.value.trim().slice(0, 1000) || null, conversacion: charla || null, origen: 'web', pagina: location.pathname.slice(0, 200) }),
-      }).then(function (r) {
-        if (!r.ok) throw new Error(r.status);
-        ls.set('mrn_envio', String(Date.now())); formHecho = true; f.remove();
-        add('b', '¡Listo, ' + f.nombre.value.trim().split(' ')[0] + '! Recibimos tus datos. Te escribimos por WhatsApp ' + (abierto() ? 'muy pronto' : 'en cuanto abramos (' + horarioTxt() + ')') + '.');
+      guardar({ nombre: f.nombre.value.trim(), whatsapp: tel.slice(0, 25), correo: mail || null, marca: f.marca.value.trim().slice(0, 120), mensaje: f.mensaje.value.trim() }).then(function () {
+        f.remove();
+        add('b', '¡Listo, ' + f.nombre.value.trim().split(' ')[0] + '! Recibimos tus datos. Te escribimos ' + (tel ? 'por WhatsApp ' : 'por correo ') + (abierto() ? 'muy pronto' : 'en cuanto abramos (' + horarioTxt() + ')') + '.');
       }).catch(function () {
         btn.disabled = false; btn.textContent = 'Enviar mis datos'; nota.className = 'nota err';
         nota.textContent = 'No se pudo enviar. Intenta de nuevo' + (CONFIG.whatsapp ? ' o escríbenos por WhatsApp.' : '.');
@@ -138,12 +146,16 @@
       .then(function (r) { return r.json().catch(function () { return {}; }); })
       .then(function (d) {
         esc.remove();
-        if (d.fuera) { enLinea = false; estado(); formulario('Ya cerramos por hoy (' + horarioTxt() + '). Déjame tus datos y te escribimos en cuanto abramos.'); return; }
-        if (!d.respuesta) { formulario(d.error || 'Se me fue la señal. Déjame tus datos y te escribimos.'); return; }
+        if (d.fuera) { enLinea = false; estado(); add('b', AVISO_FUERA()); return; }
+        if (!d.respuesta) { add('b', d.error || 'Se me fue la señal. Si gustas, déjanos tus datos con el botón de abajo y te escribimos.'); return; }
         add('b', d.respuesta); hist.push({ role: 'assistant', content: d.respuesta });
-        if (d.pedir_datos) formulario('');
+        var c = d.contacto;
+        if (c && (c.whatsapp || c.correo)) {  // dio sus datos en la plática: se guardan solos
+          var clave = (c.whatsapp || '') + '|' + (c.correo || '');
+          if (clave !== guardado) { guardado = clave; guardar({ nombre: c.nombre, whatsapp: c.whatsapp, correo: c.correo, mensaje: c.resumen }).catch(function () {}); }
+        }
       })
-      .catch(function () { esc.remove(); enLinea = false; estado(); formulario('Ahorita no estoy en línea. Déjame tus datos y te escribimos.'); })
+      .catch(function () { esc.remove(); enLinea = false; estado(); add('b', AVISO_APAGADO()); })
       .then(function () { clearTimeout(to); if (enLinea !== false && abierto()) env.disabled = false; txt.focus(); });
   };
   $('.pie').addEventListener('submit', enviar);
@@ -156,8 +168,8 @@
       if (CONFIG.video) { var v = document.createElement('div'); v.className = 'vid'; v.innerHTML = '<video autoplay muted loop playsinline preload="auto"></video>'; v.firstChild.src = CONFIG.video; msgs.appendChild(v); }
       revisar().then(function (on) {
         if (on) { add('b', CONFIG.saludo); txt.focus(); }
-        else if (!abierto()) formulario('¡Hola! Soy ' + CONFIG.nombre + '. Nuestro horario es de ' + horarioTxt() + '. Déjame tus datos y te escribimos en cuanto abramos.');
-        else formulario('¡Hola! Soy ' + CONFIG.nombre + '. Ahorita no estoy en línea. Déjame tus datos y te escribimos muy pronto.');
+        else if (!abierto()) add('b', '¡Hola! Soy ' + CONFIG.nombre + '. ' + AVISO_FUERA());
+        else add('b', '¡Hola! Soy ' + CONFIG.nombre + '. ' + AVISO_APAGADO());
       });
     }
   };
