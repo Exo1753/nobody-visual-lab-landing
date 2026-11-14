@@ -12,7 +12,7 @@
     desde: 9, hasta: 17,          // horario de oficina
     utcOffset: -7,                // Sinaloa / Sonora
     nombre: 'Valentina',          // el nombre que ve el cliente
-    foto: '','/images/valentina-chat.jpg',// opcional: su foto en el círculo, ej. '/images/valentina-chat.jpg' (si está vacío sale la inicial)
+    foto: '/images/valentina-chat.jpg',// opcional: su foto en el círculo, ej. '/images/valentina-chat.jpg' (si está vacío sale la inicial)
     saludo: '¡Hola! Soy Valentina, de Nobody Visual Lab. ¿Qué te gustaría crear para tu marca?',
     video: '',                    // opcional: video corto en loop arriba del chat, ej. '/images/valentina-loop.mp4' (sin audio, 3-6 s)
   };
